@@ -6,6 +6,8 @@ import { useTranslation } from "@/i18n/useTranslation";
 import { chapters } from "@/data/curriculum";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PracticeGenerator } from "@/components/practice/PracticeGenerator";
+import { TargetedPracticeBox } from "@/components/practice/TargetedPracticeBox";
 import type { LocalizedString, SupportedLanguage } from "@/types/curriculum";
 
 function L({ s, lang }: { s: LocalizedString; lang: SupportedLanguage }) {
@@ -94,6 +96,7 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
             <TabsTrigger value="concepts">{lang === "en" ? "Key Concepts" : "核心概念"}</TabsTrigger>
             <TabsTrigger value="formulas">{lang === "en" ? "Formulas" : "公式"}</TabsTrigger>
             <TabsTrigger value="problems">{lang === "en" ? "Problem Types" : "题型"}</TabsTrigger>
+            <TabsTrigger value="practice">{lang === "en" ? "Practice" : "练习"}</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
@@ -240,6 +243,11 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
                 </CardContent>
               </Card>
             ))}
+          </TabsContent>
+          {/* Practice Tab */}
+          <TabsContent value="practice" className="space-y-6">
+            <PracticeGenerator unitId={unit.id} language={lang} />
+            <TargetedPracticeBox unitId={unit.id} language={lang} />
           </TabsContent>
         </Tabs>
       )}
