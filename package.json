@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/bedrock-sdk": "^0.29.0",
     "@aws-sdk/client-bedrock-runtime": "^3.1037.0",
     "@base-ui/react": "^1.4.1",
     "class-variance-authority": "^0.7.1",

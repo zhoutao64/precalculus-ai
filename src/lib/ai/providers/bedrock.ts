@@ -1,25 +1,15 @@
 import "server-only";
 
-import {
-  BedrockRuntimeClient,
-  InvokeModelCommand,
-} from "@aws-sdk/client-bedrock-runtime";
+import AnthropicBedrock from "@anthropic-ai/bedrock-sdk";
 import type { AIGenerateOptions, AIProvider, AIResponse } from "../types";
 
 const DEFAULT_MODEL = "anthropic.claude-sonnet-4-6-v1";
 const DEFAULT_MAX_TOKENS = 2048;
 
-type BedrockAnthropicResponse = {
-  id: string;
-  model: string;
-  content: { type: string; text?: string }[];
-  usage?: { input_tokens: number; output_tokens: number };
-};
-
 export class BedrockProvider implements AIProvider {
   readonly name = "bedrock" as const;
 
-  private client: BedrockRuntimeClient;
+  private client: AnthropicBedrock;
   private model: string;
 
   constructor(
@@ -29,50 +19,37 @@ export class BedrockProvider implements AIProvider {
     model?: string,
   ) {
     this.model = model || DEFAULT_MODEL;
-    this.client = new BedrockRuntimeClient({
-      region,
-      credentials: {
-        accessKeyId,
-        secretAccessKey,
-      },
+    this.client = new AnthropicBedrock({
+      awsAccessKey: accessKeyId,
+      awsSecretKey: secretAccessKey,
+      awsRegion: region,
     });
   }
 
   async generate(options: AIGenerateOptions): Promise<AIResponse> {
-    const body = {
-      anthropic_version: "bedrock-2023-05-31",
+    const response = await this.client.messages.create({
+      model: this.model,
       max_tokens: options.maxTokens ?? DEFAULT_MAX_TOKENS,
       temperature: options.temperature,
       system: options.system,
       messages: options.messages.map((m) => ({
-        role: m.role,
+        role: m.role as "user" | "assistant",
         content: m.content,
       })),
-    };
-
-    const command = new InvokeModelCommand({
-      modelId: this.model,
-      contentType: "application/json",
-      accept: "application/json",
-      body: JSON.stringify(body),
     });
 
-    const response = await this.client.send(command);
-    const raw = new TextDecoder().decode(response.body);
-    const data = JSON.parse(raw) as BedrockAnthropicResponse;
-
-    const text = data.content
-      .filter((b) => b.type === "text" && typeof b.text === "string")
-      .map((b) => b.text!)
+    const text = response.content
+      .filter((b) => b.type === "text")
+      .map((b) => (b as unknown as { text: string }).text)
       .join("");
 
     return {
       text,
-      model: data.model ?? this.model,
-      usage: data.usage
+      model: response.model,
+      usage: response.usage
         ? {
-            inputTokens: data.usage.input_tokens,
-            outputTokens: data.usage.output_tokens,
+            inputTokens: response.usage.input_tokens,
+            outputTokens: response.usage.output_tokens,
           }
         : undefined,
     };
