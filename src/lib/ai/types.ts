@@ -5,7 +5,7 @@ import type {
   Unit,
 } from "@/types/curriculum";
 
-export type AIProviderName = "anthropic" | "openai" | "gemini";
+export type AIProviderName = "anthropic" | "bedrock" | "openai" | "gemini";
 
 export type AIMessage = {
   role: "user" | "assistant";

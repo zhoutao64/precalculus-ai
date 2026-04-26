@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "@/i18n/useTranslation";
 import { chapters } from "@/data/curriculum";
@@ -10,7 +10,7 @@ import { PracticeGenerator } from "@/components/practice/PracticeGenerator";
 import { TargetedPracticeBox } from "@/components/practice/TargetedPracticeBox";
 import { MockTestBuilder } from "@/components/mocktest/MockTestBuilder";
 import { AskTutorChat } from "@/components/tutor/AskTutorChat";
-import type { LocalizedString, SupportedLanguage } from "@/types/curriculum";
+import type { LocalizedString, SupportedLanguage, ProblemType, Difficulty } from "@/types/curriculum";
 
 function L({ s, lang }: { s: LocalizedString; lang: SupportedLanguage }) {
   return <>{s[lang]}</>;
@@ -26,6 +26,96 @@ function DifficultyBadge({ d }: { d: string }) {
     <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${colors[d] || "bg-gray-100 text-gray-700"}`}>
       {d}
     </span>
+  );
+}
+
+const DIFFICULTY_ORDER: Difficulty[] = ["easy", "medium", "hard"];
+const DIFFICULTY_LABELS: Record<Difficulty, { en: string; zh: string; emoji: string }> = {
+  easy: { en: "Easy", zh: "基础", emoji: "📗" },
+  medium: { en: "Medium", zh: "中等", emoji: "📙" },
+  hard: { en: "Hard", zh: "困难", emoji: "📕" },
+};
+
+function ProblemTypesSection({ problemTypes, lang }: { problemTypes: ProblemType[]; lang: SupportedLanguage }) {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  // Group by difficulty
+  const grouped = DIFFICULTY_ORDER.map((d) => ({
+    difficulty: d,
+    label: DIFFICULTY_LABELS[d],
+    items: problemTypes.filter((pt) => pt.difficulty === d),
+  })).filter((g) => g.items.length > 0);
+
+  const toggle = (id: string) => setExpandedId((prev) => (prev === id ? null : id));
+
+  return (
+    <div className="space-y-6">
+      {grouped.map((group) => (
+        <div key={group.difficulty}>
+          <h3 className="text-lg font-semibold mb-3">
+            {group.label.emoji} {group.label[lang]}
+            <span className="ml-2 text-sm font-normal text-gray-500">
+              ({group.items.length} {lang === "en" ? "types" : "种"})
+            </span>
+          </h3>
+          <div className="space-y-2">
+            {group.items.map((pt) => {
+              const isOpen = expandedId === pt.id;
+              return (
+                <Card key={pt.id} className={isOpen ? "border-blue-300 shadow-md" : "hover:border-gray-300 cursor-pointer"}>
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer"
+                    onClick={() => toggle(pt.id)}
+                  >
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-800">{pt.title[lang]}</p>
+                      <p className="text-sm text-gray-500 mt-0.5">{pt.description[lang]}</p>
+                    </div>
+                    <span className="text-gray-400 ml-3 text-lg">{isOpen ? "▾" : "▸"}</span>
+                  </div>
+                  {isOpen && (
+                    <CardContent className="pt-0 space-y-3 border-t">
+                      <div className="mt-3">
+                        <p className="text-sm font-medium text-gray-500">
+                          {lang === "en" ? "How to Recognize" : "如何识别"}
+                        </p>
+                        <p className="text-gray-700">{pt.howToRecognize[lang]}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">
+                          {lang === "en" ? "Steps" : "解题步骤"}
+                        </p>
+                        <ol className="list-decimal list-inside space-y-1 text-gray-700">
+                          {pt.steps.map((step, i) => (
+                            <li key={i}><L s={step} lang={lang} /></li>
+                          ))}
+                        </ol>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-blue-500">
+                          📝 {lang === "en" ? "Example Problem" : "例题"}
+                        </p>
+                        <p className="text-gray-700 font-mono text-sm">{pt.exampleProblem[lang]}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-red-500">
+                          ⚠️ {lang === "en" ? "Common Traps" : "常见陷阱"}
+                        </p>
+                        <ul className="list-disc list-inside text-gray-700">
+                          {pt.commonTraps.map((trap, i) => (
+                            <li key={i}><L s={trap} lang={lang} /></li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  )}
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -201,52 +291,8 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
           </TabsContent>
 
           {/* Problem Types Tab */}
-          <TabsContent value="problems" className="space-y-4">
-            {unit.problemTypes?.map((pt) => (
-              <Card key={pt.id}>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{pt.title[lang]}</CardTitle>
-                    <DifficultyBadge d={pt.difficulty} />
-                  </div>
-                  <p className="text-sm text-gray-600">{pt.description[lang]}</p>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      {lang === "en" ? "How to Recognize" : "如何识别"}
-                    </p>
-                    <p className="text-gray-700">{pt.howToRecognize[lang]}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      {lang === "en" ? "Steps" : "解题步骤"}
-                    </p>
-                    <ol className="list-decimal list-inside space-y-1 text-gray-700">
-                      {pt.steps.map((step, i) => (
-                        <li key={i}><L s={step} lang={lang} /></li>
-                      ))}
-                    </ol>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-blue-500">
-                      📝 {lang === "en" ? "Example Problem" : "例题"}
-                    </p>
-                    <p className="text-gray-700 font-mono text-sm">{pt.exampleProblem[lang]}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-red-500">
-                      ⚠️ {lang === "en" ? "Common Traps" : "常见陷阱"}
-                    </p>
-                    <ul className="list-disc list-inside text-gray-700">
-                      {pt.commonTraps.map((trap, i) => (
-                        <li key={i}><L s={trap} lang={lang} /></li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <TabsContent value="problems" className="space-y-6">
+            <ProblemTypesSection problemTypes={unit.problemTypes ?? []} lang={lang} />
           </TabsContent>
           {/* Practice Tab */}
           <TabsContent value="practice" className="space-y-6">

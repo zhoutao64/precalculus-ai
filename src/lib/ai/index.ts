@@ -1,6 +1,7 @@
 import "server-only";
 
 import { AnthropicProvider } from "./providers/anthropic";
+import { BedrockProvider } from "./providers/bedrock";
 import type { AIProvider, AIProviderName } from "./types";
 
 export type { AIProvider, AIProviderName, AIResponse } from "./types";
@@ -11,25 +12,40 @@ export {
   SYSTEM_TUTOR,
 } from "./prompts";
 
-export function getAIProvider(name: AIProviderName = "anthropic"): AIProvider {
-  const apiKey = process.env.AI_API_KEY;
-  const model = process.env.AI_MODEL;
+export function getAIProvider(name?: AIProviderName): AIProvider {
+  const provider = name || (process.env.AI_PROVIDER as AIProviderName) || "bedrock";
 
-  if (!apiKey) {
-    throw new Error(
-      "AI_API_KEY is not set. Add it to .env.local to enable AI features.",
-    );
-  }
+  switch (provider) {
+    case "bedrock": {
+      const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+      const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+      const region = process.env.AWS_REGION || "us-east-1";
+      const model = process.env.AI_MODEL;
 
-  switch (name) {
-    case "anthropic":
+      if (!accessKeyId || !secretAccessKey) {
+        throw new Error(
+          "AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are required for Bedrock provider.",
+        );
+      }
+
+      return new BedrockProvider(accessKeyId, secretAccessKey, region, model);
+    }
+    case "anthropic": {
+      const apiKey = process.env.AI_API_KEY;
+      const model = process.env.AI_MODEL;
+
+      if (!apiKey) {
+        throw new Error(
+          "AI_API_KEY is not set. Add it to .env.local to enable AI features.",
+        );
+      }
+
       return new AnthropicProvider(apiKey, model);
+    }
     case "openai":
     case "gemini":
-      throw new Error(`AI provider "${name}" is not implemented yet.`);
-    default: {
-      const exhaustive: never = name;
-      throw new Error(`Unknown AI provider: ${exhaustive as string}`);
-    }
+      throw new Error(`AI provider "${provider}" is not implemented yet.`);
+    default:
+      throw new Error(`Unknown AI provider: ${provider}`);
   }
 }
