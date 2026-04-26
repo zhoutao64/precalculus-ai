@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PracticeGenerator } from "@/components/practice/PracticeGenerator";
 import { TargetedPracticeBox } from "@/components/practice/TargetedPracticeBox";
 import { MockTestBuilder } from "@/components/mocktest/MockTestBuilder";
+import { AskTutorChat } from "@/components/tutor/AskTutorChat";
 import type { LocalizedString, SupportedLanguage } from "@/types/curriculum";
 
 function L({ s, lang }: { s: LocalizedString; lang: SupportedLanguage }) {
@@ -91,6 +92,7 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
           </CardContent>
         </Card>
       ) : (
+        <>
         <Tabs defaultValue="overview">
           <TabsList>
             <TabsTrigger value="overview">{lang === "en" ? "Overview" : "概览"}</TabsTrigger>
@@ -256,7 +258,13 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
           <TabsContent value="mocktest">
             <MockTestBuilder unitId={unit.id} language={lang} />
           </TabsContent>
+
+          {/* AI Tutor - shown below all tabs */}
         </Tabs>
+        <div className="mt-6">
+          <AskTutorChat unitId={unit.id} language={lang} />
+        </div>
+        </>
       )}
     </div>
   );

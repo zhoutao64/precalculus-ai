@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslation } from "@/i18n/useTranslation";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { StudyCoach } from "@/components/coach/StudyCoach";
 
 const FEATURE_KEYS = [
   "unitSummary",
@@ -16,10 +17,13 @@ const FEATURE_KEYS = [
 const FEATURE_ICONS = ["📚", "📐", "✏️", "📝", "💡"];
 
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { language, t } = useTranslation();
 
   return (
     <div className="space-y-12">
+      {/* Study Coach */}
+      <StudyCoach language={language as "en" | "zh"} />
+
       {/* Hero */}
       <section className="py-12 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
