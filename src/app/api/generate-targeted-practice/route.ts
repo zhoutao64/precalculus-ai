@@ -41,6 +41,7 @@ export async function POST(req: Request) {
       system: SYSTEM_TUTOR(language),
       messages: [{ role: "user", content: userMessage }],
       temperature: 0.5,
+      maxTokens: 4096,
     });
 
     const parsed = JSON.parse(result.text);

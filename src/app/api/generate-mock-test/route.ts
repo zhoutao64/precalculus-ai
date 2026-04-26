@@ -128,9 +128,29 @@ export async function POST(req: Request) {
       system: SYSTEM_TUTOR(language),
       messages: [{ role: "user", content: prompt }],
       temperature: 0.5,
+      maxTokens: 8192,
     });
 
-    const parsed = JSON.parse(result.text) as { questions: unknown[] };
+    // Try to parse JSON, with fallback for truncated responses
+    let parsed: { questions: unknown[] };
+    try {
+      parsed = JSON.parse(result.text);
+    } catch {
+      // Try to extract partial JSON by finding last complete question object
+      const text = result.text;
+      const lastBracket = text.lastIndexOf("}");
+      if (lastBracket > 0) {
+        const trimmed = text.substring(0, lastBracket + 1) + "]}";
+        try {
+          parsed = JSON.parse(trimmed);
+        } catch {
+          // Try wrapping in questions array
+          throw new Error("AI returned invalid JSON. Try fewer questions.");
+        }
+      } else {
+        throw new Error("AI returned invalid JSON. Try fewer questions.");
+      }
+    }
     return NextResponse.json({
       questions: parsed.questions,
       timeLimit: count * MINUTES_PER_QUESTION,
