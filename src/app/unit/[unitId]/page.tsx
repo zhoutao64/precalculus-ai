@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PracticeGenerator } from "@/components/practice/PracticeGenerator";
 import { TargetedPracticeBox } from "@/components/practice/TargetedPracticeBox";
+import { MockTestBuilder } from "@/components/mocktest/MockTestBuilder";
 import type { LocalizedString, SupportedLanguage } from "@/types/curriculum";
 
 function L({ s, lang }: { s: LocalizedString; lang: SupportedLanguage }) {
@@ -97,6 +98,7 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
             <TabsTrigger value="formulas">{lang === "en" ? "Formulas" : "公式"}</TabsTrigger>
             <TabsTrigger value="problems">{lang === "en" ? "Problem Types" : "题型"}</TabsTrigger>
             <TabsTrigger value="practice">{lang === "en" ? "Practice" : "练习"}</TabsTrigger>
+            <TabsTrigger value="mocktest">{lang === "en" ? "Mock Test" : "模考"}</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
@@ -248,6 +250,11 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
           <TabsContent value="practice" className="space-y-6">
             <PracticeGenerator unitId={unit.id} language={lang} />
             <TargetedPracticeBox unitId={unit.id} language={lang} />
+          </TabsContent>
+
+          {/* Mock Test Tab */}
+          <TabsContent value="mocktest">
+            <MockTestBuilder unitId={unit.id} language={lang} />
           </TabsContent>
         </Tabs>
       )}
