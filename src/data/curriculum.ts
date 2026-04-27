@@ -499,7 +499,7 @@ const chapter6Units: Unit[] = [
       {
         id: "f-6-1-1",
         name: { en: "Law of Sines", zh: "正弦定理" },
-        formula: "a / sin(A) = b / sin(B) = c / sin(C)",
+        formula: "\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}",
         variables: [
           { en: "a, b, c = sides of the triangle", zh: "a、b、c = 三角形的三条边" },
           { en: "A, B, C = angles opposite to sides a, b, c", zh: "A、B、C = 分别与边 a、b、c 相对的角" },
@@ -514,7 +514,7 @@ const chapter6Units: Unit[] = [
       {
         id: "f-6-1-2",
         name: { en: "Triangle Area (Sine Formula)", zh: "三角形面积（正弦公式）" },
-        formula: "Area = (1/2) · a · b · sin(C)",
+        formula: "\\text{Area} = \\frac{1}{2} ab \\sin C",
         variables: [
           { en: "a, b = two sides of the triangle", zh: "a、b = 三角形的两条边" },
           { en: "C = included angle between a and b", zh: "C = 边 a 与边 b 的夹角" },

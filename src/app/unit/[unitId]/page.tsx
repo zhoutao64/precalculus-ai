@@ -10,10 +10,11 @@ import { PracticeGenerator } from "@/components/practice/PracticeGenerator";
 import { TargetedPracticeBox } from "@/components/practice/TargetedPracticeBox";
 import { MockTestBuilder } from "@/components/mocktest/MockTestBuilder";
 import { AskTutorChat } from "@/components/tutor/AskTutorChat";
+import { MathText, MathBlock } from "@/components/ui/math";
 import type { LocalizedString, SupportedLanguage, ProblemType, Difficulty } from "@/types/curriculum";
 
 function L({ s, lang }: { s: LocalizedString; lang: SupportedLanguage }) {
-  return <>{s[lang]}</>;
+  return <MathText text={s[lang]} />;
 }
 
 function DifficultyBadge({ d }: { d: string }) {
@@ -223,25 +224,25 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
                     <p className="text-sm font-medium text-gray-500">
                       {lang === "en" ? "Explanation" : "说明"}
                     </p>
-                    <p className="text-gray-700">{concept.explanation[lang]}</p>
+                    <MathText text={concept.explanation[lang]} className="text-gray-700" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500">
                       {lang === "en" ? "When to Use" : "使用时机"}
                     </p>
-                    <p className="text-gray-700">{concept.whenToUse[lang]}</p>
+                    <MathText text={concept.whenToUse[lang]} className="text-gray-700" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-red-500">
                       ⚠️ {lang === "en" ? "Common Mistake" : "常见错误"}
                     </p>
-                    <p className="text-gray-700">{concept.commonMistake[lang]}</p>
+                    <MathText text={concept.commonMistake[lang]} className="text-gray-700" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-blue-500">
                       💡 {lang === "en" ? "Example" : "例子"}
                     </p>
-                    <p className="text-gray-700 font-mono text-sm">{concept.example[lang]}</p>
+                    <MathText text={concept.example[lang]} className="text-gray-700 text-sm" />
                   </div>
                 </CardContent>
               </Card>
@@ -257,9 +258,7 @@ export default function UnitPage({ params }: { params: Promise<{ unitId: string 
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="rounded-lg bg-blue-50 p-4 text-center">
-                    <p className="text-xl font-mono font-semibold text-blue-900">
-                      {formula.formula}
-                    </p>
+                    <MathBlock latex={formula.formula} className="text-xl text-blue-900" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500">
