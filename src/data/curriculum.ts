@@ -5328,6 +5328,269 @@ const chapter4Units: Unit[] = [
       en: "Convert between radian and degree measure, and find arc length, sector area, and angular speed.",
       zh: "在弧度与角度之间互化，并求弧长、扇形面积与角速度。",
     },
+    learningGoals: [
+      { en: "Describe angles using standard position and identify coterminal angles", zh: "用标准位置描述角并识别同终边角" },
+      { en: "Convert between degree and radian measure", zh: "在角度与弧度之间互化" },
+      { en: "Use the arc length formula $s = r\\theta$", zh: "运用弧长公式 $s = r\\theta$" },
+      { en: "Find the area of a circular sector and solve angular-speed problems", zh: "求扇形面积并解决角速度问题" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-1-1",
+        title: { en: "Angles in Standard Position & Coterminal Angles", zh: "标准位置角与同终边角" },
+        explanation: {
+          en: "An angle is in standard position when its vertex is at the origin and its initial side lies along the positive $x$-axis. A positive angle rotates counter-clockwise; a negative angle rotates clockwise. Two angles are coterminal if they share the same terminal side. Add or subtract $360°$ (or $2\\pi$) to find coterminal angles.",
+          zh: "角的顶点在原点、始边沿正 $x$ 轴时，称角处于标准位置。正角逆时针旋转，负角顺时针旋转。两个角的终边重合时称为同终边角。加减 $360°$（或 $2\\pi$）即可求同终边角。",
+        },
+        whenToUse: { en: "Describing rotations and finding equivalent angle measures", zh: "描述旋转及求等价角度" },
+        commonMistake: { en: "Confusing direction: positive = counter-clockwise, negative = clockwise", zh: "混淆方向：正角 = 逆时针，负角 = 顺时针" },
+        example: { en: "$\\theta = 30°$ and $\\theta = 390°$ are coterminal because $390° - 360° = 30°$", zh: "$\\theta = 30°$ 与 $\\theta = 390°$ 同终边，因为 $390° - 360° = 30°$" },
+      },
+      {
+        id: "kc-4-1-2",
+        title: { en: "Radian Measure", zh: "弧度制" },
+        explanation: {
+          en: "One radian is the measure of a central angle that intercepts an arc equal in length to the radius. A full revolution is $2\\pi$ radians. Therefore $360° = 2\\pi$ rad, and $180° = \\pi$ rad. To convert: degrees → radians multiply by $\\frac{\\pi}{180}$; radians → degrees multiply by $\\frac{180}{\\pi}$.",
+          zh: "一弧度是截弧长等于半径的圆心角。一整圈为 $2\\pi$ 弧度。因此 $360° = 2\\pi$ rad，$180° = \\pi$ rad。转换：角度→弧度乘 $\\frac{\\pi}{180}$；弧度→角度乘 $\\frac{180}{\\pi}$。",
+        },
+        whenToUse: { en: "All formulas in calculus and physics use radians — this is the default angle unit", zh: "微积分与物理的所有公式默认用弧度" },
+        commonMistake: { en: "Using degree values in formulas that require radians (e.g., $s = r\\theta$ needs $\\theta$ in radians)", zh: "在需要弧度的公式（如 $s = r\\theta$）中代入角度值" },
+        example: { en: "$60° = 60 \\cdot \\frac{\\pi}{180} = \\frac{\\pi}{3}$ rad; $\\frac{5\\pi}{4}$ rad $= \\frac{5\\pi}{4} \\cdot \\frac{180}{\\pi} = 225°$", zh: "$60° = 60 \\cdot \\frac{\\pi}{180} = \\frac{\\pi}{3}$ rad；$\\frac{5\\pi}{4}$ rad $= \\frac{5\\pi}{4} \\cdot \\frac{180}{\\pi} = 225°$" },
+      },
+      {
+        id: "kc-4-1-3",
+        title: { en: "Arc Length, Sector Area, and Angular Speed", zh: "弧长、扇形面积与角速度" },
+        explanation: {
+          en: "Arc length: $s = r\\theta$ ($\\theta$ in radians). Sector area: $A = \\frac{1}{2}r^2\\theta$. Angular speed: $\\omega = \\frac{\\theta}{t}$ (radians per unit time). Linear speed along the arc: $v = r\\omega = \\frac{s}{t}$.",
+          zh: "弧长：$s = r\\theta$（$\\theta$ 为弧度）。扇形面积：$A = \\frac{1}{2}r^2\\theta$。角速度：$\\omega = \\frac{\\theta}{t}$（每单位时间的弧度数）。弧上的线速度：$v = r\\omega = \\frac{s}{t}$。",
+        },
+        whenToUse: { en: "Problems involving circular motion, arc measurement, or rotating objects", zh: "涉及圆周运动、弧度量或旋转物体的问题" },
+        commonMistake: { en: "Using degrees instead of radians in $s = r\\theta$ or $A = \\frac{1}{2}r^2\\theta$", zh: "在 $s = r\\theta$ 或 $A = \\frac{1}{2}r^2\\theta$ 中用角度而非弧度" },
+        example: { en: "Circle with $r = 10$, central angle $\\frac{\\pi}{3}$: $s = 10 \\cdot \\frac{\\pi}{3} \\approx 10.47$; $A = \\frac{1}{2}(100)\\frac{\\pi}{3} \\approx 52.36$", zh: "半径 $r = 10$、圆心角 $\\frac{\\pi}{3}$ 的圆：$s = 10 \\cdot \\frac{\\pi}{3} \\approx 10.47$；$A = \\frac{1}{2}(100)\\frac{\\pi}{3} \\approx 52.36$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-1-1",
+        name: { en: "Degree ↔ Radian Conversion", zh: "角度↔弧度互化" },
+        formula: "\\text{radians} = \\text{degrees} \\times \\frac{\\pi}{180}, \\quad \\text{degrees} = \\text{radians} \\times \\frac{180}{\\pi}",
+        variables: [
+          { en: "$180° = \\pi$ radians — the fundamental relationship", zh: "$180° = \\pi$ 弧度——基本关系" },
+        ],
+        whenToUse: { en: "Whenever you need to switch between the two angle units", zh: "需要在两种角度单位之间转换时" },
+        commonProblemTypes: [
+          { en: "Convert a given degree measure to radians", zh: "将角度值转换为弧度" },
+          { en: "Convert a given radian measure to degrees", zh: "将弧度值转换为角度" },
+        ],
+        example: { en: "$45° = \\frac{\\pi}{4}$ rad; $\\frac{2\\pi}{3}$ rad $= 120°$", zh: "$45° = \\frac{\\pi}{4}$ rad；$\\frac{2\\pi}{3}$ rad $= 120°$" },
+      },
+      {
+        id: "f-4-1-2",
+        name: { en: "Arc Length Formula", zh: "弧长公式" },
+        formula: "s = r\\theta",
+        variables: [
+          { en: "$s$ — arc length", zh: "$s$ — 弧长" },
+          { en: "$r$ — radius", zh: "$r$ — 半径" },
+          { en: "$\\theta$ — central angle in radians", zh: "$\\theta$ — 圆心角（弧度）" },
+        ],
+        whenToUse: { en: "Finding the length of an arc intercepted by a central angle", zh: "求圆心角所截弧的长度" },
+        commonProblemTypes: [
+          { en: "Find arc length given radius and central angle", zh: "已知半径和圆心角求弧长" },
+          { en: "Find the central angle given arc length and radius", zh: "已知弧长和半径求圆心角" },
+        ],
+        example: { en: "$r = 6$, $\\theta = \\frac{\\pi}{4}$: $s = 6 \\cdot \\frac{\\pi}{4} = \\frac{3\\pi}{2} \\approx 4.71$", zh: "$r = 6$，$\\theta = \\frac{\\pi}{4}$：$s = 6 \\cdot \\frac{\\pi}{4} = \\frac{3\\pi}{2} \\approx 4.71$" },
+      },
+      {
+        id: "f-4-1-3",
+        name: { en: "Sector Area Formula", zh: "扇形面积公式" },
+        formula: "A = \\frac{1}{2}r^2\\theta",
+        variables: [
+          { en: "$A$ — area of the sector", zh: "$A$ — 扇形面积" },
+          { en: "$r$ — radius", zh: "$r$ — 半径" },
+          { en: "$\\theta$ — central angle in radians", zh: "$\\theta$ — 圆心角（弧度）" },
+        ],
+        whenToUse: { en: "Finding the area of a pie-shaped region of a circle", zh: "求圆的扇形区域面积" },
+        commonProblemTypes: [
+          { en: "Find the area of a sector", zh: "求扇形面积" },
+          { en: "Find the central angle given sector area and radius", zh: "已知扇形面积和半径求圆心角" },
+        ],
+        example: { en: "$r = 8$, $\\theta = \\frac{\\pi}{6}$: $A = \\frac{1}{2}(64)\\frac{\\pi}{6} = \\frac{32\\pi}{6} \\approx 16.76$", zh: "$r = 8$，$\\theta = \\frac{\\pi}{6}$：$A = \\frac{1}{2}(64)\\frac{\\pi}{6} = \\frac{32\\pi}{6} \\approx 16.76$" },
+      },
+      {
+        id: "f-4-1-4",
+        name: { en: "Linear and Angular Speed", zh: "线速度与角速度" },
+        formula: "\\omega = \\frac{\\theta}{t}, \\quad v = r\\omega = \\frac{s}{t}",
+        variables: [
+          { en: "$\\omega$ — angular speed (rad/time)", zh: "$\\omega$ — 角速度（弧度/时间）" },
+          { en: "$v$ — linear speed (distance/time)", zh: "$v$ — 线速度（距离/时间）" },
+          { en: "$r$ — radius", zh: "$r$ — 半径" },
+          { en: "$t$ — time", zh: "$t$ — 时间" },
+        ],
+        whenToUse: { en: "Rotating wheels, pulleys, gears, or any circular-motion problem", zh: "旋转的轮子、滑轮、齿轮或任何圆周运动问题" },
+        commonProblemTypes: [
+          { en: "Find linear speed from angular speed and radius", zh: "由角速度和半径求线速度" },
+          { en: "Find angular speed from revolutions per minute", zh: "由每分钟转数求角速度" },
+        ],
+        example: { en: "A wheel of radius 2 ft spins at 100 rpm: $\\omega = 100 \\cdot 2\\pi = 200\\pi$ rad/min, $v = 2 \\cdot 200\\pi = 400\\pi \\approx 1257$ ft/min", zh: "半径 2 ft 的轮子 100 rpm：$\\omega = 100 \\cdot 2\\pi = 200\\pi$ rad/min，$v = 2 \\cdot 200\\pi = 400\\pi \\approx 1257$ ft/min" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-1-1",
+        title: { en: "Convert Degrees to Radians", zh: "角度转弧度" },
+        description: { en: "Multiply the degree measure by $\\frac{\\pi}{180}$ and simplify.", zh: "将角度值乘以 $\\frac{\\pi}{180}$ 并化简。" },
+        howToRecognize: { en: "A degree value is given; answer required in radians.", zh: "给出角度值；要求用弧度表示。" },
+        steps: [
+          { en: "Multiply by $\\frac{\\pi}{180}$", zh: "乘以 $\\frac{\\pi}{180}$" },
+          { en: "Simplify the fraction", zh: "化简分数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Convert $150°$ to radians.", zh: "将 $150°$ 转换为弧度。" },
+        commonTraps: [
+          { en: "Forgetting to simplify: $\\frac{150\\pi}{180}$ should become $\\frac{5\\pi}{6}$", zh: "忘记化简：$\\frac{150\\pi}{180}$ 应化为 $\\frac{5\\pi}{6}$" },
+        ],
+      },
+      {
+        id: "pt-4-1-2",
+        title: { en: "Convert Radians to Degrees", zh: "弧度转角度" },
+        description: { en: "Multiply the radian measure by $\\frac{180}{\\pi}$ and simplify.", zh: "将弧度值乘以 $\\frac{180}{\\pi}$ 并化简。" },
+        howToRecognize: { en: "A radian value (often with $\\pi$) is given; answer required in degrees.", zh: "给出弧度值（通常含 $\\pi$）；要求用角度表示。" },
+        steps: [
+          { en: "Multiply by $\\frac{180}{\\pi}$", zh: "乘以 $\\frac{180}{\\pi}$" },
+          { en: "Cancel $\\pi$ and simplify", zh: "消去 $\\pi$ 并化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Convert $\\frac{7\\pi}{6}$ to degrees.", zh: "将 $\\frac{7\\pi}{6}$ 转换为角度。" },
+        commonTraps: [
+          { en: "Multiplying by $\\frac{\\pi}{180}$ instead of $\\frac{180}{\\pi}$ (wrong direction)", zh: "乘以 $\\frac{\\pi}{180}$ 而非 $\\frac{180}{\\pi}$（方向搞反）" },
+        ],
+      },
+      {
+        id: "pt-4-1-3",
+        title: { en: "Find Coterminal Angles", zh: "求同终边角" },
+        description: { en: "Add or subtract $360°$ (or $2\\pi$) to find a coterminal angle in a specified range.", zh: "加减 $360°$（或 $2\\pi$）在指定范围内求同终边角。" },
+        howToRecognize: { en: "Problem gives an angle and asks for a coterminal angle (often $0° \\leq \\theta < 360°$).", zh: "题目给出一个角，要求在某范围（通常 $0° \\leq \\theta < 360°$）内求同终边角。" },
+        steps: [
+          { en: "Add or subtract $360°$ (or $2\\pi$) until the result is in the desired range", zh: "加减 $360°$（或 $2\\pi$）直到结果落在要求的范围内" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find a coterminal angle of $-120°$ in $[0°, 360°)$.", zh: "求 $-120°$ 在 $[0°, 360°)$ 内的同终边角。" },
+        commonTraps: [
+          { en: "Adding only once when multiple additions are needed (e.g., $-750°$)", zh: "需要多次加减时只加减了一次（如 $-750°$）" },
+        ],
+      },
+      {
+        id: "pt-4-1-4",
+        title: { en: "Sketch an Angle in Standard Position", zh: "在标准位置画角" },
+        description: { en: "Draw the initial side on the positive $x$-axis and rotate by the given measure.", zh: "始边沿正 $x$ 轴，按给定量旋转。" },
+        howToRecognize: { en: "Problem asks you to draw or sketch an angle.", zh: "题目要求画角。" },
+        steps: [
+          { en: "Draw the initial side along the positive $x$-axis", zh: "沿正 $x$ 轴画始边" },
+          { en: "Rotate counter-clockwise for positive, clockwise for negative", zh: "正角逆时针，负角顺时针" },
+          { en: "Mark the terminal side", zh: "标出终边" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Sketch $\\theta = -\\frac{3\\pi}{4}$ in standard position.", zh: "在标准位置画出 $\\theta = -\\frac{3\\pi}{4}$。" },
+        commonTraps: [
+          { en: "Rotating in the wrong direction for negative angles", zh: "负角时旋转方向搞反" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-1-5",
+        title: { en: "Find Arc Length", zh: "求弧长" },
+        description: { en: "Use $s = r\\theta$ with $\\theta$ in radians.", zh: "用 $s = r\\theta$（$\\theta$ 为弧度）。" },
+        howToRecognize: { en: "Given radius and central angle; asked for arc length.", zh: "已知半径和圆心角；要求弧长。" },
+        steps: [
+          { en: "Convert the angle to radians if given in degrees", zh: "若角为角度制则先转弧度" },
+          { en: "Apply $s = r\\theta$", zh: "代入 $s = r\\theta$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the arc length on a circle of radius 12 cm subtended by a central angle of $150°$.", zh: "求半径 12 cm 的圆上圆心角 $150°$ 所对弧长。" },
+        commonTraps: [
+          { en: "Forgetting to convert $150°$ to radians ($\\frac{5\\pi}{6}$) before using the formula", zh: "忘记将 $150°$ 转为弧度（$\\frac{5\\pi}{6}$）再代入公式" },
+        ],
+      },
+      {
+        id: "pt-4-1-6",
+        title: { en: "Find Sector Area", zh: "求扇形面积" },
+        description: { en: "Use $A = \\frac{1}{2}r^2\\theta$ with $\\theta$ in radians.", zh: "用 $A = \\frac{1}{2}r^2\\theta$（$\\theta$ 为弧度）。" },
+        howToRecognize: { en: "Given radius and central angle; asked for area of the sector.", zh: "已知半径和圆心角；要求扇形面积。" },
+        steps: [
+          { en: "Convert the angle to radians if needed", zh: "如有必要将角转为弧度" },
+          { en: "Apply $A = \\frac{1}{2}r^2\\theta$", zh: "代入 $A = \\frac{1}{2}r^2\\theta$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the area of a sector with radius 10 in. and central angle $\\frac{2\\pi}{3}$.", zh: "求半径 10 in.、圆心角 $\\frac{2\\pi}{3}$ 的扇形面积。" },
+        commonTraps: [
+          { en: "Using $\\pi r^2 \\cdot \\frac{\\theta}{360}$ (degree-based) instead of $\\frac{1}{2}r^2\\theta$ (radian-based)", zh: "用角度公式 $\\pi r^2 \\cdot \\frac{\\theta}{360}$ 而非弧度公式 $\\frac{1}{2}r^2\\theta$" },
+        ],
+      },
+      {
+        id: "pt-4-1-7",
+        title: { en: "Find Linear Speed from Angular Speed", zh: "由角速度求线速度" },
+        description: { en: "Use $v = r\\omega$ to find the linear speed of a point on a rotating object.", zh: "用 $v = r\\omega$ 求旋转物体上某点的线速度。" },
+        howToRecognize: { en: "Problem gives rpm or angular speed and asks for linear speed.", zh: "题目给出转速或角速度，要求线速度。" },
+        steps: [
+          { en: "Convert rpm to radians per unit time: $\\omega = \\text{rpm} \\times 2\\pi$", zh: "将转速转为弧度/时间：$\\omega = \\text{rpm} \\times 2\\pi$" },
+          { en: "Apply $v = r\\omega$", zh: "代入 $v = r\\omega$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A tire with radius 14 inches rotates at 500 rpm. Find the linear speed in ft/min.", zh: "半径 14 英寸的轮胎以 500 rpm 旋转，求线速度（ft/min）。" },
+        commonTraps: [
+          { en: "Forgetting to convert rpm to radians: 1 revolution $= 2\\pi$ radians, not $1$", zh: "忘记将转数转为弧度：$1$ 转 $= 2\\pi$ 弧度，而非 $1$" },
+        ],
+      },
+      {
+        id: "pt-4-1-8",
+        title: { en: "Find Central Angle from Arc Length", zh: "由弧长求圆心角" },
+        description: { en: "Rearrange $s = r\\theta$ to $\\theta = \\frac{s}{r}$.", zh: "由 $s = r\\theta$ 变形为 $\\theta = \\frac{s}{r}$。" },
+        howToRecognize: { en: "Given arc length and radius; asked for the angle.", zh: "已知弧长和半径；求圆心角。" },
+        steps: [
+          { en: "Solve $\\theta = \\frac{s}{r}$ (result in radians)", zh: "求 $\\theta = \\frac{s}{r}$（结果为弧度）" },
+          { en: "Convert to degrees if the problem requires it", zh: "若题目要求则转为角度" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "An arc of length 15 cm is on a circle of radius 9 cm. Find the central angle in degrees.", zh: "圆上弧长 15 cm，半径 9 cm，求圆心角（角度制）。" },
+        commonTraps: [
+          { en: "Forgetting to convert the radian result to degrees when asked", zh: "题目要求角度时忘记将弧度结果转换" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-1-9",
+        title: { en: "Angular and Linear Speed Application", zh: "角速度与线速度综合应用" },
+        description: { en: "Solve real-world problems involving pulleys, gears, or wheels with different radii.", zh: "解决涉及不同半径的滑轮、齿轮或轮子的实际问题。" },
+        howToRecognize: { en: "Two rotating objects connected by a belt or chain; different radii given.", zh: "两个旋转物体由皮带或链条连接；给出不同半径。" },
+        steps: [
+          { en: "Connected objects share the same linear speed: $v_1 = v_2$", zh: "连接的物体线速度相同：$v_1 = v_2$" },
+          { en: "Use $r_1 \\omega_1 = r_2 \\omega_2$ to relate angular speeds", zh: "用 $r_1 \\omega_1 = r_2 \\omega_2$ 关联角速度" },
+          { en: "Solve for the unknown speed or radius", zh: "解出未知速度或半径" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A belt connects a pulley of radius 3 in. spinning at 1800 rpm to one of radius 5 in. Find the rpm of the larger pulley.", zh: "皮带连接半径 3 in.（1800 rpm）和半径 5 in. 的滑轮，求大滑轮的转速。" },
+        commonTraps: [
+          { en: "Assuming both pulleys have the same angular speed (they share linear speed, not angular)", zh: "以为两轮角速度相同（它们共享的是线速度而非角速度）" },
+        ],
+      },
+      {
+        id: "pt-4-1-10",
+        title: { en: "Multi-Step Arc/Sector Problem", zh: "弧长/扇形综合题" },
+        description: { en: "Problems that combine arc length, sector area, and unit conversions in a real-world context.", zh: "在实际情境中综合运用弧长、扇形面积与单位换算。" },
+        howToRecognize: { en: "Multiple quantities involved: find area given arc length, or compare sectors, etc.", zh: "涉及多个量：由弧长求面积，或比较扇形等。" },
+        steps: [
+          { en: "Extract all given information and convert units if needed", zh: "提取所有已知量，必要时换算单位" },
+          { en: "Use $s = r\\theta$ and/or $A = \\frac{1}{2}r^2\\theta$", zh: "使用 $s = r\\theta$ 和/或 $A = \\frac{1}{2}r^2\\theta$" },
+          { en: "Solve the resulting equation(s)", zh: "解出方程" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A sector has arc length 20 cm and area 100 cm². Find the radius and central angle.", zh: "一个扇形的弧长为 20 cm、面积为 100 cm²，求半径和圆心角。" },
+        commonTraps: [
+          { en: "Not realizing that $A = \\frac{1}{2}rs$ can be derived from the two formulas to avoid solving a system", zh: "没意识到可由两个公式推出 $A = \\frac{1}{2}rs$ 来避免解方程组" },
+        ],
+      },
+    ],
   },
   {
     id: "4-2",
@@ -5341,6 +5604,266 @@ const chapter4Units: Unit[] = [
       en: "Define the six trigonometric functions using the unit circle and use periodicity to evaluate them.",
       zh: "用单位圆定义六个三角函数，并利用周期性求值。",
     },
+    learningGoals: [
+      { en: "Identify a unit circle and describe its relationship to real numbers", zh: "识别单位圆并描述其与实数的关系" },
+      { en: "Evaluate the six trigonometric functions using the unit circle", zh: "利用单位圆求六个三角函数的值" },
+      { en: "Know the exact values of trig functions at common angles ($0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$, etc.)", zh: "记住常见角（$0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$ 等）的三角函数精确值" },
+      { en: "Use the period of sine and cosine to evaluate trig functions", zh: "利用正弦和余弦的周期性求三角函数值" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-2-1",
+        title: { en: "The Unit Circle", zh: "单位圆" },
+        explanation: {
+          en: "The unit circle is the circle $x^2 + y^2 = 1$ centered at the origin. Each real number $t$ corresponds to an arc of length $|t|$ from $(1, 0)$, ending at a point $(x, y)$. We define $\\cos t = x$ and $\\sin t = y$. This extends the trig functions to ALL real numbers, not just acute angles.",
+          zh: "单位圆是以原点为圆心、满足 $x^2 + y^2 = 1$ 的圆。每个实数 $t$ 对应从 $(1, 0)$ 出发、弧长为 $|t|$ 的弧，终点为 $(x, y)$。定义 $\\cos t = x$，$\\sin t = y$。这将三角函数推广到所有实数，而不仅限于锐角。",
+        },
+        whenToUse: { en: "Defining and evaluating trig functions for any angle", zh: "为任意角定义和求三角函数值" },
+        commonMistake: { en: "Confusing $(\\cos t, \\sin t)$ order — $x$-coordinate is cosine, $y$-coordinate is sine", zh: "混淆 $(\\cos t, \\sin t)$ 顺序——$x$ 坐标为余弦，$y$ 坐标为正弦" },
+        example: { en: "At $t = \\frac{\\pi}{2}$, the point is $(0, 1)$, so $\\cos\\frac{\\pi}{2} = 0$, $\\sin\\frac{\\pi}{2} = 1$", zh: "当 $t = \\frac{\\pi}{2}$ 时，点为 $(0, 1)$，所以 $\\cos\\frac{\\pi}{2} = 0$，$\\sin\\frac{\\pi}{2} = 1$" },
+      },
+      {
+        id: "kc-4-2-2",
+        title: { en: "Six Trigonometric Functions from the Unit Circle", zh: "由单位圆定义的六个三角函数" },
+        explanation: {
+          en: "If the terminal point of $t$ on the unit circle is $(x, y)$: $\\sin t = y$, $\\cos t = x$, $\\tan t = \\frac{y}{x}$ ($x \\neq 0$), $\\csc t = \\frac{1}{y}$ ($y \\neq 0$), $\\sec t = \\frac{1}{x}$ ($x \\neq 0$), $\\cot t = \\frac{x}{y}$ ($y \\neq 0$).",
+          zh: "若 $t$ 在单位圆上的终点为 $(x, y)$：$\\sin t = y$，$\\cos t = x$，$\\tan t = \\frac{y}{x}$（$x \\neq 0$），$\\csc t = \\frac{1}{y}$（$y \\neq 0$），$\\sec t = \\frac{1}{x}$（$x \\neq 0$），$\\cot t = \\frac{x}{y}$（$y \\neq 0$）。",
+        },
+        whenToUse: { en: "Evaluating any trig function at a given angle", zh: "求给定角的任一三角函数值" },
+        commonMistake: { en: "Forgetting domain restrictions: $\\tan$ and $\\sec$ are undefined when $x = 0$ (at $\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$, etc.)", zh: "忘记定义域限制：当 $x = 0$ 时 $\\tan$ 和 $\\sec$ 无定义（如 $\\frac{\\pi}{2}$、$\\frac{3\\pi}{2}$ 等）" },
+        example: { en: "At $t = \\frac{\\pi}{4}$: $(x,y) = (\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2})$, so $\\tan\\frac{\\pi}{4} = 1$", zh: "当 $t = \\frac{\\pi}{4}$：$(x,y) = (\\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2})$，所以 $\\tan\\frac{\\pi}{4} = 1$" },
+      },
+      {
+        id: "kc-4-2-3",
+        title: { en: "Periodicity and Even/Odd Properties", zh: "周期性与奇偶性" },
+        explanation: {
+          en: "Sine and cosine have period $2\\pi$: $\\sin(t + 2\\pi) = \\sin t$. Tangent and cotangent have period $\\pi$. Cosine and secant are EVEN: $\\cos(-t) = \\cos t$. Sine, tangent, cosecant, and cotangent are ODD: $\\sin(-t) = -\\sin t$.",
+          zh: "正弦和余弦周期为 $2\\pi$：$\\sin(t + 2\\pi) = \\sin t$。正切和余切周期为 $\\pi$。余弦和正割为偶函数：$\\cos(-t) = \\cos t$。正弦、正切、余割和余切为奇函数：$\\sin(-t) = -\\sin t$。",
+        },
+        whenToUse: { en: "Simplifying trig expressions; evaluating trig functions at angles outside $[0, 2\\pi)$", zh: "化简三角表达式；对 $[0, 2\\pi)$ 之外的角求三角函数值" },
+        commonMistake: { en: "Applying the wrong period: $\\tan$ repeats every $\\pi$, NOT every $2\\pi$", zh: "用错周期：$\\tan$ 每 $\\pi$ 重复，不是每 $2\\pi$" },
+        example: { en: "$\\sin\\frac{13\\pi}{6} = \\sin(\\frac{13\\pi}{6} - 2\\pi) = \\sin\\frac{\\pi}{6} = \\frac{1}{2}$", zh: "$\\sin\\frac{13\\pi}{6} = \\sin(\\frac{13\\pi}{6} - 2\\pi) = \\sin\\frac{\\pi}{6} = \\frac{1}{2}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-2-1",
+        name: { en: "Unit-Circle Definitions of Trig Functions", zh: "三角函数的单位圆定义" },
+        formula: "\\sin t = y, \\quad \\cos t = x, \\quad \\tan t = \\frac{y}{x}",
+        variables: [
+          { en: "$(x, y)$ — point on the unit circle corresponding to angle $t$", zh: "$(x, y)$ — 单位圆上与角 $t$ 对应的点" },
+        ],
+        whenToUse: { en: "Evaluating trig functions from the unit circle", zh: "由单位圆求三角函数值" },
+        commonProblemTypes: [
+          { en: "Find exact trig values at standard angles", zh: "求标准角的精确三角函数值" },
+          { en: "Determine sign of a trig function in a given quadrant", zh: "判断三角函数在给定象限的符号" },
+        ],
+        example: { en: "At $t = \\frac{\\pi}{3}$: $(x,y) = (\\frac{1}{2}, \\frac{\\sqrt{3}}{2})$, so $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$, $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$", zh: "当 $t = \\frac{\\pi}{3}$：$(x,y) = (\\frac{1}{2}, \\frac{\\sqrt{3}}{2})$，所以 $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$，$\\cos\\frac{\\pi}{3} = \\frac{1}{2}$" },
+      },
+      {
+        id: "f-4-2-2",
+        name: { en: "Reciprocal Identities", zh: "倒数恒等式" },
+        formula: "\\csc t = \\frac{1}{\\sin t}, \\quad \\sec t = \\frac{1}{\\cos t}, \\quad \\cot t = \\frac{1}{\\tan t}",
+        variables: [
+          { en: "Each reciprocal is undefined when the denominator is zero", zh: "分母为零时各倒数函数无定义" },
+        ],
+        whenToUse: { en: "Converting between the six trig functions", zh: "在六个三角函数之间转换" },
+        commonProblemTypes: [
+          { en: "Find $\\csc$, $\\sec$, or $\\cot$ from known $\\sin$, $\\cos$, or $\\tan$", zh: "由已知的 $\\sin$、$\\cos$ 或 $\\tan$ 求 $\\csc$、$\\sec$ 或 $\\cot$" },
+        ],
+        example: { en: "$\\sin\\frac{\\pi}{6} = \\frac{1}{2}$, so $\\csc\\frac{\\pi}{6} = 2$", zh: "$\\sin\\frac{\\pi}{6} = \\frac{1}{2}$，所以 $\\csc\\frac{\\pi}{6} = 2$" },
+      },
+      {
+        id: "f-4-2-3",
+        name: { en: "Pythagorean Identity", zh: "勾股恒等式" },
+        formula: "\\sin^2 t + \\cos^2 t = 1",
+        variables: [
+          { en: "Derived from $x^2 + y^2 = 1$ on the unit circle", zh: "由单位圆上 $x^2 + y^2 = 1$ 推出" },
+        ],
+        whenToUse: { en: "Finding one trig function when the other is known; simplifying expressions", zh: "已知一个三角函数求另一个；化简表达式" },
+        commonProblemTypes: [
+          { en: "Given $\\sin t$, find $\\cos t$ (or vice versa)", zh: "已知 $\\sin t$ 求 $\\cos t$（或反之）" },
+          { en: "Verify or simplify trig expressions", zh: "验证或化简三角表达式" },
+        ],
+        example: { en: "If $\\sin t = \\frac{3}{5}$ and $t$ is in QI, then $\\cos t = \\frac{4}{5}$", zh: "若 $\\sin t = \\frac{3}{5}$ 且 $t$ 在第一象限，则 $\\cos t = \\frac{4}{5}$" },
+      },
+      {
+        id: "f-4-2-4",
+        name: { en: "Common Angle Values Table", zh: "常见角值表" },
+        formula: "\\begin{array}{c|cccc} t & 0 & \\frac{\\pi}{6} & \\frac{\\pi}{4} & \\frac{\\pi}{3} & \\frac{\\pi}{2} \\\\ \\hline \\sin t & 0 & \\frac{1}{2} & \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{3}}{2} & 1 \\\\ \\cos t & 1 & \\frac{\\sqrt{3}}{2} & \\frac{\\sqrt{2}}{2} & \\frac{1}{2} & 0 \\end{array}",
+        variables: [
+          { en: "These five angles plus their reflections cover all standard unit-circle values", zh: "这五个角及其对称角涵盖了所有标准单位圆值" },
+        ],
+        whenToUse: { en: "Quick reference for exact trig values — memorize this table", zh: "精确三角函数值的快速参考——务必记住此表" },
+        commonProblemTypes: [
+          { en: "Evaluate trig functions at standard angles without a calculator", zh: "不用计算器求标准角的三角函数值" },
+        ],
+        example: { en: "$\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$, $\\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$", zh: "$\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$，$\\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-2-1",
+        title: { en: "Evaluate Trig Functions at Standard Angles", zh: "求标准角的三角函数值" },
+        description: { en: "Use the unit circle to find exact values of sin, cos, or tan at common angles.", zh: "利用单位圆求常见角的 sin、cos 或 tan 精确值。" },
+        howToRecognize: { en: "Angle is a multiple of $30°$ or $45°$ ($\\frac{\\pi}{6}$ or $\\frac{\\pi}{4}$).", zh: "角为 $30°$ 或 $45°$ 的倍数（$\\frac{\\pi}{6}$ 或 $\\frac{\\pi}{4}$）。" },
+        steps: [
+          { en: "Locate the angle on the unit circle", zh: "在单位圆上找到该角" },
+          { en: "Read off $(x, y) = (\\cos t, \\sin t)$", zh: "读取 $(x, y) = (\\cos t, \\sin t)$" },
+          { en: "Compute $\\tan t = y/x$ if needed", zh: "若需要则计算 $\\tan t = y/x$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the exact values of $\\sin\\frac{\\pi}{3}$, $\\cos\\frac{\\pi}{3}$, and $\\tan\\frac{\\pi}{3}$.", zh: "求 $\\sin\\frac{\\pi}{3}$、$\\cos\\frac{\\pi}{3}$ 和 $\\tan\\frac{\\pi}{3}$ 的精确值。" },
+        commonTraps: [
+          { en: "Swapping sine and cosine values for $\\frac{\\pi}{3}$ and $\\frac{\\pi}{6}$", zh: "把 $\\frac{\\pi}{3}$ 和 $\\frac{\\pi}{6}$ 的正弦余弦值搞反" },
+        ],
+      },
+      {
+        id: "pt-4-2-2",
+        title: { en: "Evaluate Reciprocal Trig Functions", zh: "求倒数三角函数值" },
+        description: { en: "Find csc, sec, or cot by taking reciprocals of sin, cos, or tan.", zh: "对 sin、cos 或 tan 取倒数求 csc、sec 或 cot。" },
+        howToRecognize: { en: "Problem asks for $\\csc$, $\\sec$, or $\\cot$ at a standard angle.", zh: "题目要求标准角处的 $\\csc$、$\\sec$ 或 $\\cot$ 值。" },
+        steps: [
+          { en: "Find $\\sin t$, $\\cos t$, or $\\tan t$ first", zh: "先求 $\\sin t$、$\\cos t$ 或 $\\tan t$" },
+          { en: "Take the reciprocal", zh: "取倒数" },
+          { en: "Rationalize the denominator if needed", zh: "如有必要将分母有理化" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\sec\\frac{\\pi}{3}$ and $\\csc\\frac{\\pi}{4}$.", zh: "求 $\\sec\\frac{\\pi}{3}$ 和 $\\csc\\frac{\\pi}{4}$。" },
+        commonTraps: [
+          { en: "$\\sec$ is $1/\\cos$, NOT $1/\\sin$ — don't mix up the pairings", zh: "$\\sec$ 是 $1/\\cos$，不是 $1/\\sin$——别搞混配对" },
+        ],
+      },
+      {
+        id: "pt-4-2-3",
+        title: { en: "Determine Sign of Trig Function by Quadrant", zh: "根据象限判断三角函数符号" },
+        description: { en: "Use the ASTC rule (All-Sine-Tangent-Cosine) to determine the sign.", zh: "用 ASTC 规则（全-正弦-正切-余弦）判断符号。" },
+        howToRecognize: { en: "Given a quadrant; asked whether a trig value is positive or negative.", zh: "给出象限；问三角函数值为正还是为负。" },
+        steps: [
+          { en: "Identify the quadrant of the angle", zh: "确定角所在的象限" },
+          { en: "Apply ASTC: QI all +, QII sin +, QIII tan +, QIV cos +", zh: "用 ASTC：第一象限全正、第二象限 sin 正、第三象限 tan 正、第四象限 cos 正" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Is $\\cos\\frac{5\\pi}{6}$ positive or negative?", zh: "$\\cos\\frac{5\\pi}{6}$ 是正还是负？" },
+        commonTraps: [
+          { en: "Forgetting that reciprocal functions share the sign of their partner ($\\csc$ has same sign as $\\sin$)", zh: "忘记倒数函数与其配对函数同号（$\\csc$ 与 $\\sin$ 同号）" },
+        ],
+      },
+      {
+        id: "pt-4-2-4",
+        title: { en: "Identify Unit-Circle Coordinates", zh: "识别单位圆坐标" },
+        description: { en: "State the $(x, y)$ coordinates on the unit circle for a given angle.", zh: "给出给定角在单位圆上的 $(x, y)$ 坐标。" },
+        howToRecognize: { en: "Problem asks for the point on the unit circle at a given angle.", zh: "题目要求给定角在单位圆上的点。" },
+        steps: [
+          { en: "Find the reference angle", zh: "求参考角" },
+          { en: "Look up $(\\cos, \\sin)$ of the reference angle", zh: "查参考角的 $(\\cos, \\sin)$ 值" },
+          { en: "Adjust signs based on the quadrant", zh: "根据象限调整符号" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the coordinates of the point on the unit circle at $\\frac{5\\pi}{4}$.", zh: "求单位圆上 $\\frac{5\\pi}{4}$ 处的坐标。" },
+        commonTraps: [
+          { en: "Getting the wrong quadrant and applying incorrect signs", zh: "象限判断错误导致符号错误" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-2-5",
+        title: { en: "Evaluate Trig at Angles Beyond $[0, 2\\pi)$", zh: "求 $[0, 2\\pi)$ 之外角的三角函数值" },
+        description: { en: "Use periodicity to reduce the angle to $[0, 2\\pi)$ before evaluating.", zh: "利用周期性将角化到 $[0, 2\\pi)$ 再求值。" },
+        howToRecognize: { en: "Angle is negative or greater than $2\\pi$.", zh: "角为负值或大于 $2\\pi$。" },
+        steps: [
+          { en: "Add or subtract $2\\pi$ (or $360°$) until the angle is in $[0, 2\\pi)$", zh: "加减 $2\\pi$（或 $360°$）直到角在 $[0, 2\\pi)$ 内" },
+          { en: "Evaluate the trig function at the resulting angle", zh: "对化简后的角求三角函数值" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\cos\\frac{17\\pi}{4}$.", zh: "求 $\\cos\\frac{17\\pi}{4}$。" },
+        commonTraps: [
+          { en: "Arithmetic errors when subtracting multiples of $2\\pi$", zh: "减去 $2\\pi$ 的倍数时算术出错" },
+        ],
+      },
+      {
+        id: "pt-4-2-6",
+        title: { en: "Evaluate Trig at Negative Angles Using Even/Odd Properties", zh: "利用奇偶性求负角的三角函数值" },
+        description: { en: "Apply $\\cos(-t) = \\cos t$ (even) and $\\sin(-t) = -\\sin t$ (odd).", zh: "应用 $\\cos(-t) = \\cos t$（偶）和 $\\sin(-t) = -\\sin t$（奇）。" },
+        howToRecognize: { en: "The argument is explicitly negative, e.g., $\\sin(-\\frac{\\pi}{3})$.", zh: "自变量明确为负，如 $\\sin(-\\frac{\\pi}{3})$。" },
+        steps: [
+          { en: "Identify whether the function is even or odd", zh: "判断函数为偶还是奇" },
+          { en: "Apply the property: $\\sin(-t) = -\\sin t$, $\\cos(-t) = \\cos t$, $\\tan(-t) = -\\tan t$", zh: "应用性质：$\\sin(-t) = -\\sin t$，$\\cos(-t) = \\cos t$，$\\tan(-t) = -\\tan t$" },
+          { en: "Evaluate the positive-angle version", zh: "对正角求值" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Evaluate $\\sin(-\\frac{5\\pi}{6})$ and $\\cos(-\\frac{5\\pi}{6})$.", zh: "求 $\\sin(-\\frac{5\\pi}{6})$ 和 $\\cos(-\\frac{5\\pi}{6})$。" },
+        commonTraps: [
+          { en: "Treating sine as even ($\\sin(-t) \\neq \\sin t$)", zh: "把正弦当作偶函数（$\\sin(-t) \\neq \\sin t$）" },
+        ],
+      },
+      {
+        id: "pt-4-2-7",
+        title: { en: "Find All Six Trig Values from One Known Value", zh: "由一个已知值求全部六个三角函数值" },
+        description: { en: "Given one trig value and the quadrant, find all six trig functions.", zh: "已知一个三角函数值和象限，求全部六个值。" },
+        howToRecognize: { en: "Given $\\sin t = a$ (or $\\cos t$, etc.) and the quadrant.", zh: "给出 $\\sin t = a$（或 $\\cos t$ 等）以及象限。" },
+        steps: [
+          { en: "Use $\\sin^2 t + \\cos^2 t = 1$ to find the missing sine or cosine", zh: "用 $\\sin^2 t + \\cos^2 t = 1$ 求缺失的正弦或余弦" },
+          { en: "Choose the correct sign based on the quadrant", zh: "根据象限选择正确的符号" },
+          { en: "Compute $\\tan t = \\sin t / \\cos t$ and the three reciprocals", zh: "计算 $\\tan t = \\sin t / \\cos t$ 及三个倒数函数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "If $\\cos t = -\\frac{3}{5}$ and $t$ is in Quadrant III, find all six trig values.", zh: "若 $\\cos t = -\\frac{3}{5}$ 且 $t$ 在第三象限，求全部六个三角函数值。" },
+        commonTraps: [
+          { en: "Choosing the wrong sign for the square root (must match the quadrant)", zh: "平方根符号选错（必须与象限一致）" },
+        ],
+      },
+      {
+        id: "pt-4-2-8",
+        title: { en: "Evaluate Trig at Quadrantal Angles", zh: "求象限角的三角函数值" },
+        description: { en: "Find trig values at $0$, $\\frac{\\pi}{2}$, $\\pi$, $\\frac{3\\pi}{2}$, $2\\pi$.", zh: "求 $0$、$\\frac{\\pi}{2}$、$\\pi$、$\\frac{3\\pi}{2}$、$2\\pi$ 处的三角函数值。" },
+        howToRecognize: { en: "The angle lies on an axis (terminal side on $x$- or $y$-axis).", zh: "角的终边落在坐标轴上。" },
+        steps: [
+          { en: "Identify the unit-circle point: $(1,0)$, $(0,1)$, $(-1,0)$, or $(0,-1)$", zh: "确定单位圆上的点：$(1,0)$、$(0,1)$、$(-1,0)$ 或 $(0,-1)$" },
+          { en: "Read $\\cos$ and $\\sin$ directly", zh: "直接读出 $\\cos$ 和 $\\sin$" },
+          { en: "Note which functions are undefined (division by zero)", zh: "注意哪些函数无定义（除以零）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all six trig values at $\\theta = \\pi$.", zh: "求 $\\theta = \\pi$ 处的全部六个三角函数值。" },
+        commonTraps: [
+          { en: "Saying $\\tan\\frac{\\pi}{2} = 0$ instead of undefined ($x = 0$ at that point)", zh: "把 $\\tan\\frac{\\pi}{2}$ 说成 $0$ 而非无定义（该点 $x = 0$）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-2-9",
+        title: { en: "Use Unit Circle to Solve Simple Trig Equations", zh: "利用单位圆解简单三角方程" },
+        description: { en: "Find all $t$ in $[0, 2\\pi)$ such that a trig function equals a given value.", zh: "求 $[0, 2\\pi)$ 内使三角函数等于给定值的所有 $t$。" },
+        howToRecognize: { en: "Equation like $\\sin t = \\frac{1}{2}$ or $\\cos t = -\\frac{\\sqrt{3}}{2}$.", zh: "方程如 $\\sin t = \\frac{1}{2}$ 或 $\\cos t = -\\frac{\\sqrt{3}}{2}$。" },
+        steps: [
+          { en: "Identify the reference angle where the trig value matches", zh: "找到三角函数值匹配的参考角" },
+          { en: "Determine which quadrants give the correct sign", zh: "确定哪些象限给出正确的符号" },
+          { en: "List all solutions in $[0, 2\\pi)$", zh: "列出 $[0, 2\\pi)$ 内的所有解" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find all values of $t$ in $[0, 2\\pi)$ such that $\\cos t = -\\frac{1}{2}$.", zh: "求 $[0, 2\\pi)$ 内满足 $\\cos t = -\\frac{1}{2}$ 的所有 $t$。" },
+        commonTraps: [
+          { en: "Finding only one solution when there are two (e.g., $\\frac{2\\pi}{3}$ and $\\frac{4\\pi}{3}$)", zh: "有两个解却只找到一个（如 $\\frac{2\\pi}{3}$ 和 $\\frac{4\\pi}{3}$）" },
+        ],
+      },
+      {
+        id: "pt-4-2-10",
+        title: { en: "Verify Identities Using Unit-Circle Values", zh: "用单位圆值验证恒等式" },
+        description: { en: "Plug specific unit-circle values to verify or disprove a proposed trig identity.", zh: "代入单位圆上的值来验证或否定一个三角恒等式。" },
+        howToRecognize: { en: "Problem asks you to verify $\\sin^2 t + \\cos^2 t = 1$ or similar at specific angles.", zh: "题目要求在特定角处验证 $\\sin^2 t + \\cos^2 t = 1$ 或类似恒等式。" },
+        steps: [
+          { en: "Choose one or more standard angles", zh: "选择一个或多个标准角" },
+          { en: "Compute both sides of the identity using exact values", zh: "用精确值计算等式两边" },
+          { en: "Confirm equality (or find a counterexample to disprove)", zh: "确认相等（或找反例否定）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Verify that $1 + \\tan^2 t = \\sec^2 t$ for $t = \\frac{\\pi}{4}$ and $t = \\frac{\\pi}{3}$.", zh: "验证 $1 + \\tan^2 t = \\sec^2 t$ 在 $t = \\frac{\\pi}{4}$ 和 $t = \\frac{\\pi}{3}$ 处成立。" },
+        commonTraps: [
+          { en: "Verifying at only one point and concluding the identity is always true — a single check is not a proof", zh: "只在一个点验证就认为恒等式恒成立——单点验证不是证明" },
+        ],
+      },
+    ],
   },
   {
     id: "4-3",
@@ -5354,6 +5877,257 @@ const chapter4Units: Unit[] = [
       en: "Evaluate trigonometric functions of acute angles and use them to solve right triangles.",
       zh: "求锐角的三角函数值，并用其求解直角三角形。",
     },
+    learningGoals: [
+      { en: "Evaluate trigonometric functions of acute angles using right triangles (SOH-CAH-TOA)", zh: "用直角三角形求锐角的三角函数值（SOH-CAH-TOA）" },
+      { en: "Use fundamental trigonometric identities", zh: "使用基本三角恒等式" },
+      { en: "Use a calculator to evaluate trigonometric functions", zh: "用计算器求三角函数值" },
+      { en: "Solve right triangles and real-world application problems", zh: "求解直角三角形及实际应用问题" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-3-1",
+        title: { en: "Right Triangle Definitions (SOH-CAH-TOA)", zh: "直角三角形定义（SOH-CAH-TOA）" },
+        explanation: {
+          en: "For an acute angle $\\theta$ in a right triangle: $\\sin\\theta = \\frac{\\text{opp}}{\\text{hyp}}$, $\\cos\\theta = \\frac{\\text{adj}}{\\text{hyp}}$, $\\tan\\theta = \\frac{\\text{opp}}{\\text{adj}}$. The reciprocals are $\\csc\\theta = \\frac{\\text{hyp}}{\\text{opp}}$, $\\sec\\theta = \\frac{\\text{hyp}}{\\text{adj}}$, $\\cot\\theta = \\frac{\\text{adj}}{\\text{opp}}$.",
+          zh: "对直角三角形中的锐角 $\\theta$：$\\sin\\theta = \\frac{\\text{对边}}{\\text{斜边}}$，$\\cos\\theta = \\frac{\\text{邻边}}{\\text{斜边}}$，$\\tan\\theta = \\frac{\\text{对边}}{\\text{邻边}}$。倒数函数为 $\\csc\\theta = \\frac{\\text{斜边}}{\\text{对边}}$，$\\sec\\theta = \\frac{\\text{斜边}}{\\text{邻边}}$，$\\cot\\theta = \\frac{\\text{邻边}}{\\text{对边}}$。",
+        },
+        whenToUse: { en: "When working with acute angles inside a right triangle", zh: "处理直角三角形中的锐角时" },
+        commonMistake: { en: "Mixing up opposite and adjacent sides — they depend on WHICH angle you're looking at", zh: "搞混对边和邻边——它们取决于你考察的是哪个角" },
+        example: { en: "In a 3-4-5 right triangle with $\\theta$ opposite the side of length 3: $\\sin\\theta = \\frac{3}{5}$, $\\cos\\theta = \\frac{4}{5}$, $\\tan\\theta = \\frac{3}{4}$", zh: "在 3-4-5 直角三角形中，$\\theta$ 对边长为 3：$\\sin\\theta = \\frac{3}{5}$，$\\cos\\theta = \\frac{4}{5}$，$\\tan\\theta = \\frac{3}{4}$" },
+      },
+      {
+        id: "kc-4-3-2",
+        title: { en: "Special Right Triangles (30-60-90 and 45-45-90)", zh: "特殊直角三角形（30-60-90 和 45-45-90）" },
+        explanation: {
+          en: "45-45-90 triangle: sides in ratio $1 : 1 : \\sqrt{2}$. So $\\sin 45° = \\cos 45° = \\frac{\\sqrt{2}}{2}$, $\\tan 45° = 1$. 30-60-90 triangle: sides in ratio $1 : \\sqrt{3} : 2$. So $\\sin 30° = \\frac{1}{2}$, $\\cos 30° = \\frac{\\sqrt{3}}{2}$, $\\tan 30° = \\frac{\\sqrt{3}}{3}$.",
+          zh: "45-45-90 三角形：边比 $1 : 1 : \\sqrt{2}$。$\\sin 45° = \\cos 45° = \\frac{\\sqrt{2}}{2}$，$\\tan 45° = 1$。30-60-90 三角形：边比 $1 : \\sqrt{3} : 2$。$\\sin 30° = \\frac{1}{2}$，$\\cos 30° = \\frac{\\sqrt{3}}{2}$，$\\tan 30° = \\frac{\\sqrt{3}}{3}$。",
+        },
+        whenToUse: { en: "Evaluating exact trig values without a calculator", zh: "不用计算器求精确三角函数值" },
+        commonMistake: { en: "Swapping $\\sin 30°$ and $\\sin 60°$ — remember: 30° is the smaller angle, so its sine is the smaller value ($\\frac{1}{2}$)", zh: "混淆 $\\sin 30°$ 和 $\\sin 60°$——记住：30° 是较小角，正弦值也较小（$\\frac{1}{2}$）" },
+        example: { en: "$\\sin 60° = \\frac{\\sqrt{3}}{2}$, $\\cos 60° = \\frac{1}{2}$, $\\tan 60° = \\sqrt{3}$", zh: "$\\sin 60° = \\frac{\\sqrt{3}}{2}$，$\\cos 60° = \\frac{1}{2}$，$\\tan 60° = \\sqrt{3}$" },
+      },
+      {
+        id: "kc-4-3-3",
+        title: { en: "Cofunctions and Complementary Angles", zh: "余函数与互余角" },
+        explanation: {
+          en: "In a right triangle, the two acute angles are complementary ($\\alpha + \\beta = 90°$). This gives the cofunction identities: $\\sin\\theta = \\cos(90° - \\theta)$, $\\tan\\theta = \\cot(90° - \\theta)$, $\\sec\\theta = \\csc(90° - \\theta)$. The prefix \"co-\" literally means \"complement.\"",
+          zh: "直角三角形中两个锐角互余（$\\alpha + \\beta = 90°$）。由此得余函数恒等式：$\\sin\\theta = \\cos(90° - \\theta)$，$\\tan\\theta = \\cot(90° - \\theta)$，$\\sec\\theta = \\csc(90° - \\theta)$。前缀『余』即『互余』之意。",
+        },
+        whenToUse: { en: "Rewriting a trig function in terms of its cofunction", zh: "将三角函数改写为其余函数" },
+        commonMistake: { en: "Applying cofunction identities to non-complementary angles", zh: "对非互余角使用余函数恒等式" },
+        example: { en: "$\\sin 25° = \\cos 65°$ because $25° + 65° = 90°$", zh: "$\\sin 25° = \\cos 65°$，因为 $25° + 65° = 90°$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-3-1",
+        name: { en: "SOH-CAH-TOA", zh: "SOH-CAH-TOA" },
+        formula: "\\sin\\theta = \\frac{\\text{opp}}{\\text{hyp}}, \\quad \\cos\\theta = \\frac{\\text{adj}}{\\text{hyp}}, \\quad \\tan\\theta = \\frac{\\text{opp}}{\\text{adj}}",
+        variables: [
+          { en: "opp = side opposite to $\\theta$", zh: "opp = $\\theta$ 的对边" },
+          { en: "adj = side adjacent to $\\theta$ (not the hypotenuse)", zh: "adj = $\\theta$ 的邻边（非斜边）" },
+          { en: "hyp = hypotenuse", zh: "hyp = 斜边" },
+        ],
+        whenToUse: { en: "Right triangle problems involving an acute angle", zh: "涉及锐角的直角三角形问题" },
+        commonProblemTypes: [
+          { en: "Find a missing side given one side and one acute angle", zh: "已知一边和一锐角求缺失边" },
+          { en: "Find an acute angle given two sides", zh: "已知两边求锐角" },
+        ],
+        example: { en: "If opp $= 5$, hyp $= 13$: $\\sin\\theta = \\frac{5}{13}$", zh: "若对边 $= 5$，斜边 $= 13$：$\\sin\\theta = \\frac{5}{13}$" },
+      },
+      {
+        id: "f-4-3-2",
+        name: { en: "Cofunction Identities", zh: "余函数恒等式" },
+        formula: "\\sin\\theta = \\cos(90° - \\theta), \\quad \\tan\\theta = \\cot(90° - \\theta), \\quad \\sec\\theta = \\csc(90° - \\theta)",
+        variables: [
+          { en: "$\\theta$ — an acute angle ($0° < \\theta < 90°$)", zh: "$\\theta$ — 锐角（$0° < \\theta < 90°$）" },
+        ],
+        whenToUse: { en: "Relating a trig function to the complementary angle's cofunction", zh: "将三角函数与互余角的余函数关联" },
+        commonProblemTypes: [
+          { en: "Rewrite $\\sin 40°$ in terms of cosine", zh: "将 $\\sin 40°$ 用余弦表示" },
+          { en: "Solve equations like $\\sin\\theta = \\cos(\\theta + 10°)$", zh: "解方程如 $\\sin\\theta = \\cos(\\theta + 10°)$" },
+        ],
+        example: { en: "$\\tan 70° = \\cot 20°$", zh: "$\\tan 70° = \\cot 20°$" },
+      },
+      {
+        id: "f-4-3-3",
+        name: { en: "Angle of Elevation / Depression", zh: "仰角/俯角" },
+        formula: "\\tan\\theta = \\frac{\\text{opposite (vertical)}}{\\text{adjacent (horizontal)}}",
+        variables: [
+          { en: "$\\theta$ — angle of elevation (looking up) or depression (looking down) from horizontal", zh: "$\\theta$ — 仰角（向上看）或俯角（向下看）相对于水平线" },
+        ],
+        whenToUse: { en: "Word problems involving height, distance, and an observer's line of sight", zh: "涉及高度、距离和观察者视线的应用题" },
+        commonProblemTypes: [
+          { en: "Find the height of a building given angle of elevation and distance", zh: "已知仰角和距离求建筑物高度" },
+          { en: "Find the distance from the base given height and angle", zh: "已知高度和角度求距底部的距离" },
+        ],
+        example: { en: "Standing 50 m from a tower, angle of elevation is $60°$: height $= 50\\tan 60° = 50\\sqrt{3} \\approx 86.6$ m", zh: "距塔 50 m，仰角 $60°$：高度 $= 50\\tan 60° = 50\\sqrt{3} \\approx 86.6$ m" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-3-1",
+        title: { en: "Find Trig Ratios from a Right Triangle", zh: "由直角三角形求三角比" },
+        description: { en: "Given side lengths, compute all six trig ratios for a specified acute angle.", zh: "已知边长，对指定锐角计算全部六个三角比。" },
+        howToRecognize: { en: "Right triangle with labeled sides; asked for trig values.", zh: "标注了边长的直角三角形；要求三角函数值。" },
+        steps: [
+          { en: "Identify opp, adj, hyp relative to the given angle", zh: "确定对边、邻边、斜边（相对于给定角）" },
+          { en: "Use the Pythagorean Theorem to find any missing side", zh: "用勾股定理求缺失边" },
+          { en: "Apply SOH-CAH-TOA and reciprocals", zh: "应用 SOH-CAH-TOA 及倒数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "In a right triangle, the side opposite $\\theta$ is 8 and the hypotenuse is 17. Find all six trig values.", zh: "直角三角形中，$\\theta$ 的对边为 8，斜边为 17，求全部六个三角函数值。" },
+        commonTraps: [
+          { en: "Forgetting to find the adjacent side first ($\\sqrt{17^2 - 8^2} = 15$)", zh: "忘记先求邻边（$\\sqrt{17^2 - 8^2} = 15$）" },
+        ],
+      },
+      {
+        id: "pt-4-3-2",
+        title: { en: "Evaluate Trig Functions of Special Angles", zh: "求特殊角的三角函数值" },
+        description: { en: "Use 30-60-90 and 45-45-90 triangles to find exact values.", zh: "用 30-60-90 和 45-45-90 三角形求精确值。" },
+        howToRecognize: { en: "Angle is $30°$, $45°$, or $60°$ (or radian equivalents).", zh: "角为 $30°$、$45°$ 或 $60°$（或弧度等价）。" },
+        steps: [
+          { en: "Draw the appropriate special triangle", zh: "画出对应的特殊三角形" },
+          { en: "Label the sides using the known ratio", zh: "用已知比标注边长" },
+          { en: "Read off the trig value", zh: "读出三角函数值" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\sec 30°$ and $\\cot 45°$ using special triangles.", zh: "用特殊三角形求 $\\sec 30°$ 和 $\\cot 45°$。" },
+        commonTraps: [
+          { en: "Not rationalizing: $\\sec 30° = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}$", zh: "未有理化：$\\sec 30° = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}$" },
+        ],
+      },
+      {
+        id: "pt-4-3-3",
+        title: { en: "Use Cofunctions of Complementary Angles", zh: "利用互余角的余函数" },
+        description: { en: "Rewrite a trig function using a cofunction identity.", zh: "用余函数恒等式改写三角函数。" },
+        howToRecognize: { en: "Problem asks to express one trig function as a cofunction, or involves $\\sin\\theta = \\cos(...)$.", zh: "题目要求将一个三角函数用余函数表示，或涉及 $\\sin\\theta = \\cos(...)$。" },
+        steps: [
+          { en: "Identify the complement: $90° - \\theta$", zh: "求互余角：$90° - \\theta$" },
+          { en: "Apply the identity: $\\sin\\theta = \\cos(90° - \\theta)$, etc.", zh: "应用恒等式：$\\sin\\theta = \\cos(90° - \\theta)$ 等" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Express $\\sin 72°$ as a function of an angle less than $45°$.", zh: "将 $\\sin 72°$ 表示为一个小于 $45°$ 的角的函数。" },
+        commonTraps: [
+          { en: "Writing $\\sin 72° = \\sin 18°$ instead of $\\cos 18°$", zh: "写成 $\\sin 72° = \\sin 18°$ 而非 $\\cos 18°$" },
+        ],
+      },
+      {
+        id: "pt-4-3-4",
+        title: { en: "Use Calculator for Trig Values", zh: "用计算器求三角函数值" },
+        description: { en: "Evaluate trig functions at non-special angles using a calculator.", zh: "用计算器求非特殊角的三角函数值。" },
+        howToRecognize: { en: "Angle is not a standard angle (e.g., $23.5°$); calculator needed.", zh: "角不是标准角（如 $23.5°$）；需要计算器。" },
+        steps: [
+          { en: "Set calculator to the correct mode (degree or radian)", zh: "将计算器设为正确模式（角度或弧度）" },
+          { en: "Enter the function and angle", zh: "输入函数和角度" },
+          { en: "Round to the required number of decimal places", zh: "按要求四舍五入" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Use a calculator to find $\\tan 67.3°$ to four decimal places.", zh: "用计算器求 $\\tan 67.3°$（保留四位小数）。" },
+        commonTraps: [
+          { en: "Calculator in radian mode when the angle is in degrees (or vice versa)", zh: "角为角度时计算器却在弧度模式（或反之）" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-3-5",
+        title: { en: "Find a Missing Side of a Right Triangle", zh: "求直角三角形的缺失边" },
+        description: { en: "Given one side and one acute angle, find another side using trig.", zh: "已知一边和一锐角，用三角函数求另一边。" },
+        howToRecognize: { en: "Right triangle with one known side and one known acute angle; asked for another side.", zh: "直角三角形已知一边一角；求另一边。" },
+        steps: [
+          { en: "Label opp, adj, hyp relative to the known angle", zh: "对已知角标注对边、邻边、斜边" },
+          { en: "Choose the trig function that involves the known and unknown sides", zh: "选择包含已知边和未知边的三角函数" },
+          { en: "Set up and solve the equation", zh: "列方程求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "In a right triangle, one acute angle is $35°$ and the hypotenuse is 20. Find both legs.", zh: "直角三角形中，一个锐角为 $35°$，斜边为 20，求两条直角边。" },
+        commonTraps: [
+          { en: "Using the wrong trig function (e.g., sine when you need cosine for the adjacent side)", zh: "用错三角函数（如需要邻边时用了正弦而非余弦）" },
+        ],
+      },
+      {
+        id: "pt-4-3-6",
+        title: { en: "Find an Acute Angle Given Two Sides", zh: "已知两边求锐角" },
+        description: { en: "Use an inverse trig function to find an angle from a ratio.", zh: "用反三角函数由比值求角。" },
+        howToRecognize: { en: "Two sides of a right triangle given; asked for an angle.", zh: "给出直角三角形两边；要求求角。" },
+        steps: [
+          { en: "Form the appropriate trig ratio (opp/hyp, adj/hyp, or opp/adj)", zh: "构造合适的三角比（对/斜、邻/斜 或 对/邻）" },
+          { en: "Apply the inverse function: $\\theta = \\sin^{-1}(\\text{ratio})$, etc.", zh: "用反函数：$\\theta = \\sin^{-1}(\\text{比值})$ 等" },
+          { en: "Use a calculator to get the decimal approximation", zh: "用计算器得到近似值" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "The legs of a right triangle are 7 and 24. Find the acute angles.", zh: "直角三角形两直角边为 7 和 24，求两个锐角。" },
+        commonTraps: [
+          { en: "Confusing $\\sin^{-1}$ (inverse) with $\\frac{1}{\\sin}$ (reciprocal)", zh: "混淆 $\\sin^{-1}$（反函数）和 $\\frac{1}{\\sin}$（倒数）" },
+        ],
+      },
+      {
+        id: "pt-4-3-7",
+        title: { en: "Solve a Complete Right Triangle", zh: "完整求解直角三角形" },
+        description: { en: "Find all unknown sides and angles of a right triangle.", zh: "求直角三角形的所有未知边和角。" },
+        howToRecognize: { en: "Right triangle with enough info (one side + one angle, or two sides); asked for ALL unknowns.", zh: "直角三角形给出足够信息；要求求所有未知量。" },
+        steps: [
+          { en: "Find the third angle: $C = 90° - A$ (or $B$)", zh: "求第三个角：$C = 90° - A$" },
+          { en: "Use trig ratios to find missing sides", zh: "用三角比求缺失边" },
+          { en: "Verify using the Pythagorean Theorem", zh: "用勾股定理验证" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "In right triangle $ABC$ with $C = 90°$, $A = 41°$, and $c = 25$. Find $a$, $b$, and $B$.", zh: "直角三角形 $ABC$，$C = 90°$，$A = 41°$，$c = 25$，求 $a$、$b$ 和 $B$。" },
+        commonTraps: [
+          { en: "Not checking the answer: $a^2 + b^2$ should equal $c^2$", zh: "不检验：$a^2 + b^2$ 应等于 $c^2$" },
+        ],
+      },
+      {
+        id: "pt-4-3-8",
+        title: { en: "Angle of Elevation / Depression Problem", zh: "仰角/俯角问题" },
+        description: { en: "Use trig to find a height or distance in an elevation/depression scenario.", zh: "在仰角/俯角情境中用三角函数求高度或距离。" },
+        howToRecognize: { en: "Word problem mentions looking up or down from horizontal.", zh: "应用题提到从水平方向向上或向下看。" },
+        steps: [
+          { en: "Draw a diagram with the horizontal, line of sight, and right triangle", zh: "画出水平线、视线和直角三角形" },
+          { en: "Label the known angle, known side, and unknown side", zh: "标注已知角、已知边和未知边" },
+          { en: "Set up the trig equation and solve", zh: "列三角方程求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "From a point 200 ft from the base of a building, the angle of elevation to the top is $62°$. Find the height.", zh: "从距建筑物底部 200 ft 处，仰望楼顶仰角为 $62°$，求楼高。" },
+        commonTraps: [
+          { en: "Confusing elevation and depression — elevation looks UP, depression looks DOWN", zh: "混淆仰角和俯角——仰角向上看，俯角向下看" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-3-9",
+        title: { en: "Two-Triangle Application Problem", zh: "双三角形应用题" },
+        description: { en: "Solve a problem that requires setting up two right triangles sharing a common side.", zh: "解决需要建立共边的两个直角三角形的问题。" },
+        howToRecognize: { en: "Two angles of elevation/depression from different points, or observer at the top and bottom.", zh: "从不同点的两个仰角/俯角，或观察者在顶部和底部。" },
+        steps: [
+          { en: "Draw a diagram and label both triangles", zh: "画图并标注两个三角形" },
+          { en: "Set up trig equations for each triangle, using the shared side", zh: "对每个三角形列三角方程，利用公共边" },
+          { en: "Solve the system of equations", zh: "解方程组" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "From point A on the ground, the angle of elevation to the top of a tower is $60°$. From point B, 100 ft farther away, it is $30°$. Find the height of the tower.", zh: "从地面 A 点仰望塔顶，仰角为 $60°$；从距 A 点远 100 ft 的 B 点看，仰角为 $30°$。求塔高。" },
+        commonTraps: [
+          { en: "Not realizing the total distance from B to the base is $d + 100$, not $100$", zh: "没意识到 B 到塔底总距离是 $d + 100$ 而非 $100$" },
+        ],
+      },
+      {
+        id: "pt-4-3-10",
+        title: { en: "Bearing and Navigation Problem", zh: "方位角与导航问题" },
+        description: { en: "Use right triangle trig to solve bearing/navigation problems.", zh: "用直角三角形三角学解决方位角/导航问题。" },
+        howToRecognize: { en: "Problem mentions compass bearings (e.g., N 30° E) or navigation directions.", zh: "题目提到罗盘方位角（如 N 30° E）或导航方向。" },
+        steps: [
+          { en: "Draw a diagram with north-south line and the bearing angle", zh: "画图标出南北线和方位角" },
+          { en: "Identify the right triangle and label sides", zh: "找出直角三角形并标注边" },
+          { en: "Use trig to find distances or angles", zh: "用三角函数求距离或角度" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A ship sails on bearing N 40° E for 120 miles. How far north and how far east has it traveled?", zh: "一艘船沿 N 40° E 方位行驶 120 英里。它向北和向东各行驶了多远？" },
+        commonTraps: [
+          { en: "Measuring the bearing from the wrong axis (bearings are measured from north or south, not east)", zh: "从错误的轴量方位角（方位角从北或南量起，而非从东）" },
+        ],
+      },
+    ],
   },
   {
     id: "4-4",
@@ -5367,6 +6141,238 @@ const chapter4Units: Unit[] = [
       en: "Evaluate trigonometric functions of any angle using reference angles and signs in each quadrant.",
       zh: "利用参考角及各象限的符号求任意角的三角函数值。",
     },
+    learningGoals: [
+      { en: "Evaluate trig functions of any angle using the definitions with $(x, y, r)$", zh: "用 $(x, y, r)$ 定义求任意角的三角函数值" },
+      { en: "Determine the signs of trig functions in each quadrant (ASTC)", zh: "判断三角函数在各象限的符号（ASTC）" },
+      { en: "Find and use reference angles to evaluate trig functions", zh: "求参考角并用其求三角函数值" },
+      { en: "Evaluate trig functions using the reference angle method", zh: "用参考角法求三角函数值" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-4-1",
+        title: { en: "General Definition: $(x, y, r)$", zh: "一般定义：$(x, y, r)$" },
+        explanation: {
+          en: "For any angle $\\theta$ in standard position, let $(x, y)$ be a point on the terminal side and $r = \\sqrt{x^2 + y^2}$. Then $\\sin\\theta = \\frac{y}{r}$, $\\cos\\theta = \\frac{x}{r}$, $\\tan\\theta = \\frac{y}{x}$, etc. This extends trig to ANY angle (not just acute or unit-circle).",
+          zh: "设 $\\theta$ 为标准位置角，$(x, y)$ 为终边上一点，$r = \\sqrt{x^2 + y^2}$。则 $\\sin\\theta = \\frac{y}{r}$，$\\cos\\theta = \\frac{x}{r}$，$\\tan\\theta = \\frac{y}{x}$。这将三角函数推广到任意角。",
+        },
+        whenToUse: { en: "When given a specific point on the terminal side of an angle", zh: "当给出角的终边上的某个点时" },
+        commonMistake: { en: "Using $r$ as negative — $r$ is always positive since it's a distance", zh: "让 $r$ 为负——$r$ 始终为正，因为它是距离" },
+        example: { en: "Point $(-3, 4)$ on terminal side: $r = 5$, $\\sin\\theta = \\frac{4}{5}$, $\\cos\\theta = \\frac{-3}{5}$, $\\tan\\theta = \\frac{4}{-3}$", zh: "终边上的点 $(-3, 4)$：$r = 5$，$\\sin\\theta = \\frac{4}{5}$，$\\cos\\theta = \\frac{-3}{5}$，$\\tan\\theta = \\frac{4}{-3}$" },
+      },
+      {
+        id: "kc-4-4-2",
+        title: { en: "Signs by Quadrant (ASTC)", zh: "各象限的符号（ASTC）" },
+        explanation: {
+          en: "ASTC = \"All Students Take Calculus.\" QI: ALL positive. QII: only Sin (and csc) positive. QIII: only Tan (and cot) positive. QIV: only Cos (and sec) positive. This follows from the signs of $x$ and $y$ in each quadrant.",
+          zh: "ASTC 记忆法：第 I 象限全正；第 II 象限仅 Sin（和 csc）正；第 III 象限仅 Tan（和 cot）正；第 IV 象限仅 Cos（和 sec）正。这由各象限中 $x$、$y$ 的符号决定。",
+        },
+        whenToUse: { en: "Determining the sign of a trig value when you know the quadrant", zh: "知道象限后确定三角函数值的符号" },
+        commonMistake: { en: "Forgetting that reciprocal pairs share signs: $\\sin$ and $\\csc$ always have the same sign", zh: "忘记倒数对同号：$\\sin$ 和 $\\csc$ 总是同号" },
+        example: { en: "In QIII: $\\sin 210° < 0$, $\\cos 210° < 0$, but $\\tan 210° > 0$", zh: "在第三象限：$\\sin 210° < 0$，$\\cos 210° < 0$，但 $\\tan 210° > 0$" },
+      },
+      {
+        id: "kc-4-4-3",
+        title: { en: "Reference Angles", zh: "参考角" },
+        explanation: {
+          en: "The reference angle $\\theta'$ is the acute angle formed by the terminal side and the $x$-axis. For QI: $\\theta' = \\theta$. QII: $\\theta' = 180° - \\theta$. QIII: $\\theta' = \\theta - 180°$. QIV: $\\theta' = 360° - \\theta$. The trig value of $\\theta$ equals the trig value of $\\theta'$ with the appropriate sign from ASTC.",
+          zh: "参考角 $\\theta'$ 是终边与 $x$ 轴所成的锐角。第 I 象限：$\\theta' = \\theta$。第 II 象限：$\\theta' = 180° - \\theta$。第 III 象限：$\\theta' = \\theta - 180°$。第 IV 象限：$\\theta' = 360° - \\theta$。$\\theta$ 的三角函数值等于 $\\theta'$ 的三角函数值加上 ASTC 确定的符号。",
+        },
+        whenToUse: { en: "Evaluating trig functions of any angle by reducing to an acute angle", zh: "将任意角化为锐角来求三角函数值" },
+        commonMistake: { en: "Finding the reference angle from the $y$-axis instead of the $x$-axis", zh: "以 $y$ 轴而非 $x$ 轴为基准求参考角" },
+        example: { en: "$\\theta = 240°$ is in QIII, so $\\theta' = 240° - 180° = 60°$. Thus $\\sin 240° = -\\sin 60° = -\\frac{\\sqrt{3}}{2}$", zh: "$\\theta = 240°$ 在第三象限，$\\theta' = 240° - 180° = 60°$。所以 $\\sin 240° = -\\sin 60° = -\\frac{\\sqrt{3}}{2}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-4-1",
+        name: { en: "General Trig Definitions (Any Angle)", zh: "三角函数的一般定义（任意角）" },
+        formula: "\\sin\\theta = \\frac{y}{r}, \\quad \\cos\\theta = \\frac{x}{r}, \\quad \\tan\\theta = \\frac{y}{x} \\quad (r = \\sqrt{x^2+y^2})",
+        variables: [
+          { en: "$(x, y)$ — any point on the terminal side of $\\theta$", zh: "$(x, y)$ — $\\theta$ 终边上的任一点" },
+          { en: "$r$ — distance from origin to $(x, y)$, always positive", zh: "$r$ — 原点到 $(x, y)$ 的距离，始终为正" },
+        ],
+        whenToUse: { en: "Evaluating trig functions when given a point on the terminal side", zh: "已知终边上一点时求三角函数值" },
+        commonProblemTypes: [
+          { en: "Given a point $(x,y)$, find all six trig values", zh: "已知点 $(x,y)$，求全部六个三角函数值" },
+        ],
+        example: { en: "Point $(5, -12)$: $r = 13$, $\\sin\\theta = -\\frac{12}{13}$, $\\cos\\theta = \\frac{5}{13}$", zh: "点 $(5, -12)$：$r = 13$，$\\sin\\theta = -\\frac{12}{13}$，$\\cos\\theta = \\frac{5}{13}$" },
+      },
+      {
+        id: "f-4-4-2",
+        name: { en: "Reference Angle Formulas", zh: "参考角公式" },
+        formula: "\\theta' = \\begin{cases} \\theta & \\text{QI} \\\\ 180°-\\theta & \\text{QII} \\\\ \\theta-180° & \\text{QIII} \\\\ 360°-\\theta & \\text{QIV} \\end{cases}",
+        variables: [
+          { en: "$\\theta'$ — the reference angle (always acute: $0° < \\theta' < 90°$)", zh: "$\\theta'$ — 参考角（始终为锐角：$0° < \\theta' < 90°$）" },
+        ],
+        whenToUse: { en: "Finding the reference angle to evaluate trig of any angle via known acute-angle values", zh: "求参考角以通过已知锐角值来计算任意角的三角函数" },
+        commonProblemTypes: [
+          { en: "Find the reference angle for a given angle", zh: "求给定角的参考角" },
+          { en: "Evaluate trig functions using reference angles", zh: "用参考角求三角函数值" },
+        ],
+        example: { en: "$\\theta = 315°$ (QIV): $\\theta' = 360° - 315° = 45°$", zh: "$\\theta = 315°$（第四象限）：$\\theta' = 360° - 315° = 45°$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-4-1",
+        title: { en: "Find Reference Angle", zh: "求参考角" },
+        description: { en: "Given an angle, find its reference angle.", zh: "已知角，求其参考角。" },
+        howToRecognize: { en: "Problem asks for the reference angle of a given angle.", zh: "题目要求给定角的参考角。" },
+        steps: [
+          { en: "Determine which quadrant the angle is in", zh: "确定角在哪个象限" },
+          { en: "Apply the reference angle formula for that quadrant", zh: "应用该象限的参考角公式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the reference angle for $225°$.", zh: "求 $225°$ 的参考角。" },
+        commonTraps: [
+          { en: "Using $180° - \\theta$ for QIII (should be $\\theta - 180°$)", zh: "对第三象限用 $180° - \\theta$（应为 $\\theta - 180°$）" },
+        ],
+      },
+      {
+        id: "pt-4-4-2",
+        title: { en: "Determine Sign of Trig Function", zh: "判断三角函数的符号" },
+        description: { en: "State whether a trig function is positive or negative at a given angle.", zh: "判断给定角处的三角函数为正还是为负。" },
+        howToRecognize: { en: "Problem asks if $\\sin\\theta$, $\\cos\\theta$, or $\\tan\\theta$ is positive or negative.", zh: "题目问 $\\sin\\theta$、$\\cos\\theta$ 或 $\\tan\\theta$ 为正还是为负。" },
+        steps: [
+          { en: "Find which quadrant $\\theta$ is in", zh: "确定 $\\theta$ 所在象限" },
+          { en: "Apply ASTC", zh: "应用 ASTC 法则" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Determine the sign of $\\cos 200°$ and $\\sin 200°$.", zh: "判断 $\\cos 200°$ 和 $\\sin 200°$ 的符号。" },
+        commonTraps: [
+          { en: "Thinking tangent is negative in QIII (it's positive there)", zh: "以为正切在第三象限为负（实际为正）" },
+        ],
+      },
+      {
+        id: "pt-4-4-3",
+        title: { en: "Trig Values from a Point on the Terminal Side", zh: "由终边上的点求三角函数值" },
+        description: { en: "Given $(x, y)$ on the terminal side, find all six trig values.", zh: "已知终边上的点 $(x, y)$，求全部六个三角函数值。" },
+        howToRecognize: { en: "A specific point $(x, y)$ is given on the terminal side of $\\theta$.", zh: "给出 $\\theta$ 终边上的特定点 $(x, y)$。" },
+        steps: [
+          { en: "Compute $r = \\sqrt{x^2 + y^2}$", zh: "求 $r = \\sqrt{x^2 + y^2}$" },
+          { en: "Apply definitions: $\\sin = y/r$, $\\cos = x/r$, $\\tan = y/x$", zh: "应用定义：$\\sin = y/r$，$\\cos = x/r$，$\\tan = y/x$" },
+          { en: "Compute reciprocals", zh: "求倒数函数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "The point $(-5, 12)$ is on the terminal side of $\\theta$. Find all six trig values.", zh: "点 $(-5, 12)$ 在 $\\theta$ 的终边上，求全部六个三角函数值。" },
+        commonTraps: [
+          { en: "Making $r$ negative ($r$ is always positive)", zh: "让 $r$ 为负（$r$ 始终为正）" },
+        ],
+      },
+      {
+        id: "pt-4-4-4",
+        title: { en: "Evaluate Trig at Quadrantal Angles", zh: "求象限角的三角函数值" },
+        description: { en: "Find trig values at $0°$, $90°$, $180°$, $270°$.", zh: "求 $0°$、$90°$、$180°$、$270°$ 处的三角函数值。" },
+        howToRecognize: { en: "Angle is on an axis.", zh: "角的终边在坐标轴上。" },
+        steps: [
+          { en: "Identify the point: $(1,0)$, $(0,1)$, $(-1,0)$, or $(0,-1)$", zh: "确定对应点：$(1,0)$、$(0,1)$、$(-1,0)$ 或 $(0,-1)$" },
+          { en: "Read $\\sin$ and $\\cos$ directly; check for undefined values", zh: "直接读出 $\\sin$ 和 $\\cos$；检查是否无定义" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\tan 90°$ and $\\sec 270°$.", zh: "求 $\\tan 90°$ 和 $\\sec 270°$。" },
+        commonTraps: [
+          { en: "Saying $\\tan 90° = 1$ instead of undefined", zh: "把 $\\tan 90°$ 说成 $1$ 而非无定义" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-4-5",
+        title: { en: "Evaluate Trig Using Reference Angle", zh: "用参考角求三角函数值" },
+        description: { en: "Find the exact value of a trig function at a non-acute standard angle.", zh: "求非锐角标准角的三角函数精确值。" },
+        howToRecognize: { en: "Angle like $120°$, $210°$, $315°$, $\\frac{5\\pi}{6}$, etc.", zh: "如 $120°$、$210°$、$315°$、$\\frac{5\\pi}{6}$ 等角。" },
+        steps: [
+          { en: "Find the reference angle", zh: "求参考角" },
+          { en: "Evaluate the trig function at the reference angle", zh: "对参考角求三角函数值" },
+          { en: "Attach the correct sign using ASTC", zh: "用 ASTC 附上正确符号" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\cos\\frac{5\\pi}{3}$ exactly.", zh: "求 $\\cos\\frac{5\\pi}{3}$ 的精确值。" },
+        commonTraps: [
+          { en: "Getting the sign wrong: $\\frac{5\\pi}{3}$ is in QIV where cosine is positive", zh: "符号搞错：$\\frac{5\\pi}{3}$ 在第四象限，余弦为正" },
+        ],
+      },
+      {
+        id: "pt-4-4-6",
+        title: { en: "Find $\\theta$ Given a Trig Value and Quadrant", zh: "由三角函数值和象限求 $\\theta$" },
+        description: { en: "Find $\\theta$ in a specified range given one trig value and the quadrant.", zh: "在指定范围内，由一个三角函数值和象限求 $\\theta$。" },
+        howToRecognize: { en: "Given $\\sin\\theta = -\\frac{1}{2}$ and $\\theta$ is in QIII (or similar).", zh: "给出 $\\sin\\theta = -\\frac{1}{2}$ 且 $\\theta$ 在第三象限（或类似条件）。" },
+        steps: [
+          { en: "Find the reference angle from the absolute value of the trig ratio", zh: "由三角比的绝对值求参考角" },
+          { en: "Use the quadrant to determine the actual angle: $\\theta = 180° + \\theta'$ for QIII, etc.", zh: "根据象限确定实际角：第三象限 $\\theta = 180° + \\theta'$ 等" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\theta$ in $[0°, 360°)$ if $\\tan\\theta = \\sqrt{3}$ and $\\theta$ is in QIII.", zh: "若 $\\tan\\theta = \\sqrt{3}$ 且 $\\theta$ 在第三象限，求 $[0°, 360°)$ 内的 $\\theta$。" },
+        commonTraps: [
+          { en: "Forgetting that $\\tan$ is positive in BOTH QI and QIII", zh: "忘记 $\\tan$ 在第一和第三象限都为正" },
+        ],
+      },
+      {
+        id: "pt-4-4-7",
+        title: { en: "Find Remaining Trig Values Given One Value and Quadrant", zh: "由一个值和象限求其余三角函数值" },
+        description: { en: "Use identities and quadrant info to find all six trig values.", zh: "利用恒等式和象限信息求全部六个值。" },
+        howToRecognize: { en: "Given $\\sin\\theta$ (or another trig value) and the quadrant; asked for all six.", zh: "给出 $\\sin\\theta$（或其他值）和象限；求全部六个。" },
+        steps: [
+          { en: "Use $\\sin^2\\theta + \\cos^2\\theta = 1$ to find the missing sine or cosine", zh: "用 $\\sin^2\\theta + \\cos^2\\theta = 1$ 求缺失的正弦或余弦" },
+          { en: "Use the quadrant to choose the correct sign", zh: "根据象限选择正确符号" },
+          { en: "Compute $\\tan$, $\\cot$, $\\sec$, $\\csc$", zh: "计算 $\\tan$、$\\cot$、$\\sec$、$\\csc$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "If $\\sin\\theta = \\frac{5}{13}$ and $\\theta$ is in QII, find the remaining five trig values.", zh: "若 $\\sin\\theta = \\frac{5}{13}$ 且 $\\theta$ 在第二象限，求其余五个三角函数值。" },
+        commonTraps: [
+          { en: "Choosing the wrong sign for cosine (QII means $\\cos < 0$)", zh: "余弦符号选错（第二象限 $\\cos < 0$）" },
+        ],
+      },
+      {
+        id: "pt-4-4-8",
+        title: { en: "Evaluate Trig at Negative or Large Angles", zh: "求负角或大角的三角函数值" },
+        description: { en: "Find coterminal angle in $[0°, 360°)$, then use reference angle.", zh: "先求 $[0°, 360°)$ 内的同终边角，再用参考角。" },
+        howToRecognize: { en: "Angle is negative or exceeds $360°$.", zh: "角为负值或超过 $360°$。" },
+        steps: [
+          { en: "Add/subtract $360°$ (or $2\\pi$) to find a coterminal angle in $[0°, 360°)$", zh: "加减 $360°$（或 $2\\pi$）得到 $[0°, 360°)$ 内的同终边角" },
+          { en: "Find the reference angle and quadrant", zh: "求参考角和象限" },
+          { en: "Evaluate with the correct sign", zh: "用正确符号求值" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\sin(-\\frac{7\\pi}{4})$.", zh: "求 $\\sin(-\\frac{7\\pi}{4})$。" },
+        commonTraps: [
+          { en: "Arithmetic error in finding the coterminal angle", zh: "求同终边角时算术出错" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-4-9",
+        title: { en: "Find All Angles with a Given Trig Value", zh: "求满足给定三角函数值的所有角" },
+        description: { en: "Find all $\\theta$ in $[0°, 360°)$ satisfying a trig equation.", zh: "求 $[0°, 360°)$ 内满足三角方程的所有 $\\theta$。" },
+        howToRecognize: { en: "Equation like $\\cos\\theta = -\\frac{\\sqrt{2}}{2}$; asked for all solutions.", zh: "方程如 $\\cos\\theta = -\\frac{\\sqrt{2}}{2}$；要求所有解。" },
+        steps: [
+          { en: "Find the reference angle from $|\\text{value}|$", zh: "由 $|\\text{值}|$ 求参考角" },
+          { en: "Determine which quadrants give the correct sign", zh: "确定哪些象限给出正确符号" },
+          { en: "Write the angle(s) using $\\theta = \\text{base} \\pm \\theta'$", zh: "写出角：$\\theta = \\text{基准} \\pm \\theta'$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find all $\\theta$ in $[0°, 360°)$ such that $\\sin\\theta = -\\frac{\\sqrt{3}}{2}$.", zh: "求 $[0°, 360°)$ 内满足 $\\sin\\theta = -\\frac{\\sqrt{3}}{2}$ 的所有 $\\theta$。" },
+        commonTraps: [
+          { en: "Finding only one solution (there are usually two)", zh: "只找到一个解（通常有两个）" },
+        ],
+      },
+      {
+        id: "pt-4-4-10",
+        title: { en: "Constrained Trig Value Problem", zh: "三角函数约束问题" },
+        description: { en: "Given two trig conditions (e.g., $\\tan\\theta = -\\frac{3}{4}$ and $\\cos\\theta > 0$), find exact trig values.", zh: "给出两个三角条件（如 $\\tan\\theta = -\\frac{3}{4}$ 且 $\\cos\\theta > 0$），求精确三角函数值。" },
+        howToRecognize: { en: "A trig ratio AND a sign constraint (or quadrant) are both given.", zh: "同时给出三角比和符号约束（或象限）。" },
+        steps: [
+          { en: "Use the sign constraint to determine the quadrant", zh: "用符号约束确定象限" },
+          { en: "Construct a reference triangle from the given ratio", zh: "由给定比值构造参考三角形" },
+          { en: "Find $r$ and compute all six trig values with correct signs", zh: "求 $r$ 并用正确符号计算全部六个值" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "If $\\tan\\theta = -\\frac{3}{4}$ and $\\cos\\theta > 0$, find $\\sin\\theta$ and $\\sec\\theta$.", zh: "若 $\\tan\\theta = -\\frac{3}{4}$ 且 $\\cos\\theta > 0$，求 $\\sin\\theta$ 和 $\\sec\\theta$。" },
+        commonTraps: [
+          { en: "Ignoring the sign constraint and picking the wrong quadrant", zh: "忽略符号约束而选错象限" },
+        ],
+      },
+    ],
   },
   {
     id: "4-5",
@@ -5380,6 +6386,244 @@ const chapter4Units: Unit[] = [
       en: "Sketch sine and cosine graphs, identifying amplitude, period, and phase shift.",
       zh: "绘制正弦与余弦函数图像，识别振幅、周期与相位移。",
     },
+    learningGoals: [
+      { en: "Sketch the basic graphs of $y = \\sin x$ and $y = \\cos x$", zh: "画出 $y = \\sin x$ 和 $y = \\cos x$ 的基本图像" },
+      { en: "Identify amplitude, period, phase shift, and vertical shift", zh: "识别振幅、周期、相位移与垂直平移" },
+      { en: "Graph $y = a\\sin(bx - c) + d$ and $y = a\\cos(bx - c) + d$ using transformations", zh: "用变换法画 $y = a\\sin(bx - c) + d$ 和 $y = a\\cos(bx - c) + d$ 的图像" },
+      { en: "Write equations from given graphs", zh: "由给定图像写出方程" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-5-1",
+        title: { en: "Basic Sine and Cosine Graphs", zh: "基本正弦和余弦图像" },
+        explanation: {
+          en: "$y = \\sin x$: starts at $(0, 0)$, max at $(\\frac{\\pi}{2}, 1)$, zero at $(\\pi, 0)$, min at $(\\frac{3\\pi}{2}, -1)$, returns to $(2\\pi, 0)$. $y = \\cos x$: starts at $(0, 1)$, zero at $(\\frac{\\pi}{2}, 0)$, min at $(\\pi, -1)$, zero at $(\\frac{3\\pi}{2}, 0)$, returns to $(2\\pi, 1)$. Both have period $2\\pi$, amplitude $1$, and range $[-1, 1]$.",
+          zh: "$y = \\sin x$：从 $(0, 0)$ 出发，极大值 $(\\frac{\\pi}{2}, 1)$，零点 $(\\pi, 0)$，极小值 $(\\frac{3\\pi}{2}, -1)$，回到 $(2\\pi, 0)$。$y = \\cos x$：从 $(0, 1)$ 出发，零点 $(\\frac{\\pi}{2}, 0)$，极小值 $(\\pi, -1)$，零点 $(\\frac{3\\pi}{2}, 0)$，回到 $(2\\pi, 1)$。两者周期 $2\\pi$，振幅 $1$，值域 $[-1, 1]$。",
+        },
+        whenToUse: { en: "As the starting point for all sinusoidal graphing", zh: "作为所有正弦型图像绘制的起点" },
+        commonMistake: { en: "Confusing the starting point: sine starts at 0, cosine starts at 1", zh: "起点搞混：正弦从 0 出发，余弦从 1 出发" },
+        example: { en: "$y = \\sin x$ crosses zero at $x = 0, \\pi, 2\\pi$; $y = \\cos x$ crosses zero at $x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}$", zh: "$y = \\sin x$ 在 $x = 0, \\pi, 2\\pi$ 过零；$y = \\cos x$ 在 $x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}$ 过零" },
+      },
+      {
+        id: "kc-4-5-2",
+        title: { en: "Amplitude and Vertical Shift", zh: "振幅与垂直平移" },
+        explanation: {
+          en: "For $y = a\\sin(bx - c) + d$: Amplitude $= |a|$ — the distance from the midline to the max (or min). Vertical shift $= d$ — moves the midline from $y = 0$ to $y = d$. If $a < 0$, the graph is reflected across the midline. Range: $[d - |a|, d + |a|]$.",
+          zh: "对 $y = a\\sin(bx - c) + d$：振幅 $= |a|$——中线到极值的距离。垂直平移 $= d$——中线从 $y = 0$ 移到 $y = d$。若 $a < 0$，图像关于中线翻转。值域：$[d - |a|, d + |a|]$。",
+        },
+        whenToUse: { en: "Determining the vertical scale and position of a sinusoidal graph", zh: "确定正弦型图像的纵向范围与位置" },
+        commonMistake: { en: "Saying amplitude is $a$ instead of $|a|$ — amplitude is always positive", zh: "说振幅为 $a$ 而非 $|a|$——振幅始终为正" },
+        example: { en: "$y = -3\\sin x + 2$: amplitude $= 3$, midline $y = 2$, range $[-1, 5]$", zh: "$y = -3\\sin x + 2$：振幅 $= 3$，中线 $y = 2$，值域 $[-1, 5]$" },
+      },
+      {
+        id: "kc-4-5-3",
+        title: { en: "Period and Phase Shift", zh: "周期与相位移" },
+        explanation: {
+          en: "For $y = a\\sin(bx - c) + d$: Period $= \\frac{2\\pi}{|b|}$ — the horizontal length of one full cycle. Phase shift $= \\frac{c}{b}$ — the horizontal translation (positive = right). Factor out $b$ first: $y = a\\sin[b(x - \\frac{c}{b})] + d$ to read the shift directly.",
+          zh: "对 $y = a\\sin(bx - c) + d$：周期 $= \\frac{2\\pi}{|b|}$——一个完整周期的水平长度。相位移 $= \\frac{c}{b}$——水平平移（正值向右）。先提取 $b$：$y = a\\sin[b(x - \\frac{c}{b})] + d$ 可直接读出平移量。",
+        },
+        whenToUse: { en: "Finding horizontal scale and position of a sinusoidal graph", zh: "确定正弦型图像的水平范围与位置" },
+        commonMistake: { en: "Computing period as $\\frac{2\\pi}{b}$ when $b$ is negative — use $|b|$; and reading phase shift as $c$ instead of $\\frac{c}{b}$", zh: "当 $b$ 为负时周期算成 $\\frac{2\\pi}{b}$——应用 $|b|$；相位移读成 $c$ 而非 $\\frac{c}{b}$" },
+        example: { en: "$y = \\sin(2x - \\pi)$: period $= \\frac{2\\pi}{2} = \\pi$, phase shift $= \\frac{\\pi}{2}$ right", zh: "$y = \\sin(2x - \\pi)$：周期 $= \\frac{2\\pi}{2} = \\pi$，相位移 $= \\frac{\\pi}{2}$ 向右" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-5-1",
+        name: { en: "General Sinusoidal Form", zh: "一般正弦型函数" },
+        formula: "y = a\\sin(bx - c) + d \\quad \\text{or} \\quad y = a\\cos(bx - c) + d",
+        variables: [
+          { en: "$|a|$ — amplitude", zh: "$|a|$ — 振幅" },
+          { en: "$\\frac{2\\pi}{|b|}$ — period", zh: "$\\frac{2\\pi}{|b|}$ — 周期" },
+          { en: "$\\frac{c}{b}$ — phase shift (horizontal)", zh: "$\\frac{c}{b}$ — 相位移（水平）" },
+          { en: "$d$ — vertical shift (midline $y = d$)", zh: "$d$ — 垂直平移（中线 $y = d$）" },
+        ],
+        whenToUse: { en: "Graphing or writing equations for any sinusoidal function", zh: "画任意正弦型函数图像或写方程" },
+        commonProblemTypes: [
+          { en: "Graph a sinusoidal function given its equation", zh: "由方程画正弦型函数图像" },
+          { en: "Write the equation from a graph", zh: "由图像写方程" },
+        ],
+        example: { en: "$y = 2\\sin(3x - \\frac{\\pi}{2}) + 1$: amp $= 2$, period $= \\frac{2\\pi}{3}$, shift right $\\frac{\\pi}{6}$, midline $y = 1$", zh: "$y = 2\\sin(3x - \\frac{\\pi}{2}) + 1$：振幅 $= 2$，周期 $= \\frac{2\\pi}{3}$，右移 $\\frac{\\pi}{6}$，中线 $y = 1$" },
+      },
+      {
+        id: "f-4-5-2",
+        name: { en: "Key Points of One Period (Sine)", zh: "一个周期的关键点（正弦）" },
+        formula: "\\text{Start: } \\frac{c}{b}, \\quad \\text{Quarter: } \\frac{c}{b}+\\frac{T}{4}, \\quad \\text{Half: } \\frac{c}{b}+\\frac{T}{2}, \\quad \\text{Three-Quarter: } \\frac{c}{b}+\\frac{3T}{4}, \\quad \\text{End: } \\frac{c}{b}+T",
+        variables: [
+          { en: "$T = \\frac{2\\pi}{|b|}$ — period", zh: "$T = \\frac{2\\pi}{|b|}$ — 周期" },
+          { en: "For sine: values at these points are $d$, $d+a$, $d$, $d-a$, $d$", zh: "对正弦：这些点处的值依次为 $d$、$d+a$、$d$、$d-a$、$d$" },
+        ],
+        whenToUse: { en: "Plotting one full period by dividing it into four equal parts", zh: "将一个完整周期四等分以画图" },
+        commonProblemTypes: [
+          { en: "Plot key points and sketch the graph", zh: "标关键点并画图" },
+        ],
+        example: { en: "$y = \\sin x$: key points $(0,0)$, $(\\frac{\\pi}{2},1)$, $(\\pi,0)$, $(\\frac{3\\pi}{2},-1)$, $(2\\pi,0)$", zh: "$y = \\sin x$：关键点 $(0,0)$、$(\\frac{\\pi}{2},1)$、$(\\pi,0)$、$(\\frac{3\\pi}{2},-1)$、$(2\\pi,0)$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-5-1",
+        title: { en: "Identify Amplitude and Period", zh: "识别振幅和周期" },
+        description: { en: "Read off amplitude and period from a given equation.", zh: "从给定方程读出振幅和周期。" },
+        howToRecognize: { en: "Equation in the form $y = a\\sin(bx)$ or $y = a\\cos(bx)$.", zh: "方程形如 $y = a\\sin(bx)$ 或 $y = a\\cos(bx)$。" },
+        steps: [
+          { en: "Amplitude $= |a|$", zh: "振幅 $= |a|$" },
+          { en: "Period $= \\frac{2\\pi}{|b|}$", zh: "周期 $= \\frac{2\\pi}{|b|}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the amplitude and period of $y = 3\\cos(4x)$.", zh: "求 $y = 3\\cos(4x)$ 的振幅和周期。" },
+        commonTraps: [
+          { en: "Confusing $b$ with the period — the period is $\\frac{2\\pi}{b}$, not $b$", zh: "把 $b$ 当成周期——周期是 $\\frac{2\\pi}{b}$ 而非 $b$" },
+        ],
+      },
+      {
+        id: "pt-4-5-2",
+        title: { en: "Identify Phase Shift and Vertical Shift", zh: "识别相位移和垂直平移" },
+        description: { en: "Extract phase shift and vertical shift from the general form.", zh: "从一般形式中提取相位移和垂直平移。" },
+        howToRecognize: { en: "Equation has the form $y = a\\sin(bx - c) + d$.", zh: "方程形如 $y = a\\sin(bx - c) + d$。" },
+        steps: [
+          { en: "Phase shift $= \\frac{c}{b}$ (right if positive)", zh: "相位移 $= \\frac{c}{b}$（正值向右）" },
+          { en: "Vertical shift $= d$", zh: "垂直平移 $= d$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the phase shift and vertical shift of $y = 2\\sin(3x - \\pi) + 5$.", zh: "求 $y = 2\\sin(3x - \\pi) + 5$ 的相位移和垂直平移。" },
+        commonTraps: [
+          { en: "Reading phase shift as $\\pi$ instead of $\\frac{\\pi}{3}$ — must divide $c$ by $b$", zh: "把相位移读为 $\\pi$ 而非 $\\frac{\\pi}{3}$——必须将 $c$ 除以 $b$" },
+        ],
+      },
+      {
+        id: "pt-4-5-3",
+        title: { en: "Determine Range of a Sinusoidal Function", zh: "求正弦型函数的值域" },
+        description: { en: "Find the range from amplitude and vertical shift.", zh: "由振幅和垂直平移求值域。" },
+        howToRecognize: { en: "Problem asks for maximum, minimum, or range.", zh: "题目要求最大值、最小值或值域。" },
+        steps: [
+          { en: "Max $= d + |a|$, Min $= d - |a|$", zh: "最大值 $= d + |a|$，最小值 $= d - |a|$" },
+          { en: "Range $= [d - |a|, d + |a|]$", zh: "值域 $= [d - |a|, d + |a|]$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the range of $y = -4\\cos x + 3$.", zh: "求 $y = -4\\cos x + 3$ 的值域。" },
+        commonTraps: [
+          { en: "Thinking the negative sign means the range is $[-7, -1]$ — the negative only flips the graph, range is still $[d-|a|, d+|a|]$", zh: "以为负号使值域变为 $[-7, -1]$——负号只翻转图像，值域仍为 $[d-|a|, d+|a|]$" },
+        ],
+      },
+      {
+        id: "pt-4-5-4",
+        title: { en: "Describe Effect of Negative $a$", zh: "描述 $a$ 为负时的效果" },
+        description: { en: "Explain how a negative leading coefficient reflects the graph.", zh: "说明负系数如何反射图像。" },
+        howToRecognize: { en: "The coefficient $a$ is negative; asked about the graph shape.", zh: "系数 $a$ 为负；问图像形状。" },
+        steps: [
+          { en: "Negative $a$ reflects the graph across the midline ($y = d$)", zh: "负 $a$ 使图像关于中线（$y = d$）翻转" },
+          { en: "Amplitude is still $|a|$", zh: "振幅仍为 $|a|$" },
+          { en: "For sine: starts going DOWN from the midline instead of up", zh: "对正弦：从中线向下而非向上出发" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Describe how $y = -\\sin x$ differs from $y = \\sin x$.", zh: "描述 $y = -\\sin x$ 与 $y = \\sin x$ 的区别。" },
+        commonTraps: [
+          { en: "Saying amplitude is $-1$ — amplitude is always positive", zh: "说振幅为 $-1$——振幅始终为正" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-5-5",
+        title: { en: "Graph a Sinusoidal Function", zh: "画正弦型函数图像" },
+        description: { en: "Graph one or two full periods of $y = a\\sin(bx - c) + d$.", zh: "画 $y = a\\sin(bx - c) + d$ 的一到两个完整周期。" },
+        howToRecognize: { en: "Equation given; asked to sketch the graph.", zh: "给出方程；要求画图。" },
+        steps: [
+          { en: "Find amplitude $|a|$, period $\\frac{2\\pi}{|b|}$, phase shift $\\frac{c}{b}$, vertical shift $d$", zh: "求振幅 $|a|$、周期 $\\frac{2\\pi}{|b|}$、相位移 $\\frac{c}{b}$、垂直平移 $d$" },
+          { en: "Compute the five key $x$-values (divide one period into 4 equal parts)", zh: "计算五个关键 $x$ 值（将一个周期四等分）" },
+          { en: "Plot the corresponding $y$-values and connect with a smooth curve", zh: "标出对应 $y$ 值并用光滑曲线连接" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph two full periods of $y = 2\\sin(2x - \\frac{\\pi}{2})$.", zh: "画 $y = 2\\sin(2x - \\frac{\\pi}{2})$ 的两个完整周期。" },
+        commonTraps: [
+          { en: "Dividing the period incorrectly — each quarter is $\\frac{T}{4}$, not $\\frac{\\pi}{4}$ in general", zh: "周期分割错误——每段为 $\\frac{T}{4}$，不一定是 $\\frac{\\pi}{4}$" },
+        ],
+      },
+      {
+        id: "pt-4-5-6",
+        title: { en: "Graph with Vertical Shift", zh: "带垂直平移的图像" },
+        description: { en: "Graph a sinusoidal function with a nonzero $d$.", zh: "画垂直平移不为零的正弦型函数。" },
+        howToRecognize: { en: "Equation has $+ d$ or $- d$ at the end.", zh: "方程末尾有 $+ d$ 或 $- d$。" },
+        steps: [
+          { en: "Draw the midline at $y = d$", zh: "在 $y = d$ 处画中线" },
+          { en: "Graph the sinusoid about this new midline", zh: "以新中线为基准画正弦曲线" },
+          { en: "Mark max at $d + |a|$ and min at $d - |a|$", zh: "标最大值 $d + |a|$ 和最小值 $d - |a|$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph $y = 3\\cos x - 2$ over $[0, 2\\pi]$.", zh: "在 $[0, 2\\pi]$ 上画 $y = 3\\cos x - 2$。" },
+        commonTraps: [
+          { en: "Forgetting to shift the midline — the curve oscillates about $y = d$, not $y = 0$", zh: "忘记移动中线——曲线关于 $y = d$ 振荡，而非 $y = 0$" },
+        ],
+      },
+      {
+        id: "pt-4-5-7",
+        title: { en: "Write Equation from Graph", zh: "由图像写方程" },
+        description: { en: "Determine $a$, $b$, $c$, $d$ from a given sinusoidal graph.", zh: "由给定正弦型图像确定 $a$、$b$、$c$、$d$。" },
+        howToRecognize: { en: "Graph of a sinusoid given; asked for the equation.", zh: "给出正弦型图像；要求写方程。" },
+        steps: [
+          { en: "Read off max and min to find amplitude $|a| = \\frac{\\text{max} - \\text{min}}{2}$ and midline $d = \\frac{\\text{max} + \\text{min}}{2}$", zh: "读出最大值和最小值，振幅 $|a| = \\frac{\\text{max} - \\text{min}}{2}$，中线 $d = \\frac{\\text{max} + \\text{min}}{2}$" },
+          { en: "Find the period $T$ from the graph, then $b = \\frac{2\\pi}{T}$", zh: "从图上读周期 $T$，然后 $b = \\frac{2\\pi}{T}$" },
+          { en: "Identify phase shift from where the cycle begins", zh: "由周期起点确定相位移" },
+          { en: "Choose sine or cosine based on the starting shape", zh: "根据起始形状选择正弦或余弦" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A sinusoidal graph has max $5$, min $-1$, period $\\pi$, and starts at a maximum at $x = \\frac{\\pi}{4}$. Write the equation.", zh: "正弦型图像最大值 $5$、最小值 $-1$、周期 $\\pi$，在 $x = \\frac{\\pi}{4}$ 处取最大值。写出方程。" },
+        commonTraps: [
+          { en: "Mixing up which function to use: if the graph starts at a max, cosine is usually simpler", zh: "搞混用哪个函数：若图像从最大值开始，余弦通常更简便" },
+        ],
+      },
+      {
+        id: "pt-4-5-8",
+        title: { en: "Compare Two Sinusoidal Functions", zh: "比较两个正弦型函数" },
+        description: { en: "Describe how two sinusoidal functions differ in graph features.", zh: "描述两个正弦型函数在图像特征上的区别。" },
+        howToRecognize: { en: "Two equations given; asked to compare amplitude, period, shift, etc.", zh: "给出两个方程；要求比较振幅、周期、平移等。" },
+        steps: [
+          { en: "Extract $a$, $b$, $c$, $d$ from each equation", zh: "从每个方程提取 $a$、$b$、$c$、$d$" },
+          { en: "Compare amplitude, period, phase shift, and vertical shift", zh: "比较振幅、周期、相位移和垂直平移" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Compare the graphs of $y = 2\\sin(x)$ and $y = 2\\sin(x - \\frac{\\pi}{3}) + 1$.", zh: "比较 $y = 2\\sin(x)$ 和 $y = 2\\sin(x - \\frac{\\pi}{3}) + 1$ 的图像。" },
+        commonTraps: [
+          { en: "Forgetting that phase shift is $\\frac{c}{b}$, not just $c$, though here $b = 1$ so they happen to be equal", zh: "忘记相位移是 $\\frac{c}{b}$ 而非 $c$，虽然此处 $b = 1$ 恰好相等" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-5-9",
+        title: { en: "Model Real-World Data with a Sinusoidal Function", zh: "用正弦型函数建模实际数据" },
+        description: { en: "Write a sinusoidal model for periodic phenomena (temperature, tides, daylight hours).", zh: "为周期现象（温度、潮汐、日照时长）建立正弦型模型。" },
+        howToRecognize: { en: "Word problem with periodic data and asks for a trig model.", zh: "含周期数据的应用题，要求建立三角模型。" },
+        steps: [
+          { en: "Find the amplitude: $|a| = \\frac{\\text{max} - \\text{min}}{2}$", zh: "求振幅：$|a| = \\frac{\\text{max} - \\text{min}}{2}$" },
+          { en: "Find the vertical shift: $d = \\frac{\\text{max} + \\text{min}}{2}$", zh: "求垂直平移：$d = \\frac{\\text{max} + \\text{min}}{2}$" },
+          { en: "Find the period from the data, then $b = \\frac{2\\pi}{T}$", zh: "从数据中读取周期，然后 $b = \\frac{2\\pi}{T}$" },
+          { en: "Determine phase shift based on when max or min occurs", zh: "根据极值出现的时间确定相位移" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A city's temperature varies from a low of $40°$F in January to a high of $85°$F in July. Write a sinusoidal model.", zh: "某城市气温从一月最低 $40°$F 到七月最高 $85°$F。建立正弦型模型。" },
+        commonTraps: [
+          { en: "Using the wrong period: annual data has $T = 12$ months, so $b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$", zh: "周期搞错：年度数据 $T = 12$ 个月，$b = \\frac{2\\pi}{12} = \\frac{\\pi}{6}$" },
+        ],
+      },
+      {
+        id: "pt-4-5-10",
+        title: { en: "Graph with Multiple Transformations", zh: "多重变换图像" },
+        description: { en: "Graph a function that combines amplitude change, period change, phase shift, vertical shift, and reflection.", zh: "画同时含振幅变化、周期变化、相位移、垂直平移和翻转的函数。" },
+        howToRecognize: { en: "Equation with all parameters: $y = -a\\sin(bx - c) + d$ with $a, b, c, d \\neq 0$.", zh: "方程含全部参数：$y = -a\\sin(bx - c) + d$，$a, b, c, d \\neq 0$。" },
+        steps: [
+          { en: "Extract all parameters: $|a|$, period, phase shift, $d$, reflection", zh: "提取所有参数：$|a|$、周期、相位移、$d$、翻转" },
+          { en: "Compute five key points for one period", zh: "计算一个周期的五个关键点" },
+          { en: "Apply reflection ($a < 0$) to the $y$-values", zh: "对 $y$ 值应用翻转（$a < 0$）" },
+          { en: "Plot and connect with a smooth curve", zh: "标点并用光滑曲线连接" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Graph $y = -3\\cos(\\frac{\\pi}{2}x + \\pi) - 1$ over two periods.", zh: "在两个周期内画 $y = -3\\cos(\\frac{\\pi}{2}x + \\pi) - 1$。" },
+        commonTraps: [
+          { en: "Applying phase shift and reflection in the wrong order — factor out $b$ first to find the true shift", zh: "相位移和翻转的顺序搞错——先提取 $b$ 以找到真正的平移量" },
+        ],
+      },
+    ],
   },
   {
     id: "4-6",
@@ -5393,6 +6637,241 @@ const chapter4Units: Unit[] = [
       en: "Sketch graphs of tangent, cotangent, secant, and cosecant functions and identify their asymptotes.",
       zh: "绘制正切、余切、正割与余割函数的图像，并识别其渐近线。",
     },
+    learningGoals: [
+      { en: "Sketch the graph of $y = \\tan x$ and $y = \\cot x$", zh: "画 $y = \\tan x$ 和 $y = \\cot x$ 的图像" },
+      { en: "Sketch the graph of $y = \\sec x$ and $y = \\csc x$", zh: "画 $y = \\sec x$ 和 $y = \\csc x$ 的图像" },
+      { en: "Identify vertical asymptotes, period, and domain of each function", zh: "识别各函数的垂直渐近线、周期和定义域" },
+      { en: "Graph transformed versions of these functions", zh: "画这些函数的变换图像" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-6-1",
+        title: { en: "Graph of Tangent and Cotangent", zh: "正切和余切的图像" },
+        explanation: {
+          en: "$y = \\tan x$ has period $\\pi$, vertical asymptotes at $x = \\frac{\\pi}{2} + n\\pi$, passes through the origin, and increases from $-\\infty$ to $+\\infty$ in each period. $y = \\cot x$ has period $\\pi$, vertical asymptotes at $x = n\\pi$, and decreases from $+\\infty$ to $-\\infty$ in each period. Neither has amplitude (range is all reals).",
+          zh: "$y = \\tan x$ 周期 $\\pi$，垂直渐近线在 $x = \\frac{\\pi}{2} + n\\pi$，过原点，每个周期从 $-\\infty$ 增到 $+\\infty$。$y = \\cot x$ 周期 $\\pi$，垂直渐近线在 $x = n\\pi$，每个周期从 $+\\infty$ 减到 $-\\infty$。两者无振幅（值域为全体实数）。",
+        },
+        whenToUse: { en: "Graphing tangent or cotangent and identifying their key features", zh: "画正切或余切图像并识别关键特征" },
+        commonMistake: { en: "Drawing tangent with period $2\\pi$ instead of $\\pi$", zh: "把正切的周期画成 $2\\pi$ 而非 $\\pi$" },
+        example: { en: "$\\tan 0 = 0$, $\\tan\\frac{\\pi}{4} = 1$, $\\tan\\frac{\\pi}{2}$ is undefined (asymptote)", zh: "$\\tan 0 = 0$，$\\tan\\frac{\\pi}{4} = 1$，$\\tan\\frac{\\pi}{2}$ 无定义（渐近线）" },
+      },
+      {
+        id: "kc-4-6-2",
+        title: { en: "Graph of Secant and Cosecant", zh: "正割和余割的图像" },
+        explanation: {
+          en: "$y = \\sec x = \\frac{1}{\\cos x}$: period $2\\pi$, vertical asymptotes where $\\cos x = 0$ ($x = \\frac{\\pi}{2} + n\\pi$), range $(-\\infty, -1] \\cup [1, \\infty)$. Graph consists of U-shaped curves opening up and down. $y = \\csc x = \\frac{1}{\\sin x}$: period $2\\pi$, asymptotes where $\\sin x = 0$ ($x = n\\pi$), same range shape.",
+          zh: "$y = \\sec x = \\frac{1}{\\cos x}$：周期 $2\\pi$，垂直渐近线在 $\\cos x = 0$ 处（$x = \\frac{\\pi}{2} + n\\pi$），值域 $(-\\infty, -1] \\cup [1, \\infty)$。图像由向上和向下的 U 形曲线组成。$y = \\csc x = \\frac{1}{\\sin x}$：周期 $2\\pi$，渐近线在 $\\sin x = 0$ 处（$x = n\\pi$），值域形状相同。",
+        },
+        whenToUse: { en: "Graphing secant or cosecant, often by first sketching cosine or sine as a guide", zh: "画正割或余割图像，通常先画余弦或正弦作为参考" },
+        commonMistake: { en: "Thinking secant/cosecant can take values between $-1$ and $1$ — they cannot", zh: "以为正割/余割可以取 $-1$ 到 $1$ 之间的值——不可以" },
+        example: { en: "$\\sec 0 = 1$, $\\sec\\frac{\\pi}{3} = 2$, $\\sec\\frac{\\pi}{2}$ is undefined", zh: "$\\sec 0 = 1$，$\\sec\\frac{\\pi}{3} = 2$，$\\sec\\frac{\\pi}{2}$ 无定义" },
+      },
+      {
+        id: "kc-4-6-3",
+        title: { en: "Transformations of Tan, Cot, Sec, Csc", zh: "正切、余切、正割、余割的变换" },
+        explanation: {
+          en: "For $y = a\\tan(bx - c) + d$: period $= \\frac{\\pi}{|b|}$ (not $\\frac{2\\pi}{|b|}$), phase shift $= \\frac{c}{b}$, vertical shift $= d$, vertical stretch $= |a|$. The factor $a$ stretches the graph vertically but there is no amplitude. Asymptotes shift by the phase shift. For sec/csc, period remains $\\frac{2\\pi}{|b|}$.",
+          zh: "对 $y = a\\tan(bx - c) + d$：周期 $= \\frac{\\pi}{|b|}$（不是 $\\frac{2\\pi}{|b|}$），相位移 $= \\frac{c}{b}$，垂直平移 $= d$，纵向伸缩 $= |a|$。系数 $a$ 纵向伸缩图像但无振幅。渐近线随相位移移动。对 sec/csc，周期仍为 $\\frac{2\\pi}{|b|}$。",
+        },
+        whenToUse: { en: "Graphing transformed tan/cot/sec/csc functions", zh: "画变换的 tan/cot/sec/csc 函数图像" },
+        commonMistake: { en: "Using $\\frac{2\\pi}{b}$ as the period for tangent — tangent's base period is $\\pi$, not $2\\pi$", zh: "把正切的周期算成 $\\frac{2\\pi}{b}$——正切的基本周期是 $\\pi$ 而非 $2\\pi$" },
+        example: { en: "$y = \\tan(2x)$: period $= \\frac{\\pi}{2}$, asymptotes at $x = \\frac{\\pi}{4} + \\frac{n\\pi}{2}$", zh: "$y = \\tan(2x)$：周期 $= \\frac{\\pi}{2}$，渐近线在 $x = \\frac{\\pi}{4} + \\frac{n\\pi}{2}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-6-1",
+        name: { en: "Tangent / Cotangent Properties", zh: "正切/余切性质" },
+        formula: "y = a\\tan(bx - c) + d: \\quad \\text{Period} = \\frac{\\pi}{|b|}, \\quad \\text{Phase shift} = \\frac{c}{b}",
+        variables: [
+          { en: "Asymptotes of $\\tan$: $bx - c = \\pm\\frac{\\pi}{2}$, i.e., $x = \\frac{c \\pm \\frac{\\pi}{2}}{b}$", zh: "$\\tan$ 的渐近线：$bx - c = \\pm\\frac{\\pi}{2}$，即 $x = \\frac{c \\pm \\frac{\\pi}{2}}{b}$" },
+          { en: "Asymptotes of $\\cot$: $bx - c = 0$ and $bx - c = \\pi$", zh: "$\\cot$ 的渐近线：$bx - c = 0$ 和 $bx - c = \\pi$" },
+        ],
+        whenToUse: { en: "Graphing tangent or cotangent functions", zh: "画正切或余切函数图像" },
+        commonProblemTypes: [
+          { en: "Find period and asymptotes of a transformed tangent", zh: "求变换正切函数的周期和渐近线" },
+        ],
+        example: { en: "$y = \\tan(\\frac{x}{2})$: period $= 2\\pi$, asymptotes at $x = \\pi + 2n\\pi$", zh: "$y = \\tan(\\frac{x}{2})$：周期 $= 2\\pi$，渐近线在 $x = \\pi + 2n\\pi$" },
+      },
+      {
+        id: "f-4-6-2",
+        name: { en: "Secant / Cosecant Properties", zh: "正割/余割性质" },
+        formula: "y = a\\sec(bx - c) + d: \\quad \\text{Period} = \\frac{2\\pi}{|b|}, \\quad \\text{Range}: (-\\infty, d-|a|] \\cup [d+|a|, \\infty)",
+        variables: [
+          { en: "Asymptotes of $\\sec$: where $\\cos(bx - c) = 0$", zh: "$\\sec$ 的渐近线：$\\cos(bx - c) = 0$ 处" },
+          { en: "Asymptotes of $\\csc$: where $\\sin(bx - c) = 0$", zh: "$\\csc$ 的渐近线：$\\sin(bx - c) = 0$ 处" },
+        ],
+        whenToUse: { en: "Graphing secant or cosecant functions", zh: "画正割或余割函数图像" },
+        commonProblemTypes: [
+          { en: "Graph $\\csc$ by first sketching the corresponding $\\sin$ curve", zh: "先画 $\\sin$ 曲线再画 $\\csc$ 图像" },
+        ],
+        example: { en: "$y = 2\\sec x$: range $(-\\infty, -2] \\cup [2, \\infty)$, asymptotes at $x = \\frac{\\pi}{2} + n\\pi$", zh: "$y = 2\\sec x$：值域 $(-\\infty, -2] \\cup [2, \\infty)$，渐近线在 $x = \\frac{\\pi}{2} + n\\pi$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-6-1",
+        title: { en: "Find Period and Asymptotes of Tangent", zh: "求正切函数的周期和渐近线" },
+        description: { en: "Given $y = a\\tan(bx)$, find the period and consecutive asymptotes.", zh: "已知 $y = a\\tan(bx)$，求周期和相邻渐近线。" },
+        howToRecognize: { en: "Tangent function; asked for period or asymptotes.", zh: "正切函数；要求周期或渐近线。" },
+        steps: [
+          { en: "Period $= \\frac{\\pi}{|b|}$", zh: "周期 $= \\frac{\\pi}{|b|}$" },
+          { en: "Asymptotes: solve $bx = \\pm\\frac{\\pi}{2}$", zh: "渐近线：解 $bx = \\pm\\frac{\\pi}{2}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the period and two consecutive asymptotes of $y = \\tan(3x)$.", zh: "求 $y = \\tan(3x)$ 的周期和两条相邻渐近线。" },
+        commonTraps: [
+          { en: "Using $\\frac{2\\pi}{b}$ instead of $\\frac{\\pi}{b}$ for tangent's period", zh: "正切的周期用 $\\frac{2\\pi}{b}$ 而非 $\\frac{\\pi}{b}$" },
+        ],
+      },
+      {
+        id: "pt-4-6-2",
+        title: { en: "Find Period and Asymptotes of Cotangent", zh: "求余切函数的周期和渐近线" },
+        description: { en: "Given $y = a\\cot(bx)$, find period and asymptotes.", zh: "已知 $y = a\\cot(bx)$，求周期和渐近线。" },
+        howToRecognize: { en: "Cotangent function; asked for period or asymptotes.", zh: "余切函数；要求周期或渐近线。" },
+        steps: [
+          { en: "Period $= \\frac{\\pi}{|b|}$", zh: "周期 $= \\frac{\\pi}{|b|}$" },
+          { en: "Asymptotes: solve $bx = n\\pi$ ($n$ integer)", zh: "渐近线：解 $bx = n\\pi$（$n$ 为整数）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the period and asymptotes of $y = \\cot(\\frac{\\pi}{2}x)$.", zh: "求 $y = \\cot(\\frac{\\pi}{2}x)$ 的周期和渐近线。" },
+        commonTraps: [
+          { en: "Confusing cotangent asymptotes ($x = n\\pi/b$) with tangent asymptotes", zh: "把余切渐近线（$x = n\\pi/b$）与正切渐近线搞混" },
+        ],
+      },
+      {
+        id: "pt-4-6-3",
+        title: { en: "Identify Asymptotes of Secant/Cosecant", zh: "识别正割/余割的渐近线" },
+        description: { en: "Find vertical asymptotes from the zeros of the reciprocal function.", zh: "从倒数函数的零点求垂直渐近线。" },
+        howToRecognize: { en: "Secant or cosecant function; asked for asymptotes or domain.", zh: "正割或余割函数；要求渐近线或定义域。" },
+        steps: [
+          { en: "For $\\sec(bx - c)$: find where $\\cos(bx - c) = 0$", zh: "对 $\\sec(bx - c)$：找 $\\cos(bx - c) = 0$ 之处" },
+          { en: "For $\\csc(bx - c)$: find where $\\sin(bx - c) = 0$", zh: "对 $\\csc(bx - c)$：找 $\\sin(bx - c) = 0$ 之处" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the vertical asymptotes of $y = \\csc(2x)$ on $[0, 2\\pi]$.", zh: "求 $y = \\csc(2x)$ 在 $[0, 2\\pi]$ 上的垂直渐近线。" },
+        commonTraps: [
+          { en: "Missing asymptotes because you only solved for the first few zeros", zh: "只解出前几个零点而遗漏了渐近线" },
+        ],
+      },
+      {
+        id: "pt-4-6-4",
+        title: { en: "State Domain and Range", zh: "给出定义域和值域" },
+        description: { en: "State the domain and range of tan, cot, sec, or csc.", zh: "给出 tan、cot、sec 或 csc 的定义域和值域。" },
+        howToRecognize: { en: "Problem asks for domain or range of one of these four functions.", zh: "题目要求这四个函数之一的定义域或值域。" },
+        steps: [
+          { en: "Domain: exclude asymptote locations", zh: "定义域：去掉渐近线位置" },
+          { en: "Range: tan and cot → $(-\\infty, \\infty)$; sec and csc → $(-\\infty, -1] \\cup [1, \\infty)$", zh: "值域：tan 和 cot → $(-\\infty, \\infty)$；sec 和 csc → $(-\\infty, -1] \\cup [1, \\infty)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "State the domain and range of $y = \\sec x$.", zh: "给出 $y = \\sec x$ 的定义域和值域。" },
+        commonTraps: [
+          { en: "Including values between $-1$ and $1$ in the range of secant", zh: "把 $-1$ 到 $1$ 之间的值算入正割的值域" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-6-5",
+        title: { en: "Graph a Transformed Tangent Function", zh: "画变换正切函数图像" },
+        description: { en: "Graph $y = a\\tan(bx - c) + d$ by finding asymptotes and key points.", zh: "通过求渐近线和关键点画 $y = a\\tan(bx - c) + d$。" },
+        howToRecognize: { en: "Tangent equation with transformations; asked to graph.", zh: "含变换的正切方程；要求画图。" },
+        steps: [
+          { en: "Find two consecutive asymptotes by solving $bx - c = -\\frac{\\pi}{2}$ and $bx - c = \\frac{\\pi}{2}$", zh: "解 $bx - c = -\\frac{\\pi}{2}$ 和 $bx - c = \\frac{\\pi}{2}$ 求两条相邻渐近线" },
+          { en: "Find the midpoint (where $\\tan = 0$ before shift) and quarter points", zh: "求中点（平移前 $\\tan = 0$ 处）和四分点" },
+          { en: "Apply vertical stretch $a$ and shift $d$, then sketch", zh: "应用纵向伸缩 $a$ 和平移 $d$，然后画图" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph $y = 2\\tan(x - \\frac{\\pi}{4})$ over one period.", zh: "画 $y = 2\\tan(x - \\frac{\\pi}{4})$ 的一个周期。" },
+        commonTraps: [
+          { en: "Forgetting that the asymptotes also shift by the phase shift", zh: "忘记渐近线也随相位移移动" },
+        ],
+      },
+      {
+        id: "pt-4-6-6",
+        title: { en: "Graph Cosecant via Sine", zh: "借助正弦画余割图像" },
+        description: { en: "Sketch $y = \\csc(bx)$ by first graphing $y = \\sin(bx)$ as a guide.", zh: "先画 $y = \\sin(bx)$ 作辅助线，再画 $y = \\csc(bx)$。" },
+        howToRecognize: { en: "Cosecant function; graphing requested.", zh: "余割函数；要求画图。" },
+        steps: [
+          { en: "Sketch $y = \\sin(bx)$ lightly (as a guide curve)", zh: "轻画 $y = \\sin(bx)$（作为辅助曲线）" },
+          { en: "Draw vertical asymptotes where $\\sin = 0$", zh: "在 $\\sin = 0$ 处画垂直渐近线" },
+          { en: "At each max/min of sine, plot the corresponding $\\csc$ value (reciprocal)", zh: "在正弦的每个极值处标 $\\csc$ 值（取倒数）" },
+          { en: "Draw U-shaped curves opening away from the $x$-axis", zh: "画远离 $x$ 轴开口的 U 形曲线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph $y = \\csc(2x)$ over $[0, 2\\pi]$.", zh: "在 $[0, 2\\pi]$ 上画 $y = \\csc(2x)$。" },
+        commonTraps: [
+          { en: "Drawing the U-curves through the sine wave instead of away from it", zh: "把 U 形曲线画穿正弦波而非远离它" },
+        ],
+      },
+      {
+        id: "pt-4-6-7",
+        title: { en: "Graph Secant via Cosine", zh: "借助余弦画正割图像" },
+        description: { en: "Sketch $y = a\\sec(bx - c) + d$ using the cosine guide curve.", zh: "用余弦辅助曲线画 $y = a\\sec(bx - c) + d$。" },
+        howToRecognize: { en: "Secant function with transformations; graphing requested.", zh: "含变换的正割函数；要求画图。" },
+        steps: [
+          { en: "Sketch the guide curve $y = a\\cos(bx - c) + d$", zh: "画辅助曲线 $y = a\\cos(bx - c) + d$" },
+          { en: "Draw asymptotes where cosine crosses its midline", zh: "在余弦过中线处画渐近线" },
+          { en: "Draw U-curves at each peak and valley of cosine", zh: "在余弦的每个波峰和波谷处画 U 形曲线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph $y = \\sec(x - \\frac{\\pi}{2})$ over $[-\\pi, 3\\pi]$.", zh: "在 $[-\\pi, 3\\pi]$ 上画 $y = \\sec(x - \\frac{\\pi}{2})$。" },
+        commonTraps: [
+          { en: "Not shifting the asymptotes when there is a phase shift", zh: "有相位移时忘记移动渐近线" },
+        ],
+      },
+      {
+        id: "pt-4-6-8",
+        title: { en: "Graph a Transformed Cotangent Function", zh: "画变换余切函数图像" },
+        description: { en: "Graph $y = a\\cot(bx - c) + d$.", zh: "画 $y = a\\cot(bx - c) + d$ 的图像。" },
+        howToRecognize: { en: "Cotangent function with transformations.", zh: "含变换的余切函数。" },
+        steps: [
+          { en: "Find two consecutive asymptotes: $bx - c = 0$ and $bx - c = \\pi$", zh: "求两条相邻渐近线：$bx - c = 0$ 和 $bx - c = \\pi$" },
+          { en: "Find the midpoint (where $\\cot = 0$) and quarter points", zh: "求中点（$\\cot = 0$ 处）和四分点" },
+          { en: "Apply vertical stretch and shift, sketch the decreasing curve", zh: "应用纵向伸缩和平移，画递减曲线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Graph $y = -\\cot(x + \\frac{\\pi}{4})$ over one period.", zh: "画 $y = -\\cot(x + \\frac{\\pi}{4})$ 的一个周期。" },
+        commonTraps: [
+          { en: "Confusing cotangent's decreasing nature with tangent's increasing shape", zh: "把余切的递减特性与正切的递增形状搞混" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-6-9",
+        title: { en: "Match Equation to Graph", zh: "方程与图像匹配" },
+        description: { en: "Given several graphs and equations of tan/cot/sec/csc, match them.", zh: "给出多个 tan/cot/sec/csc 的图像和方程，进行匹配。" },
+        howToRecognize: { en: "Multiple graphs and equations; asked to pair them up.", zh: "多个图像和方程；要求配对。" },
+        steps: [
+          { en: "Check asymptote locations to narrow down the function type", zh: "检查渐近线位置以缩小函数类型" },
+          { en: "Determine the period to identify $b$", zh: "确定周期以找出 $b$" },
+          { en: "Check increasing/decreasing behavior and vertical stretch", zh: "检查递增/递减行为和纵向伸缩" },
+          { en: "Verify with a specific point", zh: "用一个具体点验证" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Match each equation to its graph: (a) $y = 2\\tan(\\frac{x}{2})$, (b) $y = -\\cot x$, (c) $y = \\csc(2x)$.", zh: "将每个方程与其图像匹配：(a) $y = 2\\tan(\\frac{x}{2})$，(b) $y = -\\cot x$，(c) $y = \\csc(2x)$。" },
+        commonTraps: [
+          { en: "Confusing $\\cot$ (decreasing between asymptotes) with $\\tan$ (increasing between asymptotes)", zh: "搞混 $\\cot$（渐近线间递减）和 $\\tan$（渐近线间递增）" },
+        ],
+      },
+      {
+        id: "pt-4-6-10",
+        title: { en: "Write Equation from Tangent/Cotangent Graph", zh: "由正切/余切图像写方程" },
+        description: { en: "Determine the equation of a tangent or cotangent function from its graph.", zh: "由正切或余切函数的图像确定方程。" },
+        howToRecognize: { en: "Graph of a tangent/cotangent curve is given; asked for the equation.", zh: "给出正切/余切曲线的图像；要求写方程。" },
+        steps: [
+          { en: "Identify two consecutive asymptotes — their distance is the period", zh: "找两条相邻渐近线——间距即周期" },
+          { en: "Compute $b$: for tan/cot, $b = \\frac{\\pi}{\\text{period}}$", zh: "算 $b$：对 tan/cot，$b = \\frac{\\pi}{\\text{周期}}$" },
+          { en: "Find the phase shift from the asymptote or zero location", zh: "由渐近线或零点位置确定相位移" },
+          { en: "Check a point to determine $a$ (vertical stretch) and $d$", zh: "代入一个点确定 $a$（纵向伸缩）和 $d$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A tangent curve has consecutive asymptotes at $x = -1$ and $x = 3$, passes through $(1, 2)$. Write the equation.", zh: "正切曲线的相邻渐近线在 $x = -1$ 和 $x = 3$，过点 $(1, 2)$，写出方程。" },
+        commonTraps: [
+          { en: "Forgetting to account for vertical shift when reading the graph's midline", zh: "读图时忘记考虑垂直平移" },
+        ],
+      },
+    ],
   },
   {
     id: "4-7",
@@ -5406,6 +6885,236 @@ const chapter4Units: Unit[] = [
       en: "Evaluate and graph inverse trigonometric functions, and use them in compositions with trig functions.",
       zh: "求反三角函数的值并绘制其图像，并将其与三角函数复合运算。",
     },
+    learningGoals: [
+      { en: "Evaluate $\\arcsin x$, $\\arccos x$, and $\\arctan x$", zh: "求 $\\arcsin x$、$\\arccos x$ 和 $\\arctan x$ 的值" },
+      { en: "Understand the restricted domains used to define inverse trig functions", zh: "理解定义反三角函数所用的限制定义域" },
+      { en: "Graph the three primary inverse trig functions", zh: "画三个主要反三角函数的图像" },
+      { en: "Evaluate compositions of trig and inverse trig functions", zh: "求三角函数与反三角函数的复合值" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-7-1",
+        title: { en: "Inverse Sine ($\\arcsin$ or $\\sin^{-1}$)", zh: "反正弦（$\\arcsin$ 或 $\\sin^{-1}$）" },
+        explanation: {
+          en: "$y = \\arcsin x$ means $\\sin y = x$ where $-\\frac{\\pi}{2} \\leq y \\leq \\frac{\\pi}{2}$. Domain: $[-1, 1]$. Range: $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$. The restricted range ensures the function is one-to-one. The output is always an angle in QI or QIV (or on the boundary).",
+          zh: "$y = \\arcsin x$ 意为 $\\sin y = x$，其中 $-\\frac{\\pi}{2} \\leq y \\leq \\frac{\\pi}{2}$。定义域：$[-1, 1]$。值域：$[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$。限制值域保证函数一一对应。输出角始终在第一或第四象限（或边界上）。",
+        },
+        whenToUse: { en: "Finding an angle whose sine is a known value", zh: "求正弦值为已知值的角" },
+        commonMistake: { en: "Giving answers outside $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ — $\\arcsin$ never returns $\\frac{2\\pi}{3}$ even though $\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$", zh: "给出 $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ 之外的答案——$\\arcsin$ 不会返回 $\\frac{2\\pi}{3}$，尽管 $\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$" },
+        example: { en: "$\\arcsin(\\frac{1}{2}) = \\frac{\\pi}{6}$, $\\arcsin(-1) = -\\frac{\\pi}{2}$", zh: "$\\arcsin(\\frac{1}{2}) = \\frac{\\pi}{6}$，$\\arcsin(-1) = -\\frac{\\pi}{2}$" },
+      },
+      {
+        id: "kc-4-7-2",
+        title: { en: "Inverse Cosine ($\\arccos$ or $\\cos^{-1}$)", zh: "反余弦（$\\arccos$ 或 $\\cos^{-1}$）" },
+        explanation: {
+          en: "$y = \\arccos x$ means $\\cos y = x$ where $0 \\leq y \\leq \\pi$. Domain: $[-1, 1]$. Range: $[0, \\pi]$. The output is always an angle in QI or QII (or on the boundary).",
+          zh: "$y = \\arccos x$ 意为 $\\cos y = x$，其中 $0 \\leq y \\leq \\pi$。定义域：$[-1, 1]$。值域：$[0, \\pi]$。输出角始终在第一或第二象限（或边界上）。",
+        },
+        whenToUse: { en: "Finding an angle whose cosine is a known value", zh: "求余弦值为已知值的角" },
+        commonMistake: { en: "Returning a negative angle — $\\arccos$ always returns $[0, \\pi]$", zh: "返回负角——$\\arccos$ 总是返回 $[0, \\pi]$ 范围的值" },
+        example: { en: "$\\arccos(\\frac{\\sqrt{2}}{2}) = \\frac{\\pi}{4}$, $\\arccos(-1) = \\pi$", zh: "$\\arccos(\\frac{\\sqrt{2}}{2}) = \\frac{\\pi}{4}$，$\\arccos(-1) = \\pi$" },
+      },
+      {
+        id: "kc-4-7-3",
+        title: { en: "Inverse Tangent ($\\arctan$ or $\\tan^{-1}$)", zh: "反正切（$\\arctan$ 或 $\\tan^{-1}$）" },
+        explanation: {
+          en: "$y = \\arctan x$ means $\\tan y = x$ where $-\\frac{\\pi}{2} < y < \\frac{\\pi}{2}$. Domain: $(-\\infty, \\infty)$. Range: $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$. The graph has horizontal asymptotes at $y = \\pm\\frac{\\pi}{2}$.",
+          zh: "$y = \\arctan x$ 意为 $\\tan y = x$，其中 $-\\frac{\\pi}{2} < y < \\frac{\\pi}{2}$。定义域：$(-\\infty, \\infty)$。值域：$(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$。图像有水平渐近线 $y = \\pm\\frac{\\pi}{2}$。",
+        },
+        whenToUse: { en: "Finding an angle whose tangent is a known value", zh: "求正切值为已知值的角" },
+        commonMistake: { en: "Giving $\\arctan(-1) = \\frac{3\\pi}{4}$ — must be in $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$, so the answer is $-\\frac{\\pi}{4}$", zh: "给出 $\\arctan(-1) = \\frac{3\\pi}{4}$——必须在 $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$ 内，答案是 $-\\frac{\\pi}{4}$" },
+        example: { en: "$\\arctan(1) = \\frac{\\pi}{4}$, $\\arctan(\\sqrt{3}) = \\frac{\\pi}{3}$", zh: "$\\arctan(1) = \\frac{\\pi}{4}$，$\\arctan(\\sqrt{3}) = \\frac{\\pi}{3}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-7-1",
+        name: { en: "Inverse Trig Function Domains and Ranges", zh: "反三角函数的定义域和值域" },
+        formula: "\\arcsin: [-1,1] \\to [-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}], \\quad \\arccos: [-1,1] \\to [0, \\pi], \\quad \\arctan: \\mathbb{R} \\to (-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2})",
+        variables: [
+          { en: "Each inverse function reverses its parent on the restricted domain", zh: "每个反函数在限制定义域上逆转其原函数" },
+        ],
+        whenToUse: { en: "Checking whether an input is valid and predicting the output range", zh: "检查输入是否有效并预测输出范围" },
+        commonProblemTypes: [
+          { en: "State domain and range of an inverse trig function", zh: "给出反三角函数的定义域和值域" },
+          { en: "Determine if a value is in the domain", zh: "判断一个值是否在定义域内" },
+        ],
+        example: { en: "$\\arcsin(2)$ is undefined since $2 \\notin [-1, 1]$", zh: "$\\arcsin(2)$ 无定义，因为 $2 \\notin [-1, 1]$" },
+      },
+      {
+        id: "f-4-7-2",
+        name: { en: "Cancellation Properties", zh: "抵消性质" },
+        formula: "\\sin(\\arcsin x) = x \\; (|x| \\leq 1), \\quad \\arcsin(\\sin \\theta) = \\theta \\; (-\\tfrac{\\pi}{2} \\leq \\theta \\leq \\tfrac{\\pi}{2})",
+        variables: [
+          { en: "Similar rules for $\\cos/\\arccos$ and $\\tan/\\arctan$ with their respective restricted ranges", zh: "对 $\\cos/\\arccos$ 和 $\\tan/\\arctan$ 有类似规则，各用其限制值域" },
+        ],
+        whenToUse: { en: "Simplifying compositions of trig and inverse trig functions", zh: "化简三角函数与反三角函数的复合" },
+        commonProblemTypes: [
+          { en: "Simplify $\\sin(\\arcsin x)$ or $\\arcsin(\\sin \\theta)$", zh: "化简 $\\sin(\\arcsin x)$ 或 $\\arcsin(\\sin \\theta)$" },
+          { en: "Evaluate nested compositions like $\\cos(\\arctan x)$", zh: "求嵌套复合如 $\\cos(\\arctan x)$ 的值" },
+        ],
+        example: { en: "$\\arcsin(\\sin \\frac{5\\pi}{6}) = \\frac{\\pi}{6}$ (not $\\frac{5\\pi}{6}$, since $\\frac{5\\pi}{6} \\notin [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$)", zh: "$\\arcsin(\\sin \\frac{5\\pi}{6}) = \\frac{\\pi}{6}$（不是 $\\frac{5\\pi}{6}$，因为 $\\frac{5\\pi}{6} \\notin [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$）" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-7-1",
+        title: { en: "Evaluate Inverse Trig at Standard Values", zh: "求标准值处的反三角函数" },
+        description: { en: "Find exact values like $\\arcsin(\\frac{1}{2})$ or $\\arccos(0)$.", zh: "求精确值如 $\\arcsin(\\frac{1}{2})$ 或 $\\arccos(0)$。" },
+        howToRecognize: { en: "Input is a standard unit-circle value; output is an angle.", zh: "输入为标准单位圆值；输出为角。" },
+        steps: [
+          { en: "Ask: which angle in the restricted range has this trig value?", zh: "问：限制值域中哪个角有此三角函数值？" },
+          { en: "Recall unit-circle values", zh: "回忆单位圆值" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\arcsin(\\frac{\\sqrt{3}}{2})$ and $\\arccos(-\\frac{1}{2})$.", zh: "求 $\\arcsin(\\frac{\\sqrt{3}}{2})$ 和 $\\arccos(-\\frac{1}{2})$。" },
+        commonTraps: [
+          { en: "Giving $\\arccos(-\\frac{1}{2}) = -\\frac{\\pi}{3}$ instead of $\\frac{2\\pi}{3}$ — arccos range is $[0, \\pi]$", zh: "给出 $\\arccos(-\\frac{1}{2}) = -\\frac{\\pi}{3}$ 而非 $\\frac{2\\pi}{3}$——arccos 值域是 $[0, \\pi]$" },
+        ],
+      },
+      {
+        id: "pt-4-7-2",
+        title: { en: "Evaluate $\\arctan$ at Standard Values", zh: "求标准值处的 $\\arctan$" },
+        description: { en: "Find $\\arctan(0)$, $\\arctan(1)$, $\\arctan(\\sqrt{3})$, etc.", zh: "求 $\\arctan(0)$、$\\arctan(1)$、$\\arctan(\\sqrt{3})$ 等。" },
+        howToRecognize: { en: "Input to $\\arctan$ is a known tangent value.", zh: "输入 $\\arctan$ 的值为已知正切值。" },
+        steps: [
+          { en: "Find the angle in $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$ whose tangent equals the input", zh: "在 $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$ 中找正切值等于输入的角" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\arctan(-\\sqrt{3})$.", zh: "求 $\\arctan(-\\sqrt{3})$。" },
+        commonTraps: [
+          { en: "Saying $\\arctan(-\\sqrt{3}) = \\frac{2\\pi}{3}$ — must be in $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$, answer is $-\\frac{\\pi}{3}$", zh: "说 $\\arctan(-\\sqrt{3}) = \\frac{2\\pi}{3}$——必须在 $(-\\frac{\\pi}{2}, \\frac{\\pi}{2})$ 内，答案是 $-\\frac{\\pi}{3}$" },
+        ],
+      },
+      {
+        id: "pt-4-7-3",
+        title: { en: "State Domain and Range of Inverse Trig", zh: "给出反三角函数的定义域和值域" },
+        description: { en: "State the domain and range of $\\arcsin$, $\\arccos$, or $\\arctan$.", zh: "给出 $\\arcsin$、$\\arccos$ 或 $\\arctan$ 的定义域和值域。" },
+        howToRecognize: { en: "Problem asks for domain/range of an inverse trig function.", zh: "题目要求反三角函数的定义域/值域。" },
+        steps: [
+          { en: "Recall the restricted ranges for each function", zh: "回忆各函数的限制值域" },
+          { en: "Domain of $\\arcsin$ and $\\arccos$: $[-1, 1]$; domain of $\\arctan$: all reals", zh: "$\\arcsin$ 和 $\\arccos$ 的定义域：$[-1, 1]$；$\\arctan$ 的定义域：全体实数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "State the domain and range of $y = \\arccos x$.", zh: "给出 $y = \\arccos x$ 的定义域和值域。" },
+        commonTraps: [
+          { en: "Confusing domain and range — domain is the set of valid inputs, range is the set of outputs", zh: "搞混定义域和值域——定义域是有效输入集，值域是输出集" },
+        ],
+      },
+      {
+        id: "pt-4-7-4",
+        title: { en: "Direct Cancellation: $\\sin(\\arcsin x)$", zh: "直接抵消：$\\sin(\\arcsin x)$" },
+        description: { en: "Simplify an outer trig composed with its own inverse.", zh: "化简外层三角函数与其自身反函数的复合。" },
+        howToRecognize: { en: "Expression has the form $\\sin(\\arcsin x)$ or $\\cos(\\arccos x)$, etc.", zh: "表达式形如 $\\sin(\\arcsin x)$ 或 $\\cos(\\arccos x)$ 等。" },
+        steps: [
+          { en: "Check that $x$ is in the domain of the inverse function", zh: "检查 $x$ 是否在反函数的定义域内" },
+          { en: "If so, $\\sin(\\arcsin x) = x$", zh: "若是，$\\sin(\\arcsin x) = x$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Evaluate $\\cos(\\arccos \\frac{3}{5})$.", zh: "求 $\\cos(\\arccos \\frac{3}{5})$。" },
+        commonTraps: [
+          { en: "Applying cancellation when $x$ is outside the domain (e.g., $\\arcsin(2)$ is undefined)", zh: "当 $x$ 在定义域之外时仍进行抵消（如 $\\arcsin(2)$ 无定义）" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-7-5",
+        title: { en: "Reverse Cancellation: $\\arcsin(\\sin \\theta)$", zh: "反向抵消：$\\arcsin(\\sin \\theta)$" },
+        description: { en: "Evaluate $\\arcsin(\\sin \\theta)$ when $\\theta$ may be outside the restricted range.", zh: "当 $\\theta$ 可能在限制值域之外时，求 $\\arcsin(\\sin \\theta)$。" },
+        howToRecognize: { en: "Expression like $\\arcsin(\\sin \\frac{5\\pi}{6})$.", zh: "表达式如 $\\arcsin(\\sin \\frac{5\\pi}{6})$。" },
+        steps: [
+          { en: "Check if $\\theta$ is in the restricted range $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$", zh: "检查 $\\theta$ 是否在限制值域 $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ 内" },
+          { en: "If yes: answer is $\\theta$. If no: find the angle in the range with the same sine value", zh: "若是：答案为 $\\theta$。若否：找值域内有相同正弦值的角" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Evaluate $\\arcsin(\\sin \\frac{7\\pi}{6})$.", zh: "求 $\\arcsin(\\sin \\frac{7\\pi}{6})$。" },
+        commonTraps: [
+          { en: "Saying the answer is $\\frac{7\\pi}{6}$ — it's outside $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$; correct answer is $-\\frac{\\pi}{6}$", zh: "说答案是 $\\frac{7\\pi}{6}$——它不在 $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ 内；正确答案是 $-\\frac{\\pi}{6}$" },
+        ],
+      },
+      {
+        id: "pt-4-7-6",
+        title: { en: "Composition: Different Trig and Inverse Trig", zh: "不同三角函数与反三角函数的复合" },
+        description: { en: "Evaluate expressions like $\\cos(\\arcsin \\frac{3}{5})$ or $\\tan(\\arccos x)$.", zh: "求类似 $\\cos(\\arcsin \\frac{3}{5})$ 或 $\\tan(\\arccos x)$ 的值。" },
+        howToRecognize: { en: "Outer function differs from the inner inverse (e.g., $\\cos(\\arcsin \\cdot)$).", zh: "外层函数与内层反函数不同（如 $\\cos(\\arcsin \\cdot)$）。" },
+        steps: [
+          { en: "Let $\\theta = \\arcsin(\\frac{3}{5})$, so $\\sin\\theta = \\frac{3}{5}$ with $\\theta \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$", zh: "设 $\\theta = \\arcsin(\\frac{3}{5})$，则 $\\sin\\theta = \\frac{3}{5}$，$\\theta \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$" },
+          { en: "Draw a right triangle with opp $= 3$, hyp $= 5$, find adj $= 4$", zh: "画直角三角形，对边 $= 3$，斜边 $= 5$，求邻边 $= 4$" },
+          { en: "Read off the desired ratio: $\\cos\\theta = \\frac{4}{5}$", zh: "读出所求比值：$\\cos\\theta = \\frac{4}{5}$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\cos(\\arcsin \\frac{5}{13})$.", zh: "求 $\\cos(\\arcsin \\frac{5}{13})$。" },
+        commonTraps: [
+          { en: "Forgetting to consider the sign — in the arcsin range, cosine is always non-negative", zh: "忘记考虑符号——在 arcsin 的值域中，余弦始终非负" },
+        ],
+      },
+      {
+        id: "pt-4-7-7",
+        title: { en: "Composition with Variable: $\\sin(\\arccos x)$", zh: "含变量的复合：$\\sin(\\arccos x)$" },
+        description: { en: "Express a composition as an algebraic expression in $x$.", zh: "将复合表达为 $x$ 的代数表达式。" },
+        howToRecognize: { en: "The inner value is a variable $x$, not a number.", zh: "内层值为变量 $x$，而非数字。" },
+        steps: [
+          { en: "Let $\\theta = \\arccos x$, so $\\cos\\theta = x$, $\\theta \\in [0, \\pi]$", zh: "设 $\\theta = \\arccos x$，则 $\\cos\\theta = x$，$\\theta \\in [0, \\pi]$" },
+          { en: "Draw a triangle: adj $= x$, hyp $= 1$, opp $= \\sqrt{1 - x^2}$", zh: "画三角形：邻边 $= x$，斜边 $= 1$，对边 $= \\sqrt{1 - x^2}$" },
+          { en: "$\\sin(\\arccos x) = \\sqrt{1 - x^2}$ (positive since $\\theta \\in [0, \\pi]$)", zh: "$\\sin(\\arccos x) = \\sqrt{1 - x^2}$（为正，因 $\\theta \\in [0, \\pi]$）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write $\\tan(\\arcsin x)$ as an algebraic expression for $|x| < 1$.", zh: "将 $\\tan(\\arcsin x)$ 写为 $|x| < 1$ 时的代数表达式。" },
+        commonTraps: [
+          { en: "Dropping the $\\pm$ — use the sign determined by the restricted range of the inverse function", zh: "丢掉 $\\pm$——应由反函数限制值域决定符号" },
+        ],
+      },
+      {
+        id: "pt-4-7-8",
+        title: { en: "Graph an Inverse Trig Function", zh: "画反三角函数图像" },
+        description: { en: "Sketch $y = \\arcsin x$, $y = \\arccos x$, or $y = \\arctan x$.", zh: "画 $y = \\arcsin x$、$y = \\arccos x$ 或 $y = \\arctan x$ 的图像。" },
+        howToRecognize: { en: "Problem asks for the graph of an inverse trig function.", zh: "题目要求画反三角函数图像。" },
+        steps: [
+          { en: "Plot key points (e.g., $\\arcsin$: $(-1, -\\frac{\\pi}{2})$, $(0, 0)$, $(1, \\frac{\\pi}{2})$)", zh: "标关键点（如 $\\arcsin$：$(-1, -\\frac{\\pi}{2})$、$(0, 0)$、$(1, \\frac{\\pi}{2})$）" },
+          { en: "Note the domain restriction on the $x$-axis", zh: "注意 $x$ 轴上的定义域限制" },
+          { en: "For $\\arctan$: draw horizontal asymptotes at $y = \\pm\\frac{\\pi}{2}$", zh: "对 $\\arctan$：画水平渐近线 $y = \\pm\\frac{\\pi}{2}$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch the graph of $y = \\arctan x$ and label key features.", zh: "画 $y = \\arctan x$ 的图像并标注关键特征。" },
+        commonTraps: [
+          { en: "Drawing the graph over all $x$ for arcsin/arccos — they're only defined on $[-1, 1]$", zh: "对 arcsin/arccos 画全体 $x$ 的图——它们仅在 $[-1, 1]$ 上有定义" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-7-9",
+        title: { en: "Nested Inverse Trig Composition", zh: "嵌套反三角复合" },
+        description: { en: "Evaluate complex compositions like $\\sin(2\\arccos \\frac{3}{5})$ using double-angle formulas.", zh: "用倍角公式求复杂复合如 $\\sin(2\\arccos \\frac{3}{5})$。" },
+        howToRecognize: { en: "A multiple-angle expression wraps an inverse trig function.", zh: "倍角表达式包裹反三角函数。" },
+        steps: [
+          { en: "Let $\\theta = \\arccos \\frac{3}{5}$, find $\\sin\\theta$ and $\\cos\\theta$ via triangle", zh: "设 $\\theta = \\arccos \\frac{3}{5}$，用三角形求 $\\sin\\theta$ 和 $\\cos\\theta$" },
+          { en: "Apply double-angle: $\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$", zh: "用倍角公式：$\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$" },
+          { en: "Compute: $2 \\cdot \\frac{4}{5} \\cdot \\frac{3}{5} = \\frac{24}{25}$", zh: "计算：$2 \\cdot \\frac{4}{5} \\cdot \\frac{3}{5} = \\frac{24}{25}$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find $\\cos(2\\arcsin \\frac{5}{13})$.", zh: "求 $\\cos(2\\arcsin \\frac{5}{13})$。" },
+        commonTraps: [
+          { en: "Forgetting to use the double-angle formula and trying to compute $2\\arcsin(\\frac{5}{13})$ directly", zh: "忘记用倍角公式，试图直接计算 $2\\arcsin(\\frac{5}{13})$" },
+        ],
+      },
+      {
+        id: "pt-4-7-10",
+        title: { en: "Algebraic Simplification of Inverse Trig Composition", zh: "反三角复合的代数化简" },
+        description: { en: "Express compositions like $\\sec(\\arctan x)$ as algebraic expressions.", zh: "将 $\\sec(\\arctan x)$ 等复合表达为代数表达式。" },
+        howToRecognize: { en: "Composition of trig and inverse trig with variable input; asked for algebraic form.", zh: "含变量输入的三角函数与反三角函数复合；要求代数形式。" },
+        steps: [
+          { en: "Let $\\theta = \\arctan x$, so $\\tan\\theta = x$ with $\\theta \\in (-\\frac{\\pi}{2}, \\frac{\\pi}{2})$", zh: "设 $\\theta = \\arctan x$，则 $\\tan\\theta = x$，$\\theta \\in (-\\frac{\\pi}{2}, \\frac{\\pi}{2})$" },
+          { en: "Draw triangle: opp $= x$, adj $= 1$, hyp $= \\sqrt{1 + x^2}$", zh: "画三角形：对边 $= x$，邻边 $= 1$，斜边 $= \\sqrt{1 + x^2}$" },
+          { en: "$\\sec\\theta = \\frac{\\text{hyp}}{\\text{adj}} = \\sqrt{1 + x^2}$", zh: "$\\sec\\theta = \\frac{\\text{斜边}}{\\text{邻边}} = \\sqrt{1 + x^2}$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Write $\\csc(\\arccos x)$ as an algebraic expression.", zh: "将 $\\csc(\\arccos x)$ 写为代数表达式。" },
+        commonTraps: [
+          { en: "Using the wrong triangle sides — label opp, adj, hyp carefully based on which inverse trig is given", zh: "三角形边标错——根据给出的是哪个反三角函数仔细标注对边、邻边、斜边" },
+        ],
+      },
+    ],
   },
   {
     id: "4-8",
@@ -5419,6 +7128,246 @@ const chapter4Units: Unit[] = [
       en: "Solve real-world problems involving right triangles, bearings, and simple harmonic motion.",
       zh: "解决涉及直角三角形、方位角及简谐运动的实际问题。",
     },
+    learningGoals: [
+      { en: "Solve applied problems using right triangle trigonometry", zh: "用直角三角形三角学解决应用问题" },
+      { en: "Solve problems involving bearings and navigation", zh: "解决涉及方位角和导航的问题" },
+      { en: "Model and solve simple harmonic motion problems", zh: "建模并求解简谐运动问题" },
+      { en: "Use trigonometric models for real-world periodic phenomena", zh: "用三角模型描述现实中的周期现象" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-4-8-1",
+        title: { en: "Bearings and Navigation", zh: "方位角与导航" },
+        explanation: {
+          en: "A bearing describes direction as an angle measured clockwise from due north (or expressed as N/S followed by degrees E/W). For example, N 40° E means start facing north, rotate 40° toward east. S 25° W means start facing south, rotate 25° toward west. These problems always reduce to right triangles.",
+          zh: "方位角用从正北方向顺时针量的角度（或 N/S 加度数加 E/W）来描述方向。例如 N 40° E 意为面朝北、向东偏转 40°。S 25° W 意为面朝南、向西偏转 25°。这类问题总能化为直角三角形。",
+        },
+        whenToUse: { en: "Navigation, surveying, and direction problems", zh: "导航、测量和方向问题" },
+        commonMistake: { en: "Measuring the bearing angle from east (like standard position) instead of from north", zh: "从东方（如标准位置角）而非从北方量方位角" },
+        example: { en: "Bearing N 60° E with distance 200 mi: north component $= 200\\cos 60° = 100$, east component $= 200\\sin 60° \\approx 173$", zh: "方位角 N 60° E、距离 200 mi：北分量 $= 200\\cos 60° = 100$，东分量 $= 200\\sin 60° \\approx 173$" },
+      },
+      {
+        id: "kc-4-8-2",
+        title: { en: "Simple Harmonic Motion", zh: "简谐运动" },
+        explanation: {
+          en: "Simple harmonic motion is modeled by $d = a\\sin(\\omega t)$ or $d = a\\cos(\\omega t)$, where $d$ is displacement from equilibrium, $|a|$ is the amplitude (maximum displacement), $\\omega$ is the angular frequency, period $= \\frac{2\\pi}{\\omega}$, and frequency $= \\frac{\\omega}{2\\pi}$ (cycles per unit time).",
+          zh: "简谐运动由 $d = a\\sin(\\omega t)$ 或 $d = a\\cos(\\omega t)$ 建模，其中 $d$ 为相对平衡位置的位移，$|a|$ 为振幅（最大位移），$\\omega$ 为角频率，周期 $= \\frac{2\\pi}{\\omega}$，频率 $= \\frac{\\omega}{2\\pi}$（每单位时间的周期数）。",
+        },
+        whenToUse: { en: "Springs, pendulums, sound waves, and other oscillating systems", zh: "弹簧、钟摆、声波及其他振荡系统" },
+        commonMistake: { en: "Confusing angular frequency $\\omega$ with frequency $f$ — $f = \\frac{\\omega}{2\\pi}$", zh: "混淆角频率 $\\omega$ 与频率 $f$——$f = \\frac{\\omega}{2\\pi}$" },
+        example: { en: "$d = 4\\cos(3t)$: amplitude $= 4$, period $= \\frac{2\\pi}{3}$, frequency $= \\frac{3}{2\\pi}$", zh: "$d = 4\\cos(3t)$：振幅 $= 4$，周期 $= \\frac{2\\pi}{3}$，频率 $= \\frac{3}{2\\pi}$" },
+      },
+      {
+        id: "kc-4-8-3",
+        title: { en: "Multi-Step Application Strategy", zh: "多步应用策略" },
+        explanation: {
+          en: "Many real-world trig problems require: (1) draw a diagram, (2) label known and unknown quantities, (3) identify the right triangle(s), (4) choose the appropriate trig ratio, (5) solve and interpret the result in context. Always check: does the answer make physical sense?",
+          zh: "许多实际三角问题需要：(1) 画图，(2) 标注已知和未知量，(3) 找出直角三角形，(4) 选择合适的三角比，(5) 求解并在情境中解释结果。始终检查：答案在物理上是否合理？",
+        },
+        whenToUse: { en: "Any applied trig problem — follow this systematic approach", zh: "任何三角应用题——按此系统方法进行" },
+        commonMistake: { en: "Skipping the diagram — most errors come from mislabeled triangles", zh: "跳过画图——大多数错误源于三角形标注错误" },
+        example: { en: "A surveyor measures angles from two points to find the width of a river — set up two triangles sharing the river width as a side", zh: "测量员从两点量角以求河宽——建立共享河宽为一边的两个三角形" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-4-8-1",
+        name: { en: "Simple Harmonic Motion", zh: "简谐运动" },
+        formula: "d = a\\sin(\\omega t) \\quad \\text{or} \\quad d = a\\cos(\\omega t)",
+        variables: [
+          { en: "$d$ — displacement from equilibrium at time $t$", zh: "$d$ — 时刻 $t$ 时相对平衡位置的位移" },
+          { en: "$|a|$ — amplitude (maximum displacement)", zh: "$|a|$ — 振幅（最大位移）" },
+          { en: "$\\omega$ — angular frequency (rad/time)", zh: "$\\omega$ — 角频率（弧度/时间）" },
+          { en: "Period $= \\frac{2\\pi}{\\omega}$, Frequency $= \\frac{\\omega}{2\\pi}$", zh: "周期 $= \\frac{2\\pi}{\\omega}$，频率 $= \\frac{\\omega}{2\\pi}$" },
+        ],
+        whenToUse: { en: "Modeling oscillations: springs, pendulums, sound, electromagnetic waves", zh: "建模振荡：弹簧、钟摆、声波、电磁波" },
+        commonProblemTypes: [
+          { en: "Find amplitude, period, and frequency from the equation", zh: "由方程求振幅、周期和频率" },
+          { en: "Write the equation given physical parameters", zh: "由物理参数写方程" },
+          { en: "Find displacement at a given time", zh: "求给定时刻的位移" },
+        ],
+        example: { en: "A spring oscillates with $d = 6\\cos(\\pi t)$: amplitude $6$, period $2$ sec, frequency $\\frac{1}{2}$ Hz", zh: "弹簧振荡 $d = 6\\cos(\\pi t)$：振幅 $6$，周期 $2$ 秒，频率 $\\frac{1}{2}$ Hz" },
+      },
+      {
+        id: "f-4-8-2",
+        name: { en: "Bearing Components", zh: "方位角分量" },
+        formula: "\\text{N/S component} = d\\cos\\theta, \\quad \\text{E/W component} = d\\sin\\theta",
+        variables: [
+          { en: "$d$ — distance traveled", zh: "$d$ — 行驶距离" },
+          { en: "$\\theta$ — bearing angle (measured from north)", zh: "$\\theta$ — 方位角（从正北量起）" },
+        ],
+        whenToUse: { en: "Breaking a bearing/distance into north-south and east-west components", zh: "将方位角/距离分解为南北和东西分量" },
+        commonProblemTypes: [
+          { en: "Find how far north/south and east/west an object has traveled", zh: "求物体向南北和东西各走了多远" },
+          { en: "Find the total distance between two points after bearing changes", zh: "方位变化后求两点间的总距离" },
+        ],
+        example: { en: "Bearing S 30° E, distance 50 mi: south $= 50\\cos 30° \\approx 43.3$, east $= 50\\sin 30° = 25$", zh: "方位角 S 30° E，距离 50 mi：向南 $= 50\\cos 30° \\approx 43.3$，向东 $= 50\\sin 30° = 25$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-4-8-1",
+        title: { en: "Find Amplitude, Period, Frequency from SHM Equation", zh: "由简谐运动方程求振幅、周期、频率" },
+        description: { en: "Read off the parameters from $d = a\\sin(\\omega t)$ or $d = a\\cos(\\omega t)$.", zh: "从 $d = a\\sin(\\omega t)$ 或 $d = a\\cos(\\omega t)$ 读取参数。" },
+        howToRecognize: { en: "SHM equation given; asked for amplitude, period, or frequency.", zh: "给出简谐运动方程；要求振幅、周期或频率。" },
+        steps: [
+          { en: "Amplitude $= |a|$", zh: "振幅 $= |a|$" },
+          { en: "Period $= \\frac{2\\pi}{\\omega}$", zh: "周期 $= \\frac{2\\pi}{\\omega}$" },
+          { en: "Frequency $= \\frac{\\omega}{2\\pi}$", zh: "频率 $= \\frac{\\omega}{2\\pi}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the amplitude, period, and frequency of $d = 3\\sin(8\\pi t)$.", zh: "求 $d = 3\\sin(8\\pi t)$ 的振幅、周期和频率。" },
+        commonTraps: [
+          { en: "Confusing $\\omega = 8\\pi$ with the period (period is $\\frac{2\\pi}{8\\pi} = \\frac{1}{4}$)", zh: "把 $\\omega = 8\\pi$ 当成周期（周期是 $\\frac{2\\pi}{8\\pi} = \\frac{1}{4}$）" },
+        ],
+      },
+      {
+        id: "pt-4-8-2",
+        title: { en: "Find Displacement at a Given Time", zh: "求给定时刻的位移" },
+        description: { en: "Substitute $t$ into the SHM equation to find $d$.", zh: "将 $t$ 代入简谐运动方程求 $d$。" },
+        howToRecognize: { en: "SHM equation given; asked for $d$ at a specific $t$.", zh: "给出简谐运动方程；要求某时刻的 $d$ 值。" },
+        steps: [
+          { en: "Substitute $t$ into the equation", zh: "将 $t$ 代入方程" },
+          { en: "Evaluate the trig function (exact or calculator)", zh: "求三角函数值（精确或用计算器）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $d = 5\\cos(\\pi t)$, find $d$ when $t = 1.5$ sec.", zh: "若 $d = 5\\cos(\\pi t)$，求 $t = 1.5$ 秒时的 $d$。" },
+        commonTraps: [
+          { en: "Calculator in degree mode when argument is in radians", zh: "参数为弧度时计算器却在角度模式" },
+        ],
+      },
+      {
+        id: "pt-4-8-3",
+        title: { en: "Interpret a Bearing", zh: "解读方位角" },
+        description: { en: "Convert a bearing description to a diagram and angle.", zh: "将方位角描述转化为图示和角度。" },
+        howToRecognize: { en: "Problem gives a bearing like N 35° W or S 70° E.", zh: "题目给出方位角如 N 35° W 或 S 70° E。" },
+        steps: [
+          { en: "Draw north-south line", zh: "画南北线" },
+          { en: "From north (or south), rotate the given degrees toward east (or west)", zh: "从北（或南）向东（或西）偏转给定度数" },
+          { en: "Label the resulting direction", zh: "标注方向" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Sketch and interpret the bearing S 55° E.", zh: "画出并解读方位角 S 55° E。" },
+        commonTraps: [
+          { en: "Measuring from east/west instead of north/south", zh: "从东/西而非南/北量起" },
+        ],
+      },
+      {
+        id: "pt-4-8-4",
+        title: { en: "Basic Right Triangle Application", zh: "基本直角三角形应用" },
+        description: { en: "Solve a straightforward real-world right triangle problem.", zh: "解决一个简单的直角三角形实际问题。" },
+        howToRecognize: { en: "Word problem with one right triangle, one unknown.", zh: "含一个直角三角形、一个未知量的应用题。" },
+        steps: [
+          { en: "Draw and label the right triangle", zh: "画并标注直角三角形" },
+          { en: "Choose the trig ratio relating the known and unknown", zh: "选择关联已知量和未知量的三角比" },
+          { en: "Solve", zh: "求解" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "A ladder 20 ft long leans against a wall at $70°$ from the ground. How high does it reach?", zh: "20 ft 的梯子以 $70°$ 角靠墙，能达到多高？" },
+        commonTraps: [
+          { en: "Using the wrong trig function — the height is the opposite side, so use $\\sin 70°$", zh: "用错三角函数——高度是对边，应用 $\\sin 70°$" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-4-8-5",
+        title: { en: "Bearing and Distance Problem", zh: "方位角和距离问题" },
+        description: { en: "Find distances or positions using bearing descriptions.", zh: "利用方位角描述求距离或位置。" },
+        howToRecognize: { en: "Two bearings or a bearing with distance; asked for a resulting distance or position.", zh: "两个方位角或方位角加距离；求结果距离或位置。" },
+        steps: [
+          { en: "Draw a diagram with the north-south reference at each point", zh: "在每个点画出南北参考线" },
+          { en: "Decompose each leg into N/S and E/W components", zh: "将每段分解为南北和东西分量" },
+          { en: "Use the Pythagorean Theorem for the total distance", zh: "用勾股定理求总距离" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A ship sails N 30° E for 80 mi, then S 60° E for 60 mi. How far is it from the starting point?", zh: "船先沿 N 30° E 行驶 80 mi，再沿 S 60° E 行驶 60 mi。距出发点多远？" },
+        commonTraps: [
+          { en: "Forgetting to add/subtract components correctly when direction changes", zh: "方向变化时分量加减搞错" },
+        ],
+      },
+      {
+        id: "pt-4-8-6",
+        title: { en: "Write SHM Equation from Physical Description", zh: "由物理描述写简谐运动方程" },
+        description: { en: "Write $d = a\\sin(\\omega t)$ or $d = a\\cos(\\omega t)$ from given physical parameters.", zh: "由给定物理参数写出 $d = a\\sin(\\omega t)$ 或 $d = a\\cos(\\omega t)$。" },
+        howToRecognize: { en: "Amplitude, period/frequency given; asked to write the equation.", zh: "给出振幅、周期/频率；要求写方程。" },
+        steps: [
+          { en: "Identify amplitude $a$", zh: "确定振幅 $a$" },
+          { en: "Compute $\\omega = \\frac{2\\pi}{T}$ from the period", zh: "由周期算 $\\omega = \\frac{2\\pi}{T}$" },
+          { en: "Choose sine or cosine based on initial condition ($d(0) = 0$ → sine, $d(0) = a$ → cosine)", zh: "根据初始条件选正弦或余弦（$d(0) = 0$ → 正弦，$d(0) = a$ → 余弦）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A spring is pulled 8 cm below equilibrium and released. It completes one cycle every 0.5 sec. Write the model.", zh: "弹簧从平衡位置下拉 8 cm 释放，每 0.5 秒完成一个周期。写出模型。" },
+        commonTraps: [
+          { en: "Using sine when the object starts at maximum displacement (should use cosine)", zh: "物体从最大位移开始时用正弦（应用余弦）" },
+        ],
+      },
+      {
+        id: "pt-4-8-7",
+        title: { en: "Angle of Elevation/Depression Application", zh: "仰角/俯角应用" },
+        description: { en: "Solve a real-world problem involving angles of elevation or depression.", zh: "解决涉及仰角或俯角的实际问题。" },
+        howToRecognize: { en: "Problem mentions looking up/down at an object from a known distance or height.", zh: "题目提到从已知距离或高度向上/向下看某物体。" },
+        steps: [
+          { en: "Draw the right triangle with horizontal and vertical sides", zh: "画出含水平和垂直边的直角三角形" },
+          { en: "Label the given angle, known side, and unknown side", zh: "标注已知角、已知边和未知边" },
+          { en: "Use the appropriate trig ratio to solve", zh: "用合适的三角比求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "From the top of a 120 ft cliff, the angle of depression to a boat is $25°$. How far is the boat from the base of the cliff?", zh: "从 120 ft 高的悬崖顶，俯视一艘船的俯角为 $25°$。船距悬崖底部多远？" },
+        commonTraps: [
+          { en: "Confusing the angle of depression (from horizontal down) with the angle at the base of the triangle", zh: "混淆俯角（从水平向下）与三角形底角" },
+        ],
+      },
+      {
+        id: "pt-4-8-8",
+        title: { en: "Two-Observer Problem", zh: "双观察者问题" },
+        description: { en: "Two observers at known positions measure angles to the same object; find the object's position.", zh: "两个已知位置的观察者测量同一物体的角度；求物体位置。" },
+        howToRecognize: { en: "Two angles of elevation from different distances to the same point.", zh: "从不同距离对同一点的两个仰角。" },
+        steps: [
+          { en: "Draw the diagram with both observers and the target", zh: "画出含两个观察者和目标的图" },
+          { en: "Set up trig equations for each triangle (shared height)", zh: "对每个三角形列三角方程（共享高度）" },
+          { en: "Solve the system", zh: "解方程组" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "From point A, the angle of elevation to a tower is $50°$. From point B, 200 ft farther away, it is $35°$. Find the tower height.", zh: "从 A 点仰望塔顶仰角 $50°$，从远 200 ft 的 B 点仰角 $35°$。求塔高。" },
+        commonTraps: [
+          { en: "Labeling the distance from B to the tower as 200 instead of $d + 200$", zh: "把 B 到塔的距离标为 200 而非 $d + 200$" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-4-8-9",
+        title: { en: "Multi-Leg Navigation Problem", zh: "多段航行问题" },
+        description: { en: "Track a ship or plane through multiple bearing changes and find final position.", zh: "追踪船或飞机经多次方位变化后的最终位置。" },
+        howToRecognize: { en: "Two or more legs with different bearings and distances.", zh: "两段或多段不同方位角和距离。" },
+        steps: [
+          { en: "Decompose each leg into N/S and E/W components", zh: "将每段分解为南北和东西分量" },
+          { en: "Sum all N/S components and all E/W components", zh: "将所有南北分量和东西分量分别求和" },
+          { en: "Use Pythagorean Theorem for total distance and $\\arctan$ for bearing", zh: "用勾股定理求总距离，用 $\\arctan$ 求方位角" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A plane flies N 50° W for 300 mi, then S 20° W for 200 mi, then due east for 150 mi. Find the distance and bearing from start to finish.", zh: "飞机先沿 N 50° W 飞 300 mi，再沿 S 20° W 飞 200 mi，再正东飞 150 mi。求起点到终点的距离和方位角。" },
+        commonTraps: [
+          { en: "Mixing up signs when changing from north to south legs", zh: "从北向段转到南向段时符号搞混" },
+        ],
+      },
+      {
+        id: "pt-4-8-10",
+        title: { en: "Damped or Combined Harmonic Motion", zh: "阻尼或组合简谐运动" },
+        description: { en: "Analyze motion with damping ($d = ae^{-bt}\\cos(\\omega t)$) or combined oscillations.", zh: "分析含阻尼（$d = ae^{-bt}\\cos(\\omega t)$）或组合振荡的运动。" },
+        howToRecognize: { en: "Equation includes an exponential decay factor or sum of trig functions.", zh: "方程含指数衰减因子或三角函数之和。" },
+        steps: [
+          { en: "Identify the amplitude envelope ($ae^{-bt}$ decays over time)", zh: "识别振幅包络线（$ae^{-bt}$ 随时间衰减）" },
+          { en: "The oscillation still has period $\\frac{2\\pi}{\\omega}$", zh: "振荡仍有周期 $\\frac{2\\pi}{\\omega}$" },
+          { en: "Find when displacement first returns to zero, or when amplitude drops below a threshold", zh: "求位移首次回零的时刻，或振幅降到阈值以下的时刻" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A shock absorber has displacement $d = 10e^{-0.5t}\\cos(4\\pi t)$. Find the amplitude after 3 seconds and the period of oscillation.", zh: "减震器位移 $d = 10e^{-0.5t}\\cos(4\\pi t)$。求 3 秒后的振幅和振荡周期。" },
+        commonTraps: [
+          { en: "Treating $e^{-0.5t}$ as part of the frequency instead of the amplitude envelope", zh: "把 $e^{-0.5t}$ 当成频率的一部分而非振幅包络" },
+        ],
+      },
+    ],
   },
 ];
 
