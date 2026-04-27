@@ -529,27 +529,534 @@ const chapter1Units: Unit[] = [
     id: "1-3",
     chapterId: "ch-1",
     number: "1.3",
-    title: {
-      en: "Linear Equations in Two Variables",
-      zh: "二元一次方程",
-    },
+    title: { en: "Linear Equations in Two Variables", zh: "二元一次方程" },
     description: {
       en: "Use slope to graph linear equations, write equations of lines, and model real-world situations.",
       zh: "利用斜率绘制一次方程图像，写出直线方程，并建立实际情境的模型。",
     },
+    learningGoals: [
+      { en: "Calculate the slope of a line from two points", zh: "由两点计算直线的斜率" },
+      { en: "Write equations of lines in slope-intercept, point-slope, and standard forms", zh: "用斜截式、点斜式与一般式写出直线方程" },
+      { en: "Identify parallel and perpendicular lines from their slopes", zh: "由斜率判断两条直线是否平行或垂直" },
+      { en: "Use linear equations to model and interpret real-world data", zh: "用线性方程对实际数据建模与解释" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-3-1",
+        title: { en: "Slope of a Line", zh: "直线的斜率" },
+        explanation: {
+          en: "Slope $m$ measures the rate of change of $y$ with respect to $x$: $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Positive slope rises left to right; negative slope falls. Horizontal lines have $m = 0$; vertical lines have undefined slope.",
+          zh: "斜率 $m$ 衡量 $y$ 随 $x$ 的变化率：$m = \\frac{y_2 - y_1}{x_2 - x_1}$。$m > 0$ 时直线从左下向右上；$m < 0$ 时反之。水平线 $m = 0$；铅直线斜率不存在。",
+        },
+        whenToUse: { en: "To compare steepness, identify direction, or build a linear equation", zh: "比较陡度、判断方向或构造线性方程时" },
+        commonMistake: { en: "Subtracting in inconsistent order (e.g., $y_2 - y_1$ over $x_1 - x_2$); reporting \"undefined\" as $0$", zh: "做差顺序不一致（如 $y_2 - y_1$ 配 $x_1 - x_2$）；把\"不存在\"写成 $0$" },
+        example: { en: "Through $(1, 2)$ and $(4, 11)$: $m = \\frac{11-2}{4-1} = 3$", zh: "过 $(1, 2)$ 与 $(4, 11)$：$m = \\frac{11-2}{4-1} = 3$" },
+      },
+      {
+        id: "kc-1-3-2",
+        title: { en: "Forms of a Linear Equation", zh: "直线方程的形式" },
+        explanation: {
+          en: "Slope-intercept form $y = mx + b$ shows slope and $y$-intercept directly. Point-slope form $y - y_1 = m(x - x_1)$ is best when you know a slope and one point. Standard form $Ax + By = C$ (with integer $A, B, C$) is convenient for finding intercepts.",
+          zh: "斜截式 $y = mx + b$ 直接显示斜率与 $y$ 截距。点斜式 $y - y_1 = m(x - x_1)$ 适合已知斜率与一点的情形。一般式 $Ax + By = C$（整数系数）便于求截距。",
+        },
+        whenToUse: { en: "Choose the form that matches the given information", zh: "选用与已知条件匹配的形式" },
+        commonMistake: { en: "Forgetting to distribute the slope through the parentheses in point-slope form", zh: "点斜式中忘记把斜率乘进括号" },
+        example: { en: "Slope $2$ through $(1, 5)$: point-slope $y - 5 = 2(x - 1)$ ⇒ slope-intercept $y = 2x + 3$", zh: "斜率 $2$ 过 $(1, 5)$：点斜式 $y - 5 = 2(x - 1)$ ⇒ 斜截式 $y = 2x + 3$" },
+      },
+      {
+        id: "kc-1-3-3",
+        title: { en: "Parallel and Perpendicular Lines", zh: "平行线与垂直线" },
+        explanation: {
+          en: "Two non-vertical lines are parallel iff their slopes are equal: $m_1 = m_2$. They are perpendicular iff $m_1 \\cdot m_2 = -1$ (i.e., one slope is the negative reciprocal of the other). Vertical and horizontal lines are perpendicular by definition.",
+          zh: "两条非铅直直线平行当且仅当斜率相等：$m_1 = m_2$。垂直当且仅当 $m_1 \\cdot m_2 = -1$（即互为负倒数）。铅直线与水平线按定义互相垂直。",
+        },
+        whenToUse: { en: "Whenever a problem mentions parallel/perpendicular conditions on lines", zh: "题目涉及直线平行或垂直时" },
+        commonMistake: { en: "Using the reciprocal without flipping the sign for perpendicular slopes", zh: "求垂直斜率时取倒数却忘记变号" },
+        example: { en: "Line with slope $\\tfrac{2}{3}$: parallel slope $\\tfrac{2}{3}$; perpendicular slope $-\\tfrac{3}{2}$", zh: "斜率 $\\tfrac{2}{3}$ 的直线：平行斜率 $\\tfrac{2}{3}$；垂直斜率 $-\\tfrac{3}{2}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-3-1",
+        name: { en: "Slope Formula", zh: "斜率公式" },
+        formula: "m = \\frac{y_2 - y_1}{x_2 - x_1}",
+        variables: [
+          { en: "$(x_1, y_1)$, $(x_2, y_2)$ — two distinct points on the line", zh: "$(x_1, y_1)$、$(x_2, y_2)$ — 直线上两个不同的点" },
+          { en: "$m$ — slope", zh: "$m$ — 斜率" },
+        ],
+        whenToUse: { en: "Whenever two points on a line are known", zh: "已知直线上两点时" },
+        commonProblemTypes: [
+          { en: "Find slope from two points", zh: "由两点求斜率" },
+          { en: "Determine whether two lines are parallel or perpendicular", zh: "判断两直线是否平行或垂直" },
+        ],
+        example: { en: "Through $(0, 1)$ and $(2, 7)$: $m = \\frac{7-1}{2-0} = 3$", zh: "过 $(0, 1)$ 与 $(2, 7)$：$m = \\frac{7-1}{2-0} = 3$" },
+      },
+      {
+        id: "f-1-3-2",
+        name: { en: "Slope-Intercept Form", zh: "斜截式" },
+        formula: "y = mx + b",
+        variables: [
+          { en: "$m$ — slope", zh: "$m$ — 斜率" },
+          { en: "$b$ — $y$-intercept (value of $y$ when $x = 0$)", zh: "$b$ — $y$ 截距（$x = 0$ 时的 $y$ 值）" },
+        ],
+        whenToUse: { en: "When slope and $y$-intercept are known, or to graph quickly", zh: "已知斜率与 $y$ 截距，或需快速绘图时" },
+        commonProblemTypes: [
+          { en: "Graph a line", zh: "绘制直线" },
+          { en: "Identify slope and $y$-intercept from an equation", zh: "由方程识别斜率与 $y$ 截距" },
+        ],
+        example: { en: "$y = -2x + 5$: slope $-2$, $y$-intercept $(0, 5)$", zh: "$y = -2x + 5$：斜率 $-2$，$y$ 截距 $(0, 5)$" },
+      },
+      {
+        id: "f-1-3-3",
+        name: { en: "Point-Slope Form", zh: "点斜式" },
+        formula: "y - y_1 = m(x - x_1)",
+        variables: [
+          { en: "$(x_1, y_1)$ — known point on the line", zh: "$(x_1, y_1)$ — 直线上已知点" },
+          { en: "$m$ — slope", zh: "$m$ — 斜率" },
+        ],
+        whenToUse: { en: "When you have a slope and ANY one point", zh: "已知斜率和任意一点时" },
+        commonProblemTypes: [
+          { en: "Write a line equation from a point and slope", zh: "由一点与斜率写直线方程" },
+          { en: "Build a parallel or perpendicular line through a given point", zh: "过指定点作平行或垂直线" },
+        ],
+        example: { en: "Slope $4$ through $(2, -3)$: $y + 3 = 4(x - 2)$", zh: "斜率 $4$ 过 $(2, -3)$：$y + 3 = 4(x - 2)$" },
+      },
+      {
+        id: "f-1-3-4",
+        name: { en: "Standard (General) Form", zh: "一般式（标准式）" },
+        formula: "Ax + By = C",
+        variables: [
+          { en: "$A, B, C$ — integers, with $A \\geq 0$ by convention", zh: "$A, B, C$ — 整数，按惯例 $A \\geq 0$" },
+        ],
+        whenToUse: { en: "When intercepts are needed quickly, or to clear fractions", zh: "快速求截距或消除分数时" },
+        commonProblemTypes: [
+          { en: "Find intercepts: set $x = 0$ then $y = 0$", zh: "求截距：令 $x = 0$ 再 $y = 0$" },
+          { en: "Convert from slope-intercept to standard form", zh: "由斜截式化为一般式" },
+        ],
+        example: { en: "$2x + 3y = 12$: $x$-intercept $(6, 0)$, $y$-intercept $(0, 4)$", zh: "$2x + 3y = 12$：$x$ 截距 $(6, 0)$，$y$ 截距 $(0, 4)$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-3-1",
+        title: { en: "Find Slope from Two Points", zh: "由两点求斜率" },
+        description: { en: "Apply the slope formula to two given points.", zh: "对给定两点应用斜率公式。" },
+        howToRecognize: { en: "Two points are given; problem asks for slope.", zh: "给定两点；要求斜率。" },
+        steps: [
+          { en: "Label points as $(x_1, y_1)$ and $(x_2, y_2)$", zh: "标记为 $(x_1, y_1)$ 与 $(x_2, y_2)$" },
+          { en: "Apply $m = \\frac{y_2 - y_1}{x_2 - x_1}$", zh: "代入 $m = \\frac{y_2 - y_1}{x_2 - x_1}$" },
+          { en: "Simplify to lowest terms", zh: "化简为最简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the slope of the line through $(-2, 5)$ and $(3, -1)$.", zh: "求过 $(-2, 5)$ 与 $(3, -1)$ 的直线斜率。" },
+        commonTraps: [
+          { en: "Using the same order in numerator and denominator (always pair them)", zh: "分子分母减法顺序需一致（一一对应）" },
+          { en: "Reporting an undefined slope as zero", zh: "把不存在的斜率写作 0" },
+        ],
+      },
+      {
+        id: "pt-1-3-2",
+        title: { en: "Read Slope and Intercept from $y = mx + b$", zh: "由 $y = mx + b$ 读出斜率与截距" },
+        description: { en: "Identify slope and $y$-intercept directly from slope-intercept form.", zh: "直接从斜截式读出斜率与 $y$ 截距。" },
+        howToRecognize: { en: "Equation is already in $y = mx + b$ form (or can be solved for $y$).", zh: "方程已是 $y = mx + b$ 形式（或可解出 $y$）。" },
+        steps: [
+          { en: "Solve for $y$ if not already done", zh: "如未解出 $y$，先解出" },
+          { en: "Coefficient of $x$ is the slope $m$", zh: "$x$ 的系数即为斜率 $m$" },
+          { en: "Constant term is $b$ — the $y$-intercept is $(0, b)$", zh: "常数项即 $b$——$y$ 截距为 $(0, b)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the slope and $y$-intercept of $3y = 6x - 9$.", zh: "求 $3y = 6x - 9$ 的斜率与 $y$ 截距。" },
+        commonTraps: [
+          { en: "Reading the slope before solving for $y$ (so the coefficient is wrong)", zh: "未解出 $y$ 就读斜率（系数有误）" },
+        ],
+      },
+      {
+        id: "pt-1-3-3",
+        title: { en: "Graph a Line in Slope-Intercept Form", zh: "用斜截式画直线" },
+        description: { en: "Plot the $y$-intercept, then use the slope's rise/run to find a second point.", zh: "先标 $y$ 截距，再按斜率的升/进求第二点。" },
+        howToRecognize: { en: "Equation in $y = mx + b$ form; problem asks for the graph.", zh: "$y = mx + b$ 形式；要求画图。" },
+        steps: [
+          { en: "Plot $y$-intercept $(0, b)$", zh: "标 $y$ 截距 $(0, b)$" },
+          { en: "From there, move 1 right and $m$ up (or write $m$ as $\\tfrac{\\text{rise}}{\\text{run}}$ for fractional slopes)", zh: "从该点向右 1 单位，向上 $m$ 单位（分数斜率写成 $\\tfrac{\\text{升}}{\\text{进}}$）" },
+          { en: "Draw the line through the two points", zh: "通过两点画直线" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Graph $y = \\tfrac{2}{3}x - 1$.", zh: "画 $y = \\tfrac{2}{3}x - 1$。" },
+        commonTraps: [
+          { en: "Using \"rise over run\" with the wrong sign for negative slopes", zh: "负斜率时\"升/进\"的符号弄错" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-3-4",
+        title: { en: "Write Equation Given Slope and a Point", zh: "已知斜率与一点写方程" },
+        description: { en: "Use point-slope form, then optionally rewrite in slope-intercept form.", zh: "用点斜式，必要时再化为斜截式。" },
+        howToRecognize: { en: "A slope and one point on the line are given.", zh: "给出斜率与直线上一点。" },
+        steps: [
+          { en: "Substitute into $y - y_1 = m(x - x_1)$", zh: "代入 $y - y_1 = m(x - x_1)$" },
+          { en: "Distribute and simplify if asked for slope-intercept form", zh: "如需斜截式，展开并化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write the equation of the line with slope $-3$ passing through $(4, 1)$ in slope-intercept form.", zh: "写出斜率 $-3$ 过 $(4, 1)$ 的直线的斜截式。" },
+        commonTraps: [
+          { en: "Sign errors when distributing the slope", zh: "把斜率分配进括号时的符号错误" },
+        ],
+      },
+      {
+        id: "pt-1-3-5",
+        title: { en: "Write Equation Given Two Points", zh: "由两点写方程" },
+        description: { en: "First compute slope, then use point-slope form with either point.", zh: "先求斜率，再用任一点代入点斜式。" },
+        howToRecognize: { en: "Two points are given; problem asks for the equation.", zh: "给出两点；要求方程。" },
+        steps: [
+          { en: "Compute slope $m = \\frac{y_2 - y_1}{x_2 - x_1}$", zh: "求斜率 $m = \\frac{y_2 - y_1}{x_2 - x_1}$" },
+          { en: "Apply point-slope form with either given point", zh: "用任一已知点代入点斜式" },
+          { en: "Simplify to the requested form", zh: "化为所需形式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the equation of the line through $(-1, 4)$ and $(3, -8)$.", zh: "求过 $(-1, 4)$ 与 $(3, -8)$ 的直线方程。" },
+        commonTraps: [
+          { en: "Plugging both points into point-slope form (only one is needed)", zh: "把两点都代入点斜式（只需一点）" },
+        ],
+      },
+      {
+        id: "pt-1-3-6",
+        title: { en: "Convert Between Forms", zh: "在不同形式间转换" },
+        description: { en: "Rewrite a line equation between slope-intercept, point-slope, and standard forms.", zh: "在斜截式、点斜式与一般式之间互换。" },
+        howToRecognize: { en: "Equation is given in one form; problem asks for another.", zh: "给出某一形式；要求另一形式。" },
+        steps: [
+          { en: "Apply algebraic manipulation: distribute, combine like terms, isolate $y$", zh: "代数变形：展开、合并同类项、解出 $y$" },
+          { en: "For standard form, clear fractions and arrange as $Ax + By = C$ with integer $A, B, C$", zh: "化为一般式时去分母，排为整数系数的 $Ax + By = C$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Convert $y - 2 = \\tfrac{1}{3}(x + 6)$ to standard form with integer coefficients.", zh: "把 $y - 2 = \\tfrac{1}{3}(x + 6)$ 化为整数系数的一般式。" },
+        commonTraps: [
+          { en: "Forgetting to multiply ALL terms when clearing fractions", zh: "去分母时漏乘某些项" },
+        ],
+      },
+      {
+        id: "pt-1-3-7",
+        title: { en: "Determine Parallel or Perpendicular", zh: "判断平行或垂直" },
+        description: { en: "Compare slopes of two lines to classify their relationship.", zh: "比较两条直线的斜率以判断关系。" },
+        howToRecognize: { en: "Two equations or two pairs of points are given; problem asks for the relationship.", zh: "给出两个方程或两组点；要求判断关系。" },
+        steps: [
+          { en: "Find each line's slope", zh: "分别求两条直线的斜率" },
+          { en: "Equal slopes ⇒ parallel; product of slopes equals $-1$ ⇒ perpendicular", zh: "斜率相等 ⇒ 平行；斜率乘积为 $-1$ ⇒ 垂直" },
+          { en: "Otherwise the lines are neither parallel nor perpendicular", zh: "否则既不平行也不垂直" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Are the lines $y = 2x + 1$ and $4x - 2y = 7$ parallel, perpendicular, or neither?", zh: "判断 $y = 2x + 1$ 与 $4x - 2y = 7$ 是平行、垂直还是都不是？" },
+        commonTraps: [
+          { en: "Comparing equations directly without solving each for $y$", zh: "未先解出 $y$ 就直接比较方程" },
+        ],
+      },
+      {
+        id: "pt-1-3-8",
+        title: { en: "Write Parallel or Perpendicular Line Through a Point", zh: "过一点作平行或垂直线" },
+        description: { en: "Build the equation of a line that is parallel or perpendicular to a given line and passes through a specific point.", zh: "构造与已知直线平行或垂直、且过指定点的直线方程。" },
+        howToRecognize: { en: "Problem provides a reference line, a relationship (parallel/perpendicular), and a point.", zh: "题目给出参考直线、关系（平行/垂直）和一点。" },
+        steps: [
+          { en: "Find the reference line's slope $m_0$", zh: "求参考直线的斜率 $m_0$" },
+          { en: "Parallel ⇒ new slope is $m_0$; perpendicular ⇒ new slope is $-\\frac{1}{m_0}$", zh: "平行 ⇒ 新斜率为 $m_0$；垂直 ⇒ 新斜率为 $-\\frac{1}{m_0}$" },
+          { en: "Apply point-slope form with the new slope and given point", zh: "用新斜率与给定点代入点斜式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the equation of the line perpendicular to $y = \\tfrac{1}{2}x + 3$ passing through $(4, -1)$.", zh: "求过 $(4, -1)$ 且垂直于 $y = \\tfrac{1}{2}x + 3$ 的直线方程。" },
+        commonTraps: [
+          { en: "Forgetting the negative sign in negative reciprocal slopes", zh: "求负倒数斜率时漏掉负号" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-3-9",
+        title: { en: "Linear Modeling — Cost, Depreciation, or Rate Problems", zh: "线性建模——成本、折旧或速率问题" },
+        description: { en: "Build a linear equation from a verbal description and use it to predict or interpret values.", zh: "由文字描述建立线性方程，并用于预测或解释。" },
+        howToRecognize: { en: "Word problem describes a constant rate of change (per unit, per year, etc.).", zh: "应用题描述恒定变化率（每单位、每年等）。" },
+        steps: [
+          { en: "Identify independent and dependent variables", zh: "确定自变量与因变量" },
+          { en: "Identify slope (rate) and a known $(x, y)$ point", zh: "确定斜率（速率）与一个已知点 $(x, y)$" },
+          { en: "Write the equation in slope-intercept or point-slope form", zh: "写出斜截式或点斜式" },
+          { en: "Use it to answer the question (predict, interpret, find break-even, etc.)", zh: "用方程回答问题（预测、解释、求平衡点等）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A printer costs \\$240 plus \\$0.05 per page printed. Write a linear equation for total cost $C$ as a function of pages $p$, and find the cost of $1{,}500$ pages.", zh: "打印机成本为 \\$240 加上每页 \\$0.05。写出总成本 $C$ 关于页数 $p$ 的线性方程，并求 $1{,}500$ 页的成本。" },
+        commonTraps: [
+          { en: "Confusing the fixed cost (intercept) with the rate (slope)", zh: "把固定成本（截距）与速率（斜率）弄反" },
+          { en: "Mismatched units (per minute vs per hour, etc.)", zh: "单位不一致（每分钟 vs 每小时等）" },
+        ],
+      },
+      {
+        id: "pt-1-3-10",
+        title: { en: "Find Intersection of Two Lines", zh: "求两直线交点" },
+        description: { en: "Solve a system of two linear equations to find the point where two lines meet.", zh: "解二元一次方程组求两条直线的交点。" },
+        howToRecognize: { en: "Two line equations are given; problem asks for the intersection.", zh: "给出两条直线方程；求交点。" },
+        steps: [
+          { en: "Solve one equation for $y$ (or use elimination)", zh: "解出某方程的 $y$（或用消元法）" },
+          { en: "Substitute into the other equation; solve for $x$", zh: "代入另一方程求 $x$" },
+          { en: "Back-substitute to find $y$", zh: "回代求 $y$" },
+          { en: "Verify the point satisfies both equations", zh: "验证交点同时满足两方程" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find the intersection of $y = 2x - 3$ and $3x + y = 12$.", zh: "求 $y = 2x - 3$ 与 $3x + y = 12$ 的交点。" },
+        commonTraps: [
+          { en: "Reporting only the $x$-value (must give the full ordered pair)", zh: "只给出 $x$ 值（应给完整有序对）" },
+          { en: "Parallel lines have no intersection — must recognize when slopes are equal", zh: "平行线无交点——斜率相等时需识别" },
+        ],
+      },
+    ],
   },
   {
     id: "1-4",
     chapterId: "ch-1",
     number: "1.4",
-    title: {
-      en: "Functions",
-      zh: "函数",
-    },
+    title: { en: "Functions", zh: "函数" },
     description: {
       en: "Determine whether a relation is a function, evaluate functions, and find domains.",
       zh: "判断关系是否为函数，求函数值，并确定函数的定义域。",
     },
+    learningGoals: [
+      { en: "Determine whether a relation defines $y$ as a function of $x$", zh: "判断关系是否将 $y$ 定义为 $x$ 的函数" },
+      { en: "Use function notation $f(x)$ to evaluate functions", zh: "使用函数记号 $f(x)$ 求函数值" },
+      { en: "Find the domain of a function from its formula", zh: "由公式求函数的定义域" },
+      { en: "Build a function that models a real-world situation", zh: "建立反映实际情境的函数" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-4-1",
+        title: { en: "Definition of a Function", zh: "函数的定义" },
+        explanation: {
+          en: "A function from $X$ to $Y$ assigns to each input $x \\in X$ exactly ONE output $y \\in Y$. The set of all valid inputs is the domain; the set of all outputs is the range. Vertical Line Test: a graph represents $y$ as a function of $x$ iff every vertical line crosses it at most once.",
+          zh: "从 $X$ 到 $Y$ 的函数为每个输入 $x \\in X$ 指定唯一的输出 $y \\in Y$。所有有效输入构成定义域；所有输出构成值域。铅直线检验：图像将 $y$ 表示为 $x$ 的函数当且仅当任意铅直线与图像至多交于一点。",
+        },
+        whenToUse: { en: "Whenever you must decide if a relation is a function, or interpret graphs", zh: "判断关系是否为函数或解释图像时" },
+        commonMistake: { en: "Allowing two outputs for the same input (e.g., $y^2 = x$ is NOT a function of $x$)", zh: "同一输入对应两个输出（如 $y^2 = x$ 不是 $x$ 的函数）" },
+        example: { en: "$\\{(1,2), (2,3), (3,4)\\}$ is a function. $\\{(1,2), (1,3)\\}$ is NOT (input $1$ has two outputs).", zh: "$\\{(1,2), (2,3), (3,4)\\}$ 是函数。$\\{(1,2), (1,3)\\}$ 不是（输入 $1$ 对应两个输出）。" },
+      },
+      {
+        id: "kc-1-4-2",
+        title: { en: "Function Notation and Evaluation", zh: "函数记号与求值" },
+        explanation: {
+          en: "$f(x)$ reads \"$f$ of $x$\" — it is the output of $f$ when the input is $x$. To evaluate, substitute the input wherever $x$ appears in the formula and simplify. The notation $f(a + h)$ means substitute $(a + h)$ for $x$ — keep parentheses.",
+          zh: "$f(x)$ 读作\"$f$ 在 $x$ 处的值\"——即输入为 $x$ 时 $f$ 的输出。求值时把输入代入公式中所有 $x$ 的位置并化简。$f(a + h)$ 表示用 $(a + h)$ 替换 $x$——务必保留括号。",
+        },
+        whenToUse: { en: "To compute output values, build difference quotients, or compose functions", zh: "计算输出值、构造差商或函数复合时" },
+        commonMistake: { en: "Reading $f(x+h)$ as $f(x) + f(h)$ (functions are not generally additive)", zh: "把 $f(x+h)$ 当作 $f(x) + f(h)$（函数一般不具备可加性）" },
+        example: { en: "If $f(x) = x^2 + 1$, then $f(3) = 10$ and $f(a+1) = (a+1)^2 + 1$", zh: "若 $f(x) = x^2 + 1$，则 $f(3) = 10$，$f(a+1) = (a+1)^2 + 1$" },
+      },
+      {
+        id: "kc-1-4-3",
+        title: { en: "Domain Restrictions", zh: "定义域的限制" },
+        explanation: {
+          en: "The domain is all real $x$ for which $f(x)$ is defined. Common restrictions: (1) denominators cannot equal zero; (2) expressions under even roots must be $\\geq 0$; (3) arguments of logs must be $> 0$. Combine restrictions as an intersection.",
+          zh: "定义域是所有使 $f(x)$ 有意义的实数 $x$。常见限制：(1) 分母不为零；(2) 偶次根号下的式子必须 $\\geq 0$；(3) 对数的真数必须 $> 0$。多个限制取交集。",
+        },
+        whenToUse: { en: "For any function involving fractions, even roots, or logarithms", zh: "凡涉及分数、偶次根号或对数的函数" },
+        commonMistake: { en: "Allowing zero in the denominator, or negative values under a square root", zh: "未排除使分母为零或使根号内为负的值" },
+        example: { en: "$f(x) = \\frac{\\sqrt{x - 2}}{x - 5}$: domain is $[2, 5) \\cup (5, \\infty)$", zh: "$f(x) = \\frac{\\sqrt{x - 2}}{x - 5}$：定义域为 $[2, 5) \\cup (5, \\infty)$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-4-1",
+        name: { en: "Function Notation", zh: "函数记号" },
+        formula: "y = f(x)",
+        variables: [
+          { en: "$x$ — input (independent variable)", zh: "$x$ — 输入（自变量）" },
+          { en: "$y = f(x)$ — output (dependent variable)", zh: "$y = f(x)$ — 输出（因变量）" },
+        ],
+        whenToUse: { en: "Standard way to express a functional relationship", zh: "表示函数关系的标准方式" },
+        commonProblemTypes: [
+          { en: "Evaluate $f$ at specific values", zh: "求 $f$ 在特定值处的值" },
+          { en: "Compute $f(a + h)$ for use in difference quotients", zh: "为差商求 $f(a + h)$" },
+        ],
+        example: { en: "$f(x) = 2x - 1 \\Rightarrow f(5) = 9$, $f(t+1) = 2t + 1$", zh: "$f(x) = 2x - 1 \\Rightarrow f(5) = 9$，$f(t+1) = 2t + 1$" },
+      },
+      {
+        id: "f-1-4-2",
+        name: { en: "Difference Quotient", zh: "差商" },
+        formula: "\\frac{f(x+h) - f(x)}{h}, \\quad h \\neq 0",
+        variables: [
+          { en: "$f$ — the function", zh: "$f$ — 函数" },
+          { en: "$h$ — change in input (must be nonzero)", zh: "$h$ — 输入的变化量（不为零）" },
+        ],
+        whenToUse: { en: "Average rate of change of $f$ over the interval $[x, x+h]$; foundation for the derivative", zh: "$f$ 在 $[x, x+h]$ 上的平均变化率；导数的基础" },
+        commonProblemTypes: [
+          { en: "Simplify the difference quotient for a polynomial $f$", zh: "化简多项式 $f$ 的差商" },
+          { en: "Setup for limit-based derivative computation", zh: "为基于极限的导数计算做准备" },
+        ],
+        example: { en: "$f(x) = x^2 \\Rightarrow \\frac{f(x+h) - f(x)}{h} = 2x + h$", zh: "$f(x) = x^2 \\Rightarrow \\frac{f(x+h) - f(x)}{h} = 2x + h$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-4-1",
+        title: { en: "Decide Whether a Relation Is a Function", zh: "判断关系是否为函数" },
+        description: { en: "Inspect a set of ordered pairs, a table, or a graph and decide if each input has exactly one output.", zh: "检查有序对集合、表格或图像，判断每个输入是否对应唯一输出。" },
+        howToRecognize: { en: "A relation is given (set, table, equation, or graph); problem asks if it is a function.", zh: "给定关系（集合、表格、方程或图像）；问是否为函数。" },
+        steps: [
+          { en: "For a set or table: check no $x$-value repeats with different $y$-values", zh: "集合或表格：检查无 $x$ 值重复且对应不同 $y$ 值" },
+          { en: "For a graph: apply the Vertical Line Test", zh: "图像：用铅直线检验" },
+          { en: "For an equation: solve for $y$ — if there are $\\pm$ outputs, it is not a function", zh: "方程：解出 $y$——若有 $\\pm$ 两支则非函数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Is the relation $\\{(1, 2), (2, 4), (3, 2), (1, 5)\\}$ a function?", zh: "关系 $\\{(1, 2), (2, 4), (3, 2), (1, 5)\\}$ 是函数吗？" },
+        commonTraps: [
+          { en: "Allowing different inputs to share an output (this IS still a function)", zh: "误以为不同输入共用一个输出就不是函数（其实仍是函数）" },
+        ],
+      },
+      {
+        id: "pt-1-4-2",
+        title: { en: "Evaluate a Function at a Specific Value", zh: "在指定值处求函数值" },
+        description: { en: "Substitute a number for the variable and simplify.", zh: "用数代换变量并化简。" },
+        howToRecognize: { en: "A function $f$ and a value $a$ are given; problem asks for $f(a)$.", zh: "给出函数 $f$ 与值 $a$；要求 $f(a)$。" },
+        steps: [
+          { en: "Replace every occurrence of $x$ with the input value (use parentheses)", zh: "把所有 $x$ 替换为输入值（加括号）" },
+          { en: "Simplify using order of operations", zh: "按运算顺序化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $f(x) = 3x^2 - 5x + 2$, find $f(-2)$.", zh: "若 $f(x) = 3x^2 - 5x + 2$，求 $f(-2)$。" },
+        commonTraps: [
+          { en: "Squaring without parentheses: writing $-2^2 = -4$ instead of $(-2)^2 = 4$", zh: "未加括号就平方：把 $-2^2$ 当作 $-4$，应为 $(-2)^2 = 4$" },
+        ],
+      },
+      {
+        id: "pt-1-4-3",
+        title: { en: "Find Domain of a Polynomial or Simple Rational Function", zh: "求多项式或简单有理函数的定义域" },
+        description: { en: "State all real numbers (polynomials) or exclude denominator zeros (rationals).", zh: "多项式：所有实数；有理函数：排除使分母为零的值。" },
+        howToRecognize: { en: "Function is polynomial or rational with linear/quadratic denominator.", zh: "函数为多项式，或分母为一次/二次的有理函数。" },
+        steps: [
+          { en: "Polynomial: domain is all real numbers, $(-\\infty, \\infty)$", zh: "多项式：定义域为全体实数 $(-\\infty, \\infty)$" },
+          { en: "Rational: set denominator equal to zero, solve, exclude those values", zh: "有理函数：令分母为零求解，排除这些值" },
+          { en: "Write the answer in interval notation", zh: "用区间记号给出答案" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the domain of $f(x) = \\frac{x + 2}{x^2 - 9}$.", zh: "求 $f(x) = \\frac{x + 2}{x^2 - 9}$ 的定义域。" },
+        commonTraps: [
+          { en: "Forgetting both roots when the denominator factors", zh: "分母可分解时漏掉某个零根" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-4-4",
+        title: { en: "Find Domain Involving Square Roots", zh: "含平方根函数的定义域" },
+        description: { en: "Require the radicand (expression under the root) to be $\\geq 0$.", zh: "要求被开方式 $\\geq 0$。" },
+        howToRecognize: { en: "Function contains $\\sqrt{\\cdot}$ or any even-index root.", zh: "函数含 $\\sqrt{\\cdot}$ 或其它偶次根号。" },
+        steps: [
+          { en: "Set the radicand $\\geq 0$", zh: "令被开方式 $\\geq 0$" },
+          { en: "Solve the inequality (use sign analysis if quadratic)", zh: "求解不等式（二次时用符号分析）" },
+          { en: "Combine with any other restrictions (denominators, etc.)", zh: "与其他限制（分母等）取交集" },
+          { en: "Express in interval notation", zh: "用区间记号表示" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the domain of $f(x) = \\sqrt{2x - 6}$.", zh: "求 $f(x) = \\sqrt{2x - 6}$ 的定义域。" },
+        commonTraps: [
+          { en: "Allowing radicand $> 0$ instead of $\\geq 0$ (zero is fine inside a square root)", zh: "把条件写成被开方式 $> 0$（应为 $\\geq 0$，等于零是允许的）" },
+        ],
+      },
+      {
+        id: "pt-1-4-5",
+        title: { en: "Apply the Vertical Line Test", zh: "应用铅直线检验" },
+        description: { en: "Decide from a graph whether $y$ is a function of $x$.", zh: "由图像判断 $y$ 是否为 $x$ 的函数。" },
+        howToRecognize: { en: "A graph is shown; problem asks whether it represents a function of $x$.", zh: "给出图像；问是否表示 $x$ 的函数。" },
+        steps: [
+          { en: "Imagine sweeping a vertical line across the graph", zh: "想象铅直线在图像上左右扫动" },
+          { en: "If any vertical position crosses the graph more than once, it is NOT a function", zh: "若某铅直位置与图像交于多于一点，则不是函数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Does the graph of $x = y^2$ represent $y$ as a function of $x$?", zh: "$x = y^2$ 的图像是否将 $y$ 表为 $x$ 的函数？" },
+        commonTraps: [
+          { en: "Confusing horizontal line test (used for one-to-one) with vertical line test", zh: "把水平线检验（用于一对一）与铅直线检验混淆" },
+        ],
+      },
+      {
+        id: "pt-1-4-6",
+        title: { en: "Evaluate a Piecewise Function", zh: "求分段函数的值" },
+        description: { en: "Choose the correct branch based on the input, then evaluate.", zh: "根据输入选对正确的分支再求值。" },
+        howToRecognize: { en: "Function defined by cases (different formulas on different intervals).", zh: "函数按区间分段定义。" },
+        steps: [
+          { en: "Read each branch's domain condition", zh: "读出各分支的定义条件" },
+          { en: "Determine which branch applies to the given input", zh: "判断给定输入属于哪一分支" },
+          { en: "Substitute into that branch and simplify", zh: "代入该分支并化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "If $f(x) = \\begin{cases} x^2 & x < 0 \\\\ 2x + 1 & x \\geq 0 \\end{cases}$, find $f(-3)$ and $f(4)$.", zh: "若 $f(x) = \\begin{cases} x^2 & x < 0 \\\\ 2x + 1 & x \\geq 0 \\end{cases}$，求 $f(-3)$ 与 $f(4)$。" },
+        commonTraps: [
+          { en: "Choosing the wrong branch when input is on the boundary", zh: "输入恰好在分界点时选错分支" },
+        ],
+      },
+      {
+        id: "pt-1-4-7",
+        title: { en: "Compute and Simplify the Difference Quotient", zh: "计算并化简差商" },
+        description: { en: "Substitute $f(x+h)$ and simplify $\\frac{f(x+h) - f(x)}{h}$ — the $h$ in the denominator should cancel.", zh: "代入 $f(x+h)$ 并化简 $\\frac{f(x+h) - f(x)}{h}$——分母的 $h$ 应可消去。" },
+        howToRecognize: { en: "Problem asks for the difference quotient (or for an average rate of change).", zh: "题目要求差商（或平均变化率）。" },
+        steps: [
+          { en: "Compute $f(x+h)$ by substituting $(x+h)$ for $x$ everywhere", zh: "用 $(x+h)$ 替换所有 $x$ 求 $f(x+h)$" },
+          { en: "Subtract $f(x)$ and combine terms", zh: "减去 $f(x)$ 并合并同类项" },
+          { en: "Factor out $h$ from the numerator", zh: "从分子中提取 $h$" },
+          { en: "Cancel $h$ with the denominator", zh: "与分母的 $h$ 消去" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find and simplify $\\frac{f(x+h) - f(x)}{h}$ for $f(x) = 3x^2 - 2x$.", zh: "对 $f(x) = 3x^2 - 2x$ 求并化简 $\\frac{f(x+h) - f(x)}{h}$。" },
+        commonTraps: [
+          { en: "Expanding $(x+h)^2$ as $x^2 + h^2$ (missing the $2xh$ term)", zh: "把 $(x+h)^2$ 展开为 $x^2 + h^2$（漏掉 $2xh$）" },
+          { en: "Canceling $h$ before factoring it out", zh: "未提取 $h$ 就消去" },
+        ],
+      },
+      {
+        id: "pt-1-4-8",
+        title: { en: "Set Up a Function from a Word Problem", zh: "由应用题建立函数" },
+        description: { en: "Translate a verbal description into $f(x)$.", zh: "把文字描述翻译为 $f(x)$。" },
+        howToRecognize: { en: "Word problem provides relationships (geometric, financial, physical) to express one quantity in terms of another.", zh: "应用题给出几何、财务或物理关系，要求一个量表为另一个量的函数。" },
+        steps: [
+          { en: "Identify the input variable and the quantity to be expressed", zh: "确定输入变量与要表示的量" },
+          { en: "Use the given relationship (formula or constraint) to eliminate other variables", zh: "用给定关系（公式或约束）消去其它变量" },
+          { en: "State the function and its domain in context", zh: "给出函数并结合情境写出定义域" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A rectangle has perimeter $40$ ft. Express the area $A$ as a function of the width $w$, and state its domain.", zh: "矩形周长为 $40$ ft。把面积 $A$ 表示为宽 $w$ 的函数，并给出定义域。" },
+        commonTraps: [
+          { en: "Forgetting to restrict the domain to physically meaningful values (e.g., $w > 0$)", zh: "忘记把定义域限制在有物理意义的范围（如 $w > 0$）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-4-9",
+        title: { en: "Domain of a Combined Function (Radicals + Rationals)", zh: "复合限制函数的定义域（含根号与分母）" },
+        description: { en: "Find domain when MULTIPLE restrictions apply (e.g., a radical numerator over a rational denominator).", zh: "当存在多个限制（如分子含根号、分母不为零）时求定义域。" },
+        howToRecognize: { en: "Function combines square roots, fractions, and/or logs in non-trivial ways.", zh: "函数同时含根号、分数或对数，且组合复杂。" },
+        steps: [
+          { en: "List every restriction separately", zh: "分别列出所有限制" },
+          { en: "Solve each as an inequality or equation", zh: "把每个限制解为不等式或方程" },
+          { en: "Take the INTERSECTION of all valid sets", zh: "对所有有效集合取交集" },
+          { en: "Express the result in interval notation", zh: "用区间记号给出答案" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find the domain of $f(x) = \\frac{\\sqrt{x + 4}}{x^2 - 4}$.", zh: "求 $f(x) = \\frac{\\sqrt{x + 4}}{x^2 - 4}$ 的定义域。" },
+        commonTraps: [
+          { en: "Taking the union instead of the intersection — restrictions must ALL hold", zh: "误取并集而非交集——所有限制必须同时成立" },
+          { en: "Forgetting to exclude denominator zeros even when they satisfy the radicand condition", zh: "忘记排除使分母为零的值（即使满足被开方式条件）" },
+        ],
+      },
+      {
+        id: "pt-1-4-10",
+        title: { en: "Build and Use a Function — Modeling Application", zh: "构建并使用函数——建模应用" },
+        description: { en: "Build a function from a real-world scenario and use it to optimize, compare, or interpret a quantity.", zh: "由实际情境构建函数，并用它进行优化、比较或解释某量。" },
+        howToRecognize: { en: "Word problem requires both setting up a function AND using it (compute, compare to a value, etc.).", zh: "应用题既要建立函数，又要使用函数（计算、比较等）。" },
+        steps: [
+          { en: "Identify variables, constants, and the constraint linking them", zh: "确定变量、常量及连接它们的约束" },
+          { en: "Express the target quantity as a function of one variable", zh: "把目标量表示为单变量函数" },
+          { en: "State a sensible domain", zh: "给出合理的定义域" },
+          { en: "Evaluate or interpret as the question asks", zh: "按题意求值或解释" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "An open-top box is made from a $20 \\times 30$ in sheet by cutting squares of side $x$ from each corner and folding up the sides. Express the volume $V$ as a function of $x$, and find $V(3)$.", zh: "用一张 $20 \\times 30$ in 的板材，从四角各剪去边长 $x$ 的小正方形再折起作开口盒。把体积 $V$ 表示为 $x$ 的函数，并求 $V(3)$。" },
+        commonTraps: [
+          { en: "Wrong domain — $x$ must be positive AND less than half the smaller side", zh: "定义域错误——$x$ 应为正且小于较短边的一半" },
+          { en: "Mixing up dimensions when subtracting $2x$", zh: "减去 $2x$ 时尺寸搞错" },
+        ],
+      },
+    ],
   },
   {
     id: "1-5",
