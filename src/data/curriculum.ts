@@ -2684,27 +2684,520 @@ const chapter2Units: Unit[] = [
     id: "2-3",
     chapterId: "ch-2",
     number: "2.3",
-    title: {
-      en: "Polynomial and Synthetic Division",
-      zh: "多项式除法与综合除法",
-    },
+    title: { en: "Polynomial and Synthetic Division", zh: "多项式除法与综合除法" },
     description: {
       en: "Divide polynomials using long division and synthetic division, and apply the Remainder and Factor Theorems.",
       zh: "用长除法与综合除法对多项式做除法，并应用余数定理与因式定理。",
     },
+    learningGoals: [
+      { en: "Divide polynomials using long division", zh: "用长除法对多项式做除法" },
+      { en: "Use synthetic division when dividing by $(x - c)$", zh: "当除式为 $(x - c)$ 时使用综合除法" },
+      { en: "Apply the Remainder Theorem to evaluate polynomials", zh: "用余数定理求多项式的函数值" },
+      { en: "Apply the Factor Theorem to identify and remove zeros", zh: "用因式定理识别并去除零点" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-3-1",
+        title: { en: "Polynomial Long Division", zh: "多项式长除法" },
+        explanation: {
+          en: "Divide $f(x)$ by $d(x)$ to get quotient $q(x)$ and remainder $r(x)$ such that $f(x) = d(x) q(x) + r(x)$ with $\\deg r < \\deg d$. Process is similar to numeric long division.",
+          zh: "用 $d(x)$ 去除 $f(x)$ 得商 $q(x)$ 与余式 $r(x)$，使 $f(x) = d(x) q(x) + r(x)$ 且 $\\deg r < \\deg d$。过程与数值长除法相似。",
+        },
+        whenToUse: { en: "When the divisor is not a simple $(x - c)$ (e.g., $x^2 + 1$)", zh: "当除式不是简单的 $(x - c)$（如 $x^2 + 1$）时" },
+        commonMistake: { en: "Forgetting to insert placeholder $0$ for missing-degree terms in the dividend", zh: "被除式中漏写缺失次数项的 $0$ 占位" },
+        example: { en: "$\\frac{x^3 - 4x + 1}{x - 2}$ ⇒ $q(x) = x^2 + 2x$, $r = 1$", zh: "$\\frac{x^3 - 4x + 1}{x - 2}$ ⇒ $q(x) = x^2 + 2x$，$r = 1$" },
+      },
+      {
+        id: "kc-2-3-2",
+        title: { en: "Synthetic Division", zh: "综合除法" },
+        explanation: {
+          en: "Synthetic division is a shortcut for dividing by $(x - c)$ that uses only the coefficients. Bring down the leading coefficient, multiply by $c$, add to next column, and repeat. The last number is the remainder.",
+          zh: "综合除法是除以 $(x - c)$ 的简便算法，只用系数。带下首项系数，乘以 $c$ 加到下一列，重复进行。最后一个数即余数。",
+        },
+        whenToUse: { en: "Whenever divisor is exactly $(x - c)$ — much faster than long division", zh: "凡除式正好是 $(x - c)$ 时——比长除法快得多" },
+        commonMistake: { en: "Using $-c$ instead of $c$ as the synthetic divisor (or vice versa)", zh: "把综合除法的因子写成 $-c$ 而非 $c$（或反之）" },
+        example: { en: "Divide $2x^3 - x^2 + 0x - 5$ by $(x - 3)$: synthetic with $c = 3$ gives $q = 2x^2 + 5x + 15, r = 40$", zh: "用 $(x - 3)$ 除 $2x^3 - x^2 + 0x - 5$：综合除法 $c = 3$，得 $q = 2x^2 + 5x + 15$，$r = 40$" },
+      },
+      {
+        id: "kc-2-3-3",
+        title: { en: "Remainder and Factor Theorems", zh: "余数定理与因式定理" },
+        explanation: {
+          en: "Remainder Theorem: When $f(x)$ is divided by $(x - c)$, the remainder equals $f(c)$. Factor Theorem: $(x - c)$ is a factor of $f$ if and only if $f(c) = 0$. Together they make zero-finding fast.",
+          zh: "余数定理：用 $(x - c)$ 除 $f(x)$，余数等于 $f(c)$。因式定理：$(x - c)$ 是 $f$ 的因式当且仅当 $f(c) = 0$。两者结合使求零点变得高效。",
+        },
+        whenToUse: { en: "Quickly evaluate $f(c)$ via synthetic division, or test whether $c$ is a zero", zh: "用综合除法快速求 $f(c)$，或检验 $c$ 是否为零点" },
+        commonMistake: { en: "Confusing the two — Remainder gives a value; Factor gives a yes/no for divisibility", zh: "把两者混淆——余数定理给值；因式定理判断能否整除" },
+        example: { en: "$f(x) = x^3 - 4x + 1$, $c = 2$: synthetic remainder is $1$, so $f(2) = 1$ (NOT a zero)", zh: "$f(x) = x^3 - 4x + 1$，$c = 2$：综合余数为 $1$，故 $f(2) = 1$（不是零点）" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-3-1",
+        name: { en: "Division Algorithm", zh: "除法算法" },
+        formula: "f(x) = d(x) \\cdot q(x) + r(x), \\quad \\deg r < \\deg d",
+        variables: [
+          { en: "$f(x)$ — dividend", zh: "$f(x)$ — 被除式" },
+          { en: "$d(x)$ — divisor", zh: "$d(x)$ — 除式" },
+          { en: "$q(x)$ — quotient", zh: "$q(x)$ — 商" },
+          { en: "$r(x)$ — remainder", zh: "$r(x)$ — 余式" },
+        ],
+        whenToUse: { en: "Foundation for both long and synthetic division", zh: "长除法与综合除法的共同基础" },
+        commonProblemTypes: [
+          { en: "Express dividend as $d \\cdot q + r$", zh: "把被除式写成 $d \\cdot q + r$" },
+        ],
+        example: { en: "$x^3 - 4x + 1 = (x - 2)(x^2 + 2x) + 1$", zh: "$x^3 - 4x + 1 = (x - 2)(x^2 + 2x) + 1$" },
+      },
+      {
+        id: "f-2-3-2",
+        name: { en: "Remainder Theorem", zh: "余数定理" },
+        formula: "f(x) = (x - c) q(x) + f(c)",
+        variables: [
+          { en: "$c$ — the constant in the divisor $(x - c)$", zh: "$c$ — 除式 $(x - c)$ 中的常数" },
+          { en: "$f(c)$ — value of $f$ at $c$, equal to the remainder", zh: "$f(c)$ — $f$ 在 $c$ 处的值，等于余数" },
+        ],
+        whenToUse: { en: "Evaluate a polynomial at a value via synthetic division (faster than substitution for high degree)", zh: "通过综合除法求多项式值（高次比直接代入更快）" },
+        commonProblemTypes: [
+          { en: "Find $f(c)$ using synthetic division", zh: "用综合除法求 $f(c)$" },
+        ],
+        example: { en: "If $f(x) = x^3 - 2x + 1$ and synthetic division by $(x - 2)$ gives remainder $5$, then $f(2) = 5$", zh: "若 $f(x) = x^3 - 2x + 1$ 由 $(x - 2)$ 综合除法余数为 $5$，则 $f(2) = 5$" },
+      },
+      {
+        id: "f-2-3-3",
+        name: { en: "Factor Theorem", zh: "因式定理" },
+        formula: "(x - c) \\text{ is a factor of } f(x) \\iff f(c) = 0",
+        variables: [
+          { en: "$c$ — candidate zero", zh: "$c$ — 候选零点" },
+        ],
+        whenToUse: { en: "Test a candidate zero, or remove a known zero to factor further", zh: "检验候选零点，或除去已知零点继续分解" },
+        commonProblemTypes: [
+          { en: "Verify a given $c$ is a zero", zh: "验证给定 $c$ 为零点" },
+          { en: "Use a found zero to reduce a polynomial's degree", zh: "用找到的零点降次" },
+        ],
+        example: { en: "$f(x) = x^3 - 7x + 6$: $f(1) = 0$ so $(x - 1)$ is a factor", zh: "$f(x) = x^3 - 7x + 6$：$f(1) = 0$，故 $(x - 1)$ 为因式" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-3-1",
+        title: { en: "Long Divide by a Linear Divisor", zh: "用一次式做长除法" },
+        description: { en: "Perform polynomial long division when the divisor is $(x - c)$.", zh: "当除式为 $(x - c)$ 时做多项式长除法。" },
+        howToRecognize: { en: "Problem asks to divide $f(x) \\div (x - c)$ by long division.", zh: "题目要求用长除法计算 $f(x) \\div (x - c)$。" },
+        steps: [
+          { en: "Write the dividend with placeholder $0$ for missing terms", zh: "把被除式按降幂写出，缺失项用 $0$ 占位" },
+          { en: "Divide leading term by $x$ to get the next term of the quotient", zh: "用首项除以 $x$ 得商的下一项" },
+          { en: "Multiply, subtract, bring down — repeat until degree of remainder $< $ divisor", zh: "乘、减、下移——重复直到余式次数 $<$ 除式次数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Divide $x^2 + 5x + 6$ by $(x + 2)$ using long division.", zh: "用长除法计算 $(x^2 + 5x + 6) \\div (x + 2)$。" },
+        commonTraps: [
+          { en: "Sign errors when subtracting the multiplied terms", zh: "减去相乘项时的符号错误" },
+        ],
+      },
+      {
+        id: "pt-2-3-2",
+        title: { en: "Synthetic Division by $(x - c)$", zh: "用 $(x - c)$ 做综合除法" },
+        description: { en: "Use the synthetic procedure to divide quickly.", zh: "用综合除法快速完成除法。" },
+        howToRecognize: { en: "Divisor is exactly $(x - c)$.", zh: "除式恰好为 $(x - c)$。" },
+        steps: [
+          { en: "Write coefficients of $f(x)$ in a row (use $0$ for missing degrees)", zh: "把 $f(x)$ 的系数排成一行（缺失次数补 $0$）" },
+          { en: "Place $c$ to the left", zh: "把 $c$ 写在左侧" },
+          { en: "Bring down the leading coefficient", zh: "把首项系数带下来" },
+          { en: "Multiply by $c$, add to next column; repeat", zh: "乘以 $c$ 加到下一列；重复" },
+          { en: "Last number is the remainder; others are quotient coefficients", zh: "最后一个数为余数；其余为商的系数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Use synthetic division to divide $2x^3 - 5x^2 + 3x + 4$ by $(x - 2)$.", zh: "用综合除法计算 $(2x^3 - 5x^2 + 3x + 4) \\div (x - 2)$。" },
+        commonTraps: [
+          { en: "Using $-c$ instead of $c$ in the synthetic box", zh: "在综合除法框中用 $-c$ 而非 $c$" },
+        ],
+      },
+      {
+        id: "pt-2-3-3",
+        title: { en: "Find $f(c)$ Using the Remainder Theorem", zh: "用余数定理求 $f(c)$" },
+        description: { en: "Use synthetic division to evaluate $f$ at $c$.", zh: "用综合除法求 $f$ 在 $c$ 处的值。" },
+        howToRecognize: { en: "Problem asks for $f(c)$ for a higher-degree polynomial.", zh: "题目要求高次多项式的 $f(c)$。" },
+        steps: [
+          { en: "Set up synthetic division with divisor $(x - c)$", zh: "设置综合除法，除式 $(x - c)$" },
+          { en: "Read the remainder — that's $f(c)$", zh: "读出余数——即 $f(c)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Use the Remainder Theorem to find $f(3)$ for $f(x) = x^4 - 2x^2 + 5$.", zh: "用余数定理求 $f(x) = x^4 - 2x^2 + 5$ 的 $f(3)$。" },
+        commonTraps: [
+          { en: "Mixing up $f(c)$ (remainder) with $q(c)$ (the quotient)", zh: "把余数 $f(c)$ 与商 $q(c)$ 弄混" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-3-4",
+        title: { en: "Long Division by a Higher-Degree Divisor", zh: "用高次式做长除法" },
+        description: { en: "Divide when divisor is quadratic or higher (synthetic division does not apply).", zh: "除式为二次或更高时做除法（不能用综合除法）。" },
+        howToRecognize: { en: "Divisor has degree $\\geq 2$.", zh: "除式次数 $\\geq 2$。" },
+        steps: [
+          { en: "Set up long division", zh: "建立长除法" },
+          { en: "Match leading terms to determine each quotient term", zh: "用首项匹配确定商的每一项" },
+          { en: "Subtract and continue until remainder has lower degree than divisor", zh: "减并继续，直到余式次数低于除式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Divide $x^4 + 3x^3 - 2x + 1$ by $(x^2 - 1)$.", zh: "计算 $(x^4 + 3x^3 - 2x + 1) \\div (x^2 - 1)$。" },
+        commonTraps: [
+          { en: "Forgetting to align terms by degree", zh: "忘记按次数对齐" },
+        ],
+      },
+      {
+        id: "pt-2-3-5",
+        title: { en: "Verify a Zero with Factor Theorem", zh: "用因式定理验证零点" },
+        description: { en: "Confirm $c$ is a zero of $f$ by showing $f(c) = 0$.", zh: "通过证明 $f(c) = 0$ 确认 $c$ 为 $f$ 的零点。" },
+        howToRecognize: { en: "Problem asks if a specific $c$ is a zero, or to verify $(x - c)$ is a factor.", zh: "题目问指定 $c$ 是否为零点，或验证 $(x - c)$ 是否为因式。" },
+        steps: [
+          { en: "Compute $f(c)$ (substitution or synthetic division)", zh: "求 $f(c)$（代入或综合除法）" },
+          { en: "If $f(c) = 0$, conclude $(x - c)$ is a factor", zh: "若 $f(c) = 0$，可知 $(x - c)$ 是因式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify that $x = -3$ is a zero of $f(x) = x^3 + 2x^2 - 5x - 6$.", zh: "验证 $x = -3$ 是 $f(x) = x^3 + 2x^2 - 5x - 6$ 的零点。" },
+        commonTraps: [
+          { en: "Skipping the check and assuming a candidate works", zh: "未验证就假设候选可用" },
+        ],
+      },
+      {
+        id: "pt-2-3-6",
+        title: { en: "Find Remainder Without Full Division", zh: "不做完整除法求余数" },
+        description: { en: "Use the Remainder Theorem to skip the full division process.", zh: "用余数定理跳过完整除法。" },
+        howToRecognize: { en: "Problem asks ONLY for the remainder when dividing by $(x - c)$.", zh: "题目只问 $(x - c)$ 除时的余数。" },
+        steps: [
+          { en: "Compute $f(c)$ directly via substitution", zh: "直接代入求 $f(c)$" },
+          { en: "Report this value as the remainder", zh: "把该值作为余数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the remainder when $f(x) = 3x^4 - x^3 + 2x - 5$ is divided by $(x + 1)$.", zh: "求 $(x + 1)$ 除 $f(x) = 3x^4 - x^3 + 2x - 5$ 时的余数。" },
+        commonTraps: [
+          { en: "Performing full division when shortcut suffices", zh: "已可用捷径却做完整除法" },
+        ],
+      },
+      {
+        id: "pt-2-3-7",
+        title: { en: "Factor Polynomial Using a Known Zero", zh: "已知一个零点对多项式分解" },
+        description: { en: "Use synthetic division by $(x - c)$ to drop the degree, then factor the quotient.", zh: "用 $(x - c)$ 综合除法降次后再分解商。" },
+        howToRecognize: { en: "A zero $c$ is given (or easily found); problem asks for full factorization.", zh: "给出零点 $c$（或易得）；要求完全分解。" },
+        steps: [
+          { en: "Synthetic divide by $(x - c)$ to find the quotient", zh: "用 $(x - c)$ 综合除法求商" },
+          { en: "Factor the quotient (often a quadratic by now)", zh: "分解商（此时常为二次）" },
+          { en: "Combine all factors", zh: "合并所有因式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Given that $x = 2$ is a zero of $f(x) = x^3 - 4x^2 + x + 6$, factor $f$ completely.", zh: "已知 $x = 2$ 是 $f(x) = x^3 - 4x^2 + x + 6$ 的零点，完全分解 $f$。" },
+        commonTraps: [
+          { en: "Stopping after synthetic division without factoring the quotient", zh: "综合除法后未继续分解商" },
+        ],
+      },
+      {
+        id: "pt-2-3-8",
+        title: { en: "Determine If $(x - c)$ Is a Factor", zh: "判断 $(x - c)$ 是否为因式" },
+        description: { en: "Apply the Factor Theorem: check whether $f(c) = 0$.", zh: "应用因式定理：检查 $f(c)$ 是否等于 $0$。" },
+        howToRecognize: { en: "Problem asks yes/no whether $(x - c)$ divides $f$ evenly.", zh: "题目问 $(x - c)$ 能否整除 $f$。" },
+        steps: [
+          { en: "Compute $f(c)$", zh: "求 $f(c)$" },
+          { en: "If $0$, yes; otherwise no", zh: "若为 $0$，是；否则不是" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Is $(x + 4)$ a factor of $f(x) = x^3 + 5x^2 + 2x - 8$?", zh: "$(x + 4)$ 是否为 $f(x) = x^3 + 5x^2 + 2x - 8$ 的因式？" },
+        commonTraps: [
+          { en: "Confusing $(x + 4)$ with $c = +4$ (it is $c = -4$)", zh: "把 $(x + 4)$ 当 $c = +4$（应为 $c = -4$）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-3-9",
+        title: { en: "Find All Real Zeros via Repeated Synthetic Division", zh: "用反复综合除法求所有实零点" },
+        description: { en: "Use the Rational Zero candidates and repeated synthetic division to factor a higher-degree polynomial.", zh: "用有理零点候选与反复综合除法分解高次多项式。" },
+        howToRecognize: { en: "Polynomial of degree $\\geq 3$; problem asks for all real zeros.", zh: "多项式次数 $\\geq 3$；要求所有实零点。" },
+        steps: [
+          { en: "Use the Rational Zero Theorem to list candidates ($\\pm \\frac{p}{q}$)", zh: "用有理零点定理列出候选（$\\pm \\frac{p}{q}$）" },
+          { en: "Test candidates by synthetic division until one yields remainder $0$", zh: "用综合除法逐个检验，直到余数为 $0$" },
+          { en: "Reduce degree using the quotient and repeat", zh: "用商降次后继续" },
+          { en: "Solve final quadratic (or lower) by factoring or quadratic formula", zh: "最后用因式分解或求根公式解二次（或更低）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find all real zeros of $f(x) = 2x^3 - 3x^2 - 8x - 3$.", zh: "求 $f(x) = 2x^3 - 3x^2 - 8x - 3$ 的所有实零点。" },
+        commonTraps: [
+          { en: "Forgetting to test both positive and negative candidates", zh: "忘记同时检验正、负候选" },
+        ],
+      },
+      {
+        id: "pt-2-3-10",
+        title: { en: "Express Result as $f = d \\cdot q + r$", zh: "把结果写成 $f = d \\cdot q + r$" },
+        description: { en: "After dividing, write the result in the form prescribed by the Division Algorithm.", zh: "除法完成后按除法算法写出形式。" },
+        howToRecognize: { en: "Problem asks to express the dividend in the form $f(x) = d(x) q(x) + r(x)$.", zh: "题目要求把被除式写成 $f(x) = d(x) q(x) + r(x)$。" },
+        steps: [
+          { en: "Perform the division to get $q(x)$ and $r(x)$", zh: "做除法得到 $q(x)$ 与 $r(x)$" },
+          { en: "Write the equation explicitly", zh: "显式写出等式" },
+          { en: "Verify by expanding the right side", zh: "把右侧展开核验" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Express $\\frac{x^4 - 3x^2 + 2}{x^2 + x - 1}$ in the form $f = d \\cdot q + r$.", zh: "把 $\\frac{x^4 - 3x^2 + 2}{x^2 + x - 1}$ 写成 $f = d \\cdot q + r$。" },
+        commonTraps: [
+          { en: "Reporting the remainder with the same degree as the divisor", zh: "余式次数与除式相同（应严格更低）" },
+        ],
+      },
+    ],
   },
   {
     id: "2-4",
     chapterId: "ch-2",
     number: "2.4",
-    title: {
-      en: "Complex Numbers",
-      zh: "复数",
-    },
+    title: { en: "Complex Numbers", zh: "复数" },
     description: {
       en: "Perform operations with complex numbers and represent them in the complex plane.",
       zh: "对复数进行运算，并在复平面上表示复数。",
     },
+    learningGoals: [
+      { en: "Add, subtract, multiply, and divide complex numbers", zh: "对复数进行加、减、乘、除运算" },
+      { en: "Find the conjugate of a complex number", zh: "求复数的共轭" },
+      { en: "Simplify powers of $i$", zh: "化简 $i$ 的幂" },
+      { en: "Solve quadratic equations whose roots are complex", zh: "求解根为复数的二次方程" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-4-1",
+        title: { en: "Imaginary Unit and Standard Form", zh: "虚数单位与标准形式" },
+        explanation: {
+          en: "The imaginary unit $i$ satisfies $i^2 = -1$. A complex number has the form $a + bi$ where $a, b \\in \\mathbb{R}$. $a$ is the real part, $b$ the imaginary part. Real numbers ($b = 0$) are a subset of complex numbers.",
+          zh: "虚数单位 $i$ 满足 $i^2 = -1$。复数形如 $a + bi$，其中 $a, b \\in \\mathbb{R}$。$a$ 为实部，$b$ 为虚部。实数（$b = 0$）是复数的子集。",
+        },
+        whenToUse: { en: "Whenever working with quantities involving $\\sqrt{-1}$ or quadratic equations with negative discriminants", zh: "处理含 $\\sqrt{-1}$ 的量或判别式为负的二次方程时" },
+        commonMistake: { en: "Treating $i$ as a regular variable; squaring it instead of using $i^2 = -1$", zh: "把 $i$ 当作普通变量；只平方而不用 $i^2 = -1$" },
+        example: { en: "$\\sqrt{-9} = 3i$, not $3$", zh: "$\\sqrt{-9} = 3i$，不是 $3$" },
+      },
+      {
+        id: "kc-2-4-2",
+        title: { en: "Complex Conjugates", zh: "共轭复数" },
+        explanation: {
+          en: "The conjugate of $a + bi$ is $a - bi$ (sign of imaginary part is flipped). Their product is real: $(a + bi)(a - bi) = a^2 + b^2$. Conjugates are essential for dividing complex numbers.",
+          zh: "$a + bi$ 的共轭为 $a - bi$（虚部变号）。两者乘积为实数：$(a + bi)(a - bi) = a^2 + b^2$。共轭在复数除法中至关重要。",
+        },
+        whenToUse: { en: "Dividing complex numbers, or rationalizing complex denominators", zh: "复数除法或复数分母的有理化" },
+        commonMistake: { en: "Changing the sign of the real part instead of the imaginary part", zh: "把实部变号而非虚部变号" },
+        example: { en: "Conjugate of $3 - 5i$ is $3 + 5i$; their product is $9 + 25 = 34$", zh: "$3 - 5i$ 的共轭为 $3 + 5i$；乘积为 $9 + 25 = 34$" },
+      },
+      {
+        id: "kc-2-4-3",
+        title: { en: "Division by Multiplying by the Conjugate", zh: "用共轭复数做除法" },
+        explanation: {
+          en: "To divide $\\frac{a + bi}{c + di}$, multiply numerator and denominator by the conjugate $c - di$ to make the denominator real, then write in standard form.",
+          zh: "要计算 $\\frac{a + bi}{c + di}$，把分子分母同乘共轭 $c - di$，使分母变为实数，再化为标准形式。",
+        },
+        whenToUse: { en: "Any complex division problem", zh: "凡是复数除法问题" },
+        commonMistake: { en: "Forgetting to multiply BOTH numerator and denominator by the conjugate", zh: "忘记把分子与分母都乘共轭" },
+        example: { en: "$\\frac{1}{2 + i} = \\frac{2 - i}{(2)(2) + 1} = \\frac{2 - i}{5} = \\tfrac{2}{5} - \\tfrac{1}{5}i$", zh: "$\\frac{1}{2 + i} = \\frac{2 - i}{(2)(2) + 1} = \\frac{2 - i}{5} = \\tfrac{2}{5} - \\tfrac{1}{5}i$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-4-1",
+        name: { en: "Powers of $i$", zh: "$i$ 的幂" },
+        formula: "i^1 = i, \\; i^2 = -1, \\; i^3 = -i, \\; i^4 = 1, \\; i^{n+4} = i^n",
+        variables: [
+          { en: "$n$ — non-negative integer", zh: "$n$ — 非负整数" },
+        ],
+        whenToUse: { en: "Simplify $i^n$ by reducing $n \\bmod 4$", zh: "用 $n \\bmod 4$ 化简 $i^n$" },
+        commonProblemTypes: [
+          { en: "Simplify $i^{15}$, $i^{42}$, etc.", zh: "化简 $i^{15}$、$i^{42}$ 等" },
+        ],
+        example: { en: "$i^{15} = i^{12} \\cdot i^3 = 1 \\cdot (-i) = -i$", zh: "$i^{15} = i^{12} \\cdot i^3 = 1 \\cdot (-i) = -i$" },
+      },
+      {
+        id: "f-2-4-2",
+        name: { en: "Multiplication of Complex Numbers", zh: "复数乘法" },
+        formula: "(a + bi)(c + di) = (ac - bd) + (ad + bc)i",
+        variables: [
+          { en: "$a, b, c, d \\in \\mathbb{R}$", zh: "$a, b, c, d \\in \\mathbb{R}$" },
+        ],
+        whenToUse: { en: "Multiply two complex numbers and write in standard form", zh: "复数相乘并化为标准形式" },
+        commonProblemTypes: [
+          { en: "Expand a product of two complex numbers", zh: "展开两复数之积" },
+          { en: "Square a complex number", zh: "对复数平方" },
+        ],
+        example: { en: "$(2 + 3i)(1 - 4i) = (2 + 12) + (-8 + 3)i = 14 - 5i$", zh: "$(2 + 3i)(1 - 4i) = (2 + 12) + (-8 + 3)i = 14 - 5i$" },
+      },
+      {
+        id: "f-2-4-3",
+        name: { en: "Conjugate and Product", zh: "共轭与积" },
+        formula: "\\overline{a + bi} = a - bi, \\quad (a + bi)(a - bi) = a^2 + b^2",
+        variables: [
+          { en: "$a, b \\in \\mathbb{R}$", zh: "$a, b \\in \\mathbb{R}$" },
+        ],
+        whenToUse: { en: "Divide complex numbers; simplify expressions", zh: "复数除法；化简表达式" },
+        commonProblemTypes: [
+          { en: "Compute $\\frac{1}{a + bi}$", zh: "求 $\\frac{1}{a + bi}$" },
+          { en: "Find modulus squared via $a^2 + b^2$", zh: "用 $a^2 + b^2$ 求模的平方" },
+        ],
+        example: { en: "$(4 + 3i)(4 - 3i) = 16 + 9 = 25$", zh: "$(4 + 3i)(4 - 3i) = 16 + 9 = 25$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-4-1",
+        title: { en: "Add or Subtract Complex Numbers", zh: "复数加减" },
+        description: { en: "Combine real parts and imaginary parts separately.", zh: "实部与虚部分别合并。" },
+        howToRecognize: { en: "Two complex numbers given; problem asks for sum or difference.", zh: "给出两个复数；要求和或差。" },
+        steps: [
+          { en: "Add (or subtract) the real parts", zh: "实部相加（减）" },
+          { en: "Add (or subtract) the imaginary parts", zh: "虚部相加（减）" },
+          { en: "Write in standard form $a + bi$", zh: "写成 $a + bi$ 标准形式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Compute $(3 - 2i) + (4 + 7i)$ and $(3 - 2i) - (4 + 7i)$.", zh: "计算 $(3 - 2i) + (4 + 7i)$ 与 $(3 - 2i) - (4 + 7i)$。" },
+        commonTraps: [
+          { en: "Sign error when distributing the negative in subtraction", zh: "减法分配负号时的符号错误" },
+        ],
+      },
+      {
+        id: "pt-2-4-2",
+        title: { en: "Multiply Two Complex Numbers", zh: "两个复数相乘" },
+        description: { en: "Use FOIL and apply $i^2 = -1$.", zh: "用乘法分配律展开并用 $i^2 = -1$。" },
+        howToRecognize: { en: "Problem asks for the product of two complex numbers.", zh: "题目要求两复数之积。" },
+        steps: [
+          { en: "Distribute (FOIL)", zh: "分配律展开（FOIL）" },
+          { en: "Replace $i^2$ with $-1$", zh: "把 $i^2$ 替换为 $-1$" },
+          { en: "Combine like terms; write in $a + bi$ form", zh: "合并同类项；写成 $a + bi$ 形式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Compute $(2 + 5i)(3 - i)$.", zh: "计算 $(2 + 5i)(3 - i)$。" },
+        commonTraps: [
+          { en: "Forgetting to apply $i^2 = -1$ at the end", zh: "末尾忘记用 $i^2 = -1$" },
+        ],
+      },
+      {
+        id: "pt-2-4-3",
+        title: { en: "Find the Conjugate", zh: "求共轭" },
+        description: { en: "Flip the sign of the imaginary part.", zh: "把虚部变号。" },
+        howToRecognize: { en: "Problem asks for the conjugate of a complex number.", zh: "题目要求复数的共轭。" },
+        steps: [
+          { en: "Identify real and imaginary parts", zh: "确定实部与虚部" },
+          { en: "Keep real part; flip the sign on the imaginary part", zh: "实部不变；虚部变号" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the conjugate of $-4 + 7i$ and verify their product is real.", zh: "求 $-4 + 7i$ 的共轭，并验证两者积为实数。" },
+        commonTraps: [
+          { en: "Negating both parts (becomes the additive inverse, not the conjugate)", zh: "把两部分都取负（变成相反数而非共轭）" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-4-4",
+        title: { en: "Divide Complex Numbers", zh: "复数除法" },
+        description: { en: "Multiply numerator and denominator by the conjugate of the denominator; simplify.", zh: "把分子分母同乘分母的共轭；化简。" },
+        howToRecognize: { en: "Quotient of two complex numbers is requested in standard form.", zh: "要求两复数商的标准形式。" },
+        steps: [
+          { en: "Identify denominator's conjugate", zh: "找出分母的共轭" },
+          { en: "Multiply both numerator and denominator by it", zh: "把分子分母都乘以该共轭" },
+          { en: "Simplify; combine real and imaginary parts; divide by real denominator", zh: "化简；合并实部虚部；除以实分母" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Compute $\\frac{3 + 2i}{1 - 4i}$ in standard form.", zh: "把 $\\frac{3 + 2i}{1 - 4i}$ 写成标准形式。" },
+        commonTraps: [
+          { en: "Multiplying only the denominator by the conjugate", zh: "只把分母乘共轭" },
+        ],
+      },
+      {
+        id: "pt-2-4-5",
+        title: { en: "Simplify Powers of $i$", zh: "化简 $i$ 的幂" },
+        description: { en: "Use $i^4 = 1$ to reduce the exponent.", zh: "用 $i^4 = 1$ 化简指数。" },
+        howToRecognize: { en: "Problem asks to simplify $i^n$ for some integer $n$.", zh: "题目要求化简 $i^n$（整数 $n$）。" },
+        steps: [
+          { en: "Compute $n \\bmod 4$", zh: "计算 $n \\bmod 4$" },
+          { en: "Match remainder $0, 1, 2, 3$ to $1, i, -1, -i$ respectively", zh: "余数 $0, 1, 2, 3$ 分别对应 $1, i, -1, -i$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Simplify $i^{37}$.", zh: "化简 $i^{37}$。" },
+        commonTraps: [
+          { en: "Mismatching the remainder with the wrong power", zh: "余数与对应幂值匹配错误" },
+        ],
+      },
+      {
+        id: "pt-2-4-6",
+        title: { en: "Square a Complex Number", zh: "复数的平方" },
+        description: { en: "Apply $(a + bi)^2 = a^2 - b^2 + 2abi$ or expand directly.", zh: "用 $(a + bi)^2 = a^2 - b^2 + 2abi$ 或直接展开。" },
+        howToRecognize: { en: "Problem asks to square a complex number.", zh: "题目要求复数平方。" },
+        steps: [
+          { en: "Apply $(a + bi)^2 = (a + bi)(a + bi)$", zh: "展开 $(a + bi)^2 = (a + bi)(a + bi)$" },
+          { en: "Use FOIL and $i^2 = -1$", zh: "用 FOIL 与 $i^2 = -1$" },
+          { en: "Combine to get $a^2 - b^2 + 2abi$", zh: "合并为 $a^2 - b^2 + 2abi$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Compute $(4 - 3i)^2$.", zh: "计算 $(4 - 3i)^2$。" },
+        commonTraps: [
+          { en: "Forgetting the $2ab$ cross term", zh: "漏掉 $2ab$ 交叉项" },
+        ],
+      },
+      {
+        id: "pt-2-4-7",
+        title: { en: "Solve a Quadratic with Complex Roots", zh: "解根为复数的二次方程" },
+        description: { en: "Apply the quadratic formula when the discriminant is negative; simplify the imaginary roots.", zh: "判别式为负时用求根公式，化简复数根。" },
+        howToRecognize: { en: "Quadratic equation with $b^2 - 4ac < 0$.", zh: "二次方程 $b^2 - 4ac < 0$。" },
+        steps: [
+          { en: "Compute discriminant; if negative, factor out $-1$ as $i$", zh: "求判别式；若为负，把 $-1$ 提出为 $i$" },
+          { en: "Apply quadratic formula", zh: "应用求根公式" },
+          { en: "Simplify both roots in $a + bi$ form", zh: "把两根化为 $a + bi$ 形式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $x^2 + 2x + 5 = 0$.", zh: "解 $x^2 + 2x + 5 = 0$。" },
+        commonTraps: [
+          { en: "Forgetting to take $\\sqrt{-1} = i$ correctly out of the radical", zh: "未正确从根号中提出 $\\sqrt{-1} = i$" },
+        ],
+      },
+      {
+        id: "pt-2-4-8",
+        title: { en: "Plot a Complex Number in the Complex Plane", zh: "在复平面上标记复数" },
+        description: { en: "Treat real part as horizontal coordinate, imaginary part as vertical.", zh: "把实部作横坐标，虚部作纵坐标。" },
+        howToRecognize: { en: "Problem asks for graphical representation.", zh: "题目要求图形表示。" },
+        steps: [
+          { en: "Identify $a$ (horizontal) and $b$ (vertical) of $a + bi$", zh: "识别 $a + bi$ 的 $a$（横）与 $b$（纵）" },
+          { en: "Plot the point $(a, b)$ on the complex plane", zh: "在复平面上标出 $(a, b)$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Plot $-3 + 4i$ and $2 - i$ in the complex plane.", zh: "在复平面上标出 $-3 + 4i$ 与 $2 - i$。" },
+        commonTraps: [
+          { en: "Switching horizontal and vertical axes", zh: "弄反横纵轴" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-4-9",
+        title: { en: "Simplify Multi-Step Complex Expressions", zh: "化简多步骤复数表达式" },
+        description: { en: "Combine arithmetic operations (mult, div, powers of $i$) into a single simplified standard form.", zh: "把多步运算（乘、除、$i$ 的幂）合并为单一标准形式。" },
+        howToRecognize: { en: "Expression mixes multiple complex operations.", zh: "表达式含多种复数运算。" },
+        steps: [
+          { en: "Simplify any powers of $i$ first", zh: "先化简 $i$ 的幂" },
+          { en: "Distribute, multiply, and reduce $i^2$", zh: "分配、相乘、化简 $i^2$" },
+          { en: "If a quotient remains, multiply by conjugate of denominator", zh: "若有商，乘分母共轭" },
+          { en: "Write final answer in $a + bi$ form", zh: "最终写成 $a + bi$ 形式" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Simplify $\\frac{(2 + i)^2}{1 - i} + i^{27}$.", zh: "化简 $\\frac{(2 + i)^2}{1 - i} + i^{27}$。" },
+        commonTraps: [
+          { en: "Skipping intermediate simplification of $(2 + i)^2$ before dividing", zh: "除法前未先化简 $(2 + i)^2$" },
+        ],
+      },
+      {
+        id: "pt-2-4-10",
+        title: { en: "Verify a Complex Number Is a Zero of a Polynomial", zh: "验证某复数为多项式的零点" },
+        description: { en: "Substitute and simplify; if the result is $0$, it's a zero.", zh: "代入化简；若结果为 $0$，则为零点。" },
+        howToRecognize: { en: "Problem asks to confirm $a + bi$ is a zero of a given polynomial.", zh: "题目要求确认 $a + bi$ 是给定多项式的零点。" },
+        steps: [
+          { en: "Substitute $a + bi$ for $x$", zh: "把 $a + bi$ 代入 $x$" },
+          { en: "Compute each power, applying $i^2 = -1$ each time", zh: "逐项求幂，使用 $i^2 = -1$" },
+          { en: "Combine; result should be $0 + 0i$", zh: "合并；结果应为 $0 + 0i$" },
+          { en: "Note: complex zeros come in conjugate pairs for real-coefficient polynomials", zh: "注：实系数多项式的复零点成共轭对" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Verify that $1 + 2i$ is a zero of $f(x) = x^2 - 2x + 5$.", zh: "验证 $1 + 2i$ 是 $f(x) = x^2 - 2x + 5$ 的零点。" },
+        commonTraps: [
+          { en: "Computing $(a + bi)^2$ as $a^2 + b^2 i^2$ instead of $a^2 - b^2 + 2abi$", zh: "把 $(a + bi)^2$ 当作 $a^2 + b^2 i^2$，应为 $a^2 - b^2 + 2abi$" },
+        ],
+      },
+    ],
   },
   {
     id: "2-5",
