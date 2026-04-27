@@ -5,27 +5,525 @@ const chapter1Units: Unit[] = [
     id: "1-1",
     chapterId: "ch-1",
     number: "1.1",
-    title: {
-      en: "Rectangular Coordinates",
-      zh: "直角坐标系",
-    },
+    title: { en: "Rectangular Coordinates", zh: "直角坐标系" },
     description: {
       en: "Plot points in the Cartesian plane and use the Distance and Midpoint Formulas.",
       zh: "在笛卡尔平面上标记点，并运用两点间距离公式与中点公式。",
     },
+    learningGoals: [
+      { en: "Plot ordered pairs and identify quadrants in the Cartesian plane", zh: "在笛卡尔平面上标记有序对并识别象限" },
+      { en: "Apply the Distance Formula to find the distance between two points", zh: "运用距离公式求两点间的距离" },
+      { en: "Apply the Midpoint Formula to find the midpoint of a segment", zh: "运用中点公式求线段的中点" },
+      { en: "Use the coordinate plane to model real-world data", zh: "运用坐标平面对实际数据建模" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-1-1",
+        title: { en: "The Cartesian Plane and Quadrants", zh: "笛卡尔平面与象限" },
+        explanation: {
+          en: "The Cartesian plane is formed by two perpendicular real number lines — the x-axis (horizontal) and y-axis (vertical) — meeting at the origin. They divide the plane into four quadrants: I (+,+), II (-,+), III (-,-), IV (+,-). Every point is named by an ordered pair (x, y).",
+          zh: "笛卡尔平面由两条互相垂直的实数轴构成——横轴（x 轴）与纵轴（y 轴）——相交于原点。两轴将平面分为四个象限：Ⅰ (+,+)、Ⅱ (-,+)、Ⅲ (-,-)、Ⅳ (+,-)。每个点用有序对 (x, y) 表示。",
+        },
+        whenToUse: { en: "Whenever you plot, describe, or analyze the position of a point", zh: "凡是要标记、描述或分析点的位置时" },
+        commonMistake: { en: "Reversing the (x, y) order or placing a point in the wrong quadrant", zh: "颠倒 (x, y) 的顺序，或把点放错象限" },
+        example: { en: "$(3, -2)$ lies in Quadrant IV; $(-1, 4)$ lies in Quadrant II", zh: "$(3, -2)$ 位于第 Ⅳ 象限；$(-1, 4)$ 位于第 Ⅱ 象限" },
+      },
+      {
+        id: "kc-1-1-2",
+        title: { en: "Distance Formula", zh: "距离公式" },
+        explanation: {
+          en: "The distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ is $d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$. It is a direct application of the Pythagorean Theorem to the right triangle formed by the horizontal and vertical changes.",
+          zh: "两点 $(x_1, y_1)$ 与 $(x_2, y_2)$ 之间的距离为 $d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$。它是勾股定理在由横向与纵向变化构成的直角三角形上的直接应用。",
+        },
+        whenToUse: { en: "Whenever you need the length of a segment or distance between two points", zh: "需要求线段长度或两点间距离时" },
+        commonMistake: { en: "Forgetting to square the differences, or taking the square root of the difference (not the sum)", zh: "忘记对差值平方，或对差而非平方和开根号" },
+        example: { en: "Distance from $(1, 2)$ to $(4, 6)$: $d = \\sqrt{3^2 + 4^2} = 5$", zh: "从 $(1, 2)$ 到 $(4, 6)$ 的距离：$d = \\sqrt{3^2 + 4^2} = 5$" },
+      },
+      {
+        id: "kc-1-1-3",
+        title: { en: "Midpoint Formula", zh: "中点公式" },
+        explanation: {
+          en: "The midpoint of the segment from $(x_1, y_1)$ to $(x_2, y_2)$ is the average of the coordinates: $M = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)$.",
+          zh: "从 $(x_1, y_1)$ 到 $(x_2, y_2)$ 线段的中点是两端点坐标的平均值：$M = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)$。",
+        },
+        whenToUse: { en: "To find the center of a segment, or to average two positions", zh: "求线段中点或两个位置的平均值" },
+        commonMistake: { en: "Subtracting instead of adding, or forgetting to divide by 2 on each coordinate", zh: "做减法而非加法，或忘记对每个坐标除以 2" },
+        example: { en: "Midpoint of $(-2, 3)$ and $(4, 7)$ is $(1, 5)$", zh: "$(-2, 3)$ 与 $(4, 7)$ 的中点是 $(1, 5)$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-1-1",
+        name: { en: "Distance Formula", zh: "距离公式" },
+        formula: "d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}",
+        variables: [
+          { en: "$(x_1, y_1)$, $(x_2, y_2)$ — coordinates of the two points", zh: "$(x_1, y_1)$、$(x_2, y_2)$ — 两点坐标" },
+          { en: "$d$ — distance between the two points", zh: "$d$ — 两点间的距离" },
+        ],
+        whenToUse: { en: "Find the distance between any two points in the coordinate plane", zh: "在坐标平面上求任意两点间的距离" },
+        commonProblemTypes: [
+          { en: "Find the length of a segment", zh: "求线段长度" },
+          { en: "Verify whether a triangle is right, isosceles, or equilateral", zh: "判断三角形是否为直角、等腰或等边" },
+        ],
+        example: { en: "From $(0,0)$ to $(3,4)$: $d = \\sqrt{9 + 16} = 5$", zh: "从 $(0,0)$ 到 $(3,4)$：$d = \\sqrt{9 + 16} = 5$" },
+      },
+      {
+        id: "f-1-1-2",
+        name: { en: "Midpoint Formula", zh: "中点公式" },
+        formula: "M = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)",
+        variables: [
+          { en: "$(x_1, y_1)$, $(x_2, y_2)$ — endpoints of the segment", zh: "$(x_1, y_1)$、$(x_2, y_2)$ — 线段两端点" },
+          { en: "$M$ — midpoint", zh: "$M$ — 中点" },
+        ],
+        whenToUse: { en: "Find the midpoint of a segment, or recover an endpoint when the midpoint and the other endpoint are known", zh: "求线段中点；已知中点与一端点时反求另一端点" },
+        commonProblemTypes: [
+          { en: "Find the midpoint of two points", zh: "求两点的中点" },
+          { en: "Find an unknown endpoint", zh: "求未知端点" },
+        ],
+        example: { en: "Midpoint of $(1,2)$ and $(5,6)$ is $(3,4)$", zh: "$(1,2)$ 与 $(5,6)$ 的中点是 $(3,4)$" },
+      },
+      {
+        id: "f-1-1-3",
+        name: { en: "Pythagorean Theorem", zh: "勾股定理" },
+        formula: "a^2 + b^2 = c^2",
+        variables: [
+          { en: "$a$, $b$ — legs of the right triangle", zh: "$a$、$b$ — 直角三角形的两直角边" },
+          { en: "$c$ — hypotenuse", zh: "$c$ — 斜边" },
+        ],
+        whenToUse: { en: "Foundation of the Distance Formula; also used to verify right triangles", zh: "距离公式的基础；亦用于验证直角三角形" },
+        commonProblemTypes: [
+          { en: "Verify a right triangle", zh: "验证直角三角形" },
+          { en: "Derive distance from horizontal/vertical legs", zh: "从横向/纵向直角边推导距离" },
+        ],
+        example: { en: "Legs $3, 4$: hypotenuse $= \\sqrt{9+16} = 5$", zh: "直角边 $3, 4$：斜边 $= \\sqrt{9+16} = 5$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-1-1",
+        title: { en: "Plot a Point and Identify Its Quadrant", zh: "标记点并判断象限" },
+        description: { en: "Given an ordered pair, plot the point and state which quadrant (or axis) it lies in.", zh: "给定有序对，标出点的位置并指出它在哪个象限（或坐标轴上）。" },
+        howToRecognize: { en: "An ordered pair is given and you are asked to plot or to name the quadrant.", zh: "题目给出有序对，要求标记或指出象限。" },
+        steps: [
+          { en: "Read the $x$-coordinate (move left/right from origin)", zh: "读出 $x$ 坐标（从原点向左或右移动）" },
+          { en: "Read the $y$-coordinate (move up/down)", zh: "读出 $y$ 坐标（向上或向下移动）" },
+          { en: "Determine the quadrant from the signs of $(x, y)$", zh: "根据 $(x, y)$ 的符号判断象限" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Plot $(-3, 5)$ and state its quadrant.", zh: "标出 $(-3, 5)$ 并指出它所在的象限。" },
+        commonTraps: [
+          { en: "Switching the $x$- and $y$-coordinates", zh: "把 $x$ 与 $y$ 坐标搞反" },
+          { en: "A point on an axis is not in any quadrant", zh: "落在坐标轴上的点不属于任何象限" },
+        ],
+      },
+      {
+        id: "pt-1-1-2",
+        title: { en: "Distance Between Two Points", zh: "求两点间距离" },
+        description: { en: "Use the Distance Formula to compute the distance between two given points.", zh: "用距离公式计算给定两点间的距离。" },
+        howToRecognize: { en: "Two points are given; the question asks for distance, length, or how far apart.", zh: "给定两点；题目问距离、长度或相距多远。" },
+        steps: [
+          { en: "Label $(x_1, y_1)$ and $(x_2, y_2)$", zh: "标记 $(x_1, y_1)$ 和 $(x_2, y_2)$" },
+          { en: "Compute differences $x_2 - x_1$ and $y_2 - y_1$", zh: "计算差 $x_2 - x_1$ 与 $y_2 - y_1$" },
+          { en: "Square each difference and add them", zh: "对每个差平方并相加" },
+          { en: "Take the square root", zh: "开平方根" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the distance between $(2, -1)$ and $(7, 11)$.", zh: "求 $(2, -1)$ 与 $(7, 11)$ 之间的距离。" },
+        commonTraps: [
+          { en: "Forgetting the square root at the end", zh: "最后忘记开平方" },
+          { en: "Sign errors when subtracting before squaring", zh: "做差时符号错误后再平方" },
+        ],
+      },
+      {
+        id: "pt-1-1-3",
+        title: { en: "Midpoint of a Segment", zh: "求线段中点" },
+        description: { en: "Use the Midpoint Formula to find the center of a segment given its endpoints.", zh: "用中点公式根据端点求线段中心。" },
+        howToRecognize: { en: "Two endpoints are given; the question asks for the midpoint or center.", zh: "给定两端点；题目问中点或中心。" },
+        steps: [
+          { en: "Add the $x$-coordinates and divide by 2", zh: "$x$ 坐标相加除以 2" },
+          { en: "Add the $y$-coordinates and divide by 2", zh: "$y$ 坐标相加除以 2" },
+          { en: "Write the result as an ordered pair", zh: "结果写成有序对" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the midpoint of the segment from $(-4, 2)$ to $(6, 8)$.", zh: "求从 $(-4, 2)$ 到 $(6, 8)$ 的线段中点。" },
+        commonTraps: [
+          { en: "Subtracting instead of adding", zh: "误用减法而非加法" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-1-4",
+        title: { en: "Verify a Right Triangle Using the Distance Formula", zh: "用距离公式验证直角三角形" },
+        description: { en: "Given three vertices, compute side lengths and check whether the Pythagorean relation holds.", zh: "给定三个顶点，计算三边长度并验证勾股关系。" },
+        howToRecognize: { en: "Three points are given; the question asks whether the triangle is right (or isosceles).", zh: "给定三点；题目问是否为直角（或等腰）三角形。" },
+        steps: [
+          { en: "Compute the three side lengths using the Distance Formula", zh: "用距离公式计算三边长度" },
+          { en: "Identify the longest side as the candidate hypotenuse", zh: "将最长边作为候选斜边" },
+          { en: "Check whether $a^2 + b^2 = c^2$ for the other two sides and the longest", zh: "验证其余两边与最长边是否满足 $a^2 + b^2 = c^2$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Show that $A(1,2)$, $B(4,6)$, $C(-3,5)$ form a right triangle.", zh: "证明 $A(1,2)$、$B(4,6)$、$C(-3,5)$ 构成直角三角形。" },
+        commonTraps: [
+          { en: "Comparing $a + b$ to $c$ instead of squared values", zh: "比较 $a + b$ 与 $c$ 而非平方值" },
+          { en: "Skipping the longest-side identification before squaring", zh: "未先确定最长边就开始计算" },
+        ],
+      },
+      {
+        id: "pt-1-1-5",
+        title: { en: "Find a Missing Coordinate Given a Distance", zh: "已知距离求未知坐标" },
+        description: { en: "Given one point and the distance to another point with one unknown coordinate, solve for the unknown.", zh: "给定一点及到另一点的距离，其中一个坐标未知，求未知量。" },
+        howToRecognize: { en: "One coordinate is unknown (e.g., $(x, 5)$); a target distance from a known point is given.", zh: "有一个坐标未知（如 $(x, 5)$）；给定到已知点的目标距离。" },
+        steps: [
+          { en: "Set up the Distance Formula with the unknown variable", zh: "用未知量建立距离公式" },
+          { en: "Square both sides to remove the radical", zh: "两边平方去掉根号" },
+          { en: "Solve the resulting equation (often quadratic)", zh: "求解所得方程（通常为二次方程）" },
+          { en: "Check both roots — discard any that do not fit context", zh: "检查两个根——舍去不符合题意的解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $x$ so that the distance from $(x, 3)$ to $(2, 7)$ is $5$.", zh: "求 $x$ 使 $(x, 3)$ 到 $(2, 7)$ 的距离为 $5$。" },
+        commonTraps: [
+          { en: "Forgetting the $\\pm$ when taking square roots — there are usually two valid points", zh: "开平方根时忘记 $\\pm$——通常有两个有效解" },
+        ],
+      },
+      {
+        id: "pt-1-1-6",
+        title: { en: "Find an Endpoint Given Midpoint and Other Endpoint", zh: "已知中点及一端点求另一端点" },
+        description: { en: "Use the Midpoint Formula in reverse to find the unknown endpoint.", zh: "反向使用中点公式求未知端点。" },
+        howToRecognize: { en: "The midpoint $M$ and one endpoint are given; the other endpoint is unknown.", zh: "给定中点 $M$ 与一个端点，求另一端点。" },
+        steps: [
+          { en: "Write the Midpoint Formula with the unknown endpoint $(x, y)$", zh: "用未知端点 $(x, y)$ 写出中点公式" },
+          { en: "Solve $\\frac{x_1 + x}{2} = M_x$ for $x$ (and similarly for $y$)", zh: "解 $\\frac{x_1 + x}{2} = M_x$ 求 $x$（$y$ 同理）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "The midpoint of $\\overline{AB}$ is $(3, -1)$ and $A = (-2, 4)$. Find $B$.", zh: "$\\overline{AB}$ 的中点为 $(3, -1)$，$A = (-2, 4)$，求 $B$。" },
+        commonTraps: [
+          { en: "Subtracting from the midpoint instead of solving the equation $\\frac{x_1 + x}{2} = M_x$ correctly", zh: "误从中点直接减去，而未正确解方程 $\\frac{x_1 + x}{2} = M_x$" },
+        ],
+      },
+      {
+        id: "pt-1-1-7",
+        title: { en: "Translate a Point or Figure", zh: "平移点或图形" },
+        description: { en: "Shift a point or set of points by adding constants to the $x$- and $y$-coordinates.", zh: "对 $x$ 和 $y$ 坐标加上常数以平移点或一组点。" },
+        howToRecognize: { en: "The problem gives a translation rule, e.g., \"shift right 3 and up 2\", and asks for new coordinates.", zh: "题目给出平移规则，如\"右移 3 个单位，上移 2 个单位\"，要求新坐标。" },
+        steps: [
+          { en: "Add the horizontal shift $h$ to each $x$-coordinate", zh: "对每个 $x$ 坐标加上水平平移量 $h$" },
+          { en: "Add the vertical shift $k$ to each $y$-coordinate", zh: "对每个 $y$ 坐标加上垂直平移量 $k$" },
+          { en: "Express the new coordinates", zh: "写出新坐标" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Translate the triangle with vertices $A(1,2)$, $B(4,2)$, $C(2,5)$ by $3$ units right and $1$ unit down.", zh: "将顶点为 $A(1,2)$、$B(4,2)$、$C(2,5)$ 的三角形向右平移 $3$ 个单位、向下平移 $1$ 个单位。" },
+        commonTraps: [
+          { en: "Subtracting when the problem says \"right\" or \"up\" — these are positive shifts", zh: "题目说\"向右\"或\"向上\"时却用减法——这些是正向平移" },
+        ],
+      },
+      {
+        id: "pt-1-1-8",
+        title: { en: "Verify Properties of a Quadrilateral", zh: "验证四边形性质" },
+        description: { en: "Use distances and midpoints to verify whether four points form a parallelogram, rhombus, square, etc.", zh: "用距离和中点验证四点是否构成平行四边形、菱形、正方形等。" },
+        howToRecognize: { en: "Four vertices are given; the problem asks to classify or verify a quadrilateral type.", zh: "给定四个顶点；要求分类或验证四边形类型。" },
+        steps: [
+          { en: "Compute lengths of sides (and diagonals if needed)", zh: "计算边长（如需要也算对角线）" },
+          { en: "Compute midpoints of diagonals — equal midpoints ⇒ parallelogram", zh: "计算对角线中点——若相等则为平行四边形" },
+          { en: "Compare side and diagonal lengths to classify further (rhombus, rectangle, square)", zh: "比较边长与对角线长度以进一步分类（菱形、矩形、正方形）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Show that $A(0,0)$, $B(4,0)$, $C(5,3)$, $D(1,3)$ form a parallelogram.", zh: "证明 $A(0,0)$、$B(4,0)$、$C(5,3)$、$D(1,3)$ 构成平行四边形。" },
+        commonTraps: [
+          { en: "Confusing necessary conditions (e.g., one pair parallel) with sufficient ones", zh: "把必要条件（如一对边平行）与充分条件混淆" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-1-9",
+        title: { en: "Point That Divides a Segment in a Given Ratio", zh: "按给定比例分线段的点" },
+        description: { en: "Find the point that divides a segment internally in a ratio $m:n$.", zh: "求按比例 $m:n$ 内分线段的点。" },
+        howToRecognize: { en: "The problem asks for a point that splits a segment in a non-1:1 ratio.", zh: "题目要求按非 1:1 比例分线段的点。" },
+        steps: [
+          { en: "Let endpoints be $(x_1, y_1)$, $(x_2, y_2)$ and ratio $m:n$", zh: "设端点为 $(x_1, y_1)$、$(x_2, y_2)$，比例为 $m:n$" },
+          { en: "Apply $P = \\left(\\frac{m x_2 + n x_1}{m+n}, \\frac{m y_2 + n y_1}{m+n}\\right)$", zh: "应用 $P = \\left(\\frac{m x_2 + n x_1}{m+n}, \\frac{m y_2 + n y_1}{m+n}\\right)$" },
+          { en: "Simplify each coordinate", zh: "化简各坐标" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find the point that divides the segment from $(-2, 3)$ to $(4, 9)$ in the ratio $2:1$.", zh: "求从 $(-2, 3)$ 到 $(4, 9)$ 按 $2:1$ 内分线段的点。" },
+        commonTraps: [
+          { en: "Reversing $m$ and $n$ — the larger weight goes with the farther endpoint", zh: "把 $m$ 与 $n$ 弄反——较大的权重对应较远的端点" },
+        ],
+      },
+      {
+        id: "pt-1-1-10",
+        title: { en: "Real-World Application — Modeling Position or Distance", zh: "实际应用——建模位置或距离" },
+        description: { en: "Translate a real-world description (map, route, layout) into coordinates and apply the formulas.", zh: "将实际描述（地图、路径、布局）转化为坐标，并应用公式。" },
+        howToRecognize: { en: "Word problem describes locations on a grid or map; asks for distance traveled or center of two locations.", zh: "应用题描述网格或地图上的位置；问行驶距离或两位置的中心。" },
+        steps: [
+          { en: "Choose an origin and assign coordinates to each location", zh: "选定原点并为每个位置赋予坐标" },
+          { en: "Apply Distance or Midpoint Formula as needed", zh: "按需应用距离或中点公式" },
+          { en: "Interpret the result with proper units in context", zh: "结合情境用恰当单位解释结果" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "On a city grid (each unit = 1 block), a coffee shop is at $(2, 5)$ and a library is at $(8, -3)$. A meeting point should be exactly halfway. Where is it, and how far does each person walk?", zh: "在城市网格中（每单位 = 1 个街区），咖啡店位于 $(2, 5)$，图书馆位于 $(8, -3)$。两人想在正中间会面，地点在哪？每人走多远？" },
+        commonTraps: [
+          { en: "Choosing the origin inconsistently or mixing units", zh: "原点选取不一致或单位混用" },
+          { en: "Reporting unit-less distances when the problem expects blocks/miles/etc.", zh: "题目要求街区/英里等单位时却给出无单位距离" },
+        ],
+      },
+    ],
   },
   {
     id: "1-2",
     chapterId: "ch-1",
     number: "1.2",
-    title: {
-      en: "Graphs of Equations",
-      zh: "方程的图像",
-    },
+    title: { en: "Graphs of Equations", zh: "方程的图像" },
     description: {
-      en: "Sketch graphs of equations, find intercepts, and identify symmetry.",
-      zh: "绘制方程的图像，求截距，并识别图像的对称性。",
+      en: "Sketch graphs of equations, find intercepts, identify symmetry, and write the equation of a circle.",
+      zh: "绘制方程的图像、求截距、识别对称性，并写出圆的方程。",
     },
+    learningGoals: [
+      { en: "Sketch the graph of an equation using the point-plotting method", zh: "用描点法绘制方程的图像" },
+      { en: "Find $x$-intercepts and $y$-intercepts of a graph", zh: "求图像的 $x$ 截距与 $y$ 截距" },
+      { en: "Test an equation algebraically for symmetry about the axes or origin", zh: "通过代数方法检验方程关于坐标轴或原点的对称性" },
+      { en: "Write and graph the standard equation of a circle", zh: "写出并绘制圆的标准方程" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-2-1",
+        title: { en: "Intercepts", zh: "截距" },
+        explanation: {
+          en: "An $x$-intercept is a point where a graph crosses the $x$-axis (set $y = 0$ and solve). A $y$-intercept is where it crosses the $y$-axis (set $x = 0$ and solve). A graph may have any number of $x$-intercepts but at most one $y$-intercept when it represents a function.",
+          zh: "$x$ 截距是图像与 $x$ 轴的交点（令 $y = 0$ 求解）。$y$ 截距是图像与 $y$ 轴的交点（令 $x = 0$ 求解）。图像可有任意多个 $x$ 截距，但若为函数则最多有一个 $y$ 截距。",
+        },
+        whenToUse: { en: "Sketching graphs, finding zeros, or interpreting initial values", zh: "绘制图像、求零点或解释初始值时" },
+        commonMistake: { en: "Swapping the substitutions: setting $x = 0$ to find $x$-intercepts", zh: "代入弄反：令 $x = 0$ 来求 $x$ 截距" },
+        example: { en: "$y = x^2 - 4$: $x$-intercepts at $(\\pm 2, 0)$; $y$-intercept at $(0, -4)$", zh: "$y = x^2 - 4$：$x$ 截距 $(\\pm 2, 0)$；$y$ 截距 $(0, -4)$" },
+      },
+      {
+        id: "kc-1-2-2",
+        title: { en: "Tests for Symmetry", zh: "对称性检验" },
+        explanation: {
+          en: "A graph is symmetric about the $y$-axis if replacing $x$ with $-x$ produces an equivalent equation. Symmetric about the $x$-axis if replacing $y$ with $-y$ does. Symmetric about the origin if replacing both $x$ and $y$ with their negatives does.",
+          zh: "图像关于 $y$ 轴对称，当且仅当用 $-x$ 代换 $x$ 后方程等价；关于 $x$ 轴对称，当且仅当用 $-y$ 代换 $y$ 后方程等价；关于原点对称，当且仅当同时用 $-x$、$-y$ 代换后方程等价。",
+        },
+        whenToUse: { en: "When sketching graphs — symmetry halves the work", zh: "绘制图像时——对称性可减半工作量" },
+        commonMistake: { en: "Confusing the three substitutions or stopping before checking algebraic equivalence", zh: "混淆三种代换，或未化简就判断是否等价" },
+        example: { en: "$y = x^2$: replacing $x \\to -x$ gives $y = x^2$ (same) ⇒ $y$-axis symmetry. $y = x^3$: replacing $x \\to -x$ and $y \\to -y$ gives $-y = -x^3$, equivalent to original ⇒ origin symmetry.", zh: "$y = x^2$：用 $-x$ 代 $x$ 得 $y = x^2$（不变）⇒ 关于 $y$ 轴对称。$y = x^3$：同时用 $-x$、$-y$ 代换得 $-y = -x^3$，与原式等价 ⇒ 关于原点对称。" },
+      },
+      {
+        id: "kc-1-2-3",
+        title: { en: "Standard Equation of a Circle", zh: "圆的标准方程" },
+        explanation: {
+          en: "The set of all points at distance $r$ from a fixed center $(h, k)$ is a circle. Applying the Distance Formula gives the standard equation $(x-h)^2 + (y-k)^2 = r^2$. The center has the OPPOSITE signs of those that appear in the equation.",
+          zh: "到定点 $(h, k)$ 距离为 $r$ 的所有点的集合是一个圆。由距离公式可得标准方程 $(x-h)^2 + (y-k)^2 = r^2$。圆心的坐标与方程中出现的符号相反。",
+        },
+        whenToUse: { en: "Identifying or constructing a circle's equation given its center and radius", zh: "由圆心和半径写出或识别圆的方程" },
+        commonMistake: { en: "Reading $(x+2)^2$ as center $x = +2$ instead of $x = -2$, or forgetting to take $\\sqrt{\\;}$ to recover $r$ from $r^2$", zh: "把 $(x+2)^2$ 误读为圆心 $x = +2$，应为 $-2$；或忘记从 $r^2$ 开方得到 $r$" },
+        example: { en: "$(x-2)^2 + (y+3)^2 = 25$ has center $(2, -3)$ and radius $5$", zh: "$(x-2)^2 + (y+3)^2 = 25$ 的圆心为 $(2, -3)$，半径为 $5$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-2-1",
+        name: { en: "Standard Equation of a Circle", zh: "圆的标准方程" },
+        formula: "(x-h)^2 + (y-k)^2 = r^2",
+        variables: [
+          { en: "$(h, k)$ — center of the circle", zh: "$(h, k)$ — 圆心" },
+          { en: "$r$ — radius", zh: "$r$ — 半径" },
+        ],
+        whenToUse: { en: "Any problem identifying or constructing a circle", zh: "凡是涉及识别或构造圆的问题" },
+        commonProblemTypes: [
+          { en: "Find center and radius from an equation", zh: "由方程求圆心与半径" },
+          { en: "Write the equation given center and radius (or two points, etc.)", zh: "由圆心与半径（或其它条件）写出方程" },
+        ],
+        example: { en: "Center $(1, -2)$, radius $3$: $(x-1)^2 + (y+2)^2 = 9$", zh: "圆心 $(1, -2)$、半径 $3$：$(x-1)^2 + (y+2)^2 = 9$" },
+      },
+      {
+        id: "f-1-2-2",
+        name: { en: "General Form of a Circle", zh: "圆的一般方程" },
+        formula: "x^2 + y^2 + Dx + Ey + F = 0",
+        variables: [
+          { en: "$D, E, F$ — real constants", zh: "$D, E, F$ — 实常数" },
+        ],
+        whenToUse: { en: "Recognizing a circle from an expanded equation; convert to standard form by completing the square", zh: "从展开式识别圆；通过配方化为标准方程" },
+        commonProblemTypes: [
+          { en: "Convert general form to standard form", zh: "由一般方程化为标准方程" },
+        ],
+        example: { en: "$x^2 + y^2 - 4x + 6y - 12 = 0 \\Rightarrow (x-2)^2 + (y+3)^2 = 25$", zh: "$x^2 + y^2 - 4x + 6y - 12 = 0 \\Rightarrow (x-2)^2 + (y+3)^2 = 25$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-2-1",
+        title: { en: "Sketch a Graph by Plotting Points", zh: "用描点法绘制图像" },
+        description: { en: "Generate a table of values, plot the points, and connect them to sketch the graph.", zh: "列出取值表、描点、连线得到图像。" },
+        howToRecognize: { en: "An equation is given; the problem asks for the graph or sketch.", zh: "给定方程；要求绘制图像或简图。" },
+        steps: [
+          { en: "Choose representative $x$ values (negative, zero, positive)", zh: "选取代表性 $x$ 值（负、零、正）" },
+          { en: "Compute corresponding $y$ values from the equation", zh: "由方程计算对应的 $y$ 值" },
+          { en: "Plot the points and connect with a smooth curve", zh: "描点并以光滑曲线连接" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Sketch the graph of $y = x^2 - 2$ using a table of values.", zh: "通过取值表绘制 $y = x^2 - 2$ 的图像。" },
+        commonTraps: [
+          { en: "Choosing too few points to reveal the curve's shape", zh: "选点太少，无法体现曲线形状" },
+          { en: "Connecting points with straight segments when the curve is non-linear", zh: "曲线非线性时却用直线段连接" },
+        ],
+      },
+      {
+        id: "pt-1-2-2",
+        title: { en: "Find $x$- and $y$-Intercepts Algebraically", zh: "代数求 $x$、$y$ 截距" },
+        description: { en: "Solve for the points where the graph crosses each axis.", zh: "求图像与各坐标轴的交点。" },
+        howToRecognize: { en: "An equation is given; the problem asks for intercepts or zeros.", zh: "给定方程；要求截距或零点。" },
+        steps: [
+          { en: "Set $y = 0$ and solve for $x$ — these are the $x$-intercepts", zh: "令 $y = 0$ 解出 $x$——即 $x$ 截距" },
+          { en: "Set $x = 0$ and solve for $y$ — this is the $y$-intercept", zh: "令 $x = 0$ 解出 $y$——即 $y$ 截距" },
+          { en: "Express each as an ordered pair", zh: "每个写成有序对" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find all intercepts of $y = x^2 - 5x + 6$.", zh: "求 $y = x^2 - 5x + 6$ 的所有截距。" },
+        commonTraps: [
+          { en: "Reporting an $x$-intercept as a number rather than a point $(x, 0)$", zh: "把 $x$ 截距写成一个数而非点 $(x, 0)$" },
+        ],
+      },
+      {
+        id: "pt-1-2-3",
+        title: { en: "Test for Symmetry Algebraically", zh: "代数检验对称性" },
+        description: { en: "Determine if a graph is symmetric about the $x$-axis, $y$-axis, or origin by substitution.", zh: "通过代换确定图像是否关于 $x$ 轴、$y$ 轴或原点对称。" },
+        howToRecognize: { en: "The problem asks which (if any) symmetries the graph has.", zh: "题目询问图像具有哪些对称性。" },
+        steps: [
+          { en: "$y$-axis: replace $x \\to -x$; if equation unchanged ⇒ symmetric", zh: "$y$ 轴：用 $-x$ 代 $x$；若方程不变 ⇒ 对称" },
+          { en: "$x$-axis: replace $y \\to -y$; if equation unchanged ⇒ symmetric", zh: "$x$ 轴：用 $-y$ 代 $y$；若方程不变 ⇒ 对称" },
+          { en: "Origin: replace $x \\to -x$ AND $y \\to -y$; if equation unchanged ⇒ symmetric", zh: "原点：同时用 $-x$、$-y$ 代换；若方程不变 ⇒ 对称" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Test $y = x^4 - 3x^2$ for all three symmetries.", zh: "检验 $y = x^4 - 3x^2$ 的三种对称性。" },
+        commonTraps: [
+          { en: "Forgetting to fully simplify after substitution", zh: "代换后未充分化简" },
+          { en: "Mixing up which substitution corresponds to which symmetry", zh: "弄错代换与对称性的对应关系" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-2-4",
+        title: { en: "Identify Symmetry from a Graph", zh: "从图像识别对称性" },
+        description: { en: "Visually inspect a graph and determine its symmetries.", zh: "从图像直观判断对称性。" },
+        howToRecognize: { en: "A graph is shown; the problem asks for symmetry types.", zh: "给出图像；问其对称类型。" },
+        steps: [
+          { en: "$y$-axis symmetry: graph is a mirror image across the $y$-axis", zh: "$y$ 轴对称：图像关于 $y$ 轴互为镜像" },
+          { en: "$x$-axis symmetry: graph is a mirror image across the $x$-axis", zh: "$x$ 轴对称：图像关于 $x$ 轴互为镜像" },
+          { en: "Origin symmetry: graph looks the same after a $180°$ rotation", zh: "原点对称：图像旋转 $180°$ 后不变" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A graph that looks like $y = x^3$ is shown. State all symmetries.", zh: "图像形似 $y = x^3$。指出所有对称性。" },
+        commonTraps: [
+          { en: "Confusing $y$-axis and $x$-axis symmetry", zh: "混淆 $y$ 轴对称与 $x$ 轴对称" },
+        ],
+      },
+      {
+        id: "pt-1-2-5",
+        title: { en: "Write Standard Equation of a Circle Given Center and Radius", zh: "已知圆心与半径写圆的标准方程" },
+        description: { en: "Substitute center and radius into the standard form.", zh: "把圆心和半径代入标准方程。" },
+        howToRecognize: { en: "Center $(h, k)$ and radius $r$ are given.", zh: "已知圆心 $(h, k)$ 与半径 $r$。" },
+        steps: [
+          { en: "Identify $h$, $k$, $r$", zh: "确定 $h$、$k$、$r$" },
+          { en: "Substitute into $(x-h)^2 + (y-k)^2 = r^2$", zh: "代入 $(x-h)^2 + (y-k)^2 = r^2$" },
+          { en: "Watch the signs: a center with $h < 0$ gives $(x - (-3))^2 = (x + 3)^2$", zh: "注意符号：圆心 $h < 0$ 时 $(x - (-3))^2 = (x + 3)^2$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write the equation of the circle with center $(-3, 4)$ and radius $6$.", zh: "写出圆心为 $(-3, 4)$、半径为 $6$ 的圆的方程。" },
+        commonTraps: [
+          { en: "Writing $r$ instead of $r^2$ on the right side", zh: "右边写成 $r$ 而非 $r^2$" },
+          { en: "Sign errors with negative center coordinates", zh: "负坐标的圆心带来的符号错误" },
+        ],
+      },
+      {
+        id: "pt-1-2-6",
+        title: { en: "Find Center and Radius from Standard Equation", zh: "由标准方程求圆心与半径" },
+        description: { en: "Read off $(h, k)$ and $r$ from the standard form.", zh: "从标准方程读出 $(h, k)$ 与 $r$。" },
+        howToRecognize: { en: "Equation is in the form $(x - h)^2 + (y - k)^2 = r^2$.", zh: "方程已是 $(x - h)^2 + (y - k)^2 = r^2$ 的形式。" },
+        steps: [
+          { en: "Match the equation to the standard form", zh: "与标准方程对照" },
+          { en: "Read $h$ and $k$ — flip the sign of what appears", zh: "读出 $h$ 与 $k$——取所见数的相反数" },
+          { en: "Take the square root of the right side to get $r$", zh: "对右边开平方得 $r$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the center and radius of $(x+5)^2 + (y-1)^2 = 49$.", zh: "求 $(x+5)^2 + (y-1)^2 = 49$ 的圆心与半径。" },
+        commonTraps: [
+          { en: "Reporting radius as the right-hand value rather than its square root", zh: "把右边值当作半径，未开方" },
+        ],
+      },
+      {
+        id: "pt-1-2-7",
+        title: { en: "Convert General Form to Standard Form (Complete the Square)", zh: "由一般方程化为标准方程（配方）" },
+        description: { en: "Complete the square on $x$ and $y$ to rewrite a general circle equation in standard form.", zh: "对 $x$ 与 $y$ 分别配方，把一般方程化为标准方程。" },
+        howToRecognize: { en: "Equation is given in the expanded form $x^2 + y^2 + Dx + Ey + F = 0$.", zh: "方程为展开式 $x^2 + y^2 + Dx + Ey + F = 0$。" },
+        steps: [
+          { en: "Group $x$-terms and $y$-terms; move constant to the right", zh: "把 $x$ 项与 $y$ 项分组；常数项移到右边" },
+          { en: "Complete the square on $x$: add $(D/2)^2$ to both sides", zh: "对 $x$ 配方：两边加 $(D/2)^2$" },
+          { en: "Complete the square on $y$: add $(E/2)^2$ to both sides", zh: "对 $y$ 配方：两边加 $(E/2)^2$" },
+          { en: "Write each completed square as a perfect square; identify $(h, k)$ and $r^2$", zh: "把完成配方的多项式写为完全平方；得出 $(h, k)$ 与 $r^2$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Convert $x^2 + y^2 - 6x + 8y + 9 = 0$ to standard form, then state center and radius.", zh: "将 $x^2 + y^2 - 6x + 8y + 9 = 0$ 化为标准方程，并指出圆心与半径。" },
+        commonTraps: [
+          { en: "Forgetting to add $(D/2)^2$ to BOTH sides of the equation", zh: "忘记将 $(D/2)^2$ 同时加到等式两边" },
+          { en: "Sign errors when reading $h$, $k$ off the completed squares", zh: "从完全平方读出 $h$、$k$ 时的符号错误" },
+        ],
+      },
+      {
+        id: "pt-1-2-8",
+        title: { en: "Sketch a Circle from Its Equation", zh: "由方程画圆" },
+        description: { en: "Use center and radius to draw the circle on the coordinate plane.", zh: "利用圆心与半径在坐标平面上画圆。" },
+        howToRecognize: { en: "Equation is given; problem asks for the graph of the circle.", zh: "给定方程；要求画出圆。" },
+        steps: [
+          { en: "Convert to standard form if needed", zh: "如需要先化为标准方程" },
+          { en: "Plot center $(h, k)$", zh: "标出圆心 $(h, k)$" },
+          { en: "Mark four reference points $r$ units up/down/left/right from center", zh: "在圆心上下左右各 $r$ 单位处标记四个参考点" },
+          { en: "Draw a smooth circle through them", zh: "用光滑圆弧通过四点连成圆" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch the circle $(x-1)^2 + (y+2)^2 = 16$.", zh: "画出圆 $(x-1)^2 + (y+2)^2 = 16$。" },
+        commonTraps: [
+          { en: "Drawing an oval rather than a circle", zh: "画成椭圆而非圆" },
+          { en: "Using $r^2$ instead of $r$ as the radius distance", zh: "把 $r^2$ 当半径，而非 $r$" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-2-9",
+        title: { en: "Find Circle Equation from Geometric Conditions", zh: "由几何条件求圆的方程" },
+        description: { en: "Construct the equation of a circle given conditions such as endpoints of a diameter, three points on the circle, or tangency.", zh: "根据直径端点、圆上三点或相切等条件构造圆的方程。" },
+        howToRecognize: { en: "Center and radius are not given directly — instead, you have geometric facts to deduce them from.", zh: "未直接给出圆心与半径——给出几何条件，由此推出。" },
+        steps: [
+          { en: "Endpoints of a diameter ⇒ center is the midpoint, radius is half the distance", zh: "直径两端点 ⇒ 圆心是中点，半径是距离的一半" },
+          { en: "Three points on the circle ⇒ substitute into general form, solve the resulting linear system in $D, E, F$", zh: "圆上三点 ⇒ 代入一般方程，解出 $D$、$E$、$F$ 的线性方程组" },
+          { en: "Tangent to a line ⇒ distance from center to the line equals $r$", zh: "与直线相切 ⇒ 圆心到直线的距离等于 $r$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find the equation of the circle with diameter endpoints $A(2, -1)$ and $B(8, 7)$.", zh: "求以 $A(2, -1)$、$B(8, 7)$ 为直径两端点的圆的方程。" },
+        commonTraps: [
+          { en: "Using the diameter length as the radius (forgot to halve)", zh: "把直径长当半径（忘记取一半）" },
+          { en: "When using three points, dropping a sign while solving the linear system", zh: "用三点法时解线性方程组中漏掉符号" },
+        ],
+      },
+      {
+        id: "pt-1-2-10",
+        title: { en: "Application — Model with an Equation", zh: "应用——用方程建模" },
+        description: { en: "Translate a real-world scenario (signal range, GPS, satellite footprint) into an equation, often a circle, and answer questions about it.", zh: "将实际场景（信号覆盖、GPS、卫星覆盖区）转化为方程（多为圆），并回答相关问题。" },
+        howToRecognize: { en: "Word problem describes a region of constant distance from a point, or a graph that fits a known shape.", zh: "应用题描述到某点距离恒定的区域，或符合已知图形的轨迹。" },
+        steps: [
+          { en: "Identify the geometric structure (center, radius, axis behavior)", zh: "识别几何结构（圆心、半径、轴上行为）" },
+          { en: "Set up coordinates so key elements are at convenient positions", zh: "选定坐标使关键元素位置便于处理" },
+          { en: "Write the equation and use it to answer the question", zh: "写出方程并据此回答问题" },
+          { en: "Interpret the answer with units", zh: "结合单位解释答案" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A radio tower at $(3, 2)$ broadcasts within a $25$-mile radius. Write the boundary equation and determine whether a city at $(15, 9)$ receives the signal.", zh: "位于 $(3, 2)$ 的电台覆盖半径 $25$ 英里。写出边界方程，并判断 $(15, 9)$ 处的城市能否接收到信号。" },
+        commonTraps: [
+          { en: "Computing distance and forgetting to compare it to the radius", zh: "算出距离后忘记与半径比较" },
+          { en: "Mixing units (e.g., miles vs blocks)", zh: "单位混用（如英里与街区）" },
+        ],
+      },
+    ],
   },
   {
     id: "1-3",
