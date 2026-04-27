@@ -3203,27 +3203,526 @@ const chapter2Units: Unit[] = [
     id: "2-5",
     chapterId: "ch-2",
     number: "2.5",
-    title: {
-      en: "Zeros of Polynomial Functions",
-      zh: "多项式函数的零点",
-    },
+    title: { en: "Zeros of Polynomial Functions", zh: "多项式函数的零点" },
     description: {
       en: "Use the Fundamental Theorem of Algebra, the Rational Zero Test, and Descartes's Rule of Signs to find zeros.",
       zh: "运用代数基本定理、有理零点检验法及笛卡尔符号法则求多项式的零点。",
     },
+    learningGoals: [
+      { en: "Apply the Fundamental Theorem of Algebra to count zeros", zh: "用代数基本定理统计零点个数" },
+      { en: "Use the Rational Zero Theorem to list candidate rational zeros", zh: "用有理零点定理列出候选有理零点" },
+      { en: "Apply Descartes's Rule of Signs to bound positive and negative zeros", zh: "用笛卡尔符号法则估计正、负零点的个数" },
+      { en: "Find ALL zeros (real and complex) of a polynomial", zh: "求多项式的所有零点（实根与复根）" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-5-1",
+        title: { en: "Fundamental Theorem of Algebra", zh: "代数基本定理" },
+        explanation: {
+          en: "Every polynomial of degree $n \\geq 1$ has exactly $n$ complex zeros, counted with multiplicity. Combined with the Linear Factorization Theorem, this means $f(x) = a_n (x - c_1)(x - c_2) \\cdots (x - c_n)$ over the complex numbers.",
+          zh: "次数 $n \\geq 1$ 的多项式恰好有 $n$ 个复零点（计入重数）。结合线性因式分解定理，意味着在复数域上 $f(x) = a_n (x - c_1)(x - c_2) \\cdots (x - c_n)$。",
+        },
+        whenToUse: { en: "To predict the total number of zeros of a polynomial", zh: "预测多项式零点总数" },
+        commonMistake: { en: "Counting only real zeros (some may be complex)", zh: "只数实零点（可能还有复零点）" },
+        example: { en: "$f(x) = x^4 + 1$: degree $4$ ⇒ 4 complex zeros (no real zeros)", zh: "$f(x) = x^4 + 1$：次数 $4$ ⇒ 4 个复零点（无实根）" },
+      },
+      {
+        id: "kc-2-5-2",
+        title: { en: "Rational Zero Theorem", zh: "有理零点定理" },
+        explanation: {
+          en: "If $f(x)$ has integer coefficients and $\\frac{p}{q}$ (in lowest terms) is a rational zero, then $p$ divides the constant term $a_0$ and $q$ divides the leading coefficient $a_n$. List ALL $\\pm \\frac{p}{q}$ candidates, then test each.",
+          zh: "若 $f(x)$ 系数为整数且 $\\frac{p}{q}$（最简）为有理零点，则 $p \\mid a_0$（整除常数项）且 $q \\mid a_n$（整除首项系数）。列出所有 $\\pm \\frac{p}{q}$ 候选并逐一检验。",
+        },
+        whenToUse: { en: "Generate the (finite) list of possible rational zeros to test", zh: "生成（有限的）可能有理零点列表" },
+        commonMistake: { en: "Forgetting to include negative candidates, or simplifying $p/q$ before listing", zh: "忘记包含负候选，或在列表前就化简 $p/q$" },
+        example: { en: "$f(x) = 2x^3 - x^2 - 7x + 6$: candidates $\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm \\tfrac{1}{2}, \\pm \\tfrac{3}{2}$", zh: "$f(x) = 2x^3 - x^2 - 7x + 6$：候选 $\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm \\tfrac{1}{2}, \\pm \\tfrac{3}{2}$" },
+      },
+      {
+        id: "kc-2-5-3",
+        title: { en: "Descartes's Rule of Signs and Conjugate Pairs", zh: "笛卡尔符号法则与共轭对" },
+        explanation: {
+          en: "Descartes's Rule: number of POSITIVE real zeros equals the number of sign changes in $f(x)$ or less by an even integer; number of NEGATIVE real zeros equals sign changes in $f(-x)$ or less by an even integer. Conjugate Pairs: complex zeros of real-coefficient polynomials come in conjugate pairs.",
+          zh: "笛卡尔法则：正实根数等于 $f(x)$ 系数符号变化数，或减去若干个偶数；负实根数等于 $f(-x)$ 的符号变化数，或减去若干个偶数。共轭对定理：实系数多项式的复零点成共轭对出现。",
+        },
+        whenToUse: { en: "Estimate how many real zeros to look for; identify complex zero pairs", zh: "估计实零点的可能个数；识别复零点的成对出现" },
+        commonMistake: { en: "Forgetting that the actual count may be LESS than the maximum by 2, 4, ...", zh: "忘记实际个数可能比最大值少 2、4 ……" },
+        example: { en: "$f(x) = x^3 - 3x + 1$: $f(x)$ has 2 sign changes, $f(-x) = -x^3 + 3x + 1$ has 1 sign change ⇒ 2 or 0 positive, exactly 1 negative", zh: "$f(x) = x^3 - 3x + 1$：$f(x)$ 有 2 次符号变化，$f(-x) = -x^3 + 3x + 1$ 有 1 次 ⇒ 正实根 2 或 0 个，负实根恰 1 个" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-5-1",
+        name: { en: "Linear Factorization Theorem", zh: "线性因式分解定理" },
+        formula: "f(x) = a_n (x - c_1)(x - c_2) \\cdots (x - c_n)",
+        variables: [
+          { en: "$c_1, \\ldots, c_n$ — complex zeros (real or non-real)", zh: "$c_1, \\ldots, c_n$ — 复零点（实数或非实数）" },
+          { en: "$a_n$ — leading coefficient", zh: "$a_n$ — 首项系数" },
+        ],
+        whenToUse: { en: "Express any polynomial as a product of linear factors over $\\mathbb{C}$", zh: "把多项式在 $\\mathbb{C}$ 上写为一次因式之积" },
+        commonProblemTypes: [
+          { en: "Build $f$ from a list of all zeros", zh: "由所有零点构造 $f$" },
+        ],
+        example: { en: "Zeros $1, -2, 3$, leading $a_3 = 2$: $f(x) = 2(x - 1)(x + 2)(x - 3)$", zh: "零点 $1, -2, 3$，首项 $a_3 = 2$：$f(x) = 2(x - 1)(x + 2)(x - 3)$" },
+      },
+      {
+        id: "f-2-5-2",
+        name: { en: "Rational Zero Theorem", zh: "有理零点定理" },
+        formula: "\\text{Possible rational zeros} = \\pm \\frac{p}{q}, \\quad p \\mid a_0, \\; q \\mid a_n",
+        variables: [
+          { en: "$a_0$ — constant term", zh: "$a_0$ — 常数项" },
+          { en: "$a_n$ — leading coefficient", zh: "$a_n$ — 首项系数" },
+        ],
+        whenToUse: { en: "Generate candidate rational zeros for testing", zh: "生成待检验的候选有理零点" },
+        commonProblemTypes: [
+          { en: "List candidates and test via synthetic division", zh: "列出候选并用综合除法检验" },
+        ],
+        example: { en: "$f(x) = 3x^3 - 2x^2 + 4x - 1$: candidates $\\pm 1, \\pm \\tfrac{1}{3}$", zh: "$f(x) = 3x^3 - 2x^2 + 4x - 1$：候选 $\\pm 1, \\pm \\tfrac{1}{3}$" },
+      },
+      {
+        id: "f-2-5-3",
+        name: { en: "Conjugate Pairs Theorem", zh: "共轭对定理" },
+        formula: "a + bi \\text{ is a zero} \\Rightarrow a - bi \\text{ is also a zero (for real-coef polynomials)}",
+        variables: [
+          { en: "$a, b \\in \\mathbb{R}$, $b \\neq 0$", zh: "$a, b \\in \\mathbb{R}$，$b \\neq 0$" },
+        ],
+        whenToUse: { en: "Find the conjugate zero \"for free\" once one complex zero is known", zh: "已知一个复零点，立即得到其共轭也是零点" },
+        commonProblemTypes: [
+          { en: "Build a polynomial given complex zeros and required real coefficients", zh: "由复零点（要求实系数）构造多项式" },
+        ],
+        example: { en: "If $2 + 3i$ is a zero, so is $2 - 3i$; their factor product is $(x^2 - 4x + 13)$", zh: "若 $2 + 3i$ 为零点，则 $2 - 3i$ 也是；两因式之积为 $(x^2 - 4x + 13)$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-5-1",
+        title: { en: "Count Total Zeros via Fundamental Theorem", zh: "用基本定理统计零点总数" },
+        description: { en: "State the number of complex zeros (counted with multiplicity) for a given polynomial.", zh: "给出给定多项式的复零点个数（计入重数）。" },
+        howToRecognize: { en: "Problem asks how many zeros a polynomial has.", zh: "题目问多项式有多少零点。" },
+        steps: [
+          { en: "Identify the degree $n$", zh: "识别次数 $n$" },
+          { en: "Conclude exactly $n$ complex zeros (with multiplicity)", zh: "得出恰好 $n$ 个复零点（计入重数）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "How many zeros (counted with multiplicity) does $f(x) = 2x^5 - x^3 + 7$ have?", zh: "$f(x) = 2x^5 - x^3 + 7$ 有多少个零点（计入重数）？" },
+        commonTraps: [
+          { en: "Counting only the visible terms instead of using the degree", zh: "只数明显的项而未用次数" },
+        ],
+      },
+      {
+        id: "pt-2-5-2",
+        title: { en: "List Rational Zero Candidates", zh: "列出有理零点候选" },
+        description: { en: "Apply the Rational Zero Theorem to generate $\\pm \\frac{p}{q}$.", zh: "用有理零点定理生成 $\\pm \\frac{p}{q}$。" },
+        howToRecognize: { en: "Polynomial has integer coefficients; problem asks for possible rational zeros.", zh: "多项式系数为整数；要求可能的有理零点。" },
+        steps: [
+          { en: "List positive divisors of constant term ($p$)", zh: "列出常数项的正因子 $p$" },
+          { en: "List positive divisors of leading coefficient ($q$)", zh: "列出首项系数的正因子 $q$" },
+          { en: "Form all $\\pm \\frac{p}{q}$ in lowest terms", zh: "组合所有 $\\pm \\frac{p}{q}$（最简）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "List all possible rational zeros of $f(x) = 2x^3 - 5x^2 + x + 2$.", zh: "列出 $f(x) = 2x^3 - 5x^2 + x + 2$ 的所有可能有理零点。" },
+        commonTraps: [
+          { en: "Forgetting the negative versions", zh: "忘记负的候选" },
+        ],
+      },
+      {
+        id: "pt-2-5-3",
+        title: { en: "Count Sign Changes for Descartes's Rule", zh: "数符号变化数（笛卡尔法则）" },
+        description: { en: "State the maximum number of positive (and negative) real zeros.", zh: "给出正（与负）实零点的最大个数。" },
+        howToRecognize: { en: "Problem mentions Descartes's Rule or asks for possible numbers of real zeros.", zh: "题目提到笛卡尔法则或问可能的实零点数。" },
+        steps: [
+          { en: "Count sign changes in $f(x)$ — gives max positive real zeros", zh: "数 $f(x)$ 的符号变化——正实根数的最大值" },
+          { en: "Compute $f(-x)$, count sign changes — gives max negative real zeros", zh: "求 $f(-x)$ 后数符号变化——负实根数的最大值" },
+          { en: "Actual count differs from max by an even integer (0, 2, 4, ...)", zh: "实际个数与最大值差为偶数（0、2、4 ……）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Use Descartes's Rule to describe possible numbers of positive and negative real zeros of $f(x) = x^4 - 3x^3 + 2x - 5$.", zh: "用笛卡尔法则描述 $f(x) = x^4 - 3x^3 + 2x - 5$ 可能的正、负实根数。" },
+        commonTraps: [
+          { en: "Forgetting to also state the \"less by even number\" possibilities", zh: "忘记同时给出\"减去偶数\"的可能性" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-5-4",
+        title: { en: "Test Rational Candidates with Synthetic Division", zh: "用综合除法检验有理候选" },
+        description: { en: "Run candidates through synthetic division until a remainder of $0$ identifies a zero.", zh: "用综合除法逐个检验候选，余数为 $0$ 即找到一个零点。" },
+        howToRecognize: { en: "Candidates are listed; problem asks which (if any) are zeros.", zh: "已列出候选；问哪些是零点。" },
+        steps: [
+          { en: "Pick a candidate", zh: "选一个候选" },
+          { en: "Synthetic divide; remainder $0$ ⇒ it's a zero", zh: "做综合除法；余数 $0$ ⇒ 该值为零点" },
+          { en: "Use the quotient to continue testing remaining candidates", zh: "用商继续检验剩余候选" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Test the candidates from $f(x) = 2x^3 - 5x^2 + x + 2$ to find all rational zeros.", zh: "对 $f(x) = 2x^3 - 5x^2 + x + 2$ 的候选进行检验，找出所有有理零点。" },
+        commonTraps: [
+          { en: "Stopping after finding one zero before testing the reduced polynomial", zh: "找到一个零点就停止，未对降次后的多项式继续检验" },
+        ],
+      },
+      {
+        id: "pt-2-5-5",
+        title: { en: "Find All Real Zeros of a Polynomial", zh: "求多项式的所有实零点" },
+        description: { en: "Combine Rational Zero Theorem, synthetic division, and quadratic factoring.", zh: "结合有理零点定理、综合除法与二次分解。" },
+        howToRecognize: { en: "Higher-degree polynomial; problem asks for all real zeros.", zh: "高次多项式；要求所有实零点。" },
+        steps: [
+          { en: "List rational candidates", zh: "列出有理候选" },
+          { en: "Find one rational zero by synthetic division", zh: "用综合除法找到一个有理零点" },
+          { en: "Reduce degree using the quotient", zh: "用商降次" },
+          { en: "Repeat or solve the resulting quadratic", zh: "重复或解最终二次" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all real zeros of $f(x) = x^4 - x^3 - 7x^2 + 13x - 6$.", zh: "求 $f(x) = x^4 - x^3 - 7x^2 + 13x - 6$ 的所有实零点。" },
+        commonTraps: [
+          { en: "Skipping the final quadratic factoring step", zh: "漏掉最后一步对二次的分解" },
+        ],
+      },
+      {
+        id: "pt-2-5-6",
+        title: { en: "Use a Complex Zero and Conjugate Pairs", zh: "利用复零点及共轭对" },
+        description: { en: "Given one complex zero, use the conjugate pair to factor and find remaining zeros.", zh: "由一个复零点用共轭对因式分解并找出其余零点。" },
+        howToRecognize: { en: "A complex zero is given; problem asks for the rest.", zh: "已给出一个复零点；要求其余零点。" },
+        steps: [
+          { en: "State the conjugate as another zero", zh: "由共轭定理得另一个零点" },
+          { en: "Form the quadratic factor from the conjugate pair", zh: "用共轭对生成对应二次因式" },
+          { en: "Divide to find the remaining factor", zh: "用除法求剩余因式" },
+          { en: "Solve to find any remaining zeros", zh: "求解剩余零点" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Given that $2 + i$ is a zero of $f(x) = x^3 - 3x^2 - x + 5$, find all zeros.", zh: "已知 $2 + i$ 是 $f(x) = x^3 - 3x^2 - x + 5$ 的零点，求所有零点。" },
+        commonTraps: [
+          { en: "Forgetting the conjugate is also a zero", zh: "忘记共轭也是零点" },
+        ],
+      },
+      {
+        id: "pt-2-5-7",
+        title: { en: "Build a Polynomial Given Zeros", zh: "由零点构造多项式" },
+        description: { en: "Construct a polynomial with required real coefficients from a list of zeros (some possibly complex).", zh: "由零点列表（可能含复数）构造满足实系数要求的多项式。" },
+        howToRecognize: { en: "Problem provides zeros and asks for the polynomial.", zh: "题目给出零点要求构造多项式。" },
+        steps: [
+          { en: "Add conjugates as needed for real coefficients", zh: "为保证实系数，添加必要的共轭" },
+          { en: "Form linear factors $(x - c)$ for each zero", zh: "对每个零点写出一次因式 $(x - c)$" },
+          { en: "Multiply factors and apply leading coefficient", zh: "把所有因式相乘并加上首项系数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find a polynomial with integer coefficients and zeros $1, -3, 2 + i$.", zh: "求一个整系数且零点为 $1, -3, 2 + i$ 的多项式。" },
+        commonTraps: [
+          { en: "Skipping the conjugate, leaving non-real coefficients", zh: "未添加共轭，结果系数非实" },
+        ],
+      },
+      {
+        id: "pt-2-5-8",
+        title: { en: "Apply Descartes's Rule to Narrow Possibilities", zh: "用笛卡尔法则缩小可能性" },
+        description: { en: "Use sign-change counts to constrain how many real zeros are positive vs negative.", zh: "用符号变化数限制正负实根数。" },
+        howToRecognize: { en: "Problem asks for possible numbers of positive/negative real zeros.", zh: "题目问可能的正负实根数。" },
+        steps: [
+          { en: "Count sign changes in $f(x)$ → max positive real zeros", zh: "数 $f(x)$ 的符号变化 → 正实根数最大值" },
+          { en: "Count sign changes in $f(-x)$ → max negative real zeros", zh: "数 $f(-x)$ 的符号变化 → 负实根数最大值" },
+          { en: "List all possibilities (max, max-2, max-4, ...) for each", zh: "对每个分别列出所有可能（最大值、减 2、减 4 ……）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Determine the possible numbers of positive and negative real zeros of $f(x) = 2x^4 - 3x^3 + x^2 - 5x + 1$.", zh: "求 $f(x) = 2x^4 - 3x^3 + x^2 - 5x + 1$ 可能的正负实根数。" },
+        commonTraps: [
+          { en: "Reporting only the maximum without the lesser possibilities", zh: "只报最大值，未列其他可能" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-5-9",
+        title: { en: "Find ALL Zeros (Real and Complex)", zh: "求所有零点（实根与复根）" },
+        description: { en: "Combine all techniques to identify every zero including complex pairs.", zh: "综合所有方法找出每个零点，包括复共轭对。" },
+        howToRecognize: { en: "Problem demands a complete zero list, not just real zeros.", zh: "题目要求所有零点，而非仅实根。" },
+        steps: [
+          { en: "Use Rational Zero Theorem and synthetic division for rational zeros", zh: "用有理零点定理和综合除法找有理零点" },
+          { en: "Reduce until a quadratic remains", zh: "降次至剩余为二次" },
+          { en: "Solve the quadratic (real or complex roots)", zh: "求解二次（实根或复根）" },
+          { en: "List ALL zeros", zh: "列出所有零点" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find all zeros of $f(x) = x^4 - 2x^3 + 6x^2 - 8x + 8$.", zh: "求 $f(x) = x^4 - 2x^3 + 6x^2 - 8x + 8$ 的所有零点。" },
+        commonTraps: [
+          { en: "Stopping at real zeros and missing complex ones", zh: "只到实根就停，漏掉复根" },
+        ],
+      },
+      {
+        id: "pt-2-5-10",
+        title: { en: "Combine All Tools — Strategy Problem", zh: "综合所有工具——策略问题" },
+        description: { en: "Coordinate Descartes's Rule, the Rational Zero Theorem, and synthetic division with minimal trial and error.", zh: "把笛卡尔法则、有理零点定理与综合除法结合，尽量减少试错。" },
+        howToRecognize: { en: "Polynomial degree $\\geq 4$; problem rewards strategy.", zh: "多项式次数 $\\geq 4$；要求合理策略。" },
+        steps: [
+          { en: "Apply Descartes's Rule to predict positive/negative real zero counts", zh: "用笛卡尔法则预测正负实根数" },
+          { en: "Use Rational Zero Theorem to list candidates", zh: "用有理零点定理列出候选" },
+          { en: "Test candidates that match Descartes's signs first", zh: "优先检验符号与笛卡尔法则相符的候选" },
+          { en: "Reduce and repeat until factored completely", zh: "降次重复直到完全分解" },
+          { en: "Solve any remaining quadratic for complex zeros", zh: "对剩余二次求解（含复根）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Use Descartes's Rule, the Rational Zero Theorem, and synthetic division to find all zeros of $f(x) = 3x^4 - 11x^3 + 13x^2 - 11x + 6$.", zh: "结合笛卡尔法则、有理零点定理与综合除法，求 $f(x) = 3x^4 - 11x^3 + 13x^2 - 11x + 6$ 的所有零点。" },
+        commonTraps: [
+          { en: "Doing the candidates exhaustively without using Descartes's Rule for guidance", zh: "穷举所有候选而未用笛卡尔法则指引" },
+        ],
+      },
+    ],
   },
   {
     id: "2-6",
     chapterId: "ch-2",
     number: "2.6",
-    title: {
-      en: "Rational Functions",
-      zh: "有理函数",
-    },
+    title: { en: "Rational Functions", zh: "有理函数" },
     description: {
       en: "Find domains, asymptotes, and intercepts of rational functions, and sketch their graphs.",
       zh: "求有理函数的定义域、渐近线与截距，并绘制其图像。",
     },
+    learningGoals: [
+      { en: "Find the domain of a rational function", zh: "求有理函数的定义域" },
+      { en: "Identify vertical, horizontal, and slant asymptotes", zh: "识别垂直、水平与斜渐近线" },
+      { en: "Locate holes from common factors", zh: "由公因式识别缺口" },
+      { en: "Sketch graphs of rational functions", zh: "绘制有理函数的图像" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-6-1",
+        title: { en: "Vertical Asymptotes and Holes", zh: "垂直渐近线与缺口" },
+        explanation: {
+          en: "After fully simplifying $f(x) = \\frac{N(x)}{D(x)}$, vertical asymptotes occur where the simplified $D(x) = 0$. If a factor cancels between $N$ and $D$, that $x$-value is a HOLE (removable discontinuity), not a vertical asymptote.",
+          zh: "把 $f(x) = \\frac{N(x)}{D(x)}$ 充分化简后，简化分母 $D(x) = 0$ 处为垂直渐近线。若 $N$ 与 $D$ 间有公因式约去，对应 $x$ 值为缺口（可去间断点），而非垂直渐近线。",
+        },
+        whenToUse: { en: "Always simplify first; then identify VAs and holes", zh: "始终先化简；再判定垂直渐近线与缺口" },
+        commonMistake: { en: "Treating canceled factors as vertical asymptotes", zh: "把已约去的因式当作垂直渐近线" },
+        example: { en: "$f(x) = \\frac{x^2 - 4}{x - 2} = x + 2$ (with hole at $x = 2$); no vertical asymptote", zh: "$f(x) = \\frac{x^2 - 4}{x - 2} = x + 2$（$x = 2$ 处有缺口）；无垂直渐近线" },
+      },
+      {
+        id: "kc-2-6-2",
+        title: { en: "Horizontal and Slant Asymptotes", zh: "水平渐近线与斜渐近线" },
+        explanation: {
+          en: "Compare degrees of numerator $n$ and denominator $d$. Case 1: $n < d$ ⇒ horizontal asymptote $y = 0$. Case 2: $n = d$ ⇒ horizontal asymptote $y = \\frac{a_n}{b_d}$ (ratio of leading coefficients). Case 3: $n = d + 1$ ⇒ slant (oblique) asymptote, found by long division. Case 4: $n > d + 1$ ⇒ no horizontal/slant asymptote.",
+          zh: "比较分子分母次数 $n$、$d$。情形 1：$n < d$ ⇒ 水平渐近线 $y = 0$。情形 2：$n = d$ ⇒ 水平渐近线 $y = \\frac{a_n}{b_d}$（首项系数之比）。情形 3：$n = d + 1$ ⇒ 斜渐近线，由长除法求得。情形 4：$n > d + 1$ ⇒ 无水平或斜渐近线。",
+        },
+        whenToUse: { en: "Determine end behavior of a rational function", zh: "判断有理函数的终态行为" },
+        commonMistake: { en: "Reporting $y = 0$ as horizontal asymptote when degrees are equal", zh: "次数相等却报 $y = 0$ 为水平渐近线" },
+        example: { en: "$f(x) = \\frac{2x^2 + 1}{x^2 - 4}$: $y = 2$ horizontal asymptote", zh: "$f(x) = \\frac{2x^2 + 1}{x^2 - 4}$：水平渐近线 $y = 2$" },
+      },
+      {
+        id: "kc-2-6-3",
+        title: { en: "Sketching Rational Functions", zh: "绘制有理函数" },
+        explanation: {
+          en: "Standard checklist: (1) simplify; (2) find domain restrictions; (3) find vertical asymptotes and holes; (4) find horizontal or slant asymptote; (5) find $x$- and $y$-intercepts; (6) plot a few points; (7) use sign analysis to determine behavior near asymptotes.",
+          zh: "标准步骤：(1) 化简；(2) 求定义域限制；(3) 求垂直渐近线与缺口；(4) 求水平或斜渐近线；(5) 求 $x$、$y$ 截距；(6) 描几个点；(7) 用符号分析判定渐近线附近的行为。",
+        },
+        whenToUse: { en: "When a complete graph of a rational function is required", zh: "需要画出有理函数完整图像时" },
+        commonMistake: { en: "Drawing the graph crossing a vertical asymptote (it never can)", zh: "画的图像穿过垂直渐近线（不可能）" },
+        example: { en: "$f(x) = \\frac{1}{x - 3}$: VA at $x = 3$, HA at $y = 0$, no $x$-intercept", zh: "$f(x) = \\frac{1}{x - 3}$：垂直渐近线 $x = 3$，水平渐近线 $y = 0$，无 $x$ 截距" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-6-1",
+        name: { en: "Vertical Asymptote Rule", zh: "垂直渐近线规则" },
+        formula: "x = c \\text{ is VA} \\iff D(c) = 0 \\text{ AND } N(c) \\neq 0 \\text{ (after simplification)}",
+        variables: [
+          { en: "$N(x), D(x)$ — numerator and denominator (simplified)", zh: "$N(x), D(x)$ — 化简后的分子与分母" },
+        ],
+        whenToUse: { en: "Identify vertical asymptotes after simplification", zh: "化简后识别垂直渐近线" },
+        commonProblemTypes: [
+          { en: "Distinguish asymptotes from holes", zh: "区分渐近线与缺口" },
+        ],
+        example: { en: "$f(x) = \\frac{x + 1}{x^2 - 9}$: VAs at $x = 3$ and $x = -3$", zh: "$f(x) = \\frac{x + 1}{x^2 - 9}$：垂直渐近线 $x = 3$ 与 $x = -3$" },
+      },
+      {
+        id: "f-2-6-2",
+        name: { en: "Horizontal Asymptote Rule", zh: "水平渐近线规则" },
+        formula: "y = \\begin{cases} 0 & n < d \\\\ \\dfrac{a_n}{b_d} & n = d \\\\ \\text{none (slant)} & n = d + 1 \\\\ \\text{none} & n > d + 1 \\end{cases}",
+        variables: [
+          { en: "$n, d$ — degrees of numerator and denominator", zh: "$n, d$ — 分子分母的次数" },
+          { en: "$a_n, b_d$ — leading coefficients", zh: "$a_n, b_d$ — 首项系数" },
+        ],
+        whenToUse: { en: "Quickly determine horizontal end behavior", zh: "快速判断水平方向的终态" },
+        commonProblemTypes: [
+          { en: "State end behavior of any rational function", zh: "给出任意有理函数的终态行为" },
+        ],
+        example: { en: "$f(x) = \\frac{3x^2 + 1}{x^2 + 5}$: HA at $y = 3$", zh: "$f(x) = \\frac{3x^2 + 1}{x^2 + 5}$：水平渐近线 $y = 3$" },
+      },
+      {
+        id: "f-2-6-3",
+        name: { en: "Slant Asymptote (Oblique)", zh: "斜渐近线" },
+        formula: "f(x) = (mx + b) + \\frac{r(x)}{D(x)}, \\text{ slant: } y = mx + b",
+        variables: [
+          { en: "$mx + b$ — quotient from long division when $n = d + 1$", zh: "$mx + b$ — $n = d + 1$ 时长除法的商" },
+        ],
+        whenToUse: { en: "Numerator degree is one more than denominator degree", zh: "分子次数比分母多 1" },
+        commonProblemTypes: [
+          { en: "Find slant asymptote via long division", zh: "用长除法求斜渐近线" },
+        ],
+        example: { en: "$f(x) = \\frac{x^2 + 1}{x - 1} = (x + 1) + \\frac{2}{x - 1}$ ⇒ slant $y = x + 1$", zh: "$f(x) = \\frac{x^2 + 1}{x - 1} = (x + 1) + \\frac{2}{x - 1}$ ⇒ 斜渐近线 $y = x + 1$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-6-1",
+        title: { en: "Find Domain of a Rational Function", zh: "求有理函数的定义域" },
+        description: { en: "Exclude all $x$-values that make the denominator zero.", zh: "排除使分母为零的所有 $x$ 值。" },
+        howToRecognize: { en: "Function has a polynomial in the denominator.", zh: "函数分母为多项式。" },
+        steps: [
+          { en: "Set the original denominator equal to zero", zh: "把原分母置为零" },
+          { en: "Solve for $x$", zh: "解 $x$" },
+          { en: "Domain is all reals except those values", zh: "定义域为除上述值外的全体实数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the domain of $f(x) = \\frac{x + 5}{x^2 - 4}$.", zh: "求 $f(x) = \\frac{x + 5}{x^2 - 4}$ 的定义域。" },
+        commonTraps: [
+          { en: "Cancelling factors before excluding their zeros", zh: "在排除其零点前就约去因式" },
+        ],
+      },
+      {
+        id: "pt-2-6-2",
+        title: { en: "Find Vertical Asymptotes", zh: "求垂直渐近线" },
+        description: { en: "After simplifying, locate $x$-values where the (simplified) denominator is zero.", zh: "化简后，找出（化简后）分母为零的 $x$ 值。" },
+        howToRecognize: { en: "Problem asks for vertical asymptotes.", zh: "题目要求垂直渐近线。" },
+        steps: [
+          { en: "Factor numerator and denominator; cancel common factors", zh: "分解分子分母；约去公因式" },
+          { en: "Set the simplified denominator to zero", zh: "把简化后的分母置为零" },
+          { en: "Each solution is a vertical asymptote (canceled values are holes)", zh: "每个解为垂直渐近线（被约去的值为缺口）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find vertical asymptotes of $f(x) = \\frac{x - 1}{x^2 - 1}$.", zh: "求 $f(x) = \\frac{x - 1}{x^2 - 1}$ 的垂直渐近线。" },
+        commonTraps: [
+          { en: "Skipping simplification — treating a hole as an asymptote", zh: "未化简——把缺口当渐近线" },
+        ],
+      },
+      {
+        id: "pt-2-6-3",
+        title: { en: "Find Horizontal Asymptote", zh: "求水平渐近线" },
+        description: { en: "Compare degrees and apply the three-case rule.", zh: "比较次数并应用三情形规则。" },
+        howToRecognize: { en: "Problem asks for end behavior or horizontal asymptote.", zh: "题目要求终态行为或水平渐近线。" },
+        steps: [
+          { en: "Find degrees $n$ and $d$", zh: "求次数 $n$ 与 $d$" },
+          { en: "If $n < d$: HA is $y = 0$", zh: "若 $n < d$：水平渐近线为 $y = 0$" },
+          { en: "If $n = d$: HA is the ratio of leading coefficients", zh: "若 $n = d$：水平渐近线为首项系数之比" },
+          { en: "If $n > d$: no HA (might have slant)", zh: "若 $n > d$：无水平渐近线（可能有斜渐近线）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the horizontal asymptote of $f(x) = \\frac{4x^2 - 1}{2x^2 + 5}$.", zh: "求 $f(x) = \\frac{4x^2 - 1}{2x^2 + 5}$ 的水平渐近线。" },
+        commonTraps: [
+          { en: "Reporting $y = 0$ when degrees are equal", zh: "次数相等时却报 $y = 0$" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-6-4",
+        title: { en: "Find Slant Asymptote", zh: "求斜渐近线" },
+        description: { en: "Long divide numerator by denominator when degree of $N$ exceeds degree of $D$ by exactly $1$.", zh: "当 $N$ 的次数比 $D$ 多 $1$ 时，用长除法。" },
+        howToRecognize: { en: "Degrees: $\\deg N = \\deg D + 1$.", zh: "次数：$\\deg N = \\deg D + 1$。" },
+        steps: [
+          { en: "Long divide $N(x)$ by $D(x)$", zh: "用 $D(x)$ 长除 $N(x)$" },
+          { en: "Quotient $mx + b$ is the slant asymptote", zh: "商 $mx + b$ 即斜渐近线" },
+          { en: "Discard remainder for the asymptote", zh: "舍去余数得渐近线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the slant asymptote of $f(x) = \\frac{x^2 + 3x + 1}{x - 2}$.", zh: "求 $f(x) = \\frac{x^2 + 3x + 1}{x - 2}$ 的斜渐近线。" },
+        commonTraps: [
+          { en: "Including the remainder term in the asymptote", zh: "把余数项当作渐近线" },
+        ],
+      },
+      {
+        id: "pt-2-6-5",
+        title: { en: "Find Holes (Removable Discontinuities)", zh: "求缺口（可去间断点）" },
+        description: { en: "Identify $x$-values that cancel between numerator and denominator.", zh: "找出分子分母间约去的 $x$ 值。" },
+        howToRecognize: { en: "Problem asks for holes or removable discontinuities.", zh: "题目要求缺口或可去间断点。" },
+        steps: [
+          { en: "Factor numerator and denominator", zh: "分解分子分母" },
+          { en: "Identify common factors that cancel", zh: "找出可约去的公因式" },
+          { en: "Each canceled factor's zero is a hole at $(c, f_{\\text{simplified}}(c))$", zh: "每个约去因式的零点是缺口 $(c, f_{\\text{化简后}}(c))$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find any holes of $f(x) = \\frac{x^2 - 4}{x^2 - x - 2}$.", zh: "求 $f(x) = \\frac{x^2 - 4}{x^2 - x - 2}$ 的缺口。" },
+        commonTraps: [
+          { en: "Reporting only the $x$-coordinate (must give the $y$-coordinate too)", zh: "只给 $x$ 坐标（应同时给 $y$ 坐标）" },
+        ],
+      },
+      {
+        id: "pt-2-6-6",
+        title: { en: "Find Intercepts of a Rational Function", zh: "求有理函数的截距" },
+        description: { en: "$x$-intercepts: zeros of (simplified) numerator. $y$-intercept: $f(0)$ if defined.", zh: "$x$ 截距：化简后分子的零点。$y$ 截距：若 $f(0)$ 有定义。" },
+        howToRecognize: { en: "Problem asks for intercepts.", zh: "题目要求截距。" },
+        steps: [
+          { en: "Simplify $f$", zh: "化简 $f$" },
+          { en: "$x$-intercepts: solve $N_{\\text{simplified}}(x) = 0$ excluding any holes", zh: "$x$ 截距：解化简后 $N(x) = 0$，排除缺口" },
+          { en: "$y$-intercept: compute $f(0)$ if $0$ is in the domain", zh: "$y$ 截距：若 $0$ 在定义域内，求 $f(0)$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all intercepts of $f(x) = \\frac{x^2 - 9}{x + 4}$.", zh: "求 $f(x) = \\frac{x^2 - 9}{x + 4}$ 的所有截距。" },
+        commonTraps: [
+          { en: "Forgetting to exclude $x$-values that are holes", zh: "忘记排除缺口对应的 $x$ 值" },
+        ],
+      },
+      {
+        id: "pt-2-6-7",
+        title: { en: "Sketch a Rational Function", zh: "绘制有理函数图像" },
+        description: { en: "Combine asymptotes, holes, intercepts, and a few sample points.", zh: "综合渐近线、缺口、截距与若干取样点。" },
+        howToRecognize: { en: "Problem asks for the graph of a rational function.", zh: "题目要求有理函数图像。" },
+        steps: [
+          { en: "Determine domain, asymptotes, holes, and intercepts", zh: "确定定义域、渐近线、缺口与截距" },
+          { en: "Plot a few points to determine behavior near asymptotes", zh: "描几个点以判定渐近线附近行为" },
+          { en: "Sketch each branch separately, respecting asymptotes", zh: "分支分别画，遵守渐近线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = \\frac{2x}{x - 1}$.", zh: "画 $f(x) = \\frac{2x}{x - 1}$。" },
+        commonTraps: [
+          { en: "Drawing the graph crossing a vertical asymptote", zh: "图像穿过垂直渐近线" },
+        ],
+      },
+      {
+        id: "pt-2-6-8",
+        title: { en: "Determine Behavior Near a Vertical Asymptote", zh: "判断垂直渐近线附近的行为" },
+        description: { en: "Determine whether $f \\to +\\infty$ or $-\\infty$ as $x$ approaches the asymptote from each side.", zh: "判断 $x$ 从两侧趋近渐近线时，$f$ 趋向 $+\\infty$ 还是 $-\\infty$。" },
+        howToRecognize: { en: "Problem asks for one-sided limits at a vertical asymptote.", zh: "题目要求垂直渐近线处的单侧极限。" },
+        steps: [
+          { en: "Pick a value slightly greater than the VA", zh: "取略大于 VA 的值" },
+          { en: "Plug in to find sign and magnitude", zh: "代入判断符号与大小" },
+          { en: "Repeat for value slightly less than the VA", zh: "对略小于 VA 的值重复" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Describe behavior of $f(x) = \\frac{1}{(x - 2)^2}$ as $x \\to 2^-$ and $x \\to 2^+$.", zh: "描述 $f(x) = \\frac{1}{(x - 2)^2}$ 在 $x \\to 2^-$ 与 $x \\to 2^+$ 时的行为。" },
+        commonTraps: [
+          { en: "Forgetting to test BOTH sides separately", zh: "忘记两侧分别检验" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-6-9",
+        title: { en: "Sketch with Slant Asymptote and Holes", zh: "含斜渐近线与缺口的绘图" },
+        description: { en: "Full sketch including a slant asymptote, holes, and complete sign analysis.", zh: "含斜渐近线、缺口与完整符号分析的全图绘制。" },
+        howToRecognize: { en: "Rational function with $\\deg N = \\deg D + 1$, possibly with cancelable factors.", zh: "$\\deg N = \\deg D + 1$ 的有理函数，可能含可约因式。" },
+        steps: [
+          { en: "Simplify and identify holes", zh: "化简并找出缺口" },
+          { en: "Find slant and vertical asymptotes", zh: "求斜渐近线与垂直渐近线" },
+          { en: "Find intercepts", zh: "求截距" },
+          { en: "Use a sign chart to map behavior on each interval", zh: "用符号表确定各区间的行为" },
+          { en: "Sketch each branch, attending to asymptote-side behavior", zh: "分支绘制，关注渐近线两侧" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Sketch $f(x) = \\frac{x^2 - x - 6}{x - 3}$ (note simplification possible).", zh: "画 $f(x) = \\frac{x^2 - x - 6}{x - 3}$（注意可化简）。" },
+        commonTraps: [
+          { en: "Drawing the graph through a hole as if it were continuous", zh: "把图像画过缺口仿佛连续" },
+        ],
+      },
+      {
+        id: "pt-2-6-10",
+        title: { en: "Application — Rational Modeling", zh: "应用——有理函数建模" },
+        description: { en: "Use a rational function to model real-world quantities like average cost, concentration over time, or inverse-proportion phenomena.", zh: "用有理函数刻画实际量，如平均成本、随时间的浓度或反比例现象。" },
+        howToRecognize: { en: "Word problem describes a quantity divided by a function of $x$ (often \"per unit\" rates).", zh: "应用题描述某量除以 $x$ 的函数（常为\"单位平均\"率）。" },
+        steps: [
+          { en: "Identify total cost / quantity and the dividing variable", zh: "识别总量与作分母的变量" },
+          { en: "Write the rational function", zh: "写出有理函数" },
+          { en: "Apply asymptote analysis (long-run behavior, dominant trend)", zh: "用渐近线分析（长期行为、主导趋势）" },
+          { en: "Use the model to answer questions and interpret with units", zh: "用模型回答问题并按单位解释" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A company's average cost per unit is $\\bar{C}(x) = \\frac{200 + 0.5x}{x}$. Find the horizontal asymptote and interpret it. What is $\\bar{C}(100)$?", zh: "公司平均单位成本为 $\\bar{C}(x) = \\frac{200 + 0.5x}{x}$。求水平渐近线并解释；求 $\\bar{C}(100)$。" },
+        commonTraps: [
+          { en: "Failing to interpret horizontal asymptote in real-world units (e.g., \"\\$0.50 per unit\")", zh: "未把水平渐近线按实际单位解释（如\"每件 \\$0.50\"）" },
+        ],
+      },
+    ],
   },
   {
     id: "2-7",
