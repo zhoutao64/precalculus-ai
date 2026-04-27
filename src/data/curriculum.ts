@@ -8992,6 +8992,234 @@ const chapter6Units: Unit[] = [
       en: "Use the Law of Cosines to solve oblique triangles (SSS, SAS) and apply Heron's Area Formula.",
       zh: "运用余弦定理求解斜三角形（SSS、SAS），并应用海伦面积公式。",
     },
+    learningGoals: [
+      { en: "Use the Law of Cosines to solve SAS and SSS triangles", zh: "用余弦定理求解 SAS 和 SSS 三角形" },
+      { en: "Use Heron's Area Formula to find the area of a triangle given three sides", zh: "用海伦公式由三边求三角形面积" },
+      { en: "Choose between Law of Sines and Law of Cosines based on given information", zh: "根据已知信息选择正弦定理或余弦定理" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-6-2-1",
+        title: { en: "Law of Cosines", zh: "余弦定理" },
+        explanation: {
+          en: "$c^2 = a^2 + b^2 - 2ab\\cos C$ (and similarly for the other sides). This generalizes the Pythagorean Theorem (when $C = 90°$, the $\\cos C$ term vanishes). Use it when you have SAS (two sides and the included angle) or SSS (all three sides).",
+          zh: "$c^2 = a^2 + b^2 - 2ab\\cos C$（其他边类推）。这是勾股定理的推广（当 $C = 90°$ 时，$\\cos C$ 项消失）。当已知 SAS（两边及夹角）或 SSS（三边）时使用。",
+        },
+        whenToUse: { en: "SAS or SSS configurations — Law of Sines cannot handle these directly", zh: "SAS 或 SSS 构型——正弦定理无法直接处理" },
+        commonMistake: { en: "Using the wrong angle in the formula — $C$ must be the angle BETWEEN sides $a$ and $b$", zh: "公式中用错角——$C$ 必须是边 $a$ 和 $b$ 之间的夹角" },
+        example: { en: "$a = 8$, $b = 5$, $C = 60°$: $c^2 = 64 + 25 - 80(\\frac{1}{2}) = 49$, so $c = 7$", zh: "$a = 8$、$b = 5$、$C = 60°$：$c^2 = 64 + 25 - 80(\\frac{1}{2}) = 49$，所以 $c = 7$" },
+      },
+      {
+        id: "kc-6-2-2",
+        title: { en: "Solving SSS Triangles", zh: "求解 SSS 三角形" },
+        explanation: {
+          en: "Given three sides, find angles by rearranging the Law of Cosines: $\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$. Find the largest angle first (opposite the longest side) to avoid ambiguity, then use Law of Sines or repeat for the other angles.",
+          zh: "已知三边，变形余弦定理求角：$\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$。先求最大角（最长边的对角）以避免歧义，再用正弦定理或重复求其余角。",
+        },
+        whenToUse: { en: "All three sides are known, no angles given", zh: "三边已知，无角" },
+        commonMistake: { en: "Finding a smaller angle first and getting an ambiguous sine inverse — always start with the largest angle", zh: "先求较小角得到不确定的反正弦——应先从最大角开始" },
+        example: { en: "$a = 3$, $b = 5$, $c = 7$: $\\cos C = \\frac{9 + 25 - 49}{30} = -\\frac{1}{2}$, so $C = 120°$", zh: "$a = 3$、$b = 5$、$c = 7$：$\\cos C = \\frac{9 + 25 - 49}{30} = -\\frac{1}{2}$，所以 $C = 120°$" },
+      },
+      {
+        id: "kc-6-2-3",
+        title: { en: "Heron's Area Formula", zh: "海伦面积公式" },
+        explanation: {
+          en: "Given three sides $a$, $b$, $c$: $s = \\frac{a + b + c}{2}$ (semi-perimeter), then Area $= \\sqrt{s(s-a)(s-b)(s-c)}$. No angle needed.",
+          zh: "已知三边 $a$、$b$、$c$：$s = \\frac{a + b + c}{2}$（半周长），面积 $= \\sqrt{s(s-a)(s-b)(s-c)}$。无需角度。",
+        },
+        whenToUse: { en: "Finding the area of a triangle when all three sides are known", zh: "三边已知时求三角形面积" },
+        commonMistake: { en: "Forgetting to compute the semi-perimeter $s$ first", zh: "忘记先算半周长 $s$" },
+        example: { en: "$a = 5$, $b = 6$, $c = 7$: $s = 9$, Area $= \\sqrt{9 \\cdot 4 \\cdot 3 \\cdot 2} = \\sqrt{216} = 6\\sqrt{6}$", zh: "$a = 5$、$b = 6$、$c = 7$：$s = 9$，面积 $= \\sqrt{9 \\cdot 4 \\cdot 3 \\cdot 2} = \\sqrt{216} = 6\\sqrt{6}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-6-2-1",
+        name: { en: "Law of Cosines", zh: "余弦定理" },
+        formula: "c^2 = a^2 + b^2 - 2ab\\cos C",
+        variables: [
+          { en: "$a, b, c$ = sides; $C$ = angle opposite side $c$", zh: "$a, b, c$ = 三边；$C$ = 边 $c$ 的对角" },
+        ],
+        whenToUse: { en: "SAS or SSS configurations", zh: "SAS 或 SSS 构型" },
+        commonProblemTypes: [
+          { en: "Find the third side given SAS", zh: "已知 SAS 求第三边" },
+          { en: "Find an angle given SSS", zh: "已知 SSS 求角" },
+        ],
+        example: { en: "$a = 10$, $b = 7$, $C = 45°$: $c^2 = 100 + 49 - 140\\cos 45° \\approx 50.01$, $c \\approx 7.07$", zh: "$a = 10$、$b = 7$、$C = 45°$：$c^2 = 100 + 49 - 140\\cos 45° \\approx 50.01$，$c \\approx 7.07$" },
+      },
+      {
+        id: "f-6-2-2",
+        name: { en: "Heron's Area Formula", zh: "海伦面积公式" },
+        formula: "\\text{Area} = \\sqrt{s(s-a)(s-b)(s-c)}, \\quad s = \\frac{a+b+c}{2}",
+        variables: [
+          { en: "$s$ = semi-perimeter", zh: "$s$ = 半周长" },
+          { en: "$a, b, c$ = three sides", zh: "$a, b, c$ = 三条边" },
+        ],
+        whenToUse: { en: "Finding area from three sides without knowing any angle", zh: "三边已知无角时求面积" },
+        commonProblemTypes: [
+          { en: "Find area given three sides", zh: "已知三边求面积" },
+        ],
+        example: { en: "$a = 3$, $b = 4$, $c = 5$: $s = 6$, Area $= \\sqrt{6 \\cdot 3 \\cdot 2 \\cdot 1} = 6$", zh: "$a = 3$、$b = 4$、$c = 5$：$s = 6$，面积 $= \\sqrt{6 \\cdot 3 \\cdot 2 \\cdot 1} = 6$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-6-2-1",
+        title: { en: "Find Third Side (SAS)", zh: "求第三边（SAS）" },
+        description: { en: "Given two sides and the included angle, find the third side.", zh: "已知两边及夹角，求第三边。" },
+        howToRecognize: { en: "Two sides and the included angle given.", zh: "给出两边及其夹角。" },
+        steps: [
+          { en: "Apply $c^2 = a^2 + b^2 - 2ab\\cos C$", zh: "应用 $c^2 = a^2 + b^2 - 2ab\\cos C$" },
+          { en: "Take the square root", zh: "开方" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "In $\\triangle ABC$, $a = 11$, $b = 15$, $C = 30°$. Find $c$.", zh: "在 $\\triangle ABC$ 中，$a = 11$、$b = 15$、$C = 30°$，求 $c$。" },
+        commonTraps: [
+          { en: "Using the wrong angle — $C$ must be between sides $a$ and $b$", zh: "用错角——$C$ 必须在边 $a$ 和 $b$ 之间" },
+        ],
+      },
+      {
+        id: "pt-6-2-2",
+        title: { en: "Find an Angle (SSS)", zh: "求角（SSS）" },
+        description: { en: "Given all three sides, find one of the angles.", zh: "已知三边，求其中一个角。" },
+        howToRecognize: { en: "Three sides given, no angles.", zh: "给出三边，无角。" },
+        steps: [
+          { en: "Rearrange: $\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$", zh: "变形：$\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$" },
+          { en: "$C = \\arccos(\\text{result})$", zh: "$C = \\arccos(\\text{结果})$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find angle $C$ if $a = 6$, $b = 8$, $c = 10$.", zh: "若 $a = 6$、$b = 8$、$c = 10$，求角 $C$。" },
+        commonTraps: [
+          { en: "Arithmetic error in the numerator — double-check $a^2 + b^2 - c^2$", zh: "分子算术错误——仔细检查 $a^2 + b^2 - c^2$" },
+        ],
+      },
+      {
+        id: "pt-6-2-3",
+        title: { en: "Find Area Using Heron's Formula", zh: "用海伦公式求面积" },
+        description: { en: "Compute area from three side lengths.", zh: "由三边长度计算面积。" },
+        howToRecognize: { en: "Three sides given; asked for area.", zh: "给出三边；要求面积。" },
+        steps: [
+          { en: "Compute $s = \\frac{a+b+c}{2}$", zh: "算 $s = \\frac{a+b+c}{2}$" },
+          { en: "Compute Area $= \\sqrt{s(s-a)(s-b)(s-c)}$", zh: "算面积 $= \\sqrt{s(s-a)(s-b)(s-c)}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the area of a triangle with sides $a = 7$, $b = 8$, $c = 9$.", zh: "求边长 $a = 7$、$b = 8$、$c = 9$ 的三角形面积。" },
+        commonTraps: [
+          { en: "Forgetting the square root at the end", zh: "最后忘记开方" },
+        ],
+      },
+      {
+        id: "pt-6-2-4",
+        title: { en: "Choose Law of Sines vs. Law of Cosines", zh: "选择正弦定理还是余弦定理" },
+        description: { en: "Determine which law to apply based on given information.", zh: "根据已知信息决定用哪个定理。" },
+        howToRecognize: { en: "Given some combination of sides and angles; asked which method to use.", zh: "给出某种边角组合；问用哪种方法。" },
+        steps: [
+          { en: "AAS, ASA, SSA → Law of Sines", zh: "AAS、ASA、SSA → 正弦定理" },
+          { en: "SAS, SSS → Law of Cosines", zh: "SAS、SSS → 余弦定理" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "You know $a = 10$, $b = 12$, $C = 55°$. Which law should you use?", zh: "已知 $a = 10$、$b = 12$、$C = 55°$，该用哪个定理？" },
+        commonTraps: [
+          { en: "Trying to use Law of Sines for SAS — it requires two angle-side pairs, which SAS doesn't directly give", zh: "对 SAS 用正弦定理——正弦定理需要两对角-边，SAS 无法直接给出" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-6-2-5",
+        title: { en: "Solve Complete Triangle (SAS)", zh: "完整求解三角形（SAS）" },
+        description: { en: "Find all unknowns given SAS.", zh: "已知 SAS 求所有未知量。" },
+        howToRecognize: { en: "Two sides and included angle; asked for all unknowns.", zh: "两边及夹角；求所有未知量。" },
+        steps: [
+          { en: "Use Law of Cosines to find the third side", zh: "用余弦定理求第三边" },
+          { en: "Use Law of Sines (or Cosines again) to find the second angle", zh: "用正弦定理（或再次余弦定理）求第二个角" },
+          { en: "Third angle = $180°$ minus the other two", zh: "第三个角 = $180°$ 减去另两个" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\triangle ABC$: $a = 9$, $b = 12$, $C = 40°$.", zh: "求解 $\\triangle ABC$：$a = 9$、$b = 12$、$C = 40°$。" },
+        commonTraps: [
+          { en: "Using Law of Sines for the second angle might give an ambiguous result — safer to use Law of Cosines again", zh: "用正弦定理求第二角可能有歧义——再用余弦定理更安全" },
+        ],
+      },
+      {
+        id: "pt-6-2-6",
+        title: { en: "Solve Complete Triangle (SSS)", zh: "完整求解三角形（SSS）" },
+        description: { en: "Find all angles given three sides.", zh: "已知三边求所有角。" },
+        howToRecognize: { en: "Three sides given; asked for all angles.", zh: "给出三边；求所有角。" },
+        steps: [
+          { en: "Find the largest angle first using Law of Cosines", zh: "先用余弦定理求最大角" },
+          { en: "Find a second angle using Law of Cosines or Law of Sines", zh: "用余弦定理或正弦定理求第二个角" },
+          { en: "Subtract to find the third angle", zh: "减法求第三个角" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all angles of a triangle with sides $a = 5$, $b = 7$, $c = 10$.", zh: "求边长 $a = 5$、$b = 7$、$c = 10$ 的三角形的所有角。" },
+        commonTraps: [
+          { en: "Getting a negative cosine and thinking there's no solution — negative cosine means an obtuse angle, which is fine", zh: "得到负余弦值就以为无解——负余弦意味着钝角，这是正常的" },
+        ],
+      },
+      {
+        id: "pt-6-2-7",
+        title: { en: "Application: Distance Between Two Points", zh: "应用：两点间距离" },
+        description: { en: "Use Law of Cosines in a real-world distance problem.", zh: "在实际距离问题中使用余弦定理。" },
+        howToRecognize: { en: "Two distances from a common point and the angle between them; asked for the distance between the endpoints.", zh: "从一个公共点出发的两段距离及其夹角；要求端点间的距离。" },
+        steps: [
+          { en: "Identify the SAS configuration in the problem", zh: "在问题中识别 SAS 构型" },
+          { en: "Apply Law of Cosines", zh: "应用余弦定理" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Two ships leave a port: one goes N 40° E for 100 mi, the other S 50° E for 80 mi. How far apart are they?", zh: "两艘船离港：一艘沿 N 40° E 行 100 mi，另一艘沿 S 50° E 行 80 mi。它们相距多远？" },
+        commonTraps: [
+          { en: "Not calculating the included angle correctly from the bearings", zh: "从方位角算夹角时出错" },
+        ],
+      },
+      {
+        id: "pt-6-2-8",
+        title: { en: "Determine Triangle Type from SSS", zh: "由 SSS 判断三角形类型" },
+        description: { en: "Determine if a triangle is acute, right, or obtuse from its sides.", zh: "由三边判断三角形是锐角、直角还是钝角三角形。" },
+        howToRecognize: { en: "Three sides given; asked about the type of triangle.", zh: "给出三边；问三角形类型。" },
+        steps: [
+          { en: "Find $\\cos C$ for the largest angle", zh: "对最大角求 $\\cos C$" },
+          { en: "$\\cos C > 0$: acute; $\\cos C = 0$: right; $\\cos C < 0$: obtuse", zh: "$\\cos C > 0$：锐角；$\\cos C = 0$：直角；$\\cos C < 0$：钝角" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Is the triangle with sides $4, 5, 8$ acute, right, or obtuse?", zh: "边长 $4, 5, 8$ 的三角形是锐角、直角还是钝角？" },
+        commonTraps: [
+          { en: "Not checking the largest angle — only the largest angle can be obtuse", zh: "没检查最大角——只有最大角可能是钝角" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-6-2-9",
+        title: { en: "Navigation Problem Requiring Both Laws", zh: "需要两个定理的导航问题" },
+        description: { en: "Solve a navigation problem that requires both Law of Sines and Law of Cosines.", zh: "解决需要正弦定理和余弦定理的导航问题。" },
+        howToRecognize: { en: "Multi-step bearing/distance problem forming an oblique triangle.", zh: "形成斜三角形的多步方位角/距离问题。" },
+        steps: [
+          { en: "Draw the triangle from the given bearings and distances", zh: "由给定方位角和距离画三角形" },
+          { en: "Use Law of Cosines to find the unknown side", zh: "用余弦定理求未知边" },
+          { en: "Use Law of Sines to find remaining angles or bearing", zh: "用正弦定理求其余角或方位角" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A plane flies 400 mi on bearing N 30° W, then 300 mi on bearing N 75° E. Find the distance and bearing from start to finish.", zh: "飞机沿 N 30° W 飞 400 mi，再沿 N 75° E 飞 300 mi。求起点到终点的距离和方位角。" },
+        commonTraps: [
+          { en: "Incorrectly computing the included angle between the two legs from bearings", zh: "从方位角算两段间夹角时出错" },
+        ],
+      },
+      {
+        id: "pt-6-2-10",
+        title: { en: "Area and Side-Length Combined Problem", zh: "面积与边长综合题" },
+        description: { en: "Find a missing measurement using both area formulas and the Law of Cosines.", zh: "同时用面积公式和余弦定理求缺失量。" },
+        howToRecognize: { en: "Area is given along with some sides/angles; asked for a missing quantity.", zh: "给出面积和部分边/角；求缺失量。" },
+        steps: [
+          { en: "Use area formula to find a missing side or angle", zh: "用面积公式求缺失边或角" },
+          { en: "Use Law of Cosines to complete the triangle", zh: "用余弦定理完成三角形" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A triangle has area 30, sides $a = 10$ and $b = 8$, and angle $C$ between them. Find $C$ and $c$.", zh: "三角形面积 30，边 $a = 10$、$b = 8$，$C$ 为其夹角。求 $C$ 和 $c$。" },
+        commonTraps: [
+          { en: "Forgetting the area formula $\\frac{1}{2}ab\\sin C$ — use it to find $C$ first", zh: "忘记面积公式 $\\frac{1}{2}ab\\sin C$——先用它求 $C$" },
+        ],
+      },
+    ],
   },
   {
     id: "6-3",
@@ -9005,6 +9233,219 @@ const chapter6Units: Unit[] = [
       en: "Represent vectors, perform vector operations, and write vectors in component and unit-vector form.",
       zh: "表示向量、进行向量运算，并以分量形式与单位向量形式书写向量。",
     },
+    learningGoals: [
+      { en: "Represent vectors as directed line segments and in component form", zh: "用有向线段和分量形式表示向量" },
+      { en: "Perform vector addition, subtraction, and scalar multiplication", zh: "进行向量加法、减法和数乘" },
+      { en: "Find the magnitude and direction angle of a vector", zh: "求向量的模和方向角" },
+      { en: "Write vectors using unit vectors $\\mathbf{i}$ and $\\mathbf{j}$", zh: "用单位向量 $\\mathbf{i}$ 和 $\\mathbf{j}$ 表示向量" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-6-3-1",
+        title: { en: "Component Form and Magnitude", zh: "分量形式与模" },
+        explanation: {
+          en: "A vector $\\mathbf{v}$ from $(x_1, y_1)$ to $(x_2, y_2)$ has component form $\\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle a, b \\rangle$. Its magnitude is $\\|\\mathbf{v}\\| = \\sqrt{a^2 + b^2}$. A unit vector in the direction of $\\mathbf{v}$ is $\\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|}$.",
+          zh: "从 $(x_1, y_1)$ 到 $(x_2, y_2)$ 的向量 $\\mathbf{v}$ 的分量形式为 $\\langle x_2 - x_1, y_2 - y_1 \\rangle = \\langle a, b \\rangle$。模为 $\\|\\mathbf{v}\\| = \\sqrt{a^2 + b^2}$。$\\mathbf{v}$ 方向上的单位向量为 $\\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|}$。",
+        },
+        whenToUse: { en: "Any time you need to describe a vector's length or direction numerically", zh: "需要用数值描述向量的长度或方向时" },
+        commonMistake: { en: "Subtracting coordinates in the wrong order: terminal minus initial", zh: "坐标相减顺序搞反：终点减起点" },
+        example: { en: "$\\mathbf{v} = \\langle 3, 4 \\rangle$: $\\|\\mathbf{v}\\| = 5$, unit vector $= \\langle \\frac{3}{5}, \\frac{4}{5} \\rangle$", zh: "$\\mathbf{v} = \\langle 3, 4 \\rangle$：$\\|\\mathbf{v}\\| = 5$，单位向量 $= \\langle \\frac{3}{5}, \\frac{4}{5} \\rangle$" },
+      },
+      {
+        id: "kc-6-3-2",
+        title: { en: "Vector Operations", zh: "向量运算" },
+        explanation: {
+          en: "Addition: $\\langle a_1, b_1 \\rangle + \\langle a_2, b_2 \\rangle = \\langle a_1 + a_2, b_1 + b_2 \\rangle$. Scalar multiplication: $k\\langle a, b \\rangle = \\langle ka, kb \\rangle$. Subtraction: $\\mathbf{u} - \\mathbf{v} = \\mathbf{u} + (-\\mathbf{v})$. Geometrically: addition is tip-to-tail; subtraction points from $\\mathbf{v}$ to $\\mathbf{u}$.",
+          zh: "加法：$\\langle a_1, b_1 \\rangle + \\langle a_2, b_2 \\rangle = \\langle a_1 + a_2, b_1 + b_2 \\rangle$。数乘：$k\\langle a, b \\rangle = \\langle ka, kb \\rangle$。减法：$\\mathbf{u} - \\mathbf{v} = \\mathbf{u} + (-\\mathbf{v})$。几何上：加法首尾相接；减法从 $\\mathbf{v}$ 指向 $\\mathbf{u}$。",
+        },
+        whenToUse: { en: "Combining forces, velocities, displacements, or any vector quantities", zh: "合成力、速度、位移或任何向量量" },
+        commonMistake: { en: "Adding magnitudes directly instead of using component-wise addition", zh: "直接相加模而非按分量相加" },
+        example: { en: "$\\langle 2, 3 \\rangle + \\langle -1, 5 \\rangle = \\langle 1, 8 \\rangle$", zh: "$\\langle 2, 3 \\rangle + \\langle -1, 5 \\rangle = \\langle 1, 8 \\rangle$" },
+      },
+      {
+        id: "kc-6-3-3",
+        title: { en: "Direction Angle and Unit-Vector Notation", zh: "方向角与单位向量记法" },
+        explanation: {
+          en: "The direction angle $\\theta$ is measured from the positive $x$-axis. $\\mathbf{v} = \\|\\mathbf{v}\\|(\\cos\\theta\\,\\mathbf{i} + \\sin\\theta\\,\\mathbf{j})$. Given components $\\langle a, b \\rangle$: $\\theta = \\arctan(\\frac{b}{a})$, adjusted for quadrant. Standard unit vectors: $\\mathbf{i} = \\langle 1, 0 \\rangle$, $\\mathbf{j} = \\langle 0, 1 \\rangle$.",
+          zh: "方向角 $\\theta$ 从正 $x$ 轴量起。$\\mathbf{v} = \\|\\mathbf{v}\\|(\\cos\\theta\\,\\mathbf{i} + \\sin\\theta\\,\\mathbf{j})$。已知分量 $\\langle a, b \\rangle$：$\\theta = \\arctan(\\frac{b}{a})$，需根据象限调整。标准单位向量：$\\mathbf{i} = \\langle 1, 0 \\rangle$，$\\mathbf{j} = \\langle 0, 1 \\rangle$。",
+        },
+        whenToUse: { en: "Converting between magnitude-direction and component representations", zh: "在模-方向和分量表示之间转换" },
+        commonMistake: { en: "Not adjusting $\\arctan$ for the correct quadrant (e.g., QII or QIII)", zh: "未根据正确象限调整 $\\arctan$（如第二或第三象限）" },
+        example: { en: "$\\mathbf{v} = \\langle -3, 3 \\rangle$: $\\|\\mathbf{v}\\| = 3\\sqrt{2}$, $\\theta = 135°$", zh: "$\\mathbf{v} = \\langle -3, 3 \\rangle$：$\\|\\mathbf{v}\\| = 3\\sqrt{2}$，$\\theta = 135°$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-6-3-1",
+        name: { en: "Vector Magnitude", zh: "向量的模" },
+        formula: "\\|\\mathbf{v}\\| = \\sqrt{a^2 + b^2} \\quad \\text{for } \\mathbf{v} = \\langle a, b \\rangle",
+        variables: [
+          { en: "$a, b$ — horizontal and vertical components", zh: "$a, b$ — 水平和垂直分量" },
+        ],
+        whenToUse: { en: "Finding the length of a vector", zh: "求向量的长度" },
+        commonProblemTypes: [
+          { en: "Find magnitude from components", zh: "由分量求模" },
+          { en: "Find a unit vector", zh: "求单位向量" },
+        ],
+        example: { en: "$\\|\\langle -5, 12 \\rangle\\| = \\sqrt{25 + 144} = 13$", zh: "$\\|\\langle -5, 12 \\rangle\\| = \\sqrt{25 + 144} = 13$" },
+      },
+      {
+        id: "f-6-3-2",
+        name: { en: "Direction Angle", zh: "方向角" },
+        formula: "\\theta = \\arctan\\left(\\frac{b}{a}\\right) \\quad (\\text{adjust for quadrant})",
+        variables: [
+          { en: "$\\mathbf{v} = \\langle a, b \\rangle$", zh: "$\\mathbf{v} = \\langle a, b \\rangle$" },
+          { en: "$\\theta$ measured counter-clockwise from positive $x$-axis", zh: "$\\theta$ 从正 $x$ 轴逆时针量" },
+        ],
+        whenToUse: { en: "Finding the direction of a vector", zh: "求向量的方向" },
+        commonProblemTypes: [
+          { en: "Find direction angle from components", zh: "由分量求方向角" },
+          { en: "Convert between magnitude-angle and component forms", zh: "在模-角和分量形式之间转换" },
+        ],
+        example: { en: "$\\langle -1, \\sqrt{3} \\rangle$: $\\arctan(\\frac{\\sqrt{3}}{-1}) = -60°$, but QII → $\\theta = 120°$", zh: "$\\langle -1, \\sqrt{3} \\rangle$：$\\arctan(\\frac{\\sqrt{3}}{-1}) = -60°$，但在第二象限 → $\\theta = 120°$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-6-3-1",
+        title: { en: "Find Component Form and Magnitude", zh: "求分量形式和模" },
+        description: { en: "Given initial and terminal points, find the component form and magnitude.", zh: "已知始点和终点，求分量形式和模。" },
+        howToRecognize: { en: "Two points given; asked for the vector.", zh: "给出两点；要求向量。" },
+        steps: [
+          { en: "Components: $\\langle x_2 - x_1, y_2 - y_1 \\rangle$", zh: "分量：$\\langle x_2 - x_1, y_2 - y_1 \\rangle$" },
+          { en: "Magnitude: $\\sqrt{a^2 + b^2}$", zh: "模：$\\sqrt{a^2 + b^2}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the component form and magnitude of the vector from $(1, -2)$ to $(4, 2)$.", zh: "求从 $(1, -2)$ 到 $(4, 2)$ 的向量的分量形式和模。" },
+        commonTraps: [
+          { en: "Subtracting initial from terminal (not the reverse)", zh: "用终点减起点（不要反过来）" },
+        ],
+      },
+      {
+        id: "pt-6-3-2",
+        title: { en: "Perform Vector Operations", zh: "进行向量运算" },
+        description: { en: "Add, subtract, or scalar-multiply vectors in component form.", zh: "对分量形式的向量进行加法、减法或数乘。" },
+        howToRecognize: { en: "Two vectors given; asked to compute $\\mathbf{u} + \\mathbf{v}$, $2\\mathbf{u} - 3\\mathbf{v}$, etc.", zh: "给出两个向量；要求计算 $\\mathbf{u} + \\mathbf{v}$、$2\\mathbf{u} - 3\\mathbf{v}$ 等。" },
+        steps: [
+          { en: "Apply operations component-wise", zh: "按分量进行运算" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $\\mathbf{u} = \\langle 3, -1 \\rangle$ and $\\mathbf{v} = \\langle -2, 4 \\rangle$, find $2\\mathbf{u} + \\mathbf{v}$.", zh: "若 $\\mathbf{u} = \\langle 3, -1 \\rangle$、$\\mathbf{v} = \\langle -2, 4 \\rangle$，求 $2\\mathbf{u} + \\mathbf{v}$。" },
+        commonTraps: [
+          { en: "Forgetting to multiply BOTH components by the scalar", zh: "忘记将两个分量都乘以标量" },
+        ],
+      },
+      {
+        id: "pt-6-3-3",
+        title: { en: "Find Unit Vector", zh: "求单位向量" },
+        description: { en: "Find the unit vector in the direction of a given vector.", zh: "求给定向量方向上的单位向量。" },
+        howToRecognize: { en: "Asked for a unit vector in a given direction.", zh: "要求给定方向的单位向量。" },
+        steps: [
+          { en: "Compute $\\|\\mathbf{v}\\|$", zh: "求 $\\|\\mathbf{v}\\|$" },
+          { en: "Divide each component by $\\|\\mathbf{v}\\|$", zh: "每个分量除以 $\\|\\mathbf{v}\\|$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the unit vector in the direction of $\\langle 5, -12 \\rangle$.", zh: "求 $\\langle 5, -12 \\rangle$ 方向上的单位向量。" },
+        commonTraps: [
+          { en: "Dividing only one component", zh: "只除一个分量" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-6-3-4",
+        title: { en: "Find Direction Angle", zh: "求方向角" },
+        description: { en: "Find the direction angle of a vector from its components.", zh: "由向量分量求方向角。" },
+        howToRecognize: { en: "Vector given in component form; asked for direction angle.", zh: "给出分量形式的向量；要求方向角。" },
+        steps: [
+          { en: "Compute $\\arctan(b/a)$", zh: "算 $\\arctan(b/a)$" },
+          { en: "Adjust for the correct quadrant", zh: "根据正确象限调整" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the direction angle of $\\mathbf{v} = \\langle -4, 4\\sqrt{3} \\rangle$.", zh: "求 $\\mathbf{v} = \\langle -4, 4\\sqrt{3} \\rangle$ 的方向角。" },
+        commonTraps: [
+          { en: "Calculator gives $\\arctan(-\\sqrt{3}) = -60°$ but the vector is in QII, so $\\theta = 120°$", zh: "计算器给出 $\\arctan(-\\sqrt{3}) = -60°$ 但向量在第二象限，所以 $\\theta = 120°$" },
+        ],
+      },
+      {
+        id: "pt-6-3-5",
+        title: { en: "Convert Magnitude-Direction to Components", zh: "模-方向转分量" },
+        description: { en: "Given $\\|\\mathbf{v}\\|$ and $\\theta$, find the components.", zh: "已知 $\\|\\mathbf{v}\\|$ 和 $\\theta$，求分量。" },
+        howToRecognize: { en: "Magnitude and angle given; asked for component form.", zh: "给出模和角；要求分量形式。" },
+        steps: [
+          { en: "$a = \\|\\mathbf{v}\\|\\cos\\theta$, $b = \\|\\mathbf{v}\\|\\sin\\theta$", zh: "$a = \\|\\mathbf{v}\\|\\cos\\theta$，$b = \\|\\mathbf{v}\\|\\sin\\theta$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A vector has magnitude 10 and direction angle $210°$. Find its components.", zh: "向量的模为 10、方向角 $210°$，求分量。" },
+        commonTraps: [
+          { en: "Using degrees in a calculator set to radians", zh: "计算器在弧度模式却输入角度值" },
+        ],
+      },
+      {
+        id: "pt-6-3-6",
+        title: { en: "Resultant Force Problem", zh: "合力问题" },
+        description: { en: "Find the resultant of two or more forces given magnitudes and directions.", zh: "由各力的大小和方向求合力。" },
+        howToRecognize: { en: "Multiple forces with magnitudes and angles; asked for the resultant.", zh: "多个力有大小和角度；求合力。" },
+        steps: [
+          { en: "Convert each force to components", zh: "将每个力转为分量" },
+          { en: "Add components", zh: "分量相加" },
+          { en: "Find magnitude and direction of the resultant", zh: "求合力的大小和方向" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Forces of 50 N at $30°$ and 80 N at $135°$ act on an object. Find the resultant.", zh: "50 N（$30°$）和 80 N（$135°$）的力作用于一个物体，求合力。" },
+        commonTraps: [
+          { en: "Adding magnitudes directly (50 + 80 = 130) instead of using components", zh: "直接相加大小（50 + 80 = 130）而不用分量" },
+        ],
+      },
+      {
+        id: "pt-6-3-7",
+        title: { en: "Velocity Vector Application", zh: "速度向量应用" },
+        description: { en: "Solve problems involving ground speed, wind speed, and heading.", zh: "解决涉及地面速度、风速和航向的问题。" },
+        howToRecognize: { en: "Airplane/boat with heading and wind/current; asked for true course or ground speed.", zh: "飞机/船有航向和风/水流；求真实航线或地面速度。" },
+        steps: [
+          { en: "Convert aircraft velocity and wind velocity to components", zh: "将飞行速度和风速转为分量" },
+          { en: "Add to get the resultant (ground velocity)", zh: "相加得合速度（地面速度）" },
+          { en: "Find magnitude and direction", zh: "求大小和方向" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A plane heads N 30° E at 500 mph. Wind blows from the west at 60 mph. Find the ground speed and actual bearing.", zh: "飞机沿 N 30° E 以 500 mph 飞行，西风 60 mph。求地面速度和实际方位。" },
+        commonTraps: [
+          { en: "Wind blowing FROM the west means it pushes EAST — the component is positive in the east direction", zh: "西风吹来意味着向东推——分量在东方向为正" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-6-3-8",
+        title: { en: "Equilibrium Force Problem", zh: "力平衡问题" },
+        description: { en: "Find the force needed to bring a system to equilibrium.", zh: "求使系统达到平衡的力。" },
+        howToRecognize: { en: "Multiple known forces; asked for a force that makes the resultant zero.", zh: "多个已知力；求使合力为零的力。" },
+        steps: [
+          { en: "Find the resultant of the known forces", zh: "求已知力的合力" },
+          { en: "The equilibrium force is the opposite: $-\\mathbf{R}$", zh: "平衡力为合力的反向：$-\\mathbf{R}$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Forces of 100 N at $0°$, 150 N at $120°$, and $F$ at angle $\\theta$ keep an object in equilibrium. Find $F$ and $\\theta$.", zh: "100 N（$0°$）、150 N（$120°$）和未知力 $F$（角度 $\\theta$）使物体平衡，求 $F$ 和 $\\theta$。" },
+        commonTraps: [
+          { en: "Forgetting to negate both components for the equilibrium force", zh: "忘记对平衡力的两个分量都取反" },
+        ],
+      },
+      {
+        id: "pt-6-3-9",
+        title: { en: "Inclined Plane Force Decomposition", zh: "斜面力分解" },
+        description: { en: "Decompose gravity into components parallel and perpendicular to an inclined plane.", zh: "将重力分解为平行和垂直于斜面的分量。" },
+        howToRecognize: { en: "Object on an incline; asked for force components along and perpendicular to the slope.", zh: "物体在斜面上；求沿斜面和垂直于斜面的力分量。" },
+        steps: [
+          { en: "Gravity force parallel to slope: $W\\sin\\alpha$", zh: "沿斜面的重力分量：$W\\sin\\alpha$" },
+          { en: "Gravity force perpendicular to slope: $W\\cos\\alpha$", zh: "垂直于斜面的重力分量：$W\\cos\\alpha$" },
+          { en: "where $\\alpha$ is the angle of the incline", zh: "其中 $\\alpha$ 为斜面倾角" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A 200-lb crate sits on a $25°$ incline. Find the force required to keep it from sliding (ignore friction).", zh: "200 磅箱子在 $25°$ 斜面上，求防止下滑所需的力（忽略摩擦）。" },
+        commonTraps: [
+          { en: "Swapping sin and cos — the component ALONG the slope uses sin of the incline angle", zh: "sin 和 cos 搞反——沿斜面的分量用斜面角的 sin" },
+        ],
+      },
+    ],
   },
   {
     id: "6-4",
@@ -9018,6 +9459,202 @@ const chapter6Units: Unit[] = [
       en: "Compute dot products, find the angle between vectors, and decompose vectors into projections.",
       zh: "计算点积、求向量之间的夹角，并将向量分解为投影分量。",
     },
+    learningGoals: [
+      { en: "Compute the dot product of two vectors", zh: "计算两个向量的点积" },
+      { en: "Find the angle between two vectors", zh: "求两个向量的夹角" },
+      { en: "Determine if two vectors are orthogonal", zh: "判断两个向量是否正交" },
+      { en: "Find the projection of one vector onto another", zh: "求一个向量在另一个上的投影" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-6-4-1",
+        title: { en: "Dot Product", zh: "点积" },
+        explanation: {
+          en: "For $\\mathbf{u} = \\langle a_1, b_1 \\rangle$ and $\\mathbf{v} = \\langle a_2, b_2 \\rangle$: $\\mathbf{u} \\cdot \\mathbf{v} = a_1 a_2 + b_1 b_2$. The result is a SCALAR (not a vector). Alternatively: $\\mathbf{u} \\cdot \\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta$.",
+          zh: "对 $\\mathbf{u} = \\langle a_1, b_1 \\rangle$ 和 $\\mathbf{v} = \\langle a_2, b_2 \\rangle$：$\\mathbf{u} \\cdot \\mathbf{v} = a_1 a_2 + b_1 b_2$。结果是标量（不是向量）。等价形式：$\\mathbf{u} \\cdot \\mathbf{v} = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta$。",
+        },
+        whenToUse: { en: "Finding angles between vectors, testing orthogonality, computing projections", zh: "求向量夹角、判断正交、计算投影" },
+        commonMistake: { en: "Treating the dot product as a vector — it's a scalar (a number)", zh: "把点积当向量——它是标量（数值）" },
+        example: { en: "$\\langle 3, 4 \\rangle \\cdot \\langle -2, 5 \\rangle = -6 + 20 = 14$", zh: "$\\langle 3, 4 \\rangle \\cdot \\langle -2, 5 \\rangle = -6 + 20 = 14$" },
+      },
+      {
+        id: "kc-6-4-2",
+        title: { en: "Angle Between Vectors and Orthogonality", zh: "向量夹角与正交" },
+        explanation: {
+          en: "$\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$. If $\\mathbf{u} \\cdot \\mathbf{v} = 0$, the vectors are orthogonal (perpendicular). If $\\mathbf{u} \\cdot \\mathbf{v} > 0$, the angle is acute. If $\\mathbf{u} \\cdot \\mathbf{v} < 0$, the angle is obtuse.",
+          zh: "$\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$。若 $\\mathbf{u} \\cdot \\mathbf{v} = 0$，向量正交（垂直）。若 $\\mathbf{u} \\cdot \\mathbf{v} > 0$，夹角为锐角。若 $\\mathbf{u} \\cdot \\mathbf{v} < 0$，夹角为钝角。",
+        },
+        whenToUse: { en: "Finding the angle between two vectors or checking perpendicularity", zh: "求两向量夹角或判断垂直" },
+        commonMistake: { en: "Forgetting to divide by both magnitudes", zh: "忘记除以两个模" },
+        example: { en: "$\\langle 1, 2 \\rangle \\cdot \\langle -4, 2 \\rangle = 0$, so the vectors are orthogonal", zh: "$\\langle 1, 2 \\rangle \\cdot \\langle -4, 2 \\rangle = 0$，所以向量正交" },
+      },
+      {
+        id: "kc-6-4-3",
+        title: { en: "Vector Projection", zh: "向量投影" },
+        explanation: {
+          en: "The projection of $\\mathbf{u}$ onto $\\mathbf{v}$: $\\text{proj}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\mathbf{v}$. The scalar component (signed length): $\\text{comp}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|}$.",
+          zh: "$\\mathbf{u}$ 在 $\\mathbf{v}$ 上的投影：$\\text{proj}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\mathbf{v}$。标量分量（有符号长度）：$\\text{comp}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|}$。",
+        },
+        whenToUse: { en: "Decomposing a vector into parallel and perpendicular components relative to another vector", zh: "将向量分解为相对于另一个向量的平行和垂直分量" },
+        commonMistake: { en: "Dividing by $\\|\\mathbf{v}\\|$ instead of $\\|\\mathbf{v}\\|^2$ in the projection formula", zh: "在投影公式中除以 $\\|\\mathbf{v}\\|$ 而非 $\\|\\mathbf{v}\\|^2$" },
+        example: { en: "$\\text{proj}_{\\langle 1,0 \\rangle} \\langle 3, 4 \\rangle = \\frac{3}{1} \\langle 1, 0 \\rangle = \\langle 3, 0 \\rangle$", zh: "$\\text{proj}_{\\langle 1,0 \\rangle} \\langle 3, 4 \\rangle = \\frac{3}{1} \\langle 1, 0 \\rangle = \\langle 3, 0 \\rangle$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-6-4-1",
+        name: { en: "Dot Product", zh: "点积" },
+        formula: "\\mathbf{u} \\cdot \\mathbf{v} = a_1 a_2 + b_1 b_2 = \\|\\mathbf{u}\\|\\|\\mathbf{v}\\|\\cos\\theta",
+        variables: [
+          { en: "$\\mathbf{u} = \\langle a_1, b_1 \\rangle$, $\\mathbf{v} = \\langle a_2, b_2 \\rangle$", zh: "$\\mathbf{u} = \\langle a_1, b_1 \\rangle$，$\\mathbf{v} = \\langle a_2, b_2 \\rangle$" },
+          { en: "$\\theta$ = angle between the vectors", zh: "$\\theta$ = 向量夹角" },
+        ],
+        whenToUse: { en: "Computing dot product, angle, or checking orthogonality", zh: "计算点积、夹角或判断正交" },
+        commonProblemTypes: [
+          { en: "Find $\\mathbf{u} \\cdot \\mathbf{v}$", zh: "求 $\\mathbf{u} \\cdot \\mathbf{v}$" },
+          { en: "Find the angle between two vectors", zh: "求两向量夹角" },
+        ],
+        example: { en: "$\\langle 2, -1 \\rangle \\cdot \\langle 3, 4 \\rangle = 6 - 4 = 2$", zh: "$\\langle 2, -1 \\rangle \\cdot \\langle 3, 4 \\rangle = 6 - 4 = 2$" },
+      },
+      {
+        id: "f-6-4-2",
+        name: { en: "Vector Projection Formula", zh: "向量投影公式" },
+        formula: "\\text{proj}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\mathbf{v}",
+        variables: [
+          { en: "Result is a vector in the direction of $\\mathbf{v}$", zh: "结果是 $\\mathbf{v}$ 方向上的向量" },
+        ],
+        whenToUse: { en: "Decomposing $\\mathbf{u}$ into components parallel and perpendicular to $\\mathbf{v}$", zh: "将 $\\mathbf{u}$ 分解为平行和垂直于 $\\mathbf{v}$ 的分量" },
+        commonProblemTypes: [
+          { en: "Find the projection of $\\mathbf{u}$ onto $\\mathbf{v}$", zh: "求 $\\mathbf{u}$ 在 $\\mathbf{v}$ 上的投影" },
+          { en: "Work done by a force: $W = \\mathbf{F} \\cdot \\mathbf{d}$", zh: "力做的功：$W = \\mathbf{F} \\cdot \\mathbf{d}$" },
+        ],
+        example: { en: "$\\text{proj}_{\\langle 2,0 \\rangle} \\langle 3, 4 \\rangle = \\frac{6}{4} \\langle 2, 0 \\rangle = \\langle 3, 0 \\rangle$", zh: "$\\text{proj}_{\\langle 2,0 \\rangle} \\langle 3, 4 \\rangle = \\frac{6}{4} \\langle 2, 0 \\rangle = \\langle 3, 0 \\rangle$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-6-4-1",
+        title: { en: "Compute a Dot Product", zh: "计算点积" },
+        description: { en: "Calculate $\\mathbf{u} \\cdot \\mathbf{v}$ from components.", zh: "由分量计算 $\\mathbf{u} \\cdot \\mathbf{v}$。" },
+        howToRecognize: { en: "Two vectors given; asked for their dot product.", zh: "给出两个向量；要求点积。" },
+        steps: [
+          { en: "$\\mathbf{u} \\cdot \\mathbf{v} = a_1 a_2 + b_1 b_2$", zh: "$\\mathbf{u} \\cdot \\mathbf{v} = a_1 a_2 + b_1 b_2$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find $\\langle 4, -3 \\rangle \\cdot \\langle 2, 5 \\rangle$.", zh: "求 $\\langle 4, -3 \\rangle \\cdot \\langle 2, 5 \\rangle$。" },
+        commonTraps: [
+          { en: "Writing the result as a vector — dot product is a scalar", zh: "把结果写成向量——点积是标量" },
+        ],
+      },
+      {
+        id: "pt-6-4-2",
+        title: { en: "Determine Orthogonality", zh: "判断正交" },
+        description: { en: "Check if two vectors are orthogonal by computing their dot product.", zh: "通过计算点积判断两向量是否正交。" },
+        howToRecognize: { en: "Asked if vectors are perpendicular/orthogonal.", zh: "问向量是否垂直/正交。" },
+        steps: [
+          { en: "Compute $\\mathbf{u} \\cdot \\mathbf{v}$", zh: "算 $\\mathbf{u} \\cdot \\mathbf{v}$" },
+          { en: "If $= 0$, orthogonal; otherwise not", zh: "若 $= 0$，正交；否则不正交" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Are $\\langle 3, 6 \\rangle$ and $\\langle 4, -2 \\rangle$ orthogonal?", zh: "$\\langle 3, 6 \\rangle$ 和 $\\langle 4, -2 \\rangle$ 正交吗？" },
+        commonTraps: [
+          { en: "Assuming perpendicular = opposite signs on components (not true in general)", zh: "以为垂直 = 分量符号相反（一般不对）" },
+        ],
+      },
+      {
+        id: "pt-6-4-3",
+        title: { en: "Find Angle Between Vectors", zh: "求向量夹角" },
+        description: { en: "Use $\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$.", zh: "用 $\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$。" },
+        howToRecognize: { en: "Two vectors given; asked for the angle between them.", zh: "给出两个向量；要求夹角。" },
+        steps: [
+          { en: "Compute $\\mathbf{u} \\cdot \\mathbf{v}$, $\\|\\mathbf{u}\\|$, $\\|\\mathbf{v}\\|$", zh: "算 $\\mathbf{u} \\cdot \\mathbf{v}$、$\\|\\mathbf{u}\\|$、$\\|\\mathbf{v}\\|$" },
+          { en: "$\\theta = \\arccos\\left(\\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}\\right)$", zh: "$\\theta = \\arccos\\left(\\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}\\right)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the angle between $\\langle 1, 0 \\rangle$ and $\\langle 1, 1 \\rangle$.", zh: "求 $\\langle 1, 0 \\rangle$ 与 $\\langle 1, 1 \\rangle$ 的夹角。" },
+        commonTraps: [
+          { en: "Forgetting to take $\\arccos$ — the result is the cosine of the angle, not the angle itself", zh: "忘记取 $\\arccos$——结果是夹角的余弦，不是夹角本身" },
+        ],
+      },
+      // ── Medium (3) ────────────────────────────────────────
+      {
+        id: "pt-6-4-4",
+        title: { en: "Find Vector Projection", zh: "求向量投影" },
+        description: { en: "Project $\\mathbf{u}$ onto $\\mathbf{v}$.", zh: "求 $\\mathbf{u}$ 在 $\\mathbf{v}$ 上的投影。" },
+        howToRecognize: { en: "Asked for $\\text{proj}_{\\mathbf{v}} \\mathbf{u}$.", zh: "要求 $\\text{proj}_{\\mathbf{v}} \\mathbf{u}$。" },
+        steps: [
+          { en: "Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and $\\|\\mathbf{v}\\|^2$", zh: "算 $\\mathbf{u} \\cdot \\mathbf{v}$ 和 $\\|\\mathbf{v}\\|^2$" },
+          { en: "$\\text{proj}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\mathbf{v}$", zh: "$\\text{proj}_{\\mathbf{v}} \\mathbf{u} = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\mathbf{v}$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\text{proj}_{\\langle 2, 1 \\rangle} \\langle 4, 3 \\rangle$.", zh: "求 $\\text{proj}_{\\langle 2, 1 \\rangle} \\langle 4, 3 \\rangle$。" },
+        commonTraps: [
+          { en: "Using $\\|\\mathbf{v}\\|$ instead of $\\|\\mathbf{v}\\|^2$ in the denominator", zh: "分母用 $\\|\\mathbf{v}\\|$ 而非 $\\|\\mathbf{v}\\|^2$" },
+        ],
+      },
+      {
+        id: "pt-6-4-5",
+        title: { en: "Decompose Vector into Parallel and Perpendicular", zh: "将向量分解为平行和垂直分量" },
+        description: { en: "Write $\\mathbf{u} = \\mathbf{w}_1 + \\mathbf{w}_2$ where $\\mathbf{w}_1 \\parallel \\mathbf{v}$ and $\\mathbf{w}_2 \\perp \\mathbf{v}$.", zh: "将 $\\mathbf{u} = \\mathbf{w}_1 + \\mathbf{w}_2$，其中 $\\mathbf{w}_1 \\parallel \\mathbf{v}$，$\\mathbf{w}_2 \\perp \\mathbf{v}$。" },
+        howToRecognize: { en: "Asked to decompose a vector relative to another direction.", zh: "要求相对于另一个方向分解向量。" },
+        steps: [
+          { en: "$\\mathbf{w}_1 = \\text{proj}_{\\mathbf{v}} \\mathbf{u}$", zh: "$\\mathbf{w}_1 = \\text{proj}_{\\mathbf{v}} \\mathbf{u}$" },
+          { en: "$\\mathbf{w}_2 = \\mathbf{u} - \\mathbf{w}_1$", zh: "$\\mathbf{w}_2 = \\mathbf{u} - \\mathbf{w}_1$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Decompose $\\langle 5, 2 \\rangle$ into components parallel and perpendicular to $\\langle 1, 1 \\rangle$.", zh: "将 $\\langle 5, 2 \\rangle$ 分解为平行和垂直于 $\\langle 1, 1 \\rangle$ 的分量。" },
+        commonTraps: [
+          { en: "Not verifying: $\\mathbf{w}_2$ should be orthogonal to $\\mathbf{v}$ (check $\\mathbf{w}_2 \\cdot \\mathbf{v} = 0$)", zh: "未验证：$\\mathbf{w}_2$ 应正交于 $\\mathbf{v}$（检查 $\\mathbf{w}_2 \\cdot \\mathbf{v} = 0$）" },
+        ],
+      },
+      {
+        id: "pt-6-4-6",
+        title: { en: "Work Done by a Force", zh: "力做的功" },
+        description: { en: "Compute work as $W = \\mathbf{F} \\cdot \\mathbf{d} = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$.", zh: "用 $W = \\mathbf{F} \\cdot \\mathbf{d} = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$ 计算功。" },
+        howToRecognize: { en: "Force and displacement given; asked for work done.", zh: "给出力和位移；要求做的功。" },
+        steps: [
+          { en: "If components given: $W = F_x d_x + F_y d_y$", zh: "若给出分量：$W = F_x d_x + F_y d_y$" },
+          { en: "If magnitude and angle given: $W = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$", zh: "若给出大小和角度：$W = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A force of 50 lb at $30°$ above horizontal moves an object 100 ft horizontally. Find the work done.", zh: "50 磅力与水平成 $30°$，使物体水平移动 100 ft，求做的功。" },
+        commonTraps: [
+          { en: "Multiplying force magnitude by distance without the $\\cos\\theta$ factor", zh: "力的大小乘以距离时忘了 $\\cos\\theta$ 因子" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-6-4-7",
+        title: { en: "Multi-Force Work Problem", zh: "多力做功问题" },
+        description: { en: "Compute total work when multiple forces act over a displacement.", zh: "多个力作用于一个位移时计算总功。" },
+        howToRecognize: { en: "Multiple forces; asked for total work.", zh: "多个力；要求总功。" },
+        steps: [
+          { en: "Find resultant force $\\mathbf{F} = \\mathbf{F}_1 + \\mathbf{F}_2 + \\cdots$", zh: "求合力 $\\mathbf{F} = \\mathbf{F}_1 + \\mathbf{F}_2 + \\cdots$" },
+          { en: "Compute $W = \\mathbf{F} \\cdot \\mathbf{d}$", zh: "算 $W = \\mathbf{F} \\cdot \\mathbf{d}$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Forces $\\langle 10, 3 \\rangle$ and $\\langle -4, 8 \\rangle$ act on an object that moves from $(0,0)$ to $(5, 2)$. Find total work.", zh: "力 $\\langle 10, 3 \\rangle$ 和 $\\langle -4, 8 \\rangle$ 作用于物体，物体从 $(0,0)$ 移到 $(5, 2)$，求总功。" },
+        commonTraps: [
+          { en: "Computing work for each force separately and averaging instead of adding", zh: "分别算各力的功然后取平均而非相加" },
+        ],
+      },
+      {
+        id: "pt-6-4-8",
+        title: { en: "Find a Vector Satisfying Angle and Dot Product Conditions", zh: "求满足夹角和点积条件的向量" },
+        description: { en: "Find a vector that is orthogonal to a given vector, or at a specific angle.", zh: "求与给定向量正交或成特定角的向量。" },
+        howToRecognize: { en: "Asked to find a vector with a specific relationship (angle, perpendicularity) to a given one.", zh: "要求找与给定向量有特定关系（角度、垂直）的向量。" },
+        steps: [
+          { en: "For orthogonal: if $\\mathbf{v} = \\langle a, b \\rangle$, then $\\langle -b, a \\rangle$ and $\\langle b, -a \\rangle$ are orthogonal to $\\mathbf{v}$", zh: "正交：若 $\\mathbf{v} = \\langle a, b \\rangle$，则 $\\langle -b, a \\rangle$ 和 $\\langle b, -a \\rangle$ 与 $\\mathbf{v}$ 正交" },
+          { en: "For a specific angle: use $\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$ as a constraint", zh: "特定角：用 $\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|}$ 作为约束" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find a unit vector that makes a $60°$ angle with $\\langle 1, 0 \\rangle$.", zh: "求与 $\\langle 1, 0 \\rangle$ 成 $60°$ 角的单位向量。" },
+        commonTraps: [
+          { en: "Forgetting there are two such vectors (above and below the $x$-axis)", zh: "忘记有两个这样的向量（$x$ 轴上方和下方各一个）" },
+        ],
+      },
+    ],
   },
   {
     id: "6-5",
@@ -9031,6 +9668,220 @@ const chapter6Units: Unit[] = [
       en: "Write complex numbers in trigonometric form and use DeMoivre's Theorem to find powers and roots.",
       zh: "将复数写成三角形式，并运用棣莫弗定理求复数的幂与方根。",
     },
+    learningGoals: [
+      { en: "Plot complex numbers in the complex plane", zh: "在复数平面上标复数" },
+      { en: "Convert between standard form ($a + bi$) and trigonometric form ($r(\\cos\\theta + i\\sin\\theta)$)", zh: "在标准形式 ($a + bi$) 和三角形式 ($r(\\cos\\theta + i\\sin\\theta)$) 之间转换" },
+      { en: "Multiply and divide complex numbers in trigonometric form", zh: "用三角形式进行复数乘除" },
+      { en: "Use DeMoivre's Theorem to find powers and $n$th roots of complex numbers", zh: "用棣莫弗定理求复数的幂和 $n$ 次方根" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-6-5-1",
+        title: { en: "Trigonometric (Polar) Form of a Complex Number", zh: "复数的三角（极坐标）形式" },
+        explanation: {
+          en: "A complex number $z = a + bi$ can be written as $z = r(\\cos\\theta + i\\sin\\theta)$ where $r = |z| = \\sqrt{a^2 + b^2}$ (modulus) and $\\theta = \\arg(z) = \\arctan(\\frac{b}{a})$ (argument, adjusted for quadrant). Sometimes written $r\\,\\text{cis}\\,\\theta$.",
+          zh: "复数 $z = a + bi$ 可写为 $z = r(\\cos\\theta + i\\sin\\theta)$，其中 $r = |z| = \\sqrt{a^2 + b^2}$（模）且 $\\theta = \\arg(z) = \\arctan(\\frac{b}{a})$（辐角，需根据象限调整）。有时写作 $r\\,\\text{cis}\\,\\theta$。",
+        },
+        whenToUse: { en: "Multiplication, division, powers, and roots are much easier in this form", zh: "三角形式使乘除、幂和方根运算更简便" },
+        commonMistake: { en: "Not adjusting the argument for the correct quadrant (same issue as direction angles)", zh: "辐角未根据正确象限调整（与方向角相同的问题）" },
+        example: { en: "$1 + i$: $r = \\sqrt{2}$, $\\theta = 45°$, so $z = \\sqrt{2}(\\cos 45° + i\\sin 45°)$", zh: "$1 + i$：$r = \\sqrt{2}$，$\\theta = 45°$，所以 $z = \\sqrt{2}(\\cos 45° + i\\sin 45°)$" },
+      },
+      {
+        id: "kc-6-5-2",
+        title: { en: "Multiplication and Division in Trig Form", zh: "三角形式的乘除" },
+        explanation: {
+          en: "Multiplication: $r_1(\\text{cis}\\,\\theta_1) \\cdot r_2(\\text{cis}\\,\\theta_2) = r_1 r_2\\,\\text{cis}(\\theta_1 + \\theta_2)$. Multiply moduli, add arguments. Division: $\\frac{r_1}{r_2}\\,\\text{cis}(\\theta_1 - \\theta_2)$. Divide moduli, subtract arguments.",
+          zh: "乘法：$r_1(\\text{cis}\\,\\theta_1) \\cdot r_2(\\text{cis}\\,\\theta_2) = r_1 r_2\\,\\text{cis}(\\theta_1 + \\theta_2)$。模相乘，辐角相加。除法：$\\frac{r_1}{r_2}\\,\\text{cis}(\\theta_1 - \\theta_2)$。模相除，辐角相减。",
+        },
+        whenToUse: { en: "Multiplying or dividing complex numbers", zh: "复数乘除" },
+        commonMistake: { en: "Adding moduli instead of multiplying in multiplication", zh: "乘法时对模做加法而非乘法" },
+        example: { en: "$2\\,\\text{cis}\\,30° \\cdot 3\\,\\text{cis}\\,60° = 6\\,\\text{cis}\\,90° = 6i$", zh: "$2\\,\\text{cis}\\,30° \\cdot 3\\,\\text{cis}\\,60° = 6\\,\\text{cis}\\,90° = 6i$" },
+      },
+      {
+        id: "kc-6-5-3",
+        title: { en: "DeMoivre's Theorem", zh: "棣莫弗定理" },
+        explanation: {
+          en: "Powers: $[r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos n\\theta + i\\sin n\\theta)$. Roots: the $n$th roots of $r\\,\\text{cis}\\,\\theta$ are $\\sqrt[n]{r}\\,\\text{cis}\\left(\\frac{\\theta + 2k\\pi}{n}\\right)$ for $k = 0, 1, \\ldots, n-1$. There are exactly $n$ distinct $n$th roots, equally spaced around a circle of radius $\\sqrt[n]{r}$.",
+          zh: "幂：$[r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos n\\theta + i\\sin n\\theta)$。根：$r\\,\\text{cis}\\,\\theta$ 的 $n$ 次根为 $\\sqrt[n]{r}\\,\\text{cis}\\left(\\frac{\\theta + 2k\\pi}{n}\\right)$，$k = 0, 1, \\ldots, n-1$。恰有 $n$ 个不同的 $n$ 次根，均匀分布在半径为 $\\sqrt[n]{r}$ 的圆上。",
+        },
+        whenToUse: { en: "Finding powers or roots of complex numbers", zh: "求复数的幂或方根" },
+        commonMistake: { en: "Forgetting to raise $r$ to the $n$th power (or take the $n$th root) — not just the angle", zh: "忘记对 $r$ 取 $n$ 次幂（或 $n$ 次根）——不只是角度" },
+        example: { en: "$(1 + i)^6$: $r = \\sqrt{2}$, $\\theta = 45°$; $(\\sqrt{2})^6 \\text{cis}(270°) = 8(0 - i) = -8i$", zh: "$(1 + i)^6$：$r = \\sqrt{2}$，$\\theta = 45°$；$(\\sqrt{2})^6 \\text{cis}(270°) = 8(0 - i) = -8i$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-6-5-1",
+        name: { en: "Trigonometric Form", zh: "三角形式" },
+        formula: "z = r(\\cos\\theta + i\\sin\\theta), \\quad r = \\sqrt{a^2 + b^2}, \\quad \\theta = \\arctan\\frac{b}{a}",
+        variables: [
+          { en: "$a + bi$ — standard form", zh: "$a + bi$ — 标准形式" },
+          { en: "$r$ — modulus; $\\theta$ — argument", zh: "$r$ — 模；$\\theta$ — 辐角" },
+        ],
+        whenToUse: { en: "Converting between forms; preparing for multiplication, division, powers, or roots", zh: "形式转换；为乘除、幂、方根做准备" },
+        commonProblemTypes: [
+          { en: "Convert $a + bi$ to trig form", zh: "将 $a + bi$ 转为三角形式" },
+          { en: "Convert trig form to $a + bi$", zh: "将三角形式转为 $a + bi$" },
+        ],
+        example: { en: "$-3 + 3i$: $r = 3\\sqrt{2}$, $\\theta = 135°$", zh: "$-3 + 3i$：$r = 3\\sqrt{2}$，$\\theta = 135°$" },
+      },
+      {
+        id: "f-6-5-2",
+        name: { en: "DeMoivre's Theorem", zh: "棣莫弗定理" },
+        formula: "[r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos n\\theta + i\\sin n\\theta)",
+        variables: [
+          { en: "$n$ — any positive integer for powers; for roots, use $n = \\frac{1}{k}$ approach", zh: "$n$ — 幂运算取正整数；方根用 $n = \\frac{1}{k}$ 方法" },
+        ],
+        whenToUse: { en: "Finding powers or $n$th roots of complex numbers", zh: "求复数的幂或 $n$ 次根" },
+        commonProblemTypes: [
+          { en: "Compute $(1 + i)^{10}$", zh: "计算 $(1 + i)^{10}$" },
+          { en: "Find all cube roots of $8$", zh: "求 $8$ 的所有立方根" },
+        ],
+        example: { en: "Cube roots of $8$: $r = 8$, $\\theta = 0°$; roots: $2\\,\\text{cis}\\,0° = 2$, $2\\,\\text{cis}\\,120°$, $2\\,\\text{cis}\\,240°$", zh: "$8$ 的立方根：$r = 8$，$\\theta = 0°$；根：$2\\,\\text{cis}\\,0° = 2$、$2\\,\\text{cis}\\,120°$、$2\\,\\text{cis}\\,240°$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-6-5-1",
+        title: { en: "Convert to Trigonometric Form", zh: "转换为三角形式" },
+        description: { en: "Write $a + bi$ in $r(\\cos\\theta + i\\sin\\theta)$ form.", zh: "将 $a + bi$ 写成 $r(\\cos\\theta + i\\sin\\theta)$ 形式。" },
+        howToRecognize: { en: "Complex number in standard form; asked for trig form.", zh: "标准形式的复数；要求三角形式。" },
+        steps: [
+          { en: "Find $r = \\sqrt{a^2 + b^2}$", zh: "求 $r = \\sqrt{a^2 + b^2}$" },
+          { en: "Find $\\theta = \\arctan(b/a)$, adjust for quadrant", zh: "求 $\\theta = \\arctan(b/a)$，根据象限调整" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Write $-1 + \\sqrt{3}i$ in trigonometric form.", zh: "将 $-1 + \\sqrt{3}i$ 写成三角形式。" },
+        commonTraps: [
+          { en: "Getting $\\theta = -60°$ instead of $120°$ (must be in QII)", zh: "得到 $\\theta = -60°$ 而非 $120°$（应在第二象限）" },
+        ],
+      },
+      {
+        id: "pt-6-5-2",
+        title: { en: "Convert to Standard Form", zh: "转换为标准形式" },
+        description: { en: "Write $r(\\cos\\theta + i\\sin\\theta)$ as $a + bi$.", zh: "将 $r(\\cos\\theta + i\\sin\\theta)$ 写为 $a + bi$。" },
+        howToRecognize: { en: "Complex number in trig form; asked for standard form.", zh: "三角形式的复数；要求标准形式。" },
+        steps: [
+          { en: "$a = r\\cos\\theta$, $b = r\\sin\\theta$", zh: "$a = r\\cos\\theta$，$b = r\\sin\\theta$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Write $4(\\cos 210° + i\\sin 210°)$ in standard form.", zh: "将 $4(\\cos 210° + i\\sin 210°)$ 写成标准形式。" },
+        commonTraps: [
+          { en: "Calculator in wrong mode (degrees vs. radians)", zh: "计算器模式搞错（角度 vs 弧度）" },
+        ],
+      },
+      {
+        id: "pt-6-5-3",
+        title: { en: "Multiply Complex Numbers in Trig Form", zh: "用三角形式进行复数乘法" },
+        description: { en: "Multiply moduli, add arguments.", zh: "模相乘，辐角相加。" },
+        howToRecognize: { en: "Two complex numbers in trig form; asked for their product.", zh: "两个三角形式的复数；要求乘积。" },
+        steps: [
+          { en: "$r_1 r_2 \\,\\text{cis}(\\theta_1 + \\theta_2)$", zh: "$r_1 r_2 \\,\\text{cis}(\\theta_1 + \\theta_2)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Multiply $3(\\cos 40° + i\\sin 40°)$ and $5(\\cos 80° + i\\sin 80°)$.", zh: "计算 $3(\\cos 40° + i\\sin 40°)$ 与 $5(\\cos 80° + i\\sin 80°)$ 的乘积。" },
+        commonTraps: [
+          { en: "Multiplying arguments instead of adding them", zh: "辐角相乘而非相加" },
+        ],
+      },
+      {
+        id: "pt-6-5-4",
+        title: { en: "Divide Complex Numbers in Trig Form", zh: "用三角形式进行复数除法" },
+        description: { en: "Divide moduli, subtract arguments.", zh: "模相除，辐角相减。" },
+        howToRecognize: { en: "Division of two complex numbers in trig form.", zh: "两个三角形式复数的除法。" },
+        steps: [
+          { en: "$\\frac{r_1}{r_2} \\,\\text{cis}(\\theta_1 - \\theta_2)$", zh: "$\\frac{r_1}{r_2} \\,\\text{cis}(\\theta_1 - \\theta_2)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Divide $10(\\cos 300° + i\\sin 300°)$ by $2(\\cos 120° + i\\sin 120°)$.", zh: "计算 $10(\\cos 300° + i\\sin 300°) \\div 2(\\cos 120° + i\\sin 120°)$。" },
+        commonTraps: [
+          { en: "Subtracting moduli instead of dividing", zh: "模相减而非相除" },
+        ],
+      },
+      // ── Medium (3) ────────────────────────────────────────
+      {
+        id: "pt-6-5-5",
+        title: { en: "Find Power Using DeMoivre's Theorem", zh: "用棣莫弗定理求幂" },
+        description: { en: "Compute $z^n$ by raising the modulus to the $n$th power and multiplying the argument by $n$.", zh: "对模取 $n$ 次幂、辐角乘以 $n$ 来计算 $z^n$。" },
+        howToRecognize: { en: "Asked for $(a+bi)^n$ where $n$ is a positive integer.", zh: "要求 $(a+bi)^n$，$n$ 为正整数。" },
+        steps: [
+          { en: "Convert to trig form: $r\\,\\text{cis}\\,\\theta$", zh: "转为三角形式：$r\\,\\text{cis}\\,\\theta$" },
+          { en: "Apply: $r^n \\,\\text{cis}(n\\theta)$", zh: "应用：$r^n \\,\\text{cis}(n\\theta)$" },
+          { en: "Convert back to $a + bi$", zh: "转回 $a + bi$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $(1 - i)^8$.", zh: "求 $(1 - i)^8$。" },
+        commonTraps: [
+          { en: "Forgetting to raise $r$ to the power (not just the angle)", zh: "忘记对 $r$ 取幂（不只是角度）" },
+        ],
+      },
+      {
+        id: "pt-6-5-6",
+        title: { en: "Find $n$th Roots of a Complex Number", zh: "求复数的 $n$ 次根" },
+        description: { en: "Find all $n$ distinct $n$th roots using DeMoivre's Theorem.", zh: "用棣莫弗定理求所有 $n$ 个不同的 $n$ 次根。" },
+        howToRecognize: { en: "Asked for square roots, cube roots, or $n$th roots of a complex number.", zh: "要求复数的平方根、立方根或 $n$ 次根。" },
+        steps: [
+          { en: "Convert to trig form", zh: "转为三角形式" },
+          { en: "Roots: $\\sqrt[n]{r}\\,\\text{cis}\\left(\\frac{\\theta + 360°k}{n}\\right)$, $k = 0, 1, \\ldots, n-1$", zh: "根：$\\sqrt[n]{r}\\,\\text{cis}\\left(\\frac{\\theta + 360°k}{n}\\right)$，$k = 0, 1, \\ldots, n-1$" },
+          { en: "List all $n$ roots", zh: "列出全部 $n$ 个根" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the three cube roots of $-8$.", zh: "求 $-8$ 的三个立方根。" },
+        commonTraps: [
+          { en: "Stopping at $k = 0$ — there are $n$ roots, not just one", zh: "只算 $k = 0$ 就停——有 $n$ 个根，不只一个" },
+        ],
+      },
+      {
+        id: "pt-6-5-7",
+        title: { en: "Find Roots of Unity", zh: "求单位根" },
+        description: { en: "Find all $n$th roots of $1$.", zh: "求 $1$ 的所有 $n$ 次根。" },
+        howToRecognize: { en: "Asked for the $n$th roots of unity ($z^n = 1$).", zh: "要求单位根（$z^n = 1$）。" },
+        steps: [
+          { en: "$r = 1$, $\\theta = 0°$", zh: "$r = 1$，$\\theta = 0°$" },
+          { en: "Roots: $\\text{cis}\\left(\\frac{360°k}{n}\\right)$, $k = 0, 1, \\ldots, n-1$", zh: "根：$\\text{cis}\\left(\\frac{360°k}{n}\\right)$，$k = 0, 1, \\ldots, n-1$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all fourth roots of unity.", zh: "求所有四次单位根。" },
+        commonTraps: [
+          { en: "Forgetting that $1$ itself is always one of the roots (at $k = 0$)", zh: "忘记 $1$ 本身总是其中一个根（$k = 0$ 时）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-6-5-8",
+        title: { en: "Solve $z^n = w$ for Complex $w$", zh: "解 $z^n = w$（$w$ 为复数）" },
+        description: { en: "Find all complex solutions of $z^n = w$.", zh: "求 $z^n = w$ 的所有复数解。" },
+        howToRecognize: { en: "Equation like $z^4 = -16$ or $z^3 = 8i$.", zh: "方程如 $z^4 = -16$ 或 $z^3 = 8i$。" },
+        steps: [
+          { en: "Write $w$ in trig form", zh: "将 $w$ 写成三角形式" },
+          { en: "Apply the $n$th root formula", zh: "应用 $n$ 次根公式" },
+          { en: "Convert each root to $a + bi$ if required", zh: "如有要求将每个根转为 $a + bi$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find all complex solutions of $z^4 = -16$.", zh: "求 $z^4 = -16$ 的所有复数解。" },
+        commonTraps: [
+          { en: "Converting $-16$ to trig form incorrectly — $r = 16$, $\\theta = 180°$", zh: "将 $-16$ 转为三角形式时出错——$r = 16$，$\\theta = 180°$" },
+        ],
+      },
+      {
+        id: "pt-6-5-9",
+        title: { en: "Plot Roots in the Complex Plane", zh: "在复数平面上画根" },
+        description: { en: "Find and plot all $n$th roots, noting they are equally spaced on a circle.", zh: "求并标出所有 $n$ 次根，注意它们在圆上均匀分布。" },
+        howToRecognize: { en: "Asked to find AND plot the roots.", zh: "要求找并画出根。" },
+        steps: [
+          { en: "Find all $n$ roots using DeMoivre's", zh: "用棣莫弗定理求所有 $n$ 个根" },
+          { en: "Note they lie on a circle of radius $\\sqrt[n]{r}$", zh: "它们位于半径 $\\sqrt[n]{r}$ 的圆上" },
+          { en: "Adjacent roots are separated by $\\frac{360°}{n}$", zh: "相邻根间隔 $\\frac{360°}{n}$" },
+          { en: "Plot each point", zh: "标出每个点" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find and plot the five fifth roots of $32$.", zh: "求并画出 $32$ 的五个五次方根。" },
+        commonTraps: [
+          { en: "Not recognizing the geometric pattern — roots of unity form a regular polygon", zh: "没认出几何规律——单位根构成正多边形" },
+        ],
+      },
+    ],
   },
 ];
 
