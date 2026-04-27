@@ -1062,27 +1062,555 @@ const chapter1Units: Unit[] = [
     id: "1-5",
     chapterId: "ch-1",
     number: "1.5",
-    title: {
-      en: "Analyzing Graphs of Functions",
-      zh: "函数图像分析",
-    },
+    title: { en: "Analyzing Graphs of Functions", zh: "函数图像分析" },
     description: {
       en: "Use graphs to find domain, range, intervals of increase/decrease, and relative extrema.",
       zh: "通过图像求函数的定义域、值域、单调区间以及相对极值。",
     },
+    learningGoals: [
+      { en: "Read domain and range from a graph", zh: "由图像读出定义域与值域" },
+      { en: "Identify intervals where a function is increasing, decreasing, or constant", zh: "识别函数递增、递减或常值的区间" },
+      { en: "Locate relative maxima and minima", zh: "定位相对极大值与极小值" },
+      { en: "Test for even and odd symmetry algebraically and graphically", zh: "用代数与图像方法检验偶函数与奇函数对称性" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-5-1",
+        title: { en: "Domain and Range from a Graph", zh: "由图像求定义域与值域" },
+        explanation: {
+          en: "The domain of $f$ is the set of all $x$-values for which the graph exists; the range is the set of all $y$-values reached. Read horizontally for domain, vertically for range. Use brackets $[]$ for included endpoints, parentheses $()$ for excluded.",
+          zh: "$f$ 的定义域是图像存在的所有 $x$ 值集合；值域是所有取到的 $y$ 值集合。横向看定义域，纵向看值域。用方括号 $[]$ 表示包含端点，圆括号 $()$ 表示不含。",
+        },
+        whenToUse: { en: "When a graph is given and the question asks for domain and/or range", zh: "给出图像并要求定义域或值域时" },
+        commonMistake: { en: "Confusing domain (horizontal extent) with range (vertical extent)", zh: "把定义域（横向范围）与值域（纵向范围）弄反" },
+        example: { en: "Graph from $x = -2$ to $x = 5$ reaching $y$ from $0$ to $9$: domain $[-2, 5]$, range $[0, 9]$", zh: "图像从 $x = -2$ 到 $x = 5$，$y$ 取值 $0$ 到 $9$：定义域 $[-2, 5]$，值域 $[0, 9]$" },
+      },
+      {
+        id: "kc-1-5-2",
+        title: { en: "Increasing, Decreasing, and Constant Intervals", zh: "递增、递减与常值区间" },
+        explanation: {
+          en: "$f$ is increasing on an interval if $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$ (graph rises). Decreasing if values fall; constant if values stay the same. Always describe using OPEN intervals on the $x$-axis.",
+          zh: "若 $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$（图像上升），则 $f$ 在该区间递增。若下降则递减；若不变则为常值。始终用 $x$ 轴上的开区间描述。",
+        },
+        whenToUse: { en: "Describing the behavior of a function across its domain", zh: "描述函数在定义域上的行为" },
+        commonMistake: { en: "Reporting intervals on the $y$-axis instead of the $x$-axis; using closed intervals at peaks/valleys", zh: "在 $y$ 轴而非 $x$ 轴上报区间；在峰谷处使用闭区间" },
+        example: { en: "$f(x) = x^2$: decreasing on $(-\\infty, 0)$, increasing on $(0, \\infty)$", zh: "$f(x) = x^2$：在 $(-\\infty, 0)$ 上递减，在 $(0, \\infty)$ 上递增" },
+      },
+      {
+        id: "kc-1-5-3",
+        title: { en: "Even and Odd Functions", zh: "偶函数与奇函数" },
+        explanation: {
+          en: "$f$ is EVEN if $f(-x) = f(x)$ for all $x$ in domain — graph symmetric about $y$-axis. $f$ is ODD if $f(-x) = -f(x)$ — graph symmetric about origin. Most functions are neither.",
+          zh: "若对定义域中所有 $x$ 都有 $f(-x) = f(x)$，则 $f$ 为偶函数——图像关于 $y$ 轴对称。若 $f(-x) = -f(x)$，则为奇函数——图像关于原点对称。大多数函数既非偶也非奇。",
+        },
+        whenToUse: { en: "To exploit symmetry when graphing, integrating, or simplifying", zh: "绘图、积分或化简中利用对称性" },
+        commonMistake: { en: "Concluding \"odd\" when only some values satisfy $f(-x) = -f(x)$ — must hold for ALL $x$", zh: "仅部分 $x$ 满足 $f(-x) = -f(x)$ 就判定为奇——须对所有 $x$ 成立" },
+        example: { en: "$f(x) = x^4$ is even; $f(x) = x^3$ is odd; $f(x) = x^2 + x$ is neither", zh: "$f(x) = x^4$ 为偶；$f(x) = x^3$ 为奇；$f(x) = x^2 + x$ 既非偶也非奇" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-5-1",
+        name: { en: "Average Rate of Change", zh: "平均变化率" },
+        formula: "\\frac{f(b) - f(a)}{b - a}",
+        variables: [
+          { en: "$a$, $b$ — endpoints of the interval $(a < b)$", zh: "$a$、$b$ — 区间端点（$a < b$）" },
+          { en: "$f$ — the function", zh: "$f$ — 函数" },
+        ],
+        whenToUse: { en: "Quantify how fast $f$ changes over $[a, b]$ — slope of the secant line", zh: "量化 $f$ 在 $[a, b]$ 上的变化速度——割线斜率" },
+        commonProblemTypes: [
+          { en: "Compute average velocity, growth rate, or change in cost", zh: "求平均速度、增长率或成本变化" },
+        ],
+        example: { en: "$f(x) = x^2$, $a = 1, b = 3$: $\\frac{9 - 1}{3 - 1} = 4$", zh: "$f(x) = x^2$，$a = 1, b = 3$：$\\frac{9 - 1}{3 - 1} = 4$" },
+      },
+      {
+        id: "f-1-5-2",
+        name: { en: "Even Function Test", zh: "偶函数检验" },
+        formula: "f(-x) = f(x) \\quad \\text{for all } x \\in \\text{domain}",
+        variables: [
+          { en: "$f$ — function being tested", zh: "$f$ — 待检验的函数" },
+        ],
+        whenToUse: { en: "To verify $y$-axis symmetry algebraically", zh: "代数验证关于 $y$ 轴的对称性" },
+        commonProblemTypes: [
+          { en: "Classify a function as even, odd, or neither", zh: "判断函数是偶、奇还是都不是" },
+        ],
+        example: { en: "$f(x) = x^2 + 1$: $f(-x) = x^2 + 1 = f(x)$ ⇒ even", zh: "$f(x) = x^2 + 1$：$f(-x) = x^2 + 1 = f(x)$ ⇒ 偶" },
+      },
+      {
+        id: "f-1-5-3",
+        name: { en: "Odd Function Test", zh: "奇函数检验" },
+        formula: "f(-x) = -f(x) \\quad \\text{for all } x \\in \\text{domain}",
+        variables: [
+          { en: "$f$ — function being tested", zh: "$f$ — 待检验的函数" },
+        ],
+        whenToUse: { en: "To verify origin symmetry algebraically", zh: "代数验证关于原点的对称性" },
+        commonProblemTypes: [
+          { en: "Classify a function as even, odd, or neither", zh: "判断函数是偶、奇还是都不是" },
+        ],
+        example: { en: "$f(x) = x^3 - x$: $f(-x) = -x^3 + x = -(x^3 - x) = -f(x)$ ⇒ odd", zh: "$f(x) = x^3 - x$：$f(-x) = -x^3 + x = -(x^3 - x) = -f(x)$ ⇒ 奇" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-5-1",
+        title: { en: "Find Domain and Range from a Graph", zh: "由图像求定义域与值域" },
+        description: { en: "Read off the leftmost/rightmost $x$ and lowest/highest $y$ from a given graph.", zh: "从图像读出最左/最右的 $x$ 与最低/最高的 $y$。" },
+        howToRecognize: { en: "A graph is shown; problem asks for domain and/or range.", zh: "给出图像；要求定义域或值域。" },
+        steps: [
+          { en: "Project the graph onto the $x$-axis — the shadow is the domain", zh: "把图像投影到 $x$ 轴——投影即定义域" },
+          { en: "Project onto the $y$-axis — the shadow is the range", zh: "投影到 $y$ 轴——即值域" },
+          { en: "Note open/closed endpoints (open dot vs filled dot)", zh: "注意端点开闭（空心圆 vs 实心圆）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "A graph shows $f$ defined from $x = -3$ (closed) to $x = 4$ (open), with $y$ values from $-1$ to $7$ (both closed). State domain and range.", zh: "图像显示 $f$ 从 $x = -3$（闭）到 $x = 4$（开），$y$ 取值 $-1$ 到 $7$（均闭）。给出定义域与值域。" },
+        commonTraps: [
+          { en: "Reporting endpoints in the wrong axis (domain on $y$-axis)", zh: "在错误的轴上报端点（在 $y$ 轴上报定义域）" },
+        ],
+      },
+      {
+        id: "pt-1-5-2",
+        title: { en: "Identify Increasing / Decreasing Intervals from a Graph", zh: "由图像识别递增/递减区间" },
+        description: { en: "List the open $x$-intervals on which the graph rises, falls, or stays flat.", zh: "列出图像上升、下降或保持水平的开区间（关于 $x$）。" },
+        howToRecognize: { en: "Graph is shown; problem asks for behavior intervals.", zh: "给出图像；要求行为区间。" },
+        steps: [
+          { en: "Find $x$-coordinates of all turning points and endpoints", zh: "找出所有转折点与端点的 $x$ 坐标" },
+          { en: "Between consecutive critical $x$ values, classify as increasing, decreasing, or constant", zh: "在相邻关键 $x$ 值之间，分类为递增、递减或常值" },
+          { en: "List using open intervals on the $x$-axis", zh: "用 $x$ 轴上的开区间表示" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "A graph rises from $x = -2$ to $x = 1$, falls from $x = 1$ to $x = 4$, then rises again to $x = 6$. State the intervals.", zh: "图像从 $x = -2$ 到 $x = 1$ 上升，$x = 1$ 到 $x = 4$ 下降，再到 $x = 6$ 上升。给出各区间。" },
+        commonTraps: [
+          { en: "Including the endpoints (turning points) in the intervals", zh: "把端点（转折点）包含进区间" },
+        ],
+      },
+      {
+        id: "pt-1-5-3",
+        title: { en: "Locate Relative Maxima and Minima", zh: "定位相对极大与极小" },
+        description: { en: "From a graph, identify the points where the function changes from increasing to decreasing (max) or vice versa (min).", zh: "从图像找出函数由增变减的点（极大）与由减变增的点（极小）。" },
+        howToRecognize: { en: "Graph is shown; problem asks for relative or local extrema.", zh: "给出图像；要求相对（局部）极值。" },
+        steps: [
+          { en: "Find peaks (relative max) and valleys (relative min)", zh: "找出峰（相对极大）与谷（相对极小）" },
+          { en: "Report each as an ordered pair $(x, y)$", zh: "每个写成有序对 $(x, y)$" },
+          { en: "Distinguish from absolute extrema (global highest/lowest)", zh: "与绝对极值（整体最高/低点）区分" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "From a sketched parabola opening upward with vertex at $(2, -3)$: state any relative extrema.", zh: "从一开口向上、顶点 $(2, -3)$ 的抛物线草图：写出相对极值。" },
+        commonTraps: [
+          { en: "Reporting only the $x$-value (must give the full $(x, y)$)", zh: "只报 $x$ 值（应给完整 $(x, y)$）" },
+          { en: "Confusing relative with absolute extrema", zh: "把相对极值与绝对极值混淆" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-5-4",
+        title: { en: "Compute Average Rate of Change", zh: "求平均变化率" },
+        description: { en: "Use $\\frac{f(b) - f(a)}{b - a}$ to find the slope of the secant line between two points on the graph.", zh: "用 $\\frac{f(b) - f(a)}{b - a}$ 求图像上两点间割线斜率。" },
+        howToRecognize: { en: "Problem asks for average rate of change, average velocity, or secant slope on $[a, b]$.", zh: "题目要求 $[a, b]$ 上的平均变化率、平均速度或割线斜率。" },
+        steps: [
+          { en: "Evaluate $f(a)$ and $f(b)$", zh: "求 $f(a)$ 与 $f(b)$" },
+          { en: "Apply $\\frac{f(b) - f(a)}{b - a}$", zh: "代入 $\\frac{f(b) - f(a)}{b - a}$" },
+          { en: "Simplify and include units if applicable", zh: "化简并标注单位（如适用）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "For $f(x) = x^2 + 2x$, find the average rate of change on $[1, 4]$.", zh: "对 $f(x) = x^2 + 2x$，求 $[1, 4]$ 上的平均变化率。" },
+        commonTraps: [
+          { en: "Reversing $a$ and $b$ in the denominator", zh: "把分母中的 $a$ 与 $b$ 弄反" },
+        ],
+      },
+      {
+        id: "pt-1-5-5",
+        title: { en: "Test Even / Odd Algebraically", zh: "代数检验偶函数/奇函数" },
+        description: { en: "Substitute $-x$ and compare to $f(x)$ and $-f(x)$.", zh: "代入 $-x$ 并与 $f(x)$、$-f(x)$ 比较。" },
+        howToRecognize: { en: "Equation is given; problem asks if $f$ is even, odd, or neither.", zh: "给出方程；问 $f$ 是偶、奇还是都不是。" },
+        steps: [
+          { en: "Compute $f(-x)$ by substituting $-x$ for $x$", zh: "用 $-x$ 替换 $x$ 求 $f(-x)$" },
+          { en: "If $f(-x) = f(x)$ for ALL $x$ ⇒ even", zh: "若对所有 $x$，$f(-x) = f(x)$ ⇒ 偶" },
+          { en: "If $f(-x) = -f(x)$ for ALL $x$ ⇒ odd", zh: "若对所有 $x$，$f(-x) = -f(x)$ ⇒ 奇" },
+          { en: "Otherwise neither", zh: "否则都不是" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Determine whether $f(x) = x^4 - 3x^2 + 1$ is even, odd, or neither.", zh: "判断 $f(x) = x^4 - 3x^2 + 1$ 是偶、奇还是都不是。" },
+        commonTraps: [
+          { en: "Skipping simplification of $f(-x)$ before comparing", zh: "未化简 $f(-x)$ 就比较" },
+          { en: "Calling something \"odd\" because it's not even (must verify the odd condition)", zh: "因为不是偶就认定为奇（须验证奇条件）" },
+        ],
+      },
+      {
+        id: "pt-1-5-6",
+        title: { en: "Read Function Values from a Graph", zh: "由图像读函数值" },
+        description: { en: "Given a graph, find $f(a)$ for specific inputs, or solve $f(x) = c$.", zh: "由图像求指定输入 $a$ 处的 $f(a)$，或解 $f(x) = c$。" },
+        howToRecognize: { en: "A graph is shown; problem asks for $f$ at certain $x$, or all $x$ where $f$ equals a given value.", zh: "给出图像；要求某些 $x$ 处的 $f$，或 $f$ 取某值的所有 $x$。" },
+        steps: [
+          { en: "For $f(a)$: locate $x = a$, read the $y$-value", zh: "求 $f(a)$：定位 $x = a$，读出 $y$ 值" },
+          { en: "For $f(x) = c$: find all $x$ where the horizontal line $y = c$ meets the graph", zh: "解 $f(x) = c$：找水平线 $y = c$ 与图像所有交点的 $x$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "From the given graph of $f$, find $f(0)$ and all $x$ such that $f(x) = 2$.", zh: "由 $f$ 的图像，求 $f(0)$ 与所有满足 $f(x) = 2$ 的 $x$。" },
+        commonTraps: [
+          { en: "Reporting only one solution when multiple $x$ satisfy $f(x) = c$", zh: "$f(x) = c$ 有多解时只报一个" },
+        ],
+      },
+      {
+        id: "pt-1-5-7",
+        title: { en: "Find Relative Extrema Using Graphing Technology", zh: "用作图工具求相对极值" },
+        description: { en: "Use a calculator or graphing tool to approximate locations of relative max/min.", zh: "用计算器或作图工具近似求相对极大/极小位置。" },
+        howToRecognize: { en: "Function is too complex to find extrema by hand; problem asks for approximate $(x, y)$.", zh: "函数复杂难以手算；要求近似 $(x, y)$。" },
+        steps: [
+          { en: "Graph the function and identify peaks/valleys visually", zh: "作图并目测峰/谷" },
+          { en: "Use \"maximum\" or \"minimum\" feature to refine the location", zh: "使用\"最大值\"或\"最小值\"功能精细定位" },
+          { en: "Report each extremum as an $(x, y)$ pair, rounded as instructed", zh: "按指定精度把每个极值写成 $(x, y)$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Use a graphing utility to approximate the relative maximum of $f(x) = -x^3 + 3x^2 + 2$.", zh: "用作图工具近似求 $f(x) = -x^3 + 3x^2 + 2$ 的相对极大值。" },
+        commonTraps: [
+          { en: "Mistaking a steep but non-extremum point for an extremum", zh: "把陡峭但非极值的点误认为极值" },
+        ],
+      },
+      {
+        id: "pt-1-5-8",
+        title: { en: "Distinguish Absolute vs Relative Extrema", zh: "区分绝对极值与相对极值" },
+        description: { en: "Identify whether a peak/valley is the global maximum/minimum on the entire domain.", zh: "判断峰/谷是否为整个定义域上的最大/最小值。" },
+        howToRecognize: { en: "Problem asks specifically for absolute extrema, or asks to classify each extremum.", zh: "题目专问绝对极值，或要求分类每个极值。" },
+        steps: [
+          { en: "List all relative extrema", zh: "列出所有相对极值" },
+          { en: "Compare $y$-values of all peaks (and endpoints) to find absolute max", zh: "比较所有峰（与端点）的 $y$ 值找绝对极大" },
+          { en: "Similarly compare all valleys (and endpoints) for absolute min", zh: "类似比较所有谷（与端点）找绝对极小" },
+          { en: "If the domain is unbounded and the function grows without bound, no absolute max/min may exist", zh: "若定义域无界且函数无界，绝对极值可能不存在" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "On $[-2, 3]$, $f$ has a relative max at $(0, 5)$, a relative min at $(2, -1)$, and endpoint values $f(-2) = 7$, $f(3) = 4$. State the absolute extrema.", zh: "在 $[-2, 3]$ 上，$f$ 的相对极大为 $(0, 5)$，相对极小为 $(2, -1)$，端点值 $f(-2) = 7$、$f(3) = 4$。给出绝对极值。" },
+        commonTraps: [
+          { en: "Forgetting to compare endpoint values to relative extrema", zh: "忘记把端点值与相对极值比较" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-5-9",
+        title: { en: "Sketch a Function from a List of Properties", zh: "由性质列表绘制函数图像" },
+        description: { en: "Construct a graph that satisfies given conditions: domain, intercepts, intervals of increase, extrema, etc.", zh: "构造满足给定条件（定义域、截距、单调区间、极值等）的图像。" },
+        howToRecognize: { en: "Problem lists properties (without an explicit equation) and asks for a possible graph.", zh: "题目列出性质（无显式方程）并要求一个可能的图像。" },
+        steps: [
+          { en: "Plot any required key points (intercepts, extrema)", zh: "标出所有要求的关键点（截距、极值）" },
+          { en: "Sketch increasing/decreasing behavior between key points", zh: "在关键点之间画出递增/递减行为" },
+          { en: "Verify domain and range match the requirements", zh: "验证定义域与值域满足要求" },
+          { en: "Check symmetry conditions if given (even/odd)", zh: "检查对称性条件（偶/奇）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Sketch a function with domain $[-4, 4]$, $f(0) = 2$, increasing on $(-4, -1)$, decreasing on $(-1, 2)$, increasing on $(2, 4)$, with $f(-4) = -3$ and $f(4) = 5$.", zh: "画一个函数：定义域 $[-4, 4]$，$f(0) = 2$，在 $(-4, -1)$ 递增、$(-1, 2)$ 递减、$(2, 4)$ 递增，$f(-4) = -3$，$f(4) = 5$。" },
+        commonTraps: [
+          { en: "Producing a graph that violates the Vertical Line Test", zh: "画出违反铅直线检验的图像" },
+          { en: "Ignoring one of the listed conditions", zh: "忽略某项给定条件" },
+        ],
+      },
+      {
+        id: "pt-1-5-10",
+        title: { en: "Application — Interpret Rate of Change in Context", zh: "应用——结合情境解释变化率" },
+        description: { en: "Apply average rate of change to a real-world function (motion, population, cost) and interpret the result with units.", zh: "把平均变化率应用于实际函数（运动、人口、成本）并结合单位解释结果。" },
+        howToRecognize: { en: "Word problem with a function modeling a real quantity over time or another variable.", zh: "应用题中函数刻画某随时间或其它变量变化的实际量。" },
+        steps: [
+          { en: "Identify the relevant interval and function", zh: "确定相关区间与函数" },
+          { en: "Compute the average rate of change", zh: "计算平均变化率" },
+          { en: "State the answer with units (e.g., m/s, dollars/year)", zh: "结合单位陈述答案（如 m/s、美元/年）" },
+          { en: "Interpret in context: \"The function changed by ___ per ___\"", zh: "结合情境解释：\"该量每___变化___\"" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A particle's height (m) at time $t$ (s) is $h(t) = -5t^2 + 30t$. Find the average velocity from $t = 1$ to $t = 4$, and interpret.", zh: "粒子在时间 $t$（s）时的高度（m）为 $h(t) = -5t^2 + 30t$。求 $t = 1$ 到 $t = 4$ 的平均速度，并解释。" },
+        commonTraps: [
+          { en: "Reporting a unitless number when units matter for interpretation", zh: "解释需要单位时却给出无单位数值" },
+          { en: "Confusing average rate of change with instantaneous rate of change (a calculus concept)", zh: "把平均变化率与瞬时变化率（微积分概念）混淆" },
+        ],
+      },
+    ],
   },
   {
     id: "1-6",
     chapterId: "ch-1",
     number: "1.6",
-    title: {
-      en: "A Library of Parent Functions",
-      zh: "基本函数库",
-    },
+    title: { en: "A Library of Parent Functions", zh: "基本函数库" },
     description: {
       en: "Identify and graph linear, squaring, cubic, square root, reciprocal, step, and absolute value functions.",
       zh: "识别并绘制线性、平方、立方、平方根、倒数、阶梯及绝对值等基本函数。",
     },
+    learningGoals: [
+      { en: "Recognize and graph the eight common parent functions", zh: "识别并绘制八种常见的基本函数" },
+      { en: "State the domain, range, and key features of each parent function", zh: "给出每个基本函数的定义域、值域与关键特征" },
+      { en: "Use the parent function library as a foundation for transformations", zh: "把基本函数库作为函数变换的基础" },
+      { en: "Evaluate and graph step (greatest integer) functions", zh: "计算并绘制阶梯（取整）函数" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-6-1",
+        title: { en: "The Parent Function Library", zh: "基本函数库" },
+        explanation: {
+          en: "A parent function is the simplest example of its function family. Common parents: constant $f(x) = c$, identity $f(x) = x$, squaring $f(x) = x^2$, cubing $f(x) = x^3$, square root $f(x) = \\sqrt{x}$, reciprocal $f(x) = 1/x$, absolute value $f(x) = |x|$, greatest integer $f(x) = \\lfloor x \\rfloor$.",
+          zh: "基本函数是其函数族中最简单的代表。常见基本函数：常数 $f(x) = c$、恒等 $f(x) = x$、平方 $f(x) = x^2$、立方 $f(x) = x^3$、平方根 $f(x) = \\sqrt{x}$、倒数 $f(x) = 1/x$、绝对值 $f(x) = |x|$、取整 $f(x) = \\lfloor x \\rfloor$。",
+        },
+        whenToUse: { en: "As a quick reference for graphing transformed functions", zh: "作为绘制变换后函数图像的快速参考" },
+        commonMistake: { en: "Confusing similar shapes (e.g., $x^2$ vs $|x|$ both V/U-like but only $x^2$ is smooth)", zh: "混淆形状相似的函数（如 $x^2$ 与 $|x|$ 都呈 U 或 V 形，但只有 $x^2$ 是光滑的）" },
+        example: { en: "$f(x) = (x - 2)^3 + 1$ is a transformed cubic — recognize the cubing parent", zh: "$f(x) = (x - 2)^3 + 1$ 是经过变换的立方函数——识别其平方/立方基本函数族" },
+      },
+      {
+        id: "kc-1-6-2",
+        title: { en: "Domain, Range, and Key Features", zh: "定义域、值域与关键特征" },
+        explanation: {
+          en: "Each parent function has characteristic features: $\\sqrt{x}$ has domain $[0, \\infty)$ and starts at origin; $1/x$ excludes $x = 0$ and has both axes as asymptotes; $|x|$ has a sharp corner at the origin; $\\lfloor x \\rfloor$ has jump discontinuities at every integer.",
+          zh: "每个基本函数都有标志性特征：$\\sqrt{x}$ 定义域 $[0, \\infty)$，从原点出发；$1/x$ 排除 $x = 0$，两轴均为渐近线；$|x|$ 在原点有尖角；$\\lfloor x \\rfloor$ 在每个整数处发生跳跃。",
+        },
+        whenToUse: { en: "When stating or sketching the basic shape of any parent function", zh: "陈述或绘制基本函数原始形状时" },
+        commonMistake: { en: "Drawing $\\sqrt{x}$ extending into negative $x$, or $1/x$ touching the axes", zh: "把 $\\sqrt{x}$ 画到 $x < 0$ 区域，或让 $1/x$ 触碰坐标轴" },
+        example: { en: "$f(x) = 1/x$: domain $(-\\infty, 0) \\cup (0, \\infty)$; range same; both axes are asymptotes", zh: "$f(x) = 1/x$：定义域 $(-\\infty, 0) \\cup (0, \\infty)$；值域相同；两轴均为渐近线" },
+      },
+      {
+        id: "kc-1-6-3",
+        title: { en: "Step / Greatest Integer Function", zh: "阶梯函数 / 取整函数" },
+        explanation: {
+          en: "$\\lfloor x \\rfloor$ rounds DOWN to the nearest integer (the floor). It is a step function: constant on each interval $[n, n+1)$, then jumps up by $1$ at every integer. Used in pricing, postage, and discrete data models.",
+          zh: "$\\lfloor x \\rfloor$ 向下取整（地板函数）。它是阶梯函数：在每个区间 $[n, n+1)$ 上为常数，每到整数处跳升 $1$。常用于计价、邮资和离散数据建模。",
+        },
+        whenToUse: { en: "Modeling discrete steps in a continuous variable (e.g., taxi fare per mile)", zh: "对连续变量按离散阶梯建模（如出租车按英里计价）" },
+        commonMistake: { en: "Treating $\\lfloor 2.7 \\rfloor$ as $3$ (rounding) instead of $2$ (flooring)", zh: "把 $\\lfloor 2.7 \\rfloor$ 当作 $3$（四舍五入）而非 $2$（向下取整）" },
+        example: { en: "$\\lfloor 3.9 \\rfloor = 3$, $\\lfloor -1.2 \\rfloor = -2$, $\\lfloor 5 \\rfloor = 5$", zh: "$\\lfloor 3.9 \\rfloor = 3$，$\\lfloor -1.2 \\rfloor = -2$，$\\lfloor 5 \\rfloor = 5$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-6-1",
+        name: { en: "Squaring & Cubic Functions", zh: "平方函数与立方函数" },
+        formula: "f(x) = x^2, \\quad f(x) = x^3",
+        variables: [
+          { en: "$x$ — any real number", zh: "$x$ — 任意实数" },
+        ],
+        whenToUse: { en: "Recognizing parabolic ($x^2$) or cubic ($x^3$) shapes; symmetry: even / odd respectively", zh: "识别抛物线（$x^2$）或立方曲线（$x^3$）形状；对称性：分别为偶/奇" },
+        commonProblemTypes: [
+          { en: "Recognize the parent under transformation", zh: "识别经过变换的基本函数" },
+          { en: "Compare growth: $x^3$ grows faster than $x^2$ for $x > 1$", zh: "比较增长：$x > 1$ 时 $x^3$ 增长快于 $x^2$" },
+        ],
+        example: { en: "$f(x) = x^2$: domain $\\mathbb{R}$, range $[0, \\infty)$; $f(x) = x^3$: domain and range both $\\mathbb{R}$", zh: "$f(x) = x^2$：定义域 $\\mathbb{R}$，值域 $[0, \\infty)$；$f(x) = x^3$：定义域与值域均为 $\\mathbb{R}$" },
+      },
+      {
+        id: "f-1-6-2",
+        name: { en: "Square Root Function", zh: "平方根函数" },
+        formula: "f(x) = \\sqrt{x}",
+        variables: [
+          { en: "$x \\geq 0$", zh: "$x \\geq 0$" },
+        ],
+        whenToUse: { en: "Modeling decelerating growth; domain restriction to non-negative inputs", zh: "刻画减速增长；定义域限于非负输入" },
+        commonProblemTypes: [
+          { en: "Find domain restriction", zh: "求定义域限制" },
+          { en: "Recognize transformations like $\\sqrt{x - 3} + 2$", zh: "识别 $\\sqrt{x - 3} + 2$ 一类的变换" },
+        ],
+        example: { en: "Domain $[0, \\infty)$, range $[0, \\infty)$; passes through $(0,0), (1,1), (4,2), (9,3)$", zh: "定义域 $[0, \\infty)$，值域 $[0, \\infty)$；过 $(0,0), (1,1), (4,2), (9,3)$" },
+      },
+      {
+        id: "f-1-6-3",
+        name: { en: "Reciprocal Function", zh: "倒数函数" },
+        formula: "f(x) = \\frac{1}{x}",
+        variables: [
+          { en: "$x \\neq 0$", zh: "$x \\neq 0$" },
+        ],
+        whenToUse: { en: "Asymptotic behavior; inverse-proportion modeling", zh: "渐近行为；反比例建模" },
+        commonProblemTypes: [
+          { en: "Identify asymptotes (both axes)", zh: "识别渐近线（两条轴）" },
+          { en: "State domain/range exclusions", zh: "陈述定义域/值域中的排除项" },
+        ],
+        example: { en: "Two branches in Quadrants I and III; both axes are asymptotes", zh: "两支分别位于第 Ⅰ 与第 Ⅲ 象限；两轴均为渐近线" },
+      },
+      {
+        id: "f-1-6-4",
+        name: { en: "Absolute Value Function", zh: "绝对值函数" },
+        formula: "f(x) = |x|",
+        variables: [
+          { en: "$x$ — any real number", zh: "$x$ — 任意实数" },
+        ],
+        whenToUse: { en: "Distance from zero, or any V-shaped behavior", zh: "刻画到零的距离或 V 形行为" },
+        commonProblemTypes: [
+          { en: "Solve absolute-value equations and inequalities", zh: "解绝对值方程与不等式" },
+          { en: "Identify a V-shaped graph", zh: "识别 V 形图像" },
+        ],
+        example: { en: "Domain $\\mathbb{R}$, range $[0, \\infty)$; vertex at origin", zh: "定义域 $\\mathbb{R}$，值域 $[0, \\infty)$；顶点在原点" },
+      },
+      {
+        id: "f-1-6-5",
+        name: { en: "Greatest Integer Function", zh: "取整函数" },
+        formula: "f(x) = \\lfloor x \\rfloor",
+        variables: [
+          { en: "$x$ — any real number; output is the largest integer $\\leq x$", zh: "$x$ — 任意实数；输出为不超过 $x$ 的最大整数" },
+        ],
+        whenToUse: { en: "Modeling step-wise pricing, time intervals, or discrete data", zh: "建模阶梯式计价、时间区间或离散数据" },
+        commonProblemTypes: [
+          { en: "Evaluate at decimals and negatives", zh: "计算小数与负数处的值" },
+          { en: "Sketch the staircase graph", zh: "绘制阶梯图像" },
+        ],
+        example: { en: "$\\lfloor 4.9 \\rfloor = 4$, $\\lfloor -2.1 \\rfloor = -3$", zh: "$\\lfloor 4.9 \\rfloor = 4$，$\\lfloor -2.1 \\rfloor = -3$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-6-1",
+        title: { en: "Identify a Parent Function from Its Graph", zh: "由图像识别基本函数" },
+        description: { en: "Match a given graph to one of the eight standard parent functions.", zh: "把给定图像与八种标准基本函数之一对应。" },
+        howToRecognize: { en: "A graph is shown; problem asks which parent function it is.", zh: "给出图像；问它是哪个基本函数。" },
+        steps: [
+          { en: "Identify defining features (origin point, smoothness, asymptotes, corners)", zh: "识别定义性特征（过原点、光滑性、渐近线、尖角）" },
+          { en: "Compare shape to each parent function in turn", zh: "逐一与基本函数比较形状" },
+          { en: "Confirm by checking key points (e.g., $(1, 1)$, $(4, 2)$ for $\\sqrt{x}$)", zh: "通过关键点验证（如 $\\sqrt{x}$ 过 $(1, 1)$、$(4, 2)$）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "A graph passes through $(0, 0)$ and $(1, 1)$, with a sharp corner at the origin and reflects symmetrically into the second quadrant. Identify the parent function.", zh: "图像过 $(0, 0)$ 与 $(1, 1)$，原点处有尖角，对称延伸到第二象限。指出是哪个基本函数。" },
+        commonTraps: [
+          { en: "Confusing $|x|$ (V-shape, sharp corner) with $x^2$ (smooth U-shape)", zh: "把 $|x|$（V 形尖角）与 $x^2$（光滑 U 形）混淆" },
+        ],
+      },
+      {
+        id: "pt-1-6-2",
+        title: { en: "State Domain and Range of a Parent Function", zh: "给出基本函数的定义域与值域" },
+        description: { en: "Recall the standard domain and range of each parent function.", zh: "回忆每个基本函数的标准定义域与值域。" },
+        howToRecognize: { en: "Problem names a parent function and asks for its domain and range.", zh: "题目指明某基本函数并要求定义域与值域。" },
+        steps: [
+          { en: "Recall the parent's natural restrictions ($\\sqrt{x}$ needs $x \\geq 0$, $1/x$ needs $x \\neq 0$, etc.)", zh: "回忆该函数的自然限制（$\\sqrt{x}$ 要 $x \\geq 0$；$1/x$ 要 $x \\neq 0$ 等）" },
+          { en: "Visualize the graph to read off the range", zh: "想象图像以读出值域" },
+          { en: "Write both in interval notation", zh: "用区间记号表示" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "State the domain and range of $f(x) = \\sqrt{x}$.", zh: "给出 $f(x) = \\sqrt{x}$ 的定义域与值域。" },
+        commonTraps: [
+          { en: "Forgetting that $\\sqrt{x}$ has range $[0, \\infty)$, not $\\mathbb{R}$", zh: "忘记 $\\sqrt{x}$ 的值域是 $[0, \\infty)$，而非 $\\mathbb{R}$" },
+        ],
+      },
+      {
+        id: "pt-1-6-3",
+        title: { en: "Match Equation to Parent Function", zh: "把方程与基本函数对应" },
+        description: { en: "Given an equation, name its parent function.", zh: "给出方程，说出其基本函数。" },
+        howToRecognize: { en: "Problem provides an equation; asks for the parent function category.", zh: "题目给出方程；问其属于哪类基本函数。" },
+        steps: [
+          { en: "Strip away constants, reflections, or shifts", zh: "去掉常数、反射或平移" },
+          { en: "Identify the resulting form ($x$, $x^2$, $\\sqrt{x}$, $|x|$, etc.)", zh: "识别剩余形式（$x$、$x^2$、$\\sqrt{x}$、$|x|$ 等）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Name the parent function of $g(x) = -2(x + 3)^2 + 5$.", zh: "$g(x) = -2(x + 3)^2 + 5$ 的基本函数是？" },
+        commonTraps: [
+          { en: "Calling $\\sqrt{x - 1}$ a different family because of the shift", zh: "因平移把 $\\sqrt{x - 1}$ 误归为另一族" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-6-4",
+        title: { en: "Evaluate the Greatest Integer Function", zh: "求取整函数的值" },
+        description: { en: "Compute $\\lfloor x \\rfloor$ for various inputs, including negatives.", zh: "对各种输入（含负数）求 $\\lfloor x \\rfloor$。" },
+        howToRecognize: { en: "Problem asks for $\\lfloor a \\rfloor$ at one or more values.", zh: "题目要求一个或多个值处的 $\\lfloor a \\rfloor$。" },
+        steps: [
+          { en: "Find the largest integer $\\leq$ the input", zh: "找不超过输入的最大整数" },
+          { en: "For negative non-integers, the floor is MORE negative", zh: "对非整数的负数，取整结果更小（更负）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find $\\lfloor 2.8 \\rfloor$, $\\lfloor -1.5 \\rfloor$, and $\\lfloor 7 \\rfloor$.", zh: "求 $\\lfloor 2.8 \\rfloor$、$\\lfloor -1.5 \\rfloor$ 与 $\\lfloor 7 \\rfloor$。" },
+        commonTraps: [
+          { en: "Treating $\\lfloor -1.5 \\rfloor$ as $-1$ (it's $-2$)", zh: "把 $\\lfloor -1.5 \\rfloor$ 当作 $-1$（应为 $-2$）" },
+        ],
+      },
+      {
+        id: "pt-1-6-5",
+        title: { en: "Identify Parent Through a Transformation", zh: "在变换中识别基本函数" },
+        description: { en: "Spot the parent function inside a transformed expression like $-3\\sqrt{x + 1} + 2$.", zh: "从 $-3\\sqrt{x + 1} + 2$ 这类变换式中识别基本函数。" },
+        howToRecognize: { en: "Equation has shifts, stretches, or reflections applied to a parent.", zh: "方程是某基本函数经过平移、伸缩或反射后的形式。" },
+        steps: [
+          { en: "Locate the core function (radical, absolute value, square, etc.)", zh: "找出核心函数（根号、绝对值、平方等）" },
+          { en: "Mentally remove shifts and coefficients", zh: "心里去掉平移与系数" },
+          { en: "Name the parent", zh: "说出基本函数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Identify the parent of $h(x) = \\frac{1}{x - 4} + 7$.", zh: "$h(x) = \\frac{1}{x - 4} + 7$ 的基本函数是？" },
+        commonTraps: [
+          { en: "Calling a transformed reciprocal a \"rational function\" without naming the parent", zh: "把变换的倒数函数称为\"有理函数\"而未指明基本函数" },
+        ],
+      },
+      {
+        id: "pt-1-6-6",
+        title: { en: "Sketch a Parent Function with Key Points Labeled", zh: "绘制基本函数并标注关键点" },
+        description: { en: "Draw a clean sketch with at least three reference points and any asymptotes labeled.", zh: "画出整洁草图，至少标注三个参考点和所有渐近线。" },
+        howToRecognize: { en: "Problem requests a sketch of a parent function.", zh: "题目要求绘制基本函数。" },
+        steps: [
+          { en: "Choose 3-5 representative inputs from the natural domain", zh: "在自然定义域中选取 3-5 个代表性输入" },
+          { en: "Compute outputs and plot the points", zh: "计算输出并描点" },
+          { en: "Connect with a smooth curve (or steps for $\\lfloor x \\rfloor$)", zh: "用光滑曲线连接（取整函数则画阶梯）" },
+          { en: "Add asymptotes (for $1/x$) or domain endpoints ($\\sqrt{x}$)", zh: "添加渐近线（$1/x$）或定义域端点（$\\sqrt{x}$）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = \\frac{1}{x}$ with at least four points and both asymptotes shown.", zh: "画 $f(x) = \\frac{1}{x}$，至少标四个点和两条渐近线。" },
+        commonTraps: [
+          { en: "Drawing $1/x$ touching the axes", zh: "把 $1/x$ 画成与坐标轴相交" },
+          { en: "Drawing $\\sqrt{x}$ extending to the left of $x = 0$", zh: "把 $\\sqrt{x}$ 画到 $x < 0$ 区域" },
+        ],
+      },
+      {
+        id: "pt-1-6-7",
+        title: { en: "Determine Increasing / Decreasing Intervals of a Parent", zh: "确定基本函数的单调区间" },
+        description: { en: "State where each parent function is increasing or decreasing.", zh: "说明每个基本函数的递增或递减区间。" },
+        howToRecognize: { en: "Problem asks for monotonicity of a named parent function.", zh: "题目要求某个基本函数的单调性。" },
+        steps: [
+          { en: "Recall the parent's graph", zh: "回忆该基本函数的图像" },
+          { en: "Identify rising and falling portions", zh: "识别上升与下降部分" },
+          { en: "Use open intervals on the $x$-axis", zh: "用 $x$ 轴上的开区间表示" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "On what intervals is $f(x) = x^2$ increasing? Decreasing?", zh: "$f(x) = x^2$ 在哪些区间递增？递减？" },
+        commonTraps: [
+          { en: "Stating one interval when the function has different behavior on each side of a vertex", zh: "顶点两侧行为不同时只给一个区间" },
+        ],
+      },
+      {
+        id: "pt-1-6-8",
+        title: { en: "Compare Behaviors of Two Parent Functions", zh: "比较两个基本函数的行为" },
+        description: { en: "Contrast features such as domain, range, end behavior, or growth rate.", zh: "对比定义域、值域、终态行为或增长速率等特征。" },
+        howToRecognize: { en: "Problem asks to compare two parent functions on specific features.", zh: "题目要求在某些特征上比较两个基本函数。" },
+        steps: [
+          { en: "List relevant features for each function", zh: "分别列出两个函数的相关特征" },
+          { en: "Compare side by side using a table or bullet points", zh: "用表格或要点并列比较" },
+          { en: "Highlight key differences (e.g., \"only $x^3$ has range $\\mathbb{R}$\")", zh: "标注关键差异（如\"只有 $x^3$ 的值域是 $\\mathbb{R}$\"）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Compare domain, range, and end behavior of $f(x) = x^2$ and $g(x) = x^3$.", zh: "比较 $f(x) = x^2$ 与 $g(x) = x^3$ 的定义域、值域与终态行为。" },
+        commonTraps: [
+          { en: "Listing irrelevant features without addressing the question", zh: "罗列无关特征而未回答提问" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-6-9",
+        title: { en: "Build a Piecewise Function from Parent Pieces", zh: "用基本函数构造分段函数" },
+        description: { en: "Combine two or more parent functions on different intervals into a piecewise definition.", zh: "在不同区间上把两个或更多基本函数组合为分段定义。" },
+        howToRecognize: { en: "Problem describes different behaviors on different domain pieces and asks for a single function.", zh: "题目在不同定义域片段描述不同行为，要求合并为一个函数。" },
+        steps: [
+          { en: "Identify each region's parent function", zh: "确定每段的基本函数" },
+          { en: "Apply any necessary shifts to match values at boundaries", zh: "做必要平移使分界处取值匹配" },
+          { en: "Write the piecewise expression with clear domain conditions", zh: "用清晰的定义条件写出分段表达式" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Define $f$ so that $f(x) = -x$ on $(-\\infty, 0)$, $f(x) = \\sqrt{x}$ on $[0, 4]$, and $f(x) = 2$ on $(4, \\infty)$.", zh: "定义 $f$：在 $(-\\infty, 0)$ 上 $f(x) = -x$；在 $[0, 4]$ 上 $f(x) = \\sqrt{x}$；在 $(4, \\infty)$ 上 $f(x) = 2$。" },
+        commonTraps: [
+          { en: "Discontinuities at boundaries when continuity is required", zh: "应连续却在分界处出现间断" },
+          { en: "Overlapping or missing domain conditions", zh: "定义条件重叠或遗漏" },
+        ],
+      },
+      {
+        id: "pt-1-6-10",
+        title: { en: "Application — Choose the Right Parent Function for a Model", zh: "应用——为情境选择合适的基本函数" },
+        description: { en: "Given a real-world description, choose the parent function whose shape matches and explain.", zh: "给出实际描述，选用形状匹配的基本函数并解释。" },
+        howToRecognize: { en: "Word problem describes a relationship between two quantities; asks which parent function fits.", zh: "应用题描述两量间关系；问哪个基本函数最适合。" },
+        steps: [
+          { en: "Identify whether the relationship is linear, quadratic, root-like, reciprocal, etc.", zh: "判断关系为线性、二次、根号、倒数等" },
+          { en: "Check key qualitative features: increasing/decreasing rate, asymptotes, corners", zh: "核对关键定性特征：增减速率、渐近线、尖角" },
+          { en: "Justify choice with at least two distinguishing features", zh: "至少用两个区分特征说明选择" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A taxi charges \\$2 base plus \\$3 for each whole mile or part of a mile traveled. Which parent function models the fare? Justify.", zh: "出租车基础价 \\$2，每整英里（或不足部分）加 \\$3。哪个基本函数适合刻画费用？说明理由。" },
+        commonTraps: [
+          { en: "Picking a smooth function for a step-wise scenario (or vice versa)", zh: "为阶梯式情境选择光滑函数（反之亦然）" },
+        ],
+      },
+    ],
   },
   {
     id: "1-7",
