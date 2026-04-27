@@ -5043,14 +5043,275 @@ const chapter3Units: Unit[] = [
     id: "3-5",
     chapterId: "ch-3",
     number: "3.5",
-    title: {
-      en: "Exponential and Logarithmic Models",
-      zh: "指数与对数模型",
-    },
+    title: { en: "Exponential and Logarithmic Models", zh: "指数与对数模型" },
     description: {
       en: "Apply exponential growth and decay, Gaussian, logistic growth, and logarithmic models to real data.",
       zh: "运用指数增长与衰减、高斯、逻辑斯蒂增长及对数模型分析实际数据。",
     },
+    learningGoals: [
+      { en: "Use exponential growth and decay models to interpret data", zh: "用指数增长与衰减模型解读数据" },
+      { en: "Apply Gaussian models to bell-shaped data", zh: "用高斯模型拟合钟形数据" },
+      { en: "Apply logistic growth models to bounded growth scenarios", zh: "用逻辑斯蒂增长模型刻画有界增长情形" },
+      { en: "Use logarithmic models to fit data with diminishing growth", zh: "用对数模型拟合增长率递减的数据" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-3-5-1",
+        title: { en: "Exponential Growth and Decay Models", zh: "指数增长与衰减模型" },
+        explanation: {
+          en: "Growth: $y = a e^{bt}$ with $b > 0$. Decay: $y = a e^{-bt}$ with $b > 0$. Here $a$ is the initial amount (at $t = 0$). Half-life problems use $\\frac{a}{2} = a e^{-bt}$, solving $t = \\frac{\\ln 2}{b}$.",
+          zh: "增长：$y = a e^{bt}$，$b > 0$。衰减：$y = a e^{-bt}$，$b > 0$。其中 $a$ 为初值（$t = 0$ 时）。半衰期问题：$\\frac{a}{2} = a e^{-bt}$，得 $t = \\frac{\\ln 2}{b}$。",
+        },
+        whenToUse: { en: "Population growth, radioactive decay, drug clearance, simple cooling, etc.", zh: "人口增长、放射性衰变、药物清除、简单冷却等" },
+        commonMistake: { en: "Using positive $b$ for decay, or treating the rate as a percentage instead of a decimal", zh: "衰减时用正 $b$，或把率当百分数而非小数" },
+        example: { en: "$y = 100 e^{0.05 t}$: starts at 100, grows at $5\\%$ per unit time (continuous)", zh: "$y = 100 e^{0.05 t}$：起始 100，每单位时间连续增长 $5\\%$" },
+      },
+      {
+        id: "kc-3-5-2",
+        title: { en: "Gaussian and Logistic Models", zh: "高斯与逻辑斯蒂模型" },
+        explanation: {
+          en: "Gaussian (bell curve): $y = a e^{-(x - b)^2 / c}$. Symmetric about $x = b$ where peak value $a$ is reached. Logistic: $y = \\frac{a}{1 + b e^{-rt}}$ — S-shaped, with $\\lim_{t \\to \\infty} y = a$ (carrying capacity).",
+          zh: "高斯（钟形）：$y = a e^{-(x - b)^2 / c}$，关于 $x = b$ 对称，于该处取峰值 $a$。逻辑斯蒂：$y = \\frac{a}{1 + b e^{-rt}}$——S 形曲线，$\\lim_{t \\to \\infty} y = a$（承载量）。",
+        },
+        whenToUse: { en: "Gaussian: probability/test scores. Logistic: population with capacity, disease spread, market saturation.", zh: "高斯：概率/考试成绩。逻辑斯蒂：有承载量的人口、疾病传播、市场饱和。" },
+        commonMistake: { en: "Forgetting that logistic has a horizontal asymptote at $y = a$ (NOT at $y = 0$)", zh: "忘记逻辑斯蒂的水平渐近线为 $y = a$（不是 $y = 0$）" },
+        example: { en: "Logistic $y = \\frac{1000}{1 + 99 e^{-0.5 t}}$: starts $\\approx 10$, approaches 1000", zh: "逻辑斯蒂 $y = \\frac{1000}{1 + 99 e^{-0.5 t}}$：起始约 10，趋近 1000" },
+      },
+      {
+        id: "kc-3-5-3",
+        title: { en: "Logarithmic Models", zh: "对数模型" },
+        explanation: {
+          en: "Logarithmic models: $y = a + b \\ln x$ or $y = a + b \\log x$. They describe quantities that grow rapidly at first then slow down — opposite of exponential growth. Used for sound (decibels), Richter scale, pH, learning curves.",
+          zh: "对数模型：$y = a + b \\ln x$ 或 $y = a + b \\log x$。刻画初期快速增长后逐渐放缓——与指数增长相反。用于声学（分贝）、里氏震级、pH、学习曲线。",
+        },
+        whenToUse: { en: "When growth flattens; perception scales (sound, brightness)", zh: "当增长趋缓时；感知尺度（声、光）" },
+        commonMistake: { en: "Confusing logarithmic growth with logistic (both flatten, but for different reasons)", zh: "把对数增长与逻辑斯蒂混淆（都会趋缓，但原因不同）" },
+        example: { en: "$y = 12 + 2 \\ln x$: at $x = 1$, $y = 12$; at $x = e^5 \\approx 148$, $y = 22$", zh: "$y = 12 + 2 \\ln x$：$x = 1$ 时 $y = 12$；$x = e^5 \\approx 148$ 时 $y = 22$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-3-5-1",
+        name: { en: "Exponential Growth/Decay", zh: "指数增长/衰减" },
+        formula: "y = a e^{\\pm bt}, \\; a, b > 0",
+        variables: [
+          { en: "$+bt$ — growth; $-bt$ — decay", zh: "$+bt$ — 增长；$-bt$ — 衰减" },
+          { en: "$a$ — initial amount", zh: "$a$ — 初值" },
+          { en: "$b$ — continuous rate", zh: "$b$ — 连续速率" },
+        ],
+        whenToUse: { en: "Continuous growth or decay processes", zh: "连续增长或衰减过程" },
+        commonProblemTypes: [
+          { en: "Solve for time, rate, or amount", zh: "求时间、速率或量" },
+          { en: "Convert between continuous rate and discrete percent", zh: "在连续速率与离散百分数间转换" },
+        ],
+        example: { en: "Bacteria: $y = 500 e^{0.4 t}$ — at $t = 5$, $y \\approx 3695$", zh: "细菌：$y = 500 e^{0.4 t}$——$t = 5$ 时 $y \\approx 3695$" },
+      },
+      {
+        id: "f-3-5-2",
+        name: { en: "Half-Life Equation", zh: "半衰期方程" },
+        formula: "t_{1/2} = \\frac{\\ln 2}{b} \\; (\\text{for } y = a e^{-bt})",
+        variables: [
+          { en: "$t_{1/2}$ — time for $y$ to halve", zh: "$t_{1/2}$ — $y$ 减半所需时间" },
+          { en: "$b$ — decay constant", zh: "$b$ — 衰减常数" },
+        ],
+        whenToUse: { en: "Radioactive decay, drug elimination, any half-life problem", zh: "放射性衰变、药物代谢、半衰期问题" },
+        commonProblemTypes: [
+          { en: "Find $t_{1/2}$ given $b$, or vice versa", zh: "已知 $b$ 求 $t_{1/2}$ 或反之" },
+        ],
+        example: { en: "If $b = 0.0001$ per year, $t_{1/2} = \\frac{\\ln 2}{0.0001} \\approx 6931$ years", zh: "若 $b = 0.0001$/年，$t_{1/2} = \\frac{\\ln 2}{0.0001} \\approx 6931$ 年" },
+      },
+      {
+        id: "f-3-5-3",
+        name: { en: "Logistic Growth Model", zh: "逻辑斯蒂增长模型" },
+        formula: "y = \\frac{a}{1 + b e^{-rt}}",
+        variables: [
+          { en: "$a$ — carrying capacity (limit)", zh: "$a$ — 承载量（极限）" },
+          { en: "$b$ — initial conditions parameter", zh: "$b$ — 初始条件参数" },
+          { en: "$r$ — intrinsic growth rate", zh: "$r$ — 内禀增长率" },
+        ],
+        whenToUse: { en: "Bounded growth (epidemic, population, market saturation)", zh: "有界增长（疫情、人口、市场饱和）" },
+        commonProblemTypes: [
+          { en: "Find time to reach a target value", zh: "求达到目标值的时间" },
+          { en: "Identify carrying capacity from data", zh: "由数据识别承载量" },
+        ],
+        example: { en: "$y = \\frac{1000}{1 + 9 e^{-0.5 t}}$: $a = 1000$ is the limit", zh: "$y = \\frac{1000}{1 + 9 e^{-0.5 t}}$：$a = 1000$ 为极限" },
+      },
+      {
+        id: "f-3-5-4",
+        name: { en: "Logarithmic Model", zh: "对数模型" },
+        formula: "y = a + b \\ln x \\quad \\text{or} \\quad y = a + b \\log x",
+        variables: [
+          { en: "$a, b$ — model parameters", zh: "$a, b$ — 模型参数" },
+        ],
+        whenToUse: { en: "Diminishing-returns scenarios", zh: "收益递减情形" },
+        commonProblemTypes: [
+          { en: "Fit data with slowing growth", zh: "拟合增速减缓的数据" },
+        ],
+        example: { en: "Sound: dB = $10 \\log(I / I_0)$", zh: "声学：dB = $10 \\log(I / I_0)$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-3-5-1",
+        title: { en: "Identify Which Model Fits a Scenario", zh: "判断情景适用的模型" },
+        description: { en: "Match a verbal description to one of the four model types.", zh: "把文字描述对应到四种模型之一。" },
+        howToRecognize: { en: "Problem describes growth/decay behavior; asks for model type.", zh: "题目描述增长/衰减行为；问适用模型。" },
+        steps: [
+          { en: "Constant ratio per period ⇒ exponential growth/decay", zh: "每期固定比率 ⇒ 指数增长/衰减" },
+          { en: "Bell-shaped, symmetric ⇒ Gaussian", zh: "钟形对称 ⇒ 高斯" },
+          { en: "S-shape with capacity ⇒ logistic", zh: "有承载量的 S 形 ⇒ 逻辑斯蒂" },
+          { en: "Diminishing growth, no upper bound ⇒ logarithmic", zh: "增长递减，无上界 ⇒ 对数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Which model best fits a population that grows quickly at first, then levels off near a carrying capacity?", zh: "哪种模型最适合最初快速增长、后趋近承载量的人口？" },
+        commonTraps: [
+          { en: "Choosing exponential when there's a clear capacity (should be logistic)", zh: "存在明显承载量却选指数（应为逻辑斯蒂）" },
+        ],
+      },
+      {
+        id: "pt-3-5-2",
+        title: { en: "Find Initial Value $a$", zh: "求初值 $a$" },
+        description: { en: "Evaluate the model at $t = 0$ to find the starting amount.", zh: "在 $t = 0$ 处求初值。" },
+        howToRecognize: { en: "Problem asks for the value when $t = 0$.", zh: "题目要求 $t = 0$ 时的值。" },
+        steps: [
+          { en: "Substitute $t = 0$ into the model", zh: "把 $t = 0$ 代入模型" },
+          { en: "Simplify (e.g., $e^0 = 1$)", zh: "化简（如 $e^0 = 1$）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "For $y = 250 e^{0.03 t}$, what is the initial population?", zh: "对 $y = 250 e^{0.03 t}$，初始人口是多少？" },
+        commonTraps: [
+          { en: "Forgetting that $e^0 = 1$ — initial value is just $a$", zh: "忘记 $e^0 = 1$——初值即为 $a$" },
+        ],
+      },
+      {
+        id: "pt-3-5-3",
+        title: { en: "Identify Carrying Capacity in Logistic Model", zh: "识别逻辑斯蒂模型的承载量" },
+        description: { en: "Read $a$ from $y = \\frac{a}{1 + b e^{-rt}}$.", zh: "从 $y = \\frac{a}{1 + b e^{-rt}}$ 中读出 $a$。" },
+        howToRecognize: { en: "Problem asks for limiting value of a logistic model.", zh: "题目问逻辑斯蒂模型的极限值。" },
+        steps: [
+          { en: "Identify the constant in the numerator", zh: "找出分子的常数" },
+          { en: "That constant is the carrying capacity", zh: "该常数即承载量" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "For $y = \\frac{2400}{1 + 19 e^{-0.4 t}}$, find the carrying capacity.", zh: "对 $y = \\frac{2400}{1 + 19 e^{-0.4 t}}$，求承载量。" },
+        commonTraps: [
+          { en: "Confusing $b$ (initial parameter) with carrying capacity", zh: "把 $b$（初始参数）当承载量" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-3-5-4",
+        title: { en: "Find Decay Rate from Half-Life", zh: "由半衰期求衰减率" },
+        description: { en: "Compute $b$ given $t_{1/2}$ using $t_{1/2} = \\ln 2 / b$.", zh: "已知 $t_{1/2}$，用 $t_{1/2} = \\ln 2 / b$ 求 $b$。" },
+        howToRecognize: { en: "Half-life given; problem asks for the decay constant or model.", zh: "给出半衰期；要求衰减常数或模型。" },
+        steps: [
+          { en: "Solve $b = \\frac{\\ln 2}{t_{1/2}}$", zh: "解 $b = \\frac{\\ln 2}{t_{1/2}}$" },
+          { en: "Write the model $y = a e^{-bt}$", zh: "写出模型 $y = a e^{-bt}$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Carbon-14 has half-life 5730 years. Find its decay constant $b$.", zh: "碳-14 半衰期为 5730 年。求衰减常数 $b$。" },
+        commonTraps: [
+          { en: "Sign error: $b$ should be positive in $-bt$", zh: "符号错误：$-bt$ 中 $b$ 应为正" },
+        ],
+      },
+      {
+        id: "pt-3-5-5",
+        title: { en: "Find Growth Rate from Two Data Points", zh: "由两数据点求增长率" },
+        description: { en: "Use two $(t, y)$ pairs to solve for $a$ and $b$ in the growth model.", zh: "用两组 $(t, y)$ 解增长模型中的 $a$ 与 $b$。" },
+        howToRecognize: { en: "Two data points are given; problem asks to fit a model.", zh: "给出两数据点；要求拟合模型。" },
+        steps: [
+          { en: "Plug both points into $y = a e^{bt}$", zh: "把两点代入 $y = a e^{bt}$" },
+          { en: "Divide one equation by the other to eliminate $a$", zh: "两方程相除消去 $a$" },
+          { en: "Solve for $b$ via $\\ln$", zh: "用 $\\ln$ 解 $b$" },
+          { en: "Back-substitute to find $a$", zh: "回代求 $a$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A population is 200 at $t = 0$ and 700 at $t = 5$. Find $a$ and $b$ in $y = a e^{bt}$.", zh: "人口在 $t = 0$ 时为 200，$t = 5$ 时为 700。求 $y = a e^{bt}$ 中的 $a$ 与 $b$。" },
+        commonTraps: [
+          { en: "Forgetting that $a = y_0$ when $t = 0$", zh: "忘记 $t = 0$ 时 $a = y_0$" },
+        ],
+      },
+      {
+        id: "pt-3-5-6",
+        title: { en: "Solve for Time Given Target Value", zh: "已知目标值求时间" },
+        description: { en: "Use logs to invert the model and find $t$.", zh: "用对数反演模型求 $t$。" },
+        howToRecognize: { en: "Problem asks \"when will $y$ reach...?\"", zh: "题目问\"何时 $y$ 达到……？\"" },
+        steps: [
+          { en: "Set $y$ equal to target value", zh: "把 $y$ 置为目标值" },
+          { en: "Isolate the exponential term", zh: "分离指数项" },
+          { en: "Take $\\ln$ to solve for $t$", zh: "取 $\\ln$ 解 $t$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A culture follows $y = 800 e^{0.02 t}$. When will the population reach 5000?", zh: "培养基种群 $y = 800 e^{0.02 t}$。何时种群达到 5000？" },
+        commonTraps: [
+          { en: "Forgetting to divide both sides before taking $\\ln$", zh: "取 $\\ln$ 前忘记两边相除" },
+        ],
+      },
+      {
+        id: "pt-3-5-7",
+        title: { en: "Apply a Logistic Growth Model", zh: "应用逻辑斯蒂增长模型" },
+        description: { en: "Evaluate or solve a logistic equation for time or population.", zh: "对逻辑斯蒂方程求值或解时间/人口。" },
+        howToRecognize: { en: "Equation has form $y = \\frac{a}{1 + b e^{-rt}}$.", zh: "方程形如 $y = \\frac{a}{1 + b e^{-rt}}$。" },
+        steps: [
+          { en: "Substitute given $t$ to find $y$, OR substitute $y$ and solve for $t$", zh: "代入已知 $t$ 求 $y$，或代入 $y$ 解 $t$" },
+          { en: "When solving for $t$: isolate $e^{-rt}$, take $\\ln$", zh: "解 $t$ 时：分离 $e^{-rt}$，取 $\\ln$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "For $y = \\frac{500}{1 + 24 e^{-0.3 t}}$, find $y$ when $t = 10$.", zh: "对 $y = \\frac{500}{1 + 24 e^{-0.3 t}}$，求 $t = 10$ 时的 $y$。" },
+        commonTraps: [
+          { en: "Errors in algebraic manipulation of the fraction", zh: "对分式代数变形时出错" },
+        ],
+      },
+      {
+        id: "pt-3-5-8",
+        title: { en: "Use a Logarithmic Model", zh: "应用对数模型" },
+        description: { en: "Solve $y = a + b \\ln x$ for $x$ or $y$.", zh: "对 $y = a + b \\ln x$ 解 $x$ 或 $y$。" },
+        howToRecognize: { en: "Equation involves $\\ln x$ or $\\log x$ in a model.", zh: "模型方程含 $\\ln x$ 或 $\\log x$。" },
+        steps: [
+          { en: "If solving for $y$: substitute and compute", zh: "求 $y$：代入并计算" },
+          { en: "If solving for $x$: isolate the log, then exponentiate", zh: "求 $x$：分离对数后取指数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "A model is $y = 60 + 8 \\ln x$. Find $x$ when $y = 75$.", zh: "模型为 $y = 60 + 8 \\ln x$。$y = 75$ 时求 $x$。" },
+        commonTraps: [
+          { en: "Confusing common log and natural log on the calculator", zh: "在计算器上混淆常用对数与自然对数" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-3-5-9",
+        title: { en: "Carbon Dating or Radioactive Decay", zh: "碳年代法或放射性衰变" },
+        description: { en: "Use half-life and remaining percentage to find an artifact's age.", zh: "利用半衰期与剩余比例求文物年代。" },
+        howToRecognize: { en: "Problem mentions carbon-14, fossil age, or radioactive percentage remaining.", zh: "题目提到碳-14、化石年龄或剩余放射性百分比。" },
+        steps: [
+          { en: "Use $b = \\ln 2 / t_{1/2}$ for the decay constant", zh: "用 $b = \\ln 2 / t_{1/2}$ 算衰减常数" },
+          { en: "Set $y = (\\text{remaining percent}) \\cdot a$", zh: "把 $y$ 设为剩余比例 $\\cdot a$" },
+          { en: "Solve $y = a e^{-bt}$ for $t$ via $\\ln$", zh: "对 $y = a e^{-bt}$ 用 $\\ln$ 解 $t$" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A fossil contains 25\\% of its original carbon-14 (half-life 5730 years). How old is it?", zh: "化石含原始碳-14 的 25\\%（半衰期 5730 年），它有多老？" },
+        commonTraps: [
+          { en: "Mixing up percent remaining with percent decayed", zh: "把剩余比例与已衰变比例弄反" },
+        ],
+      },
+      {
+        id: "pt-3-5-10",
+        title: { en: "Multi-Step Application — Combined Models", zh: "多步骤应用——组合模型" },
+        description: { en: "Use multiple model types or extract several quantities from one model.", zh: "综合多种模型或从一个模型中导出多个量。" },
+        howToRecognize: { en: "Problem requires both fitting a model AND making multiple predictions.", zh: "题目既要拟合模型又要做多次预测。" },
+        steps: [
+          { en: "Fit the model (find $a$, $b$, etc.) using data", zh: "用数据拟合模型（求 $a$、$b$ 等）" },
+          { en: "Use the model to answer each part", zh: "用模型逐题作答" },
+          { en: "Interpret each result with units and context", zh: "结合单位与情境解释每个结果" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A virus spreads logistically with capacity 10000. After 1 week, 200 are infected; after 4 weeks, 4800. Find $b$ and $r$, then determine when 9000 will be infected.", zh: "病毒按逻辑斯蒂传播，承载量 10000。第 1 周感染 200 人，第 4 周 4800 人。求 $b$ 和 $r$，再求何时感染 9000 人。" },
+        commonTraps: [
+          { en: "Forgetting to use both data points to determine the two parameters", zh: "忘记用两数据点同时确定两个参数" },
+        ],
+      },
+    ],
   },
 ];
 
