@@ -1616,27 +1616,536 @@ const chapter1Units: Unit[] = [
     id: "1-7",
     chapterId: "ch-1",
     number: "1.7",
-    title: {
-      en: "Transformations of Functions",
-      zh: "函数的变换",
-    },
+    title: { en: "Transformations of Functions", zh: "函数的变换" },
     description: {
       en: "Use vertical and horizontal shifts, reflections, and stretches to graph transformed functions.",
       zh: "利用平移、反射与伸缩变换绘制变换后的函数图像。",
     },
+    learningGoals: [
+      { en: "Apply vertical and horizontal shifts to a parent function", zh: "对基本函数进行垂直与水平平移" },
+      { en: "Apply reflections across the $x$- and $y$-axes", zh: "对函数进行关于 $x$ 轴与 $y$ 轴的反射" },
+      { en: "Apply vertical and horizontal stretches and shrinks", zh: "进行垂直与水平方向的伸缩变换" },
+      { en: "Combine multiple transformations in the correct order", zh: "按正确顺序组合多种变换" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-7-1",
+        title: { en: "Vertical and Horizontal Shifts", zh: "垂直与水平平移" },
+        explanation: {
+          en: "$g(x) = f(x) + c$ shifts the graph UP $c$ units (DOWN if $c < 0$). $g(x) = f(x - h)$ shifts the graph RIGHT $h$ units (LEFT if $h < 0$). Horizontal shifts feel counterintuitive: $f(x - 3)$ moves RIGHT.",
+          zh: "$g(x) = f(x) + c$ 把图像向上平移 $c$ 个单位（$c < 0$ 则向下）。$g(x) = f(x - h)$ 把图像向右平移 $h$ 个单位（$h < 0$ 则向左）。水平平移反直觉：$f(x - 3)$ 向右移动。",
+        },
+        whenToUse: { en: "Whenever a constant is added inside or outside the function", zh: "凡是有常数加在函数内部或外部时" },
+        commonMistake: { en: "Reading $f(x + 2)$ as a shift right (it's LEFT 2 units)", zh: "把 $f(x + 2)$ 读成向右平移（应为向左 2 个单位）" },
+        example: { en: "$g(x) = (x - 4)^2 + 3$: shift $x^2$ right $4$ and up $3$, vertex at $(4, 3)$", zh: "$g(x) = (x - 4)^2 + 3$：将 $x^2$ 向右 $4$、向上 $3$，顶点位于 $(4, 3)$" },
+      },
+      {
+        id: "kc-1-7-2",
+        title: { en: "Reflections", zh: "反射" },
+        explanation: {
+          en: "$g(x) = -f(x)$ reflects across the $x$-axis (output sign flips). $g(x) = f(-x)$ reflects across the $y$-axis (input sign flips). The negative is INSIDE for $y$-axis reflection, OUTSIDE for $x$-axis reflection.",
+          zh: "$g(x) = -f(x)$ 关于 $x$ 轴反射（输出变号）。$g(x) = f(-x)$ 关于 $y$ 轴反射（输入变号）。$y$ 轴反射的负号在内，$x$ 轴反射的负号在外。",
+        },
+        whenToUse: { en: "Whenever a negative sign is applied inside or outside the function", zh: "函数内部或外部出现负号时" },
+        commonMistake: { en: "Mixing up which axis the function is reflected across", zh: "把反射轴弄反" },
+        example: { en: "If $f(x) = \\sqrt{x}$: $-f(x) = -\\sqrt{x}$ flips below $x$-axis; $f(-x) = \\sqrt{-x}$ flips to the left of $y$-axis", zh: "若 $f(x) = \\sqrt{x}$：$-f(x) = -\\sqrt{x}$ 翻转到 $x$ 轴下方；$f(-x) = \\sqrt{-x}$ 翻转到 $y$ 轴左侧" },
+      },
+      {
+        id: "kc-1-7-3",
+        title: { en: "Stretches and Shrinks", zh: "伸缩变换" },
+        explanation: {
+          en: "$g(x) = a \\cdot f(x)$ is a vertical stretch if $|a| > 1$, vertical shrink if $0 < |a| < 1$. $g(x) = f(b x)$ is a horizontal SHRINK by factor $1/|b|$ if $|b| > 1$, horizontal STRETCH if $0 < |b| < 1$ (counterintuitive — horizontal acts inversely).",
+          zh: "$g(x) = a \\cdot f(x)$ 在 $|a| > 1$ 时为垂直拉伸，$0 < |a| < 1$ 时为垂直压缩。$g(x) = f(b x)$ 在 $|b| > 1$ 时为水平压缩（系数 $1/|b|$），$0 < |b| < 1$ 时为水平拉伸（反直觉——水平方向作用相反）。",
+        },
+        whenToUse: { en: "When a coefficient multiplies the function or its input", zh: "系数乘在函数或其输入上时" },
+        commonMistake: { en: "Treating horizontal coefficient like vertical (e.g., $f(2x)$ is a SHRINK, not a stretch)", zh: "把水平系数当垂直系数处理（如 $f(2x)$ 是压缩而非拉伸）" },
+        example: { en: "$g(x) = 3x^2$: vertical stretch by $3$. $g(x) = (\\tfrac{1}{2}x)^2$: horizontal stretch by $2$.", zh: "$g(x) = 3x^2$：垂直拉伸 $3$ 倍。$g(x) = (\\tfrac{1}{2}x)^2$：水平拉伸 $2$ 倍。" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-7-1",
+        name: { en: "Vertical Shift", zh: "垂直平移" },
+        formula: "g(x) = f(x) + c",
+        variables: [
+          { en: "$c > 0$ — shift up; $c < 0$ — shift down", zh: "$c > 0$ — 向上；$c < 0$ — 向下" },
+        ],
+        whenToUse: { en: "A constant is added or subtracted OUTSIDE the function", zh: "在函数外部加减常数时" },
+        commonProblemTypes: [
+          { en: "Sketch a vertically shifted graph", zh: "画垂直平移后的图像" },
+        ],
+        example: { en: "$g(x) = x^2 - 5$: shift $x^2$ down $5$", zh: "$g(x) = x^2 - 5$：把 $x^2$ 向下平移 $5$" },
+      },
+      {
+        id: "f-1-7-2",
+        name: { en: "Horizontal Shift", zh: "水平平移" },
+        formula: "g(x) = f(x - h)",
+        variables: [
+          { en: "$h > 0$ — shift right; $h < 0$ — shift left (note the sign flip)", zh: "$h > 0$ — 向右；$h < 0$ — 向左（注意符号反向）" },
+        ],
+        whenToUse: { en: "A constant is added or subtracted INSIDE the function's input", zh: "在函数输入内部加减常数时" },
+        commonProblemTypes: [
+          { en: "Identify horizontal shifts in transformed parent functions", zh: "识别经过变换的基本函数中的水平平移" },
+        ],
+        example: { en: "$g(x) = \\sqrt{x + 4}$: shift $\\sqrt{x}$ left $4$", zh: "$g(x) = \\sqrt{x + 4}$：把 $\\sqrt{x}$ 向左平移 $4$" },
+      },
+      {
+        id: "f-1-7-3",
+        name: { en: "Reflection", zh: "反射" },
+        formula: "g(x) = -f(x) \\quad \\text{or} \\quad g(x) = f(-x)",
+        variables: [
+          { en: "$-f(x)$ — reflect across $x$-axis", zh: "$-f(x)$ — 关于 $x$ 轴反射" },
+          { en: "$f(-x)$ — reflect across $y$-axis", zh: "$f(-x)$ — 关于 $y$ 轴反射" },
+        ],
+        whenToUse: { en: "When a negative sign appears inside or outside the function", zh: "函数内部或外部出现负号时" },
+        commonProblemTypes: [
+          { en: "Identify the type of reflection from the equation", zh: "由方程识别反射类型" },
+        ],
+        example: { en: "If $f(x) = \\sqrt{x}$: $g(x) = -\\sqrt{x}$ reflects across $x$-axis, $h(x) = \\sqrt{-x}$ reflects across $y$-axis", zh: "若 $f(x) = \\sqrt{x}$：$g(x) = -\\sqrt{x}$ 关于 $x$ 轴反射；$h(x) = \\sqrt{-x}$ 关于 $y$ 轴反射" },
+      },
+      {
+        id: "f-1-7-4",
+        name: { en: "Stretch / Shrink", zh: "伸缩" },
+        formula: "g(x) = a \\cdot f(b x)",
+        variables: [
+          { en: "$a$ — vertical factor: $|a|>1$ stretch, $0<|a|<1$ shrink", zh: "$a$ — 垂直系数：$|a|>1$ 拉伸，$0<|a|<1$ 压缩" },
+          { en: "$b$ — horizontal factor (inverse): $|b|>1$ shrink, $0<|b|<1$ stretch", zh: "$b$ — 水平系数（反向）：$|b|>1$ 压缩，$0<|b|<1$ 拉伸" },
+        ],
+        whenToUse: { en: "When coefficients multiply the function output or input", zh: "系数乘在函数输出或输入上时" },
+        commonProblemTypes: [
+          { en: "Sketch a stretched/shrunk graph from the parent", zh: "由基本函数画伸缩后的图像" },
+          { en: "Identify factor and direction from the equation", zh: "从方程识别系数与方向" },
+        ],
+        example: { en: "$g(x) = -2(x - 1)^2 + 3$: vertical stretch by $2$, reflect across $x$-axis, shift right $1$ and up $3$", zh: "$g(x) = -2(x - 1)^2 + 3$：垂直拉伸 $2$ 倍，关于 $x$ 轴反射，右移 $1$、上移 $3$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-7-1",
+        title: { en: "Identify a Vertical Shift", zh: "识别垂直平移" },
+        description: { en: "From an equation like $g(x) = f(x) + c$, state the direction and magnitude of the shift.", zh: "由 $g(x) = f(x) + c$ 写出平移方向与大小。" },
+        howToRecognize: { en: "A constant is added OUTSIDE the function.", zh: "函数外部加常数。" },
+        steps: [
+          { en: "Locate the constant added outside $f(x)$", zh: "找到加在 $f(x)$ 外的常数" },
+          { en: "Positive ⇒ shift up; negative ⇒ shift down", zh: "正 ⇒ 向上；负 ⇒ 向下" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Describe the transformation of $g(x) = |x| - 7$ relative to $f(x) = |x|$.", zh: "相对于 $f(x) = |x|$，$g(x) = |x| - 7$ 的变换是？" },
+        commonTraps: [
+          { en: "Confusing a vertical shift with a horizontal shift", zh: "把垂直平移与水平平移弄混" },
+        ],
+      },
+      {
+        id: "pt-1-7-2",
+        title: { en: "Identify a Horizontal Shift", zh: "识别水平平移" },
+        description: { en: "From $g(x) = f(x - h)$, state the direction and magnitude — sign flips.", zh: "由 $g(x) = f(x - h)$ 给出方向与大小——符号相反。" },
+        howToRecognize: { en: "A constant is added or subtracted INSIDE $f$.", zh: "在 $f$ 内部加减常数。" },
+        steps: [
+          { en: "Locate the constant inside $f$", zh: "找到 $f$ 内部的常数" },
+          { en: "Subtraction ⇒ shift right; addition ⇒ shift left (always opposite of the visible sign)", zh: "减 ⇒ 向右；加 ⇒ 向左（与可见符号相反）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Describe how $g(x) = \\sqrt{x + 6}$ is shifted from $f(x) = \\sqrt{x}$.", zh: "相对于 $f(x) = \\sqrt{x}$，$g(x) = \\sqrt{x + 6}$ 如何平移？" },
+        commonTraps: [
+          { en: "Treating $f(x + 2)$ as a shift to the right", zh: "把 $f(x + 2)$ 当作向右平移" },
+        ],
+      },
+      {
+        id: "pt-1-7-3",
+        title: { en: "Identify a Reflection", zh: "识别反射" },
+        description: { en: "Decide whether $g$ is a reflection across the $x$-axis, $y$-axis, or neither.", zh: "判断 $g$ 是关于 $x$ 轴、$y$ 轴的反射，还是都不是。" },
+        howToRecognize: { en: "A negative sign is applied inside or outside the function.", zh: "函数内部或外部出现负号。" },
+        steps: [
+          { en: "Negative OUTSIDE ($-f(x)$) ⇒ reflect across $x$-axis", zh: "负号在外 ($-f(x)$) ⇒ 关于 $x$ 轴反射" },
+          { en: "Negative INSIDE ($f(-x)$) ⇒ reflect across $y$-axis", zh: "负号在内 ($f(-x)$) ⇒ 关于 $y$ 轴反射" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "What reflection (if any) takes $f(x) = x^3$ to $g(x) = (-x)^3$?", zh: "把 $f(x) = x^3$ 变为 $g(x) = (-x)^3$ 的反射是？" },
+        commonTraps: [
+          { en: "Confusing the inside/outside placement of the negative", zh: "把负号的内外位置弄反" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-7-4",
+        title: { en: "Apply Two Transformations to a Parent", zh: "对基本函数应用两个变换" },
+        description: { en: "Sketch the result of two combined transformations (e.g., shift + reflection).", zh: "画出两个组合变换（如平移 + 反射）的结果。" },
+        howToRecognize: { en: "Equation has both a shift and a reflection or stretch.", zh: "方程同时含平移与反射或伸缩。" },
+        steps: [
+          { en: "Identify each transformation in order", zh: "依次识别每个变换" },
+          { en: "Apply reflection or stretch FIRST (operates on parent shape)", zh: "先应用反射或伸缩（作用于基本形状）" },
+          { en: "Then apply shifts", zh: "再应用平移" },
+          { en: "Sketch and label key points", zh: "画图并标注关键点" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $g(x) = -|x| + 4$ as a transformation of $f(x) = |x|$.", zh: "把 $g(x) = -|x| + 4$ 作为 $f(x) = |x|$ 的变换画出来。" },
+        commonTraps: [
+          { en: "Applying shifts before reflections (changes the result)", zh: "先平移后反射（结果不同）" },
+        ],
+      },
+      {
+        id: "pt-1-7-5",
+        title: { en: "Sketch a Transformed Graph from the Parent", zh: "由基本函数画变换后的图像" },
+        description: { en: "Draw the transformed graph by applying each transformation to known reference points of the parent.", zh: "对基本函数的参考点逐一应用变换，画出变换后图像。" },
+        howToRecognize: { en: "Equation describes a transformation of a known parent.", zh: "方程描述对已知基本函数的变换。" },
+        steps: [
+          { en: "Pick 3-5 key points on the parent function", zh: "在基本函数上选取 3-5 个关键点" },
+          { en: "Apply each transformation to the coordinates of those points", zh: "对这些点的坐标依次应用变换" },
+          { en: "Plot the new points and draw the curve", zh: "标出新点并画曲线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $g(x) = 2(x - 1)^3 - 4$ by transforming key points of $f(x) = x^3$.", zh: "通过变换 $f(x) = x^3$ 的关键点画 $g(x) = 2(x - 1)^3 - 4$。" },
+        commonTraps: [
+          { en: "Forgetting that vertical stretches affect $y$-coordinates only", zh: "忘记垂直拉伸只影响 $y$ 坐标" },
+        ],
+      },
+      {
+        id: "pt-1-7-6",
+        title: { en: "Identify All Transformations from a Complex Equation", zh: "从复杂方程识别所有变换" },
+        description: { en: "Decode an equation with multiple transformations and list each in correct order.", zh: "解读含多重变换的方程，按顺序列出每个变换。" },
+        howToRecognize: { en: "Equation in the form $g(x) = a f(b(x - h)) + k$ with several non-trivial constants.", zh: "方程形如 $g(x) = a f(b(x - h)) + k$，含多个非平凡常数。" },
+        steps: [
+          { en: "Inside the function: identify horizontal shrink/stretch ($b$) and shift ($h$)", zh: "函数内部：识别水平伸缩（$b$）与平移（$h$）" },
+          { en: "Outside: identify vertical stretch/reflection ($a$) and shift ($k$)", zh: "函数外部：识别垂直伸缩/反射（$a$）与平移（$k$）" },
+          { en: "List in order: horizontal first (inside-out), then vertical", zh: "按顺序列出：先内（水平），后外（垂直）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Describe all transformations applied to $f(x) = x^2$ to get $g(x) = -3(2x + 4)^2 + 1$.", zh: "把 $f(x) = x^2$ 变为 $g(x) = -3(2x + 4)^2 + 1$ 经过了哪些变换？" },
+        commonTraps: [
+          { en: "Reading $b > 1$ as a stretch instead of a shrink", zh: "把 $b > 1$ 当成拉伸（应为压缩）" },
+          { en: "Failing to factor inside the function before reading the horizontal shift", zh: "读水平平移前未先把内部因式提取" },
+        ],
+      },
+      {
+        id: "pt-1-7-7",
+        title: { en: "Write Equation Given a Parent and Described Transformations", zh: "由基本函数与描述写出变换方程" },
+        description: { en: "Construct $g(x)$ given a parent and a list of transformations.", zh: "由基本函数与变换说明构造 $g(x)$。" },
+        howToRecognize: { en: "Problem describes transformations verbally and asks for the equation.", zh: "题目用文字描述变换，要求方程。" },
+        steps: [
+          { en: "Start with the parent $f(x)$", zh: "从基本函数 $f(x)$ 开始" },
+          { en: "Apply horizontal effects (shift, reflection, shrink/stretch) inside $f$", zh: "在 $f$ 内部应用水平变换（平移、反射、压伸）" },
+          { en: "Apply vertical effects (shift, reflection, stretch/shrink) outside", zh: "在 $f$ 外部应用垂直变换" },
+          { en: "Write the final equation $g(x) = a f(b(x - h)) + k$", zh: "写出最终方程 $g(x) = a f(b(x - h)) + k$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write the equation: start with $f(x) = \\sqrt{x}$, reflect across $x$-axis, shift right $2$ and up $5$.", zh: "构造方程：以 $f(x) = \\sqrt{x}$ 起，关于 $x$ 轴反射，向右 $2$、向上 $5$。" },
+        commonTraps: [
+          { en: "Sign of $h$ — \"right $h$\" requires $(x - h)$, not $(x + h)$", zh: "$h$ 的符号——\"右移 $h$\"需 $(x - h)$，不是 $(x + h)$" },
+        ],
+      },
+      {
+        id: "pt-1-7-8",
+        title: { en: "Distinguish Horizontal vs Vertical Transformations", zh: "区分水平变换与垂直变换" },
+        description: { en: "Decide whether a given operation acts horizontally (inside $f$) or vertically (outside $f$).", zh: "判断给定操作是作用于水平方向（$f$ 内）还是垂直方向（$f$ 外）。" },
+        howToRecognize: { en: "Several operations are listed; problem asks for direction of each.", zh: "列出若干操作，要求各自的作用方向。" },
+        steps: [
+          { en: "Operations on the OUTPUT $f(x)$ (multiply, add, negate from outside) are vertical", zh: "对输出 $f(x)$ 的操作（外乘、外加、外取负）作用于垂直方向" },
+          { en: "Operations on the INPUT $x$ before applying $f$ are horizontal (and inverse direction)", zh: "在 $f$ 前对输入 $x$ 的操作作用于水平方向（且方向相反）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "For $g(x) = 2 \\sqrt{3x} - 1$, classify each transformation as horizontal or vertical.", zh: "对 $g(x) = 2 \\sqrt{3x} - 1$，把每个变换分为水平或垂直。" },
+        commonTraps: [
+          { en: "Treating constants inside $f$ as if they had vertical effects", zh: "把 $f$ 内的常数当作垂直效应" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-7-9",
+        title: { en: "Apply Transformations in Correct Order", zh: "按正确顺序应用多个变换" },
+        description: { en: "Carefully order multiple transformations: horizontal effects (factor first, then shift) before vertical, and stretches before shifts.", zh: "谨慎排序多个变换：水平方向（先压伸再平移）先于垂直方向；伸缩先于平移。" },
+        howToRecognize: { en: "Equation has both inner factoring and shifts plus outer stretches and shifts.", zh: "方程内部含因式与平移，外部含伸缩与平移。" },
+        steps: [
+          { en: "Factor any inner coefficient: $b(x - h)$ form to read shift correctly", zh: "把内部系数因式化为 $b(x - h)$ 以正确读出平移" },
+          { en: "Apply horizontal stretch/shrink first, then horizontal shift", zh: "先水平伸缩，再水平平移" },
+          { en: "Apply vertical stretch/reflection, then vertical shift", zh: "再垂直伸缩/反射，最后垂直平移" },
+          { en: "Verify by transforming a known reference point", zh: "用已知参考点验证" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Describe the transformations from $f(x) = x^2$ to $g(x) = -2(3x - 6)^2 + 5$ in correct order.", zh: "按正确顺序描述把 $f(x) = x^2$ 变为 $g(x) = -2(3x - 6)^2 + 5$ 的过程。" },
+        commonTraps: [
+          { en: "Reading the horizontal shift as $6$ instead of $2$ (must factor: $3(x - 2)$)", zh: "把水平平移读为 $6$ 而非 $2$（应因式化为 $3(x - 2)$）" },
+        ],
+      },
+      {
+        id: "pt-1-7-10",
+        title: { en: "Application — Model with a Transformed Parent", zh: "应用——用变换的基本函数建模" },
+        description: { en: "Build a transformed parent function to fit a real-world data shape (parabolic motion, decaying signal, etc.).", zh: "构造变换的基本函数以拟合实际数据形状（抛物运动、衰减信号等）。" },
+        howToRecognize: { en: "Word problem describes a curve with a known shape but shifted/scaled from the standard parent.", zh: "应用题描述形状已知的曲线，但相对标准基本函数有平移/伸缩。" },
+        steps: [
+          { en: "Identify the parent shape that matches the situation", zh: "选定与情境匹配的基本函数形状" },
+          { en: "Determine shifts (where is the vertex/key point?) and scaling (how steep?)", zh: "确定平移（顶点/关键点位置）与伸缩（陡缓程度）" },
+          { en: "Write the transformed equation and validate against given data points", zh: "写出变换方程并用已知数据点验证" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A ball is thrown so that its height in feet at time $t$ seconds reaches a maximum of $20$ ft at $t = 2$ s, then returns to the ground at $t = 4$ s. Write a model $h(t)$ as a transformed quadratic.", zh: "一球被抛出，在 $t = 2$ 秒时达到最高 $20$ ft，于 $t = 4$ 秒落地。把高度 $h(t)$ 写为变换的二次函数。" },
+        commonTraps: [
+          { en: "Forgetting to determine the leading coefficient from a known data point", zh: "忘记由已知数据点确定首项系数" },
+        ],
+      },
+    ],
   },
   {
     id: "1-8",
     chapterId: "ch-1",
     number: "1.8",
-    title: {
-      en: "Combinations of Functions: Composite Functions",
-      zh: "函数的组合：复合函数",
-    },
+    title: { en: "Combinations of Functions: Composite Functions", zh: "函数的组合：复合函数" },
     description: {
       en: "Add, subtract, multiply, divide, and compose functions, and find their domains.",
       zh: "对函数进行加减乘除与复合运算，并求其定义域。",
     },
+    learningGoals: [
+      { en: "Compute sums, differences, products, and quotients of functions", zh: "计算函数的和、差、积与商" },
+      { en: "Find the domain of arithmetic combinations of functions", zh: "求函数算术组合的定义域" },
+      { en: "Form and evaluate composite functions", zh: "建立并求复合函数的值" },
+      { en: "Decompose a function as a composition of simpler functions", zh: "把函数分解为更简单函数的复合" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-1-8-1",
+        title: { en: "Arithmetic Combinations of Functions", zh: "函数的算术组合" },
+        explanation: {
+          en: "Given $f$ and $g$: $(f+g)(x) = f(x) + g(x)$; $(f-g)(x) = f(x) - g(x)$; $(fg)(x) = f(x)g(x)$; $(f/g)(x) = f(x)/g(x)$. The domain is the INTERSECTION of the domains of $f$ and $g$ (with $g(x) \\neq 0$ for the quotient).",
+          zh: "已知 $f$、$g$：$(f+g)(x) = f(x) + g(x)$；$(f-g)(x) = f(x) - g(x)$；$(fg)(x) = f(x)g(x)$；$(f/g)(x) = f(x)/g(x)$。定义域为 $f$ 与 $g$ 定义域的交集（商需 $g(x) \\neq 0$）。",
+        },
+        whenToUse: { en: "When two functions are combined with arithmetic operations", zh: "用算术运算组合两个函数时" },
+        commonMistake: { en: "Reporting the union of domains instead of the intersection", zh: "把定义域并集当作交集" },
+        example: { en: "$f(x) = \\sqrt{x}$, $g(x) = x - 1$: $(f+g)(x) = \\sqrt{x} + x - 1$, domain $[0, \\infty)$", zh: "$f(x) = \\sqrt{x}$、$g(x) = x - 1$：$(f+g)(x) = \\sqrt{x} + x - 1$，定义域 $[0, \\infty)$" },
+      },
+      {
+        id: "kc-1-8-2",
+        title: { en: "Composition of Functions", zh: "函数的复合" },
+        explanation: {
+          en: "$(f \\circ g)(x) = f(g(x))$ — apply $g$ first, then $f$. In general $(f \\circ g)(x) \\neq (g \\circ f)(x)$. Composition models nested processes (e.g., temperature depends on altitude, which depends on time).",
+          zh: "$(f \\circ g)(x) = f(g(x))$ — 先施 $g$，再施 $f$。一般地 $(f \\circ g)(x) \\neq (g \\circ f)(x)$。复合用于刻画嵌套过程（如温度随高度变化，高度随时间变化）。",
+        },
+        whenToUse: { en: "When the output of one function is fed as the input of another", zh: "一个函数的输出作为另一个函数的输入时" },
+        commonMistake: { en: "Multiplying $f \\cdot g$ when composition is intended", zh: "把复合误作 $f$ 与 $g$ 相乘" },
+        example: { en: "$f(x) = x^2$, $g(x) = x + 3$: $(f \\circ g)(x) = (x + 3)^2$; $(g \\circ f)(x) = x^2 + 3$", zh: "$f(x) = x^2$、$g(x) = x + 3$：$(f \\circ g)(x) = (x + 3)^2$；$(g \\circ f)(x) = x^2 + 3$" },
+      },
+      {
+        id: "kc-1-8-3",
+        title: { en: "Domain of a Composite Function", zh: "复合函数的定义域" },
+        explanation: {
+          en: "The domain of $f \\circ g$ is the set of $x$ in the domain of $g$ such that $g(x)$ is in the domain of $f$. You must check BOTH conditions.",
+          zh: "$f \\circ g$ 的定义域是 $g$ 定义域中使 $g(x)$ 仍在 $f$ 定义域内的 $x$ 的集合。两个条件都要检查。",
+        },
+        whenToUse: { en: "Whenever determining where $f \\circ g$ is defined", zh: "确定 $f \\circ g$ 在哪有定义时" },
+        commonMistake: { en: "Only checking the domain of $g$ and ignoring whether $g(x)$ lies in $f$'s domain", zh: "只检查 $g$ 的定义域，忽略 $g(x)$ 是否在 $f$ 的定义域内" },
+        example: { en: "$f(x) = \\sqrt{x}$, $g(x) = x - 5$: $(f \\circ g)(x) = \\sqrt{x - 5}$, domain $[5, \\infty)$", zh: "$f(x) = \\sqrt{x}$、$g(x) = x - 5$：$(f \\circ g)(x) = \\sqrt{x - 5}$，定义域 $[5, \\infty)$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-1-8-1",
+        name: { en: "Sum and Difference", zh: "和与差" },
+        formula: "(f \\pm g)(x) = f(x) \\pm g(x)",
+        variables: [
+          { en: "$f$, $g$ — two functions", zh: "$f$、$g$ — 两个函数" },
+        ],
+        whenToUse: { en: "Combine two functions with addition or subtraction", zh: "用加法或减法组合两个函数" },
+        commonProblemTypes: [
+          { en: "Compute $(f \\pm g)(a)$ for a specific value", zh: "求指定值处的 $(f \\pm g)(a)$" },
+          { en: "Find the formula for $f \\pm g$", zh: "写出 $f \\pm g$ 的公式" },
+        ],
+        example: { en: "$f(x) = x^2$, $g(x) = 2x$: $(f + g)(x) = x^2 + 2x$", zh: "$f(x) = x^2$、$g(x) = 2x$：$(f + g)(x) = x^2 + 2x$" },
+      },
+      {
+        id: "f-1-8-2",
+        name: { en: "Product and Quotient", zh: "积与商" },
+        formula: "(fg)(x) = f(x) \\cdot g(x), \\quad \\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)}, \\; g(x) \\neq 0",
+        variables: [
+          { en: "$f$, $g$ — two functions; for the quotient $g(x) \\neq 0$", zh: "$f$、$g$ — 两个函数；商时 $g(x) \\neq 0$" },
+        ],
+        whenToUse: { en: "Multiply or divide function outputs", zh: "对函数输出做乘除" },
+        commonProblemTypes: [
+          { en: "Compute $(fg)(a)$ or $(f/g)(a)$", zh: "求 $(fg)(a)$ 或 $(f/g)(a)$" },
+          { en: "Determine the domain of $f/g$ (exclude zeros of $g$)", zh: "求 $f/g$ 的定义域（排除 $g$ 的零点）" },
+        ],
+        example: { en: "$f(x) = x + 1$, $g(x) = x - 2$: $(f/g)(x) = \\frac{x+1}{x-2}$, domain $x \\neq 2$", zh: "$f(x) = x + 1$、$g(x) = x - 2$：$(f/g)(x) = \\frac{x+1}{x-2}$，定义域 $x \\neq 2$" },
+      },
+      {
+        id: "f-1-8-3",
+        name: { en: "Composition", zh: "复合" },
+        formula: "(f \\circ g)(x) = f(g(x))",
+        variables: [
+          { en: "Apply $g$ first, output becomes input of $f$", zh: "先施 $g$，其输出作为 $f$ 的输入" },
+        ],
+        whenToUse: { en: "Modeling nested processes; substituting one function into another", zh: "刻画嵌套过程；把一个函数代入另一个" },
+        commonProblemTypes: [
+          { en: "Form $f \\circ g$ from given $f$ and $g$", zh: "由给定 $f$、$g$ 求 $f \\circ g$" },
+          { en: "Decompose a function into a composition", zh: "把函数分解为复合形式" },
+        ],
+        example: { en: "$f(x) = \\sqrt{x}$, $g(x) = x + 4$: $(f \\circ g)(x) = \\sqrt{x + 4}$", zh: "$f(x) = \\sqrt{x}$、$g(x) = x + 4$：$(f \\circ g)(x) = \\sqrt{x + 4}$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-1-8-1",
+        title: { en: "Compute $(f \\pm g)(a)$ at a Specific Value", zh: "求 $(f \\pm g)(a)$ 在指定值处的值" },
+        description: { en: "Evaluate each function at $a$, then add or subtract.", zh: "分别求 $a$ 处的两函数值再加减。" },
+        howToRecognize: { en: "Two functions and a specific input are given.", zh: "给出两个函数与指定输入。" },
+        steps: [
+          { en: "Compute $f(a)$", zh: "求 $f(a)$" },
+          { en: "Compute $g(a)$", zh: "求 $g(a)$" },
+          { en: "Add or subtract as required", zh: "按要求相加或相减" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "$f(x) = 3x - 2$, $g(x) = x^2 + 1$. Find $(f + g)(4)$ and $(f - g)(4)$.", zh: "$f(x) = 3x - 2$、$g(x) = x^2 + 1$。求 $(f + g)(4)$ 与 $(f - g)(4)$。" },
+        commonTraps: [
+          { en: "Sign error when distributing the negative in $f - g$", zh: "$f - g$ 中分配负号时出错" },
+        ],
+      },
+      {
+        id: "pt-1-8-2",
+        title: { en: "Compute $(fg)(a)$ and $(f/g)(a)$", zh: "求 $(fg)(a)$ 与 $(f/g)(a)$" },
+        description: { en: "Evaluate each function and then multiply or divide.", zh: "分别求函数值后做乘除。" },
+        howToRecognize: { en: "Problem asks for product or quotient of $f$ and $g$ at a value.", zh: "题目要求 $f$ 与 $g$ 在某值处的积或商。" },
+        steps: [
+          { en: "Compute $f(a)$ and $g(a)$", zh: "求 $f(a)$ 与 $g(a)$" },
+          { en: "Multiply for $(fg)(a)$, divide for $(f/g)(a)$", zh: "求积时相乘，求商时相除" },
+          { en: "For quotient, check $g(a) \\neq 0$", zh: "求商时检查 $g(a) \\neq 0$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "$f(x) = x + 5$, $g(x) = x - 1$. Find $(fg)(3)$ and $(f/g)(3)$.", zh: "$f(x) = x + 5$、$g(x) = x - 1$。求 $(fg)(3)$ 与 $(f/g)(3)$。" },
+        commonTraps: [
+          { en: "Forgetting to check whether $g(a) = 0$ in the quotient", zh: "求商时忘记检查 $g(a) = 0$" },
+        ],
+      },
+      {
+        id: "pt-1-8-3",
+        title: { en: "Find $(f \\circ g)(a)$", zh: "求 $(f \\circ g)(a)$" },
+        description: { en: "Apply $g$ to $a$, then $f$ to the result.", zh: "先把 $a$ 代入 $g$，再把结果代入 $f$。" },
+        howToRecognize: { en: "Problem asks for composite value at a specific input.", zh: "题目要求指定输入处的复合函数值。" },
+        steps: [
+          { en: "Compute $g(a)$", zh: "求 $g(a)$" },
+          { en: "Plug $g(a)$ into $f$ to get $f(g(a))$", zh: "把 $g(a)$ 代入 $f$ 得 $f(g(a))$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "$f(x) = x^2 - 1$, $g(x) = x + 2$. Find $(f \\circ g)(3)$.", zh: "$f(x) = x^2 - 1$、$g(x) = x + 2$。求 $(f \\circ g)(3)$。" },
+        commonTraps: [
+          { en: "Reversing the order: computing $g(f(a))$ when asked for $f(g(a))$", zh: "顺序弄反：要求 $f(g(a))$ 却算了 $g(f(a))$" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-1-8-4",
+        title: { en: "Find Formulas for $f + g$, $f - g$, $fg$, $f/g$", zh: "求 $f + g$、$f - g$、$fg$、$f/g$ 的一般公式" },
+        description: { en: "Build the resulting function as an algebraic expression in $x$.", zh: "把结果作为关于 $x$ 的代数式给出。" },
+        howToRecognize: { en: "Problem asks for the formula (not just a value) of a combination.", zh: "题目要求组合的公式（而非某点的值）。" },
+        steps: [
+          { en: "Substitute $f(x)$ and $g(x)$ into the appropriate operation", zh: "代入 $f(x)$ 与 $g(x)$ 到相应运算" },
+          { en: "Simplify (combine like terms; factor if helpful)", zh: "化简（合并同类项；必要时因式分解）" },
+          { en: "State any domain restrictions, especially for $f/g$", zh: "陈述定义域限制，尤其是 $f/g$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "$f(x) = x^2 + 1$, $g(x) = x - 3$. Find $(f \\cdot g)(x)$ and state its domain.", zh: "$f(x) = x^2 + 1$、$g(x) = x - 3$。求 $(f \\cdot g)(x)$ 并给出定义域。" },
+        commonTraps: [
+          { en: "Missing parentheses when subtracting (sign errors throughout)", zh: "做减法时漏括号（导致全篇符号错误）" },
+        ],
+      },
+      {
+        id: "pt-1-8-5",
+        title: { en: "Find $(f \\circ g)(x)$ as a Formula", zh: "把 $(f \\circ g)(x)$ 写成公式" },
+        description: { en: "Substitute $g(x)$ wherever $x$ appears in $f$.", zh: "把 $f$ 中所有 $x$ 替换为 $g(x)$。" },
+        howToRecognize: { en: "Problem asks for the composite function expression.", zh: "题目要求复合函数的表达式。" },
+        steps: [
+          { en: "Write the formula for $f$", zh: "写出 $f$ 的公式" },
+          { en: "Replace every $x$ in $f$ with the entire expression $g(x)$ (use parentheses)", zh: "把 $f$ 中所有 $x$ 替换为 $g(x)$ 的整体（加括号）" },
+          { en: "Simplify the resulting expression", zh: "化简结果" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "$f(x) = 2x + 5$, $g(x) = x^2$. Find $(f \\circ g)(x)$ and $(g \\circ f)(x)$.", zh: "$f(x) = 2x + 5$、$g(x) = x^2$。求 $(f \\circ g)(x)$ 与 $(g \\circ f)(x)$。" },
+        commonTraps: [
+          { en: "Missing parentheses around $g(x)$ when substituting (especially with squaring)", zh: "代入 $g(x)$ 时漏括号（尤其平方时）" },
+        ],
+      },
+      {
+        id: "pt-1-8-6",
+        title: { en: "Find Domain of $f / g$", zh: "求 $f / g$ 的定义域" },
+        description: { en: "Take the intersection of the domains and exclude zeros of $g$.", zh: "取两定义域交集并排除 $g$ 的零点。" },
+        howToRecognize: { en: "Problem involves a quotient of functions.", zh: "题目涉及函数商。" },
+        steps: [
+          { en: "Find domain of $f$ and domain of $g$", zh: "分别求 $f$、$g$ 的定义域" },
+          { en: "Take their intersection", zh: "求交集" },
+          { en: "Solve $g(x) = 0$ and exclude those $x$-values", zh: "解 $g(x) = 0$ 并排除这些值" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "$f(x) = \\sqrt{x + 2}$, $g(x) = x^2 - 4$. Find the domain of $f/g$.", zh: "$f(x) = \\sqrt{x + 2}$、$g(x) = x^2 - 4$。求 $f/g$ 的定义域。" },
+        commonTraps: [
+          { en: "Forgetting to exclude all zeros of $g$ (might be more than one)", zh: "忘记排除 $g$ 的所有零点（可能不止一个）" },
+        ],
+      },
+      {
+        id: "pt-1-8-7",
+        title: { en: "Find Domain of $f \\circ g$", zh: "求 $f \\circ g$ 的定义域" },
+        description: { en: "Identify $x$ in the domain of $g$ such that $g(x)$ also lies in the domain of $f$.", zh: "在 $g$ 的定义域中找出使 $g(x)$ 也在 $f$ 定义域内的 $x$。" },
+        howToRecognize: { en: "Problem asks for the domain of a composite function.", zh: "题目要求复合函数的定义域。" },
+        steps: [
+          { en: "Find the domain of $g$", zh: "求 $g$ 的定义域" },
+          { en: "Find the domain of $f$", zh: "求 $f$ 的定义域" },
+          { en: "Solve $g(x) \\in \\text{domain of } f$ for $x$", zh: "解 $g(x) \\in f$ 的定义域对 $x$ 的限制" },
+          { en: "Intersect the result with the domain of $g$", zh: "与 $g$ 的定义域取交集" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "$f(x) = \\sqrt{x}$, $g(x) = 4 - x^2$. Find the domain of $f \\circ g$.", zh: "$f(x) = \\sqrt{x}$、$g(x) = 4 - x^2$。求 $f \\circ g$ 的定义域。" },
+        commonTraps: [
+          { en: "Returning the domain of $g$ alone, without checking $g(x) \\in \\text{domain}(f)$", zh: "只给 $g$ 的定义域，未检查 $g(x) \\in f$ 的定义域" },
+        ],
+      },
+      {
+        id: "pt-1-8-8",
+        title: { en: "Decompose a Function as $f \\circ g$", zh: "把函数分解为 $f \\circ g$" },
+        description: { en: "Identify an inner function $g$ and outer function $f$ so that $h(x) = f(g(x))$.", zh: "找出内函数 $g$ 与外函数 $f$ 使 $h(x) = f(g(x))$。" },
+        howToRecognize: { en: "Problem asks to write $h$ as a composition (not unique — multiple valid choices).", zh: "题目要求把 $h$ 写为复合形式（答案不唯一）。" },
+        steps: [
+          { en: "Identify the \"inner\" expression — what does the outer operation act on?", zh: "找出\"内层\"——外层运算作用在什么上？" },
+          { en: "Let $g(x)$ be that inner expression", zh: "把内层式记为 $g(x)$" },
+          { en: "Let $f$ be the outer operation acting on a generic input", zh: "把外层运算作为对一般输入的操作记为 $f$" },
+          { en: "Verify $f(g(x)) = h(x)$", zh: "验证 $f(g(x)) = h(x)$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Express $h(x) = (3x + 1)^4$ as $f \\circ g$.", zh: "把 $h(x) = (3x + 1)^4$ 写成 $f \\circ g$。" },
+        commonTraps: [
+          { en: "Choosing $g$ that is too simple, leaving most of the work to $f$ (not wrong but less useful)", zh: "$g$ 选得过简，把大部分工作留给 $f$（不错但意义有限）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-1-8-9",
+        title: { en: "Compose Three or More Functions", zh: "复合三个或更多函数" },
+        description: { en: "Find $f \\circ g \\circ h$ by composing one pair at a time.", zh: "通过每次复合一对求 $f \\circ g \\circ h$。" },
+        howToRecognize: { en: "Three or more functions are given for composition.", zh: "给出三个或更多函数进行复合。" },
+        steps: [
+          { en: "Compute $g \\circ h$ first (innermost pair)", zh: "先求 $g \\circ h$（最内一对）" },
+          { en: "Then compose $f$ with the result: $f(g(h(x)))$", zh: "再把 $f$ 与结果复合：$f(g(h(x)))$" },
+          { en: "Simplify carefully, keeping parentheses", zh: "谨慎化简，保留括号" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "$f(x) = x^2$, $g(x) = x + 1$, $h(x) = \\sqrt{x}$. Find $(f \\circ g \\circ h)(x)$.", zh: "$f(x) = x^2$、$g(x) = x + 1$、$h(x) = \\sqrt{x}$。求 $(f \\circ g \\circ h)(x)$。" },
+        commonTraps: [
+          { en: "Composing in the wrong order (composition is right-to-left)", zh: "复合顺序错误（应从右到左）" },
+        ],
+      },
+      {
+        id: "pt-1-8-10",
+        title: { en: "Application — Build a Composite Model", zh: "应用——构造复合模型" },
+        description: { en: "Combine two related real-world functions into a single composite (e.g., revenue as a function of price, where price depends on time).", zh: "把两个相关的实际函数合为一个复合函数（如收入是价格的函数，价格随时间变化）。" },
+        howToRecognize: { en: "Word problem describes one quantity depending on another that itself depends on a third variable.", zh: "应用题描述一个量依赖于另一个量，而后者又依赖于第三个变量。" },
+        steps: [
+          { en: "Identify the inner and outer relationships", zh: "确定内、外两层关系" },
+          { en: "Express each as a function", zh: "把每层写成函数" },
+          { en: "Compose them so the final function takes the original input variable", zh: "复合使最终函数以原始输入变量为自变量" },
+          { en: "Use the composite to answer the question and interpret with units", zh: "用复合函数回答并按单位解释" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A circular oil spill spreads such that its radius (in meters) grows by $r(t) = 2t$ where $t$ is hours. Express the spill area as a function of time.", zh: "圆形油污以 $r(t) = 2t$（米）扩散，$t$ 为小时。把油污面积表为时间的函数。" },
+        commonTraps: [
+          { en: "Composing in the wrong direction (e.g., $r(A(t))$ instead of $A(r(t))$)", zh: "复合方向错误（如把 $A(r(t))$ 写成 $r(A(t))$）" },
+        ],
+      },
+    ],
   },
 ];
 
