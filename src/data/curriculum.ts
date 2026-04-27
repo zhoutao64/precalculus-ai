@@ -3728,14 +3728,254 @@ const chapter2Units: Unit[] = [
     id: "2-7",
     chapterId: "ch-2",
     number: "2.7",
-    title: {
-      en: "Nonlinear Inequalities",
-      zh: "非线性不等式",
-    },
+    title: { en: "Nonlinear Inequalities", zh: "非线性不等式" },
     description: {
       en: "Solve polynomial and rational inequalities and represent solution sets on a number line.",
       zh: "求解多项式与有理不等式，并在数轴上表示解集。",
     },
+    learningGoals: [
+      { en: "Solve polynomial inequalities using sign analysis", zh: "用符号分析解多项式不等式" },
+      { en: "Solve rational inequalities using critical numbers from numerator and denominator", zh: "用分子分母的关键数解有理不等式" },
+      { en: "Express solution sets in interval notation and on number lines", zh: "用区间记号和数轴表示解集" },
+      { en: "Apply nonlinear inequalities to model real-world constraints", zh: "用非线性不等式建模实际约束" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-7-1",
+        title: { en: "Sign Analysis (Test Intervals)", zh: "符号分析（试探区间法）" },
+        explanation: {
+          en: "To solve a polynomial inequality $f(x) \\lessgtr 0$, factor $f(x)$, find its real zeros (critical numbers), and split the real line into intervals at those points. Test ONE value in each interval to determine the sign of $f(x)$ there.",
+          zh: "解多项式不等式 $f(x) \\lessgtr 0$，先把 $f(x)$ 分解、求实零点（关键数），并以这些点将数轴分段。在每个区间内取一个值检验 $f(x)$ 的符号。",
+        },
+        whenToUse: { en: "Any time a nonlinear inequality must be solved by determining where the expression is positive or negative", zh: "凡是需要判断表达式正负来解非线性不等式时" },
+        commonMistake: { en: "Including zeros of denominators in the solution set; using a single test value instead of one per interval", zh: "把分母零点纳入解集；只用一个测试值而非每个区间一个" },
+        example: { en: "$x^2 - x - 6 < 0$ ⇒ critical numbers $-2, 3$. Sign analysis: $(-2, 3)$ negative ⇒ solution $(-2, 3)$", zh: "$x^2 - x - 6 < 0$ ⇒ 关键数 $-2, 3$。符号分析：$(-2, 3)$ 为负 ⇒ 解 $(-2, 3)$" },
+      },
+      {
+        id: "kc-2-7-2",
+        title: { en: "Polynomial vs Rational Inequalities", zh: "多项式与有理不等式" },
+        explanation: {
+          en: "For polynomial inequalities, all critical numbers come from zeros of $f$. For rational inequalities, critical numbers also include zeros of the denominator (these are ALWAYS excluded from the solution, even with $\\geq$ or $\\leq$).",
+          zh: "多项式不等式的关键数全部来自 $f$ 的零点。有理不等式的关键数还包括分母的零点（即使是 $\\geq$ 或 $\\leq$，这些点都必须从解集中排除）。",
+        },
+        whenToUse: { en: "Whenever a fraction is part of the inequality", zh: "凡是不等式中含分数时" },
+        commonMistake: { en: "Multiplying both sides by a denominator that may be negative — flips inequality unpredictably", zh: "用可能为负的分母两边相乘——不等号方向可能错乱" },
+        example: { en: "$\\frac{x - 1}{x + 2} \\geq 0$: critical numbers $1, -2$ (but $x = -2$ excluded). Solution $(-\\infty, -2) \\cup [1, \\infty)$", zh: "$\\frac{x - 1}{x + 2} \\geq 0$：关键数 $1, -2$（但排除 $x = -2$）。解 $(-\\infty, -2) \\cup [1, \\infty)$" },
+      },
+      {
+        id: "kc-2-7-3",
+        title: { en: "Boundary Points: Included or Excluded", zh: "边界点：包含还是排除" },
+        explanation: {
+          en: "For strict inequalities ($<$ or $>$), boundary points are EXCLUDED (use parentheses). For non-strict ($\\leq$ or $\\geq$), boundary points are INCLUDED (use brackets) — UNLESS they are denominator zeros, which are always excluded.",
+          zh: "严格不等式（$<$ 或 $>$）：边界点排除（用圆括号）。非严格（$\\leq$ 或 $\\geq$）：边界点包含（用方括号）——但分母零点永远排除。",
+        },
+        whenToUse: { en: "When writing the final solution in interval notation", zh: "用区间记号写最终解时" },
+        commonMistake: { en: "Including a denominator zero just because the inequality is $\\geq$", zh: "因为不等号是 $\\geq$ 就把分母零点纳入" },
+        example: { en: "$\\frac{1}{x - 2} \\geq 0$: $x - 2 > 0$ needed (since $1 > 0$); $x = 2$ EXCLUDED ⇒ $(2, \\infty)$", zh: "$\\frac{1}{x - 2} \\geq 0$：需 $x - 2 > 0$（因 $1 > 0$）；$x = 2$ 排除 ⇒ $(2, \\infty)$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-7-1",
+        name: { en: "Polynomial Inequality Solution Method", zh: "多项式不等式解法" },
+        formula: "f(x) \\lessgtr 0 \\xrightarrow{\\text{factor}} \\text{critical numbers} \\xrightarrow{\\text{sign chart}} \\text{intervals}",
+        variables: [
+          { en: "Critical numbers — real zeros of $f(x)$", zh: "关键数——$f(x)$ 的实零点" },
+        ],
+        whenToUse: { en: "Polynomial inequality of any degree", zh: "任意次数的多项式不等式" },
+        commonProblemTypes: [
+          { en: "Solve quadratic, cubic, or higher polynomial inequalities", zh: "解二次、三次或更高次多项式不等式" },
+        ],
+        example: { en: "$x^3 - x \\geq 0$: critical numbers $-1, 0, 1$. Solution $[-1, 0] \\cup [1, \\infty)$", zh: "$x^3 - x \\geq 0$：关键数 $-1, 0, 1$。解 $[-1, 0] \\cup [1, \\infty)$" },
+      },
+      {
+        id: "f-2-7-2",
+        name: { en: "Rational Inequality Solution Method", zh: "有理不等式解法" },
+        formula: "\\frac{N(x)}{D(x)} \\lessgtr 0 \\xrightarrow{\\text{zeros of } N \\text{ and } D} \\text{critical numbers} \\xrightarrow{\\text{sign chart}} \\text{solution (excluding } D \\text{ zeros)}",
+        variables: [
+          { en: "Critical numbers from zeros of both $N$ and $D$", zh: "关键数包含 $N$ 与 $D$ 的零点" },
+          { en: "Zeros of $D$ always excluded", zh: "$D$ 的零点始终排除" },
+        ],
+        whenToUse: { en: "Rational inequality $\\frac{N(x)}{D(x)} \\lessgtr 0$", zh: "有理不等式 $\\frac{N(x)}{D(x)} \\lessgtr 0$" },
+        commonProblemTypes: [
+          { en: "Solve $\\frac{\\text{poly}}{\\text{poly}} \\lessgtr 0$", zh: "解 $\\frac{\\text{多项式}}{\\text{多项式}} \\lessgtr 0$" },
+          { en: "Get the inequality to one side first (compared to $0$)", zh: "先把不等式化为一边为 $0$ 的形式" },
+        ],
+        example: { en: "$\\frac{x + 1}{x - 3} > 0$: critical $-1, 3$. Solution $(-\\infty, -1) \\cup (3, \\infty)$", zh: "$\\frac{x + 1}{x - 3} > 0$：关键数 $-1, 3$。解 $(-\\infty, -1) \\cup (3, \\infty)$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-7-1",
+        title: { en: "Solve a Quadratic Inequality (Strict)", zh: "解严格二次不等式" },
+        description: { en: "Factor and use sign analysis for $ax^2 + bx + c < 0$ or $> 0$.", zh: "对 $ax^2 + bx + c < 0$ 或 $> 0$ 进行因式分解并做符号分析。" },
+        howToRecognize: { en: "Quadratic inequality with strict inequality.", zh: "严格不等号的二次不等式。" },
+        steps: [
+          { en: "Move all terms to one side; one side must be $0$", zh: "把所有项移到一边；另一边为 $0$" },
+          { en: "Factor the quadratic", zh: "对二次式因式分解" },
+          { en: "Identify critical numbers (roots)", zh: "确定关键数（根）" },
+          { en: "Use sign chart on intervals; pick those matching the inequality", zh: "对各区间画符号表；选符合不等号的" },
+          { en: "Use parentheses (strict inequality excludes endpoints)", zh: "用圆括号（严格不等号排除端点）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $x^2 + x - 12 < 0$.", zh: "解 $x^2 + x - 12 < 0$。" },
+        commonTraps: [
+          { en: "Including endpoints when the inequality is strict", zh: "严格不等号时包含了端点" },
+        ],
+      },
+      {
+        id: "pt-2-7-2",
+        title: { en: "Solve a Quadratic Inequality (Non-Strict)", zh: "解非严格二次不等式" },
+        description: { en: "Same procedure but boundaries are INCLUDED.", zh: "步骤相同但端点包含。" },
+        howToRecognize: { en: "Quadratic inequality with $\\leq$ or $\\geq$.", zh: "$\\leq$ 或 $\\geq$ 的二次不等式。" },
+        steps: [
+          { en: "Move to one side; factor", zh: "移项；因式分解" },
+          { en: "Find critical numbers", zh: "求关键数" },
+          { en: "Sign analysis", zh: "符号分析" },
+          { en: "Use brackets (include endpoints)", zh: "用方括号（包含端点）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $x^2 - 2x - 8 \\geq 0$.", zh: "解 $x^2 - 2x - 8 \\geq 0$。" },
+        commonTraps: [
+          { en: "Excluding endpoints out of habit", zh: "习惯性排除端点" },
+        ],
+      },
+      {
+        id: "pt-2-7-3",
+        title: { en: "Identify Critical Numbers", zh: "识别关键数" },
+        description: { en: "List all values where the expression equals zero or is undefined.", zh: "列出使表达式为零或无定义的所有值。" },
+        howToRecognize: { en: "Problem asks for critical numbers (no need to solve full inequality).", zh: "题目只要求关键数（不需解完整不等式）。" },
+        steps: [
+          { en: "For polynomials: solve $f(x) = 0$", zh: "多项式：解 $f(x) = 0$" },
+          { en: "For rational expressions: also include zeros of denominator", zh: "有理表达式：还要包含分母的零点" },
+          { en: "Order them on the number line", zh: "在数轴上排序" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the critical numbers of $\\frac{x^2 - 4}{x + 1}$.", zh: "求 $\\frac{x^2 - 4}{x + 1}$ 的关键数。" },
+        commonTraps: [
+          { en: "Forgetting denominator zeros for rational expressions", zh: "有理表达式忘记分母零点" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-7-4",
+        title: { en: "Solve a Cubic or Higher Polynomial Inequality", zh: "解三次或更高次多项式不等式" },
+        description: { en: "Factor completely, find all real zeros, sign analysis on multiple intervals.", zh: "完全因式分解，求所有实零点，对多个区间做符号分析。" },
+        howToRecognize: { en: "Polynomial inequality of degree $\\geq 3$.", zh: "次数 $\\geq 3$ 的多项式不等式。" },
+        steps: [
+          { en: "Move all to one side and factor completely", zh: "移项后完全分解" },
+          { en: "Find all real critical numbers", zh: "求所有实关键数" },
+          { en: "Sign analysis on each interval", zh: "对每个区间符号分析" },
+          { en: "Combine intervals matching the inequality", zh: "合并符合不等号的区间" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $x^3 - 4x^2 + x + 6 \\leq 0$.", zh: "解 $x^3 - 4x^2 + x + 6 \\leq 0$。" },
+        commonTraps: [
+          { en: "Stopping at partial factoring; missing some critical numbers", zh: "因式分解未完成；漏掉某些关键数" },
+        ],
+      },
+      {
+        id: "pt-2-7-5",
+        title: { en: "Solve a Simple Rational Inequality", zh: "解简单有理不等式" },
+        description: { en: "Get to one side, find critical numbers from numerator and denominator, sign analysis.", zh: "化为一边，由分子分母求关键数，做符号分析。" },
+        howToRecognize: { en: "Rational expression compared to $0$ (or moved to one side).", zh: "有理表达式与 $0$ 比较（或移到一边）。" },
+        steps: [
+          { en: "Move all to one side; combine into a single fraction", zh: "移项；合并为单一分数" },
+          { en: "Find zeros of numerator and denominator", zh: "求分子分母的零点" },
+          { en: "Sign analysis on intervals", zh: "对各区间符号分析" },
+          { en: "Solution: union of intervals matching inequality, EXCLUDING denominator zeros", zh: "解：合并符合不等号的区间，排除分母零点" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\frac{x - 2}{x + 1} \\geq 0$.", zh: "解 $\\frac{x - 2}{x + 1} \\geq 0$。" },
+        commonTraps: [
+          { en: "Multiplying by the denominator without considering its sign", zh: "未考虑分母符号就两边乘分母" },
+        ],
+      },
+      {
+        id: "pt-2-7-6",
+        title: { en: "Inequalities with Already-Factored Polynomials", zh: "已因式分解的多项式不等式" },
+        description: { en: "Skip factoring step; identify critical numbers directly.", zh: "省去因式分解步骤；直接读关键数。" },
+        howToRecognize: { en: "Polynomial is already given in factored form.", zh: "已给出因式分解形式。" },
+        steps: [
+          { en: "Read critical numbers from the factors", zh: "由因式读出关键数" },
+          { en: "Sign analysis (use a chart)", zh: "符号分析（用表格）" },
+          { en: "Choose intervals matching the inequality", zh: "选符合不等号的区间" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $(x - 2)^2 (x + 1) > 0$.", zh: "解 $(x - 2)^2 (x + 1) > 0$。" },
+        commonTraps: [
+          { en: "Forgetting that even-multiplicity factors don't change sign", zh: "忘记偶重因式不变号" },
+        ],
+      },
+      {
+        id: "pt-2-7-7",
+        title: { en: "Solve Compound Nonlinear Inequalities", zh: "解复合非线性不等式" },
+        description: { en: "Solve two inequalities and intersect (\"and\") or union (\"or\") their solutions.", zh: "分别解两个不等式，再取交集（\"且\"）或并集（\"或\"）。" },
+        howToRecognize: { en: "Compound statement like \"$f(x) > 0$ and $g(x) < 0$\" or a chained form.", zh: "复合形式如\"$f(x) > 0$ 且 $g(x) < 0$\"或链式不等式。" },
+        steps: [
+          { en: "Solve each inequality separately", zh: "分别解每个不等式" },
+          { en: "Intersect for \"and\"; union for \"or\"", zh: "\"且\"取交集；\"或\"取并集" },
+          { en: "Write the combined solution in interval notation", zh: "用区间记号给出合并解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $x^2 - 4 \\geq 0$ and $x - 5 < 0$ simultaneously.", zh: "联立解 $x^2 - 4 \\geq 0$ 与 $x - 5 < 0$。" },
+        commonTraps: [
+          { en: "Mixing up \"and\" and \"or\" — they give very different solutions", zh: "把\"且\"与\"或\"弄反——结果差别很大" },
+        ],
+      },
+      {
+        id: "pt-2-7-8",
+        title: { en: "Move Constants and Rational Terms to Compare with Zero", zh: "把常数和有理项移到一边与零比较" },
+        description: { en: "Rewrite an inequality so one side is $0$, then apply sign analysis.", zh: "把不等式化为一边为 $0$，再做符号分析。" },
+        howToRecognize: { en: "Inequality has terms on both sides (not yet compared to $0$).", zh: "不等式两边都有项（尚未与 $0$ 比较）。" },
+        steps: [
+          { en: "Subtract one side from the other to get one side $= 0$", zh: "把一边减掉另一边，使一边等于 $0$" },
+          { en: "Combine into one expression (single fraction if rational)", zh: "合并为单一表达式（有理时合并为单一分数）" },
+          { en: "Apply sign analysis", zh: "做符号分析" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\frac{x}{x - 1} > 2$.", zh: "解 $\\frac{x}{x - 1} > 2$。" },
+        commonTraps: [
+          { en: "Multiplying both sides by $(x - 1)$ without case-splitting on its sign", zh: "未对 $(x - 1)$ 的符号分情况讨论就两边相乘" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-7-9",
+        title: { en: "Application — Profit, Height, or Speed Constraints", zh: "应用——利润、高度或速度约束" },
+        description: { en: "Set up and solve a nonlinear inequality from a real-world scenario.", zh: "由实际场景建立并求解非线性不等式。" },
+        howToRecognize: { en: "Word problem asks \"when is\" some quadratic / rational quantity above or below a value.", zh: "应用题问某二次/有理量何时高于或低于某值。" },
+        steps: [
+          { en: "Translate the scenario to a function $f(t)$ or $f(x)$", zh: "把场景翻译为函数 $f(t)$ 或 $f(x)$" },
+          { en: "Set up the inequality (e.g., $f(t) > C$)", zh: "建立不等式（如 $f(t) > C$）" },
+          { en: "Solve via sign analysis", zh: "用符号分析求解" },
+          { en: "Interpret in context (e.g., \"between $1$ and $4$ seconds\")", zh: "结合情境解释（如\"在 $1$ 到 $4$ 秒之间\"）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A projectile's height (in feet) at time $t$ (s) is $h(t) = -16t^2 + 80t$. For what time intervals is the projectile above $64$ ft?", zh: "抛射体在 $t$（秒）时高度为 $h(t) = -16t^2 + 80t$（英尺）。何时高度在 $64$ ft 以上？" },
+        commonTraps: [
+          { en: "Forgetting to restrict to physically meaningful $t$ (e.g., $t \\geq 0$)", zh: "忘记把 $t$ 限制在物理上合理的范围（如 $t \\geq 0$）" },
+        ],
+      },
+      {
+        id: "pt-2-7-10",
+        title: { en: "Inequalities with Multiple Critical Points", zh: "含多个关键点的不等式" },
+        description: { en: "Solve inequalities involving rational expressions with multiple zeros and asymptotes; require careful sign chart.", zh: "解含多个零点与渐近线的有理表达式不等式；需细致的符号表。" },
+        howToRecognize: { en: "Rational expression with multiple distinct zeros in numerator AND denominator.", zh: "有理表达式分子分母均含多个不同零点。" },
+        steps: [
+          { en: "Combine to a single fraction, fully factored", zh: "合并为完全分解的单一分数" },
+          { en: "List ALL critical numbers (numerator and denominator)", zh: "列出所有关键数（分子与分母）" },
+          { en: "Set up a complete sign chart", zh: "建立完整的符号表" },
+          { en: "Identify intervals matching the inequality, excluding denominator zeros", zh: "选符合不等号的区间，排除分母零点" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $\\frac{x^2 - 4}{x^2 - 9} \\leq 0$.", zh: "解 $\\frac{x^2 - 4}{x^2 - 9} \\leq 0$。" },
+        commonTraps: [
+          { en: "Including denominator zeros in a $\\leq$ solution", zh: "在 $\\leq$ 解中包含了分母零点" },
+        ],
+      },
+    ],
   },
 ];
 
