@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { chapters } from "@/data/curriculum";
-import { getAIProvider, SYSTEM_TUTOR } from "@/lib/ai";
+import { getAIProvider } from "@/lib/ai";
 import type { SupportedLanguage } from "@/types/curriculum";
 
 export async function POST(req: Request) {
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       }
     }
 
-    const systemPrompt = SYSTEM_TUTOR(language);
+    const systemPrompt = `You are a precise and patient precalculus tutor. Respond in ${language === "zh" ? "Chinese" : "English"}. Use LaTeX (delimited by $...$ inline and $$...$$ block) for all math formulas. Use Markdown formatting (headers, lists, bold) for clear structure. Do NOT wrap your response in JSON — reply with the answer directly as formatted text.`;
     const userMessage = [
       unitContext && `Context: ${unitContext}`,
       context && `Additional context: ${context}`,
@@ -46,7 +46,15 @@ export async function POST(req: Request) {
       temperature: 0.4,
     });
 
-    return NextResponse.json({ answer: result.text });
+    // If AI accidentally returns JSON-wrapped answer, extract it
+    let answerText = result.text;
+    try {
+      const parsed = JSON.parse(answerText);
+      if (parsed.answer) answerText = parsed.answer;
+    } catch {
+      // Not JSON, use as-is (expected)
+    }
+    return NextResponse.json({ answer: answerText });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     if (message.includes("AI_API_KEY")) {
