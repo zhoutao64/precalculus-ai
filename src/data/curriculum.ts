@@ -3984,27 +3984,535 @@ const chapter3Units: Unit[] = [
     id: "3-1",
     chapterId: "ch-3",
     number: "3.1",
-    title: {
-      en: "Exponential Functions and Their Graphs",
-      zh: "指数函数及其图像",
-    },
+    title: { en: "Exponential Functions and Their Graphs", zh: "指数函数及其图像" },
     description: {
       en: "Recognize, evaluate, and graph exponential functions, including the natural exponential function.",
       zh: "识别、求值并绘制指数函数（含自然指数函数）的图像。",
     },
+    learningGoals: [
+      { en: "Recognize and evaluate exponential functions", zh: "识别并求指数函数的值" },
+      { en: "Graph exponential functions and their transformations", zh: "绘制指数函数及其变换的图像" },
+      { en: "Use the natural base $e$ and the natural exponential function $f(x) = e^x$", zh: "使用自然底数 $e$ 与自然指数函数 $f(x) = e^x$" },
+      { en: "Apply exponential functions to compound interest and growth/decay problems", zh: "应用指数函数解决复利及增长/衰减问题" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-3-1-1",
+        title: { en: "Exponential Function Definition", zh: "指数函数定义" },
+        explanation: {
+          en: "An exponential function has the form $f(x) = a^x$ where $a > 0$ and $a \\neq 1$. The variable $x$ is in the EXPONENT (not the base). Domain: all real numbers. Range: $(0, \\infty)$.",
+          zh: "指数函数形如 $f(x) = a^x$，其中 $a > 0$ 且 $a \\neq 1$。变量 $x$ 在指数位置（不是底数）。定义域：全体实数。值域：$(0, \\infty)$。",
+        },
+        whenToUse: { en: "Recognizing growth/decay processes; interest and population modeling", zh: "识别增长/衰减过程；利息与人口建模" },
+        commonMistake: { en: "Confusing $x^a$ (power) with $a^x$ (exponential) — the variable position is critical", zh: "混淆 $x^a$（幂函数）与 $a^x$（指数函数）——变量位置至关重要" },
+        example: { en: "$f(x) = 2^x$: $f(0) = 1$, $f(3) = 8$, $f(-2) = \\tfrac{1}{4}$", zh: "$f(x) = 2^x$：$f(0) = 1$，$f(3) = 8$，$f(-2) = \\tfrac{1}{4}$" },
+      },
+      {
+        id: "kc-3-1-2",
+        title: { en: "Growth vs Decay; Graph Behavior", zh: "增长与衰减；图像行为" },
+        explanation: {
+          en: "If $a > 1$, $f(x) = a^x$ is increasing (exponential GROWTH). If $0 < a < 1$, it is decreasing (exponential DECAY). Both pass through $(0, 1)$ and have horizontal asymptote $y = 0$.",
+          zh: "若 $a > 1$，$f(x) = a^x$ 单调递增（指数增长）。若 $0 < a < 1$，单调递减（指数衰减）。两种情形都过 $(0, 1)$，水平渐近线为 $y = 0$。",
+        },
+        whenToUse: { en: "Sketching exponential graphs; modeling natural phenomena", zh: "绘制指数函数图像；建模自然现象" },
+        commonMistake: { en: "Drawing the curve crossing the $x$-axis (it never does for pure $a^x$)", zh: "把 $a^x$ 的曲线画成穿过 $x$ 轴（不会）" },
+        example: { en: "$y = 3^x$: growth, through $(0, 1)$, $(1, 3)$. $y = (\\tfrac{1}{2})^x$: decay, through $(0, 1)$, $(1, \\tfrac{1}{2})$", zh: "$y = 3^x$：增长，过 $(0, 1)$、$(1, 3)$。$y = (\\tfrac{1}{2})^x$：衰减，过 $(0, 1)$、$(1, \\tfrac{1}{2})$" },
+      },
+      {
+        id: "kc-3-1-3",
+        title: { en: "Natural Base $e$", zh: "自然底数 $e$" },
+        explanation: {
+          en: "$e \\approx 2.71828$ is an irrational number defined as $\\lim_{n \\to \\infty} (1 + \\tfrac{1}{n})^n$. The natural exponential function $f(x) = e^x$ is the most important exponential function in calculus and applications, especially continuous growth and continuous compounding.",
+          zh: "$e \\approx 2.71828$ 是无理数，定义为 $\\lim_{n \\to \\infty} (1 + \\tfrac{1}{n})^n$。自然指数函数 $f(x) = e^x$ 在微积分与应用（尤其是连续增长与连续复利）中最为重要。",
+        },
+        whenToUse: { en: "Continuous growth/decay problems; calculus contexts", zh: "连续增长/衰减问题；微积分情境" },
+        commonMistake: { en: "Treating $e$ as exactly $2.7$ — it's irrational, with infinitely many decimals", zh: "把 $e$ 当作恰为 $2.7$——它是无理数，有无限位小数" },
+        example: { en: "$e^0 = 1$, $e^1 \\approx 2.718$, $e^{-1} \\approx 0.368$", zh: "$e^0 = 1$，$e^1 \\approx 2.718$，$e^{-1} \\approx 0.368$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-3-1-1",
+        name: { en: "Exponential Function (General)", zh: "指数函数（一般式）" },
+        formula: "f(x) = a^x, \\; a > 0, \\; a \\neq 1",
+        variables: [
+          { en: "$a$ — base (positive, not 1)", zh: "$a$ — 底数（正且不为 1）" },
+          { en: "$x$ — exponent (any real)", zh: "$x$ — 指数（任意实数）" },
+        ],
+        whenToUse: { en: "Any exponential model with constant base", zh: "底数为常数的指数模型" },
+        commonProblemTypes: [
+          { en: "Evaluate, graph, or transform an exponential function", zh: "求值、绘图或变换指数函数" },
+        ],
+        example: { en: "$f(x) = 2^x$: $f(5) = 32$", zh: "$f(x) = 2^x$：$f(5) = 32$" },
+      },
+      {
+        id: "f-3-1-2",
+        name: { en: "Natural Exponential Function", zh: "自然指数函数" },
+        formula: "f(x) = e^x",
+        variables: [
+          { en: "$e \\approx 2.71828$", zh: "$e \\approx 2.71828$" },
+        ],
+        whenToUse: { en: "Continuous growth/decay; default base in calculus", zh: "连续增长/衰减；微积分默认底数" },
+        commonProblemTypes: [
+          { en: "Evaluate $e^x$ for various $x$ using a calculator", zh: "用计算器求各种 $x$ 处的 $e^x$" },
+        ],
+        example: { en: "$e^2 \\approx 7.389$, $e^{-0.5} \\approx 0.607$", zh: "$e^2 \\approx 7.389$，$e^{-0.5} \\approx 0.607$" },
+      },
+      {
+        id: "f-3-1-3",
+        name: { en: "Compound Interest (Discrete)", zh: "复利（离散）" },
+        formula: "A = P\\left(1 + \\frac{r}{n}\\right)^{nt}",
+        variables: [
+          { en: "$P$ — principal", zh: "$P$ — 本金" },
+          { en: "$r$ — annual interest rate (decimal)", zh: "$r$ — 年利率（小数）" },
+          { en: "$n$ — compounding periods per year", zh: "$n$ — 每年复利次数" },
+          { en: "$t$ — time in years", zh: "$t$ — 年数" },
+          { en: "$A$ — final amount", zh: "$A$ — 终值" },
+        ],
+        whenToUse: { en: "Interest compounded $n$ times per year", zh: "每年复利 $n$ 次" },
+        commonProblemTypes: [
+          { en: "Compute final balance after a fixed time", zh: "求固定时间后的终值" },
+          { en: "Compare different compounding frequencies", zh: "比较不同复利频率" },
+        ],
+        example: { en: "\\$1000 at 5\\% compounded quarterly for 10 years: $A = 1000 (1.0125)^{40} \\approx \\$1643.62$", zh: "\\$1000 年利率 5\\%、季度复利 10 年：$A = 1000 (1.0125)^{40} \\approx \\$1643.62$" },
+      },
+      {
+        id: "f-3-1-4",
+        name: { en: "Continuous Compound Interest", zh: "连续复利" },
+        formula: "A = P e^{rt}",
+        variables: [
+          { en: "$P$ — principal", zh: "$P$ — 本金" },
+          { en: "$r$ — annual rate (decimal)", zh: "$r$ — 年利率（小数）" },
+          { en: "$t$ — time in years", zh: "$t$ — 年数" },
+        ],
+        whenToUse: { en: "Interest compounded continuously (limit as $n \\to \\infty$)", zh: "连续复利（$n \\to \\infty$ 极限）" },
+        commonProblemTypes: [
+          { en: "Continuous-growth problems", zh: "连续增长问题" },
+        ],
+        example: { en: "\\$2000 at 4\\% continuously for 5 years: $A = 2000 e^{0.2} \\approx \\$2442.81$", zh: "\\$2000 以 4\\% 连续复利 5 年：$A = 2000 e^{0.2} \\approx \\$2442.81$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-3-1-1",
+        title: { en: "Evaluate $a^x$ at a Specific Value", zh: "求 $a^x$ 在指定值的值" },
+        description: { en: "Compute exponential value, including negative or fractional exponents.", zh: "计算指数值，包括负指数或分数指数。" },
+        howToRecognize: { en: "Function $f(x) = a^x$ given; specific input requested.", zh: "给出 $f(x) = a^x$；要求指定输入处的值。" },
+        steps: [
+          { en: "Substitute the input for $x$", zh: "把输入代入 $x$" },
+          { en: "For negative exponents, use $a^{-n} = \\frac{1}{a^n}$", zh: "负指数：$a^{-n} = \\frac{1}{a^n}$" },
+          { en: "For fractional exponents, use $a^{m/n} = \\sqrt[n]{a^m}$", zh: "分数指数：$a^{m/n} = \\sqrt[n]{a^m}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $f(x) = 4^x$, find $f(3)$, $f(0)$, $f(-1)$, and $f(\\tfrac{1}{2})$.", zh: "若 $f(x) = 4^x$，求 $f(3)$、$f(0)$、$f(-1)$ 与 $f(\\tfrac{1}{2})$。" },
+        commonTraps: [
+          { en: "Computing $4^{-1}$ as $-4$ instead of $\\tfrac{1}{4}$", zh: "把 $4^{-1}$ 当作 $-4$（应为 $\\tfrac{1}{4}$）" },
+        ],
+      },
+      {
+        id: "pt-3-1-2",
+        title: { en: "Identify Growth or Decay", zh: "判断增长或衰减" },
+        description: { en: "Decide based on the base $a$ whether the function increases or decreases.", zh: "根据底数 $a$ 判断函数是增是减。" },
+        howToRecognize: { en: "Exponential function given; problem asks about behavior.", zh: "给出指数函数；问行为。" },
+        steps: [
+          { en: "Identify the base $a$", zh: "找出底数 $a$" },
+          { en: "If $a > 1$: growth (increasing)", zh: "$a > 1$：增长（递增）" },
+          { en: "If $0 < a < 1$: decay (decreasing)", zh: "$0 < a < 1$：衰减（递减）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Is $f(x) = (0.6)^x$ growth or decay?", zh: "$f(x) = (0.6)^x$ 是增长还是衰减？" },
+        commonTraps: [
+          { en: "Misreading bases like $\\tfrac{3}{2}$ (it's $> 1$ ⇒ growth)", zh: "误读 $\\tfrac{3}{2}$ 这类底数（实为 $> 1$ ⇒ 增长）" },
+        ],
+      },
+      {
+        id: "pt-3-1-3",
+        title: { en: "Find Domain and Range of an Exponential", zh: "求指数函数的定义域与值域" },
+        description: { en: "Use the standard rules: domain is all reals; range depends on transformations.", zh: "用标准规则：定义域为全体实数；值域取决于变换。" },
+        howToRecognize: { en: "Problem asks for domain or range.", zh: "题目要求定义域或值域。" },
+        steps: [
+          { en: "Domain: all real numbers (always for $a^x$)", zh: "定义域：全体实数（$a^x$ 始终如此）" },
+          { en: "Range: $(0, \\infty)$ for pure $a^x$", zh: "值域：纯 $a^x$ 时为 $(0, \\infty)$" },
+          { en: "Adjust range for vertical shifts (e.g., $a^x + c$ has range $(c, \\infty)$)", zh: "对垂直平移调整值域（如 $a^x + c$ 的值域为 $(c, \\infty)$）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "State the domain and range of $f(x) = 2^x - 3$.", zh: "给出 $f(x) = 2^x - 3$ 的定义域与值域。" },
+        commonTraps: [
+          { en: "Reporting range as all reals (output of $a^x$ is always positive before shift)", zh: "把值域报为全体实数（$a^x$ 在平移前始终为正）" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-3-1-4",
+        title: { en: "Graph a Transformed Exponential Function", zh: "绘制变换的指数函数" },
+        description: { en: "Apply shifts, reflections, and stretches to the parent $a^x$.", zh: "对基本函数 $a^x$ 应用平移、反射与伸缩。" },
+        howToRecognize: { en: "Equation has the form $a^{x - h} + k$ or $-a^x$ etc.", zh: "方程形如 $a^{x - h} + k$ 或 $-a^x$ 等。" },
+        steps: [
+          { en: "Identify base, horizontal shift, vertical shift, and reflections", zh: "确定底数、水平平移、垂直平移与反射" },
+          { en: "Plot key points on the parent (e.g., $(0, 1)$, $(1, a)$)", zh: "在基本函数上选关键点（如 $(0, 1)$、$(1, a)$）" },
+          { en: "Apply transformations to those points", zh: "对关键点应用变换" },
+          { en: "Draw the new curve and asymptote", zh: "画新曲线与渐近线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = 2^{x - 1} + 3$.", zh: "画 $f(x) = 2^{x - 1} + 3$。" },
+        commonTraps: [
+          { en: "Forgetting to shift the asymptote ($y = 0$ becomes $y = k$ after vertical shift)", zh: "忘记平移渐近线（垂直平移后 $y = 0$ 变 $y = k$）" },
+        ],
+      },
+      {
+        id: "pt-3-1-5",
+        title: { en: "Use Compound Interest Formula", zh: "应用复利公式" },
+        description: { en: "Compute final amount given principal, rate, time, and compounding frequency.", zh: "已知本金、利率、时间与复利次数，求终值。" },
+        howToRecognize: { en: "Word problem about discrete compounding (monthly, quarterly, daily, etc.).", zh: "应用题涉及离散复利（月、季、日等）。" },
+        steps: [
+          { en: "Identify $P$, $r$, $n$, and $t$", zh: "识别 $P$、$r$、$n$、$t$" },
+          { en: "Apply $A = P(1 + \\tfrac{r}{n})^{nt}$", zh: "代入 $A = P(1 + \\tfrac{r}{n})^{nt}$" },
+          { en: "Compute and round appropriately", zh: "计算并合理四舍五入" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "If \\$5000 is invested at 6\\% compounded monthly for 8 years, what is the final amount?", zh: "投资 \\$5000，年利率 6\\%、月复利 8 年，求终值。" },
+        commonTraps: [
+          { en: "Using $r$ as a percent instead of decimal (use $0.06$ not $6$)", zh: "把 $r$ 用百分数而非小数（应为 $0.06$ 而非 $6$）" },
+        ],
+      },
+      {
+        id: "pt-3-1-6",
+        title: { en: "Apply Continuous Compound Interest", zh: "应用连续复利公式" },
+        description: { en: "Use $A = P e^{rt}$ to compute final amount with continuous compounding.", zh: "用 $A = P e^{rt}$ 求连续复利的终值。" },
+        howToRecognize: { en: "Problem mentions \"continuously compounded.\"", zh: "题目提到\"连续复利\"。" },
+        steps: [
+          { en: "Identify $P$, $r$, $t$", zh: "识别 $P$、$r$、$t$" },
+          { en: "Apply $A = P e^{rt}$", zh: "代入 $A = P e^{rt}$" },
+          { en: "Compute using calculator's $e^x$ key", zh: "用计算器的 $e^x$ 键计算" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the value of \\$3000 invested at 4\\% compounded continuously for 10 years.", zh: "求 \\$3000 以 4\\% 连续复利 10 年的终值。" },
+        commonTraps: [
+          { en: "Using compound interest formula instead of continuous version", zh: "误用离散复利公式而非连续复利" },
+        ],
+      },
+      {
+        id: "pt-3-1-7",
+        title: { en: "Identify Asymptote of Transformed Exponential", zh: "求变换指数函数的渐近线" },
+        description: { en: "Find horizontal asymptote after a vertical shift.", zh: "在垂直平移后求水平渐近线。" },
+        howToRecognize: { en: "Function in form $f(x) = a^x + c$ or similar.", zh: "函数形如 $f(x) = a^x + c$ 等。" },
+        steps: [
+          { en: "Locate the vertical shift constant $c$", zh: "找出垂直平移常数 $c$" },
+          { en: "Horizontal asymptote is $y = c$", zh: "水平渐近线为 $y = c$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the horizontal asymptote of $f(x) = e^x - 4$.", zh: "求 $f(x) = e^x - 4$ 的水平渐近线。" },
+        commonTraps: [
+          { en: "Forgetting that pure $a^x$ has asymptote $y = 0$", zh: "忘记纯 $a^x$ 的渐近线为 $y = 0$" },
+        ],
+      },
+      {
+        id: "pt-3-1-8",
+        title: { en: "Solve Simple Exponential Equation by Inspection", zh: "目测解简单指数方程" },
+        description: { en: "When both sides can be written with the same base, equate the exponents.", zh: "若两边能化为同底，则令指数相等。" },
+        howToRecognize: { en: "Equation has the form $a^x = a^c$ (or rewritable that way).", zh: "方程形如 $a^x = a^c$（或可化为此）。" },
+        steps: [
+          { en: "Rewrite both sides with the same base if possible", zh: "若可能，把两边化为同底" },
+          { en: "Set exponents equal: $x = c$", zh: "令指数相等：$x = c$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $4^x = 32$.", zh: "解 $4^x = 32$。" },
+        commonTraps: [
+          { en: "Failing to recognize $4 = 2^2$ and $32 = 2^5$", zh: "未识别 $4 = 2^2$ 与 $32 = 2^5$" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-3-1-9",
+        title: { en: "Compare Different Compounding Frequencies", zh: "比较不同复利频率" },
+        description: { en: "Determine which compounding frequency yields the largest amount over time.", zh: "判断哪种复利频率在给定时间内产生最大终值。" },
+        howToRecognize: { en: "Problem provides multiple options for $n$ or asks about effective yield.", zh: "题目给出多个 $n$ 值或问有效收益率。" },
+        steps: [
+          { en: "Compute $A$ for each frequency", zh: "对每种频率计算 $A$" },
+          { en: "Compare results", zh: "比较结果" },
+          { en: "Note that more frequent compounding ⇒ more interest, but limit is continuous compounding", zh: "复利越频繁 ⇒ 利息越多，极限为连续复利" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Compare \\$1000 invested at 5\\% for 20 years compounded annually, monthly, and continuously.", zh: "比较 \\$1000 以 5\\% 投资 20 年时年复利、月复利与连续复利的差异。" },
+        commonTraps: [
+          { en: "Stopping after a small number of frequencies, missing the trend", zh: "只算少数几种频率，未看出趋势" },
+        ],
+      },
+      {
+        id: "pt-3-1-10",
+        title: { en: "Application — Population or Decay Model", zh: "应用——人口或衰减模型" },
+        description: { en: "Set up an exponential model from a real-world description.", zh: "由实际描述建立指数模型。" },
+        howToRecognize: { en: "Word problem describes growth/decay with a constant ratio per time period.", zh: "应用题描述每单位时间按固定比例增长/衰减。" },
+        steps: [
+          { en: "Identify initial value, ratio, and time variable", zh: "确定初始值、比率与时间变量" },
+          { en: "Build $f(t) = a \\cdot r^t$ (or $a e^{kt}$)", zh: "建立 $f(t) = a \\cdot r^t$（或 $a e^{kt}$）" },
+          { en: "Use to predict or interpret values", zh: "用模型预测或解释" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A bacteria population doubles every 3 hours, starting at 500. Write a model and find population at 12 hours.", zh: "细菌种群每 3 小时翻倍，初值 500。写出模型并求 12 小时时种群数量。" },
+        commonTraps: [
+          { en: "Confusing ratio per time unit with rate as a percentage", zh: "把每单位时间的比率与百分比利率混淆" },
+        ],
+      },
+    ],
   },
   {
     id: "3-2",
     chapterId: "ch-3",
     number: "3.2",
-    title: {
-      en: "Logarithmic Functions and Their Graphs",
-      zh: "对数函数及其图像",
-    },
+    title: { en: "Logarithmic Functions and Their Graphs", zh: "对数函数及其图像" },
     description: {
       en: "Convert between exponential and logarithmic form, and graph logarithmic functions.",
       zh: "在指数式与对数式之间互化，并绘制对数函数的图像。",
     },
+    learningGoals: [
+      { en: "Convert between exponential and logarithmic forms", zh: "在指数式与对数式之间互化" },
+      { en: "Evaluate logarithms using the definition and inverse properties", zh: "用定义与反函数性质计算对数值" },
+      { en: "Graph logarithmic functions and identify domain, range, and asymptote", zh: "绘制对数函数并识别定义域、值域与渐近线" },
+      { en: "Use the natural logarithm $\\ln x$", zh: "使用自然对数 $\\ln x$" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-3-2-1",
+        title: { en: "Definition of a Logarithm", zh: "对数的定义" },
+        explanation: {
+          en: "$\\log_a x = y$ means $a^y = x$, where $a > 0, a \\neq 1$, and $x > 0$. The logarithm asks: \"To what power must $a$ be raised to get $x$?\" Logarithms and exponentials are INVERSE functions.",
+          zh: "$\\log_a x = y$ 意为 $a^y = x$，其中 $a > 0, a \\neq 1$，$x > 0$。对数在问：\"$a$ 的多少次方等于 $x$？\"对数与指数互为反函数。",
+        },
+        whenToUse: { en: "Whenever you need to undo an exponential or convert between forms", zh: "需要反演指数或在两种形式间互化时" },
+        commonMistake: { en: "Allowing $\\log_a 0$ or $\\log_a (\\text{negative})$ — domain is $x > 0$", zh: "误用 $\\log_a 0$ 或 $\\log_a (\\text{负数})$——定义域为 $x > 0$" },
+        example: { en: "$\\log_2 8 = 3$ because $2^3 = 8$. $\\log_5 1 = 0$ because $5^0 = 1$.", zh: "$\\log_2 8 = 3$，因为 $2^3 = 8$。$\\log_5 1 = 0$，因为 $5^0 = 1$。" },
+      },
+      {
+        id: "kc-3-2-2",
+        title: { en: "Common Log and Natural Log", zh: "常用对数与自然对数" },
+        explanation: {
+          en: "Common logarithm: $\\log x$ means $\\log_{10} x$ (base 10). Natural logarithm: $\\ln x$ means $\\log_e x$ (base $e$). These are the two most-used logarithms; calculators have dedicated keys for both.",
+          zh: "常用对数：$\\log x$ 表示 $\\log_{10} x$（底为 10）。自然对数：$\\ln x$ 表示 $\\log_e x$（底为 $e$）。两者最常用；计算器有专门的按键。",
+        },
+        whenToUse: { en: "When the base is 10 or $e$ — write more concisely", zh: "底为 10 或 $e$ 时——书写更简洁" },
+        commonMistake: { en: "Confusing $\\log$ (base 10) with $\\ln$ (base $e$)", zh: "把 $\\log$（10 底）与 $\\ln$（$e$ 底）弄混" },
+        example: { en: "$\\log 100 = 2$, $\\ln e = 1$, $\\ln 1 = 0$", zh: "$\\log 100 = 2$，$\\ln e = 1$，$\\ln 1 = 0$" },
+      },
+      {
+        id: "kc-3-2-3",
+        title: { en: "Inverse Properties and Graph", zh: "反函数性质与图像" },
+        explanation: {
+          en: "Logarithm and exponential cancel: $\\log_a (a^x) = x$ and $a^{\\log_a x} = x$. The graph of $y = \\log_a x$ is the reflection of $y = a^x$ across the line $y = x$. Domain: $(0, \\infty)$. Range: all reals. Vertical asymptote: $x = 0$.",
+          zh: "对数与指数互相抵消：$\\log_a (a^x) = x$，$a^{\\log_a x} = x$。$y = \\log_a x$ 的图像是 $y = a^x$ 关于直线 $y = x$ 的反射。定义域：$(0, \\infty)$。值域：全体实数。垂直渐近线：$x = 0$。",
+        },
+        whenToUse: { en: "Simplifying nested exponential/log expressions; sketching graphs", zh: "化简嵌套的指数/对数表达式；绘图" },
+        commonMistake: { en: "Forgetting that the domain is $x > 0$", zh: "忘记定义域为 $x > 0$" },
+        example: { en: "$\\log_3 (3^7) = 7$. Graph of $\\ln x$ passes through $(1, 0)$ and $(e, 1)$.", zh: "$\\log_3 (3^7) = 7$。$\\ln x$ 的图像过 $(1, 0)$ 与 $(e, 1)$。" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-3-2-1",
+        name: { en: "Logarithm Definition", zh: "对数定义" },
+        formula: "\\log_a x = y \\iff a^y = x, \\quad a > 0, \\, a \\neq 1, \\, x > 0",
+        variables: [
+          { en: "$a$ — base", zh: "$a$ — 底数" },
+          { en: "$x$ — argument (positive)", zh: "$x$ — 真数（正数）" },
+          { en: "$y$ — value of the logarithm (any real)", zh: "$y$ — 对数值（任意实数）" },
+        ],
+        whenToUse: { en: "Convert between exponential and logarithmic forms", zh: "在指数式与对数式之间互化" },
+        commonProblemTypes: [
+          { en: "Evaluate $\\log_a x$ by recognizing $x = a^y$", zh: "通过识别 $x = a^y$ 求 $\\log_a x$" },
+        ],
+        example: { en: "$\\log_3 81 = 4$ because $3^4 = 81$", zh: "$\\log_3 81 = 4$，因 $3^4 = 81$" },
+      },
+      {
+        id: "f-3-2-2",
+        name: { en: "Logarithm Identities", zh: "对数恒等式" },
+        formula: "\\log_a 1 = 0, \\quad \\log_a a = 1, \\quad \\log_a (a^x) = x, \\quad a^{\\log_a x} = x",
+        variables: [
+          { en: "$a > 0, a \\neq 1$", zh: "$a > 0, a \\neq 1$" },
+        ],
+        whenToUse: { en: "Quickly simplify routine expressions", zh: "快速化简常见表达式" },
+        commonProblemTypes: [
+          { en: "Simplify nested $\\log_a (a^k)$ or $a^{\\log_a x}$", zh: "化简嵌套的 $\\log_a (a^k)$ 或 $a^{\\log_a x}$" },
+        ],
+        example: { en: "$\\ln (e^5) = 5$, $10^{\\log 7} = 7$", zh: "$\\ln (e^5) = 5$，$10^{\\log 7} = 7$" },
+      },
+      {
+        id: "f-3-2-3",
+        name: { en: "Common and Natural Logs", zh: "常用对数与自然对数" },
+        formula: "\\log x = \\log_{10} x, \\quad \\ln x = \\log_e x",
+        variables: [
+          { en: "$\\log$ — common log (base 10)", zh: "$\\log$ — 常用对数（底 10）" },
+          { en: "$\\ln$ — natural log (base $e$)", zh: "$\\ln$ — 自然对数（底 $e$）" },
+        ],
+        whenToUse: { en: "Whenever the base is 10 or $e$", zh: "底为 10 或 $e$ 时" },
+        commonProblemTypes: [
+          { en: "Most calculator-based logarithm problems", zh: "大多数用计算器求对数的题目" },
+        ],
+        example: { en: "$\\log 1000 = 3$, $\\ln e^2 = 2$", zh: "$\\log 1000 = 3$，$\\ln e^2 = 2$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-3-2-1",
+        title: { en: "Convert Exponential to Logarithmic Form", zh: "指数式化为对数式" },
+        description: { en: "Rewrite $a^y = x$ as $\\log_a x = y$.", zh: "把 $a^y = x$ 改写为 $\\log_a x = y$。" },
+        howToRecognize: { en: "Equation in exponential form; problem asks for log form.", zh: "指数式方程；要求改写为对数式。" },
+        steps: [
+          { en: "Identify base $a$, exponent $y$, and result $x$", zh: "识别底 $a$、指数 $y$ 与结果 $x$" },
+          { en: "Write $\\log_a x = y$", zh: "写出 $\\log_a x = y$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Rewrite $5^3 = 125$ in logarithmic form.", zh: "把 $5^3 = 125$ 改写为对数式。" },
+        commonTraps: [
+          { en: "Putting the exponent in the wrong place", zh: "把指数放错位置" },
+        ],
+      },
+      {
+        id: "pt-3-2-2",
+        title: { en: "Convert Logarithmic to Exponential Form", zh: "对数式化为指数式" },
+        description: { en: "Rewrite $\\log_a x = y$ as $a^y = x$.", zh: "把 $\\log_a x = y$ 改写为 $a^y = x$。" },
+        howToRecognize: { en: "Equation in log form; problem asks for exponential form.", zh: "对数式方程；要求改写为指数式。" },
+        steps: [
+          { en: "Identify base $a$, value $y$, and argument $x$", zh: "识别底 $a$、值 $y$ 与真数 $x$" },
+          { en: "Write $a^y = x$", zh: "写出 $a^y = x$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Rewrite $\\log_2 32 = 5$ in exponential form.", zh: "把 $\\log_2 32 = 5$ 改写为指数式。" },
+        commonTraps: [
+          { en: "Confusing which number is the base", zh: "弄错底数是哪个数" },
+        ],
+      },
+      {
+        id: "pt-3-2-3",
+        title: { en: "Evaluate a Basic Logarithm", zh: "求基本对数的值" },
+        description: { en: "Use the definition: $\\log_a x = y$ where $a^y = x$.", zh: "用定义：$\\log_a x = y$，且 $a^y = x$。" },
+        howToRecognize: { en: "Logarithm with simple base and argument; no calculator needed.", zh: "底数与真数简单；无需计算器。" },
+        steps: [
+          { en: "Ask \"$a$ to what power gives $x$?\"", zh: "自问\"$a$ 的几次方等于 $x$？\"" },
+          { en: "Find that exponent — it's the answer", zh: "找出指数——即答案" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Evaluate $\\log_4 64$, $\\log_5 1$, and $\\ln e^3$.", zh: "求 $\\log_4 64$、$\\log_5 1$ 与 $\\ln e^3$。" },
+        commonTraps: [
+          { en: "Forgetting that $\\log_a 1 = 0$ regardless of $a$", zh: "忘记无论 $a$ 多少 $\\log_a 1 = 0$" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-3-2-4",
+        title: { en: "Find Domain of a Log Function", zh: "求对数函数的定义域" },
+        description: { en: "Set the argument $> 0$ and solve.", zh: "令真数 $> 0$ 求解。" },
+        howToRecognize: { en: "Logarithmic function given; problem asks for domain.", zh: "给出对数函数；要求定义域。" },
+        steps: [
+          { en: "Identify the argument of the log", zh: "识别对数的真数" },
+          { en: "Set argument $> 0$", zh: "令真数 $> 0$" },
+          { en: "Solve and write in interval notation", zh: "求解并用区间记号给出" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the domain of $f(x) = \\log_2 (x - 5)$.", zh: "求 $f(x) = \\log_2 (x - 5)$ 的定义域。" },
+        commonTraps: [
+          { en: "Allowing the argument to equal zero", zh: "把真数允许为零" },
+        ],
+      },
+      {
+        id: "pt-3-2-5",
+        title: { en: "Graph a Logarithmic Function", zh: "绘制对数函数" },
+        description: { en: "Use key points and asymptote to sketch.", zh: "用关键点与渐近线作图。" },
+        howToRecognize: { en: "Problem asks for the graph of $y = \\log_a x$ or its transformation.", zh: "题目要求 $y = \\log_a x$ 或其变换的图像。" },
+        steps: [
+          { en: "Mark vertical asymptote (default $x = 0$, shifts move it)", zh: "标垂直渐近线（默认 $x = 0$，平移后改变）" },
+          { en: "Plot points like $(1, 0)$, $(a, 1)$, $(\\tfrac{1}{a}, -1)$", zh: "标关键点，如 $(1, 0)$、$(a, 1)$、$(\\tfrac{1}{a}, -1)$" },
+          { en: "Draw a smooth curve approaching the asymptote", zh: "画光滑曲线趋近渐近线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = \\ln(x + 2)$.", zh: "画 $f(x) = \\ln(x + 2)$。" },
+        commonTraps: [
+          { en: "Drawing the curve to the left of the asymptote", zh: "把曲线画到渐近线的左侧" },
+        ],
+      },
+      {
+        id: "pt-3-2-6",
+        title: { en: "Use Inverse Properties to Simplify", zh: "用反函数性质化简" },
+        description: { en: "Apply $\\log_a (a^x) = x$ and $a^{\\log_a x} = x$.", zh: "应用 $\\log_a (a^x) = x$ 与 $a^{\\log_a x} = x$。" },
+        howToRecognize: { en: "Expression with nested log and exponential of the same base.", zh: "嵌套同底对数与指数的表达式。" },
+        steps: [
+          { en: "Identify the matching base on the inside and outside", zh: "确定内外的底数匹配" },
+          { en: "Apply the appropriate inverse property", zh: "应用相应的反函数性质" },
+          { en: "Write the simplified result", zh: "写出化简结果" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Simplify $\\log_5 (5^{2x + 1})$ and $e^{\\ln (3y)}$.", zh: "化简 $\\log_5 (5^{2x + 1})$ 与 $e^{\\ln (3y)}$。" },
+        commonTraps: [
+          { en: "Trying to apply when the bases don't match", zh: "底不同时仍尝试应用" },
+        ],
+      },
+      {
+        id: "pt-3-2-7",
+        title: { en: "Identify Vertical Asymptote of Transformed Log", zh: "求变换对数的垂直渐近线" },
+        description: { en: "Find $x$-value that makes the argument zero.", zh: "求使真数为零的 $x$ 值。" },
+        howToRecognize: { en: "Function in form $\\log_a (x - h)$ or similar.", zh: "函数形如 $\\log_a (x - h)$ 等。" },
+        steps: [
+          { en: "Set the argument equal to $0$", zh: "令真数等于 $0$" },
+          { en: "Solve for $x$ — that's the asymptote", zh: "解 $x$——即渐近线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the vertical asymptote of $f(x) = \\log(x + 6)$.", zh: "求 $f(x) = \\log(x + 6)$ 的垂直渐近线。" },
+        commonTraps: [
+          { en: "Reporting $x = h$ with the wrong sign", zh: "把 $x = h$ 的符号弄反" },
+        ],
+      },
+      {
+        id: "pt-3-2-8",
+        title: { en: "Solve a Simple Log Equation", zh: "解简单对数方程" },
+        description: { en: "Convert to exponential form and solve.", zh: "化为指数式求解。" },
+        howToRecognize: { en: "Equation $\\log_a (\\cdot) = c$.", zh: "方程 $\\log_a (\\cdot) = c$。" },
+        steps: [
+          { en: "Rewrite $\\log_a (\\cdot) = c$ as $\\cdot = a^c$", zh: "把 $\\log_a (\\cdot) = c$ 写成 $\\cdot = a^c$" },
+          { en: "Solve the resulting equation", zh: "求解所得方程" },
+          { en: "Verify $x$ is in the domain", zh: "验证 $x$ 在定义域内" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\log_4 (x + 2) = 3$.", zh: "解 $\\log_4 (x + 2) = 3$。" },
+        commonTraps: [
+          { en: "Skipping the domain check", zh: "跳过定义域检查" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-3-2-9",
+        title: { en: "Solve a Log Equation Using Inverses", zh: "用反函数解对数方程" },
+        description: { en: "Use $a^{\\log_a x} = x$ to undo a log; or take the log of both sides to undo an exponential.", zh: "用 $a^{\\log_a x} = x$ 抵消对数；或两边取对数抵消指数。" },
+        howToRecognize: { en: "Equation involves both a log and an exponential of the same base.", zh: "方程同时含对数与同底指数。" },
+        steps: [
+          { en: "Identify how the inverse property can isolate the variable", zh: "确定如何用反函数性质把变量分离" },
+          { en: "Apply it carefully", zh: "仔细应用" },
+          { en: "Solve for the variable", zh: "解出变量" },
+          { en: "Check domain", zh: "检查定义域" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $5^{\\log_5 (x^2 - 4)} = 21$.", zh: "解 $5^{\\log_5 (x^2 - 4)} = 21$。" },
+        commonTraps: [
+          { en: "Forgetting that $\\log_5 (x^2 - 4)$ requires $x^2 - 4 > 0$", zh: "忘记 $\\log_5 (x^2 - 4)$ 要求 $x^2 - 4 > 0$" },
+        ],
+      },
+      {
+        id: "pt-3-2-10",
+        title: { en: "Application — pH, Sound Intensity, or Earthquake Magnitude", zh: "应用——pH、声强或地震震级" },
+        description: { en: "Apply a logarithmic scale formula to compute or interpret a real-world quantity.", zh: "运用对数尺度公式计算或解释实际量。" },
+        howToRecognize: { en: "Problem mentions pH, decibels, or Richter scale.", zh: "题目提到 pH、分贝或里氏震级。" },
+        steps: [
+          { en: "Apply the relevant formula (e.g., $\\text{pH} = -\\log[H^+]$)", zh: "应用相关公式（如 $\\text{pH} = -\\log[H^+]$）" },
+          { en: "Compute using calculator's $\\log$ or $\\ln$ keys", zh: "用计算器的 $\\log$ 或 $\\ln$ 键计算" },
+          { en: "Interpret the result with proper units and context", zh: "结合单位与情境解释结果" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "If a solution has $[H^+] = 3.2 \\times 10^{-5}$ mol/L, find its pH.", zh: "若溶液 $[H^+] = 3.2 \\times 10^{-5}$ mol/L，求 pH。" },
+        commonTraps: [
+          { en: "Forgetting the negative sign in the pH definition", zh: "忘记 pH 定义中的负号" },
+        ],
+      },
+    ],
   },
   {
     id: "3-3",
