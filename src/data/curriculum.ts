@@ -2154,27 +2154,531 @@ const chapter2Units: Unit[] = [
     id: "2-1",
     chapterId: "ch-2",
     number: "2.1",
-    title: {
-      en: "Quadratic Functions and Models",
-      zh: "二次函数与模型",
-    },
+    title: { en: "Quadratic Functions and Models", zh: "二次函数与模型" },
     description: {
       en: "Analyze quadratic functions in standard and vertex form and apply them to model real situations.",
       zh: "分析标准形式与顶点形式的二次函数，并将其应用于实际情境的建模。",
     },
+    learningGoals: [
+      { en: "Convert between standard form and vertex form of a quadratic", zh: "在二次函数的标准式与顶点式之间互换" },
+      { en: "Find vertex, axis of symmetry, and intercepts", zh: "求顶点、对称轴与截距" },
+      { en: "Sketch the graph of a parabola", zh: "绘制抛物线" },
+      { en: "Apply quadratic functions to model real-world maximization or minimization problems", zh: "应用二次函数对最大/最小值问题建模" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-1-1",
+        title: { en: "Standard vs Vertex Form", zh: "标准式与顶点式" },
+        explanation: {
+          en: "Standard form: $f(x) = ax^2 + bx + c$. Vertex form: $f(x) = a(x - h)^2 + k$ where $(h, k)$ is the vertex. Vertex form makes the vertex obvious; standard form makes the $y$-intercept ($c$) obvious.",
+          zh: "标准式：$f(x) = ax^2 + bx + c$。顶点式：$f(x) = a(x - h)^2 + k$，其中 $(h, k)$ 是顶点。顶点式直接显示顶点；标准式直接显示 $y$ 截距 $c$。",
+        },
+        whenToUse: { en: "Choose the form that matches what you need to read off", zh: "根据所需信息选用合适的形式" },
+        commonMistake: { en: "Sign error reading the vertex: $(x + 3)^2$ has $h = -3$, NOT $h = 3$", zh: "顶点读错符号：$(x + 3)^2$ 中 $h = -3$，而非 $3$" },
+        example: { en: "$f(x) = (x - 4)^2 - 1$: vertex $(4, -1)$, $a = 1$ opens up", zh: "$f(x) = (x - 4)^2 - 1$：顶点 $(4, -1)$，$a = 1$ 开口向上" },
+      },
+      {
+        id: "kc-2-1-2",
+        title: { en: "Vertex and Axis of Symmetry", zh: "顶点与对称轴" },
+        explanation: {
+          en: "From standard form, the vertex is at $h = -\\frac{b}{2a}$, $k = f(h)$. The axis of symmetry is the vertical line $x = h$. Every parabola is symmetric about this line.",
+          zh: "由标准式，顶点为 $h = -\\frac{b}{2a}$，$k = f(h)$。对称轴是铅直线 $x = h$。每条抛物线都关于此线对称。",
+        },
+        whenToUse: { en: "Locate the vertex from standard form, or use symmetry to plot points", zh: "由标准式定位顶点，或利用对称性描点" },
+        commonMistake: { en: "Forgetting the negative sign in $-\\frac{b}{2a}$", zh: "忘记 $-\\frac{b}{2a}$ 中的负号" },
+        example: { en: "$f(x) = 2x^2 - 8x + 1$: $h = -\\frac{-8}{4} = 2$, $k = f(2) = -7$, vertex $(2, -7)$", zh: "$f(x) = 2x^2 - 8x + 1$：$h = -\\frac{-8}{4} = 2$，$k = f(2) = -7$，顶点 $(2, -7)$" },
+      },
+      {
+        id: "kc-2-1-3",
+        title: { en: "Maximum or Minimum Value", zh: "最大值或最小值" },
+        explanation: {
+          en: "If $a > 0$, the parabola opens up — the vertex is a MINIMUM with value $k$. If $a < 0$, it opens down — the vertex is a MAXIMUM with value $k$. The min/max value is $k$ (the $y$-coordinate); it occurs AT $x = h$.",
+          zh: "若 $a > 0$，抛物线开口向上——顶点为最小值 $k$。若 $a < 0$，开口向下——顶点为最大值 $k$。极值为 $k$（$y$ 坐标），在 $x = h$ 处取到。",
+        },
+        whenToUse: { en: "Quickly answer optimization questions about a quadratic model", zh: "快速回答二次模型的优化问题" },
+        commonMistake: { en: "Reporting $h$ (the input) as the max/min value instead of $k$ (the output)", zh: "把输入 $h$ 当极值，应为输出 $k$" },
+        example: { en: "$f(x) = -x^2 + 6x - 5$: vertex $(3, 4)$, MAX value $4$ at $x = 3$", zh: "$f(x) = -x^2 + 6x - 5$：顶点 $(3, 4)$，$x = 3$ 处取最大值 $4$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-1-1",
+        name: { en: "Standard Form of a Quadratic", zh: "二次函数的标准式" },
+        formula: "f(x) = ax^2 + bx + c, \\; a \\neq 0",
+        variables: [
+          { en: "$a, b, c$ — real coefficients", zh: "$a, b, c$ — 实系数" },
+          { en: "$a \\neq 0$ ensures it is quadratic", zh: "$a \\neq 0$ 保证为二次" },
+        ],
+        whenToUse: { en: "When given an expanded quadratic; reading the $y$-intercept", zh: "已展开为标准式；读取 $y$ 截距" },
+        commonProblemTypes: [
+          { en: "Find vertex via $-\\frac{b}{2a}$", zh: "用 $-\\frac{b}{2a}$ 求顶点" },
+          { en: "Apply the quadratic formula for zeros", zh: "用求根公式求零点" },
+        ],
+        example: { en: "$f(x) = 3x^2 - 12x + 7$: $a=3, b=-12, c=7$", zh: "$f(x) = 3x^2 - 12x + 7$：$a=3, b=-12, c=7$" },
+      },
+      {
+        id: "f-2-1-2",
+        name: { en: "Vertex Form", zh: "顶点式" },
+        formula: "f(x) = a(x - h)^2 + k",
+        variables: [
+          { en: "$(h, k)$ — vertex of the parabola", zh: "$(h, k)$ — 抛物线顶点" },
+          { en: "$a$ — controls direction and stretch (same as in standard form)", zh: "$a$ — 控制开口方向与伸缩（与标准式相同）" },
+        ],
+        whenToUse: { en: "When you need to read the vertex directly, or sketch quickly", zh: "需直接读出顶点或快速绘图时" },
+        commonProblemTypes: [
+          { en: "Identify vertex and direction at a glance", zh: "一眼读出顶点与方向" },
+          { en: "Convert standard to vertex form via completing the square", zh: "通过配方把标准式化为顶点式" },
+        ],
+        example: { en: "$f(x) = -2(x + 3)^2 + 5$: vertex $(-3, 5)$, opens down", zh: "$f(x) = -2(x + 3)^2 + 5$：顶点 $(-3, 5)$，开口向下" },
+      },
+      {
+        id: "f-2-1-3",
+        name: { en: "Vertex Coordinates from Standard Form", zh: "由标准式求顶点坐标" },
+        formula: "h = -\\frac{b}{2a}, \\quad k = f(h)",
+        variables: [
+          { en: "$a, b$ — coefficients from standard form", zh: "$a, b$ — 标准式中的系数" },
+          { en: "$(h, k)$ — vertex", zh: "$(h, k)$ — 顶点" },
+        ],
+        whenToUse: { en: "Locate vertex without converting to vertex form", zh: "无需化为顶点式即可定位顶点" },
+        commonProblemTypes: [
+          { en: "Optimize a quadratic given in standard form", zh: "对标准式给出的二次进行最优化" },
+        ],
+        example: { en: "$f(x) = x^2 - 6x + 11$: $h = 3$, $k = f(3) = 2$, vertex $(3, 2)$", zh: "$f(x) = x^2 - 6x + 11$：$h = 3$，$k = f(3) = 2$，顶点 $(3, 2)$" },
+      },
+      {
+        id: "f-2-1-4",
+        name: { en: "Quadratic Formula", zh: "求根公式" },
+        formula: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+        variables: [
+          { en: "$a, b, c$ — coefficients of standard form", zh: "$a, b, c$ — 标准式系数" },
+          { en: "Discriminant $b^2 - 4ac$ determines real vs complex zeros", zh: "判别式 $b^2 - 4ac$ 决定零点为实根还是复根" },
+        ],
+        whenToUse: { en: "Find $x$-intercepts when factoring is hard", zh: "难以因式分解时求 $x$ 截距" },
+        commonProblemTypes: [
+          { en: "Solve any quadratic equation", zh: "解任意二次方程" },
+        ],
+        example: { en: "$x^2 - 4x + 1 = 0$: $x = 2 \\pm \\sqrt{3}$", zh: "$x^2 - 4x + 1 = 0$：$x = 2 \\pm \\sqrt{3}$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-1-1",
+        title: { en: "Read Vertex from Vertex Form", zh: "由顶点式读出顶点" },
+        description: { en: "Identify $(h, k)$ directly from $f(x) = a(x - h)^2 + k$.", zh: "直接由 $f(x) = a(x - h)^2 + k$ 读出 $(h, k)$。" },
+        howToRecognize: { en: "Equation is given in vertex form.", zh: "方程为顶点式。" },
+        steps: [
+          { en: "Match the equation to $a(x - h)^2 + k$", zh: "把方程与 $a(x - h)^2 + k$ 对照" },
+          { en: "$h$ is the OPPOSITE of the number inside parentheses", zh: "$h$ 是括号内数的相反数" },
+          { en: "$k$ is the constant added or subtracted at the end", zh: "$k$ 是末尾加减的常数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the vertex of $f(x) = 3(x + 4)^2 - 7$.", zh: "求 $f(x) = 3(x + 4)^2 - 7$ 的顶点。" },
+        commonTraps: [
+          { en: "Reading $h$ with the same sign as inside the parentheses", zh: "把 $h$ 的符号与括号内取相同符号" },
+        ],
+      },
+      {
+        id: "pt-2-1-2",
+        title: { en: "Determine Direction from Leading Coefficient", zh: "由首项系数判断开口方向" },
+        description: { en: "Use the sign of $a$ to determine whether the parabola opens up or down.", zh: "用 $a$ 的符号判断抛物线开口向上还是向下。" },
+        howToRecognize: { en: "Quadratic given in any form; problem asks about direction.", zh: "二次函数（任意形式）；问开口方向。" },
+        steps: [
+          { en: "Identify the coefficient of $x^2$", zh: "找出 $x^2$ 的系数" },
+          { en: "Positive $a$ ⇒ opens up; negative $a$ ⇒ opens down", zh: "正 ⇒ 向上；负 ⇒ 向下" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Does $f(x) = -\\tfrac{1}{2}(x - 1)^2 + 3$ open up or down?", zh: "$f(x) = -\\tfrac{1}{2}(x - 1)^2 + 3$ 开口向上还是向下？" },
+        commonTraps: [
+          { en: "Confusing $a$ with the coefficient of $x$ instead of $x^2$", zh: "把 $a$ 与 $x$ 的系数（非 $x^2$）弄混" },
+        ],
+      },
+      {
+        id: "pt-2-1-3",
+        title: { en: "Evaluate a Quadratic at a Specific Value", zh: "求二次函数在指定值的值" },
+        description: { en: "Substitute the input and simplify carefully.", zh: "代入输入并仔细化简。" },
+        howToRecognize: { en: "A quadratic and a specific input are given.", zh: "给出二次函数与指定输入。" },
+        steps: [
+          { en: "Substitute the value for $x$ everywhere", zh: "把所有 $x$ 替换为该值" },
+          { en: "Square first (use parentheses for negatives), then multiply, then add", zh: "先平方（负数加括号），再乘，最后加" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $f(x) = 2x^2 - 5x + 1$, find $f(-3)$.", zh: "若 $f(x) = 2x^2 - 5x + 1$，求 $f(-3)$。" },
+        commonTraps: [
+          { en: "Computing $-3^2$ as $-9$ instead of $(-3)^2 = 9$", zh: "把 $-3^2$ 当作 $-9$（应为 $(-3)^2 = 9$）" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-1-4",
+        title: { en: "Convert Standard Form to Vertex Form", zh: "由标准式化为顶点式" },
+        description: { en: "Complete the square on the $x$-terms to rewrite the quadratic.", zh: "对 $x$ 项配方以重写二次式。" },
+        howToRecognize: { en: "Quadratic in $ax^2 + bx + c$ form; problem asks for vertex form.", zh: "二次为 $ax^2 + bx + c$；要求顶点式。" },
+        steps: [
+          { en: "Factor $a$ from the $x^2$ and $x$ terms", zh: "从 $x^2$ 与 $x$ 项中提取 $a$" },
+          { en: "Add and subtract $\\left(\\tfrac{b/a}{2}\\right)^2$ inside the parentheses", zh: "在括号内加减 $\\left(\\tfrac{b/a}{2}\\right)^2$" },
+          { en: "Rewrite the perfect square; combine remaining constants", zh: "写成完全平方；合并剩余常数" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Convert $f(x) = 2x^2 - 8x + 3$ to vertex form.", zh: "把 $f(x) = 2x^2 - 8x + 3$ 化为顶点式。" },
+        commonTraps: [
+          { en: "Forgetting that the constant added inside is multiplied by $a$ when removed outside", zh: "忘记在括号内补的常数被 $a$ 倍后才能移出" },
+        ],
+      },
+      {
+        id: "pt-2-1-5",
+        title: { en: "Find Vertex from Standard Form Using $-\\tfrac{b}{2a}$", zh: "用 $-\\tfrac{b}{2a}$ 由标准式求顶点" },
+        description: { en: "Compute $h = -\\tfrac{b}{2a}$, then evaluate $f(h)$ to get $k$.", zh: "计算 $h = -\\tfrac{b}{2a}$，再求 $f(h) = k$。" },
+        howToRecognize: { en: "Standard-form quadratic; problem asks for vertex without completing the square.", zh: "标准式二次；不通过配方求顶点。" },
+        steps: [
+          { en: "Identify $a$ and $b$", zh: "找出 $a$ 与 $b$" },
+          { en: "Compute $h = -\\frac{b}{2a}$", zh: "计算 $h = -\\frac{b}{2a}$" },
+          { en: "Substitute $h$ into $f$ to get $k$", zh: "把 $h$ 代入 $f$ 得 $k$" },
+          { en: "Vertex is $(h, k)$", zh: "顶点为 $(h, k)$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the vertex of $f(x) = -x^2 + 6x + 1$.", zh: "求 $f(x) = -x^2 + 6x + 1$ 的顶点。" },
+        commonTraps: [
+          { en: "Sign error: forgetting the negative in $-\\tfrac{b}{2a}$", zh: "忘记 $-\\tfrac{b}{2a}$ 的负号" },
+        ],
+      },
+      {
+        id: "pt-2-1-6",
+        title: { en: "Sketch a Parabola from Vertex Form", zh: "由顶点式画抛物线" },
+        description: { en: "Use the vertex, direction, and a few symmetric points to draw the parabola.", zh: "利用顶点、开口方向和若干对称点画抛物线。" },
+        howToRecognize: { en: "Equation in vertex form; problem asks for the graph.", zh: "顶点式方程；要求作图。" },
+        steps: [
+          { en: "Plot the vertex $(h, k)$", zh: "标出顶点 $(h, k)$" },
+          { en: "Determine direction from $a$", zh: "由 $a$ 决定方向" },
+          { en: "Plot $f(h \\pm 1)$ and $f(h \\pm 2)$ — by symmetry only one side is needed", zh: "标出 $f(h \\pm 1)$ 与 $f(h \\pm 2)$——由对称性只需算一侧" },
+          { en: "Draw a smooth parabola", zh: "画光滑抛物线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = -(x - 2)^2 + 4$.", zh: "画 $f(x) = -(x - 2)^2 + 4$。" },
+        commonTraps: [
+          { en: "Drawing a V-shape or U-shape that is too narrow or too wide", zh: "画的形状过窄或过宽" },
+        ],
+      },
+      {
+        id: "pt-2-1-7",
+        title: { en: "Find $x$-Intercepts Using the Quadratic Formula", zh: "用求根公式求 $x$ 截距" },
+        description: { en: "Solve $ax^2 + bx + c = 0$ when factoring is impractical.", zh: "因式分解不便时，解 $ax^2 + bx + c = 0$。" },
+        howToRecognize: { en: "Quadratic does not factor cleanly; problem asks for $x$-intercepts.", zh: "二次不易因式分解；要求 $x$ 截距。" },
+        steps: [
+          { en: "Identify $a, b, c$", zh: "确定 $a, b, c$" },
+          { en: "Compute discriminant $b^2 - 4ac$", zh: "计算判别式 $b^2 - 4ac$" },
+          { en: "Apply $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$", zh: "代入 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$" },
+          { en: "Simplify; if discriminant is negative, no real $x$-intercepts", zh: "化简；判别式为负则无实数 $x$ 截距" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the $x$-intercepts of $f(x) = 2x^2 + 5x - 3$.", zh: "求 $f(x) = 2x^2 + 5x - 3$ 的 $x$ 截距。" },
+        commonTraps: [
+          { en: "Sign errors in computing $-b$ or under the radical", zh: "$-b$ 或根号下计算的符号错误" },
+        ],
+      },
+      {
+        id: "pt-2-1-8",
+        title: { en: "Find Maximum or Minimum Value", zh: "求最大值或最小值" },
+        description: { en: "Locate the vertex; the $y$-coordinate is the extremum.", zh: "定位顶点；$y$ 坐标即极值。" },
+        howToRecognize: { en: "Problem asks for max/min of a quadratic.", zh: "问二次函数的最大值或最小值。" },
+        steps: [
+          { en: "Find the vertex (any method)", zh: "用任意方法求顶点" },
+          { en: "If $a > 0$, $k$ is the minimum; if $a < 0$, $k$ is the maximum", zh: "$a > 0$ 时 $k$ 为最小值；$a < 0$ 时 $k$ 为最大值" },
+          { en: "State the value AND where it occurs", zh: "同时给出取值与取到位置" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find the minimum value of $f(x) = x^2 + 4x + 1$ and where it occurs.", zh: "求 $f(x) = x^2 + 4x + 1$ 的最小值及取到的位置。" },
+        commonTraps: [
+          { en: "Reporting the location $h$ instead of the value $k$", zh: "把位置 $h$ 当作极值（应为 $k$）" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-1-9",
+        title: { en: "Optimization Application — Maximize Area, Profit, or Height", zh: "优化应用——求面积、利润或高度的极值" },
+        description: { en: "Set up a quadratic model from a word problem and find its max/min.", zh: "由应用题建立二次模型并求其极值。" },
+        howToRecognize: { en: "Word problem mentions maximizing or minimizing a quantity that depends on a single variable.", zh: "应用题中要求最大化或最小化某依赖单变量的量。" },
+        steps: [
+          { en: "Define the variable and target quantity", zh: "定义变量与目标量" },
+          { en: "Express the quantity as a quadratic in that variable", zh: "把量表示为该变量的二次函数" },
+          { en: "Find vertex; report extremum value AND where it occurs", zh: "求顶点；给出极值及位置" },
+          { en: "Verify with units and context", zh: "结合单位与情境验证" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "A farmer has $200$ ft of fence to enclose a rectangular pen against a barn (so only three sides need fencing). Find the dimensions that maximize the enclosed area.", zh: "农夫用 $200$ ft 围栏沿谷仓一侧围成长方形畜栏（仅需围三边）。求使面积最大的尺寸。" },
+        commonTraps: [
+          { en: "Forgetting that one side is along the barn (no fence needed)", zh: "忘记有一边贴谷仓不需围栏" },
+          { en: "Reporting just the maximum value without the dimensions", zh: "只给最大值未给尺寸" },
+        ],
+      },
+      {
+        id: "pt-2-1-10",
+        title: { en: "Find Quadratic Given Vertex and a Point", zh: "由顶点和一点求二次函数" },
+        description: { en: "Use vertex form with the given vertex, then solve for $a$ using the additional point.", zh: "用顶点式代入已知顶点，再用另一点求 $a$。" },
+        howToRecognize: { en: "Vertex and one other point on the parabola are given.", zh: "已知顶点与抛物线上另一点。" },
+        steps: [
+          { en: "Write $f(x) = a(x - h)^2 + k$ with the given vertex $(h, k)$", zh: "用已知顶点 $(h, k)$ 写出 $f(x) = a(x - h)^2 + k$" },
+          { en: "Substitute the second point and solve for $a$", zh: "代入第二个点解出 $a$" },
+          { en: "Write the final equation; expand if requested", zh: "写出最终方程；如需要可展开" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Find the quadratic with vertex $(3, -4)$ that passes through $(5, 0)$.", zh: "求顶点为 $(3, -4)$ 且过 $(5, 0)$ 的二次函数。" },
+        commonTraps: [
+          { en: "Forgetting that the vertex's $x$- and $y$-values are NOT a point you substitute — they fill in $h$ and $k$", zh: "把顶点坐标当作要代入的点（应填入 $h$、$k$）" },
+        ],
+      },
+    ],
   },
   {
     id: "2-2",
     chapterId: "ch-2",
     number: "2.2",
-    title: {
-      en: "Polynomial Functions of Higher Degree",
-      zh: "高次多项式函数",
-    },
+    title: { en: "Polynomial Functions of Higher Degree", zh: "高次多项式函数" },
     description: {
       en: "Use the Leading Coefficient Test, find zeros and multiplicities, and sketch graphs of polynomials.",
       zh: "运用首项系数判别法，求零点及其重数，并绘制多项式函数的图像。",
     },
+    learningGoals: [
+      { en: "Apply the Leading Coefficient Test to determine end behavior", zh: "应用首项系数判别法确定终态行为" },
+      { en: "Find real zeros of a polynomial and their multiplicities", zh: "求多项式的实零点及其重数" },
+      { en: "Use the Intermediate Value Theorem to locate zeros", zh: "用介值定理定位零点" },
+      { en: "Sketch the graph of a polynomial function", zh: "绘制多项式函数的图像" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-2-2-1",
+        title: { en: "Leading Coefficient Test (End Behavior)", zh: "首项系数判别法（终态行为）" },
+        explanation: {
+          en: "End behavior of a polynomial $f(x)$ depends on its degree $n$ and leading coefficient $a_n$. Even $n$, $a_n > 0$: both ends UP. Even $n$, $a_n < 0$: both ends DOWN. Odd $n$, $a_n > 0$: left DOWN, right UP. Odd $n$, $a_n < 0$: left UP, right DOWN.",
+          zh: "多项式 $f(x)$ 的终态行为由次数 $n$ 与首项系数 $a_n$ 决定。偶次 $n$、$a_n > 0$：两端向上。偶次 $n$、$a_n < 0$：两端向下。奇次 $n$、$a_n > 0$：左下右上。奇次 $n$、$a_n < 0$：左上右下。",
+        },
+        whenToUse: { en: "First step in sketching any polynomial graph", zh: "绘制多项式图像的第一步" },
+        commonMistake: { en: "Looking only at leading coefficient sign without considering whether degree is even or odd", zh: "只看首项系数符号，未考虑次数为偶或奇" },
+        example: { en: "$f(x) = -2x^4 + \\ldots$: even degree, negative leading ⇒ both ends down", zh: "$f(x) = -2x^4 + \\ldots$：偶次，首项系数为负 ⇒ 两端向下" },
+      },
+      {
+        id: "kc-2-2-2",
+        title: { en: "Zeros and Multiplicity", zh: "零点与重数" },
+        explanation: {
+          en: "If $(x - c)^m$ is a factor of $f(x)$, then $c$ is a zero with multiplicity $m$. Even multiplicity: graph TOUCHES the $x$-axis at $c$ but does not cross. Odd multiplicity: graph CROSSES the $x$-axis at $c$. Higher multiplicity flattens the graph near the zero.",
+          zh: "若 $(x - c)^m$ 是 $f(x)$ 的因式，则 $c$ 为重数为 $m$ 的零点。偶重数：图像在 $c$ 处接触 $x$ 轴但不穿过。奇重数：图像在 $c$ 处穿过 $x$ 轴。重数越高，图像在零点附近越平。",
+        },
+        whenToUse: { en: "Sketching graphs and predicting behavior at each zero", zh: "绘制图像并预测每个零点附近的行为" },
+        commonMistake: { en: "Treating every zero as a simple crossing — multiplicity matters", zh: "把每个零点都当作简单穿过——重数有影响" },
+        example: { en: "$f(x) = (x - 1)^2 (x + 2)$: $x = 1$ touches (mult $2$), $x = -2$ crosses (mult $1$)", zh: "$f(x) = (x - 1)^2 (x + 2)$：$x = 1$ 接触（重数 $2$）；$x = -2$ 穿过（重数 $1$）" },
+      },
+      {
+        id: "kc-2-2-3",
+        title: { en: "Intermediate Value Theorem", zh: "介值定理" },
+        explanation: {
+          en: "If $f$ is continuous on $[a, b]$ and $f(a)$ and $f(b)$ have opposite signs, then there is at least one zero of $f$ between $a$ and $b$. Polynomials are always continuous.",
+          zh: "若 $f$ 在 $[a, b]$ 连续且 $f(a)$ 与 $f(b)$ 符号相反，则 $f$ 在 $a$ 与 $b$ 之间至少有一个零点。多项式始终连续。",
+        },
+        whenToUse: { en: "Confirm a zero exists in an interval, or narrow down its location", zh: "确认某区间内存在零点或缩小其位置" },
+        commonMistake: { en: "Assuming the theorem gives the EXACT zero (it only guarantees existence)", zh: "误以为定理给出精确零点（只保证存在）" },
+        example: { en: "$f(x) = x^3 - x - 1$: $f(1) = -1$, $f(2) = 5$ ⇒ zero in $(1, 2)$", zh: "$f(x) = x^3 - x - 1$：$f(1) = -1$，$f(2) = 5$ ⇒ 在 $(1, 2)$ 中有零点" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-2-2-1",
+        name: { en: "Polynomial Function (Standard Form)", zh: "多项式函数（标准式）" },
+        formula: "f(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0",
+        variables: [
+          { en: "$n$ — degree (non-negative integer)", zh: "$n$ — 次数（非负整数）" },
+          { en: "$a_n \\neq 0$ — leading coefficient", zh: "$a_n \\neq 0$ — 首项系数" },
+        ],
+        whenToUse: { en: "General reference; coefficients drive end behavior and zeros", zh: "通用参考；系数决定终态行为与零点" },
+        commonProblemTypes: [
+          { en: "Identify degree and leading coefficient", zh: "识别次数与首项系数" },
+          { en: "Apply Leading Coefficient Test", zh: "应用首项系数判别法" },
+        ],
+        example: { en: "$f(x) = -2x^4 + 3x^2 - 5$: degree $4$, leading coefficient $-2$", zh: "$f(x) = -2x^4 + 3x^2 - 5$：次数 $4$，首项系数 $-2$" },
+      },
+      {
+        id: "f-2-2-2",
+        name: { en: "Factored Form", zh: "因式分解形式" },
+        formula: "f(x) = a (x - c_1)^{m_1} (x - c_2)^{m_2} \\cdots (x - c_k)^{m_k}",
+        variables: [
+          { en: "$c_i$ — zeros (real)", zh: "$c_i$ — 实零点" },
+          { en: "$m_i$ — multiplicity of zero $c_i$", zh: "$m_i$ — 零点 $c_i$ 的重数" },
+          { en: "$\\sum m_i \\leq n$ — sum of multiplicities $\\leq$ degree", zh: "$\\sum m_i \\leq n$ — 重数之和 $\\leq$ 次数" },
+        ],
+        whenToUse: { en: "Reading zeros and multiplicities at a glance", zh: "一眼读出零点与重数" },
+        commonProblemTypes: [
+          { en: "Identify zero behavior (touch vs cross)", zh: "判断零点处行为（接触或穿过）" },
+          { en: "Build a polynomial with given zeros", zh: "由给定零点构造多项式" },
+        ],
+        example: { en: "$f(x) = 2(x - 3)^2 (x + 1)$: zeros $x = 3$ (mult $2$), $x = -1$ (mult $1$)", zh: "$f(x) = 2(x - 3)^2 (x + 1)$：零点 $x = 3$（重数 $2$）、$x = -1$（重数 $1$）" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-2-2-1",
+        title: { en: "Determine End Behavior", zh: "判断终态行为" },
+        description: { en: "Apply the Leading Coefficient Test using degree and leading coefficient.", zh: "用次数与首项系数应用首项系数判别法。" },
+        howToRecognize: { en: "Polynomial given; problem asks about behavior as $x \\to \\pm\\infty$.", zh: "给定多项式；问 $x \\to \\pm\\infty$ 时的行为。" },
+        steps: [
+          { en: "Identify the degree and leading coefficient", zh: "识别次数与首项系数" },
+          { en: "Apply the four cases of the Leading Coefficient Test", zh: "应用首项系数判别法的四种情形" },
+          { en: "State both ends with arrows or words", zh: "用箭头或文字给出两端行为" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Describe the end behavior of $f(x) = 3x^5 - 2x^3 + 7$.", zh: "描述 $f(x) = 3x^5 - 2x^3 + 7$ 的终态行为。" },
+        commonTraps: [
+          { en: "Looking at any term besides the leading term", zh: "看了非首项的其他项" },
+        ],
+      },
+      {
+        id: "pt-2-2-2",
+        title: { en: "Find Zeros from a Factored Polynomial", zh: "由因式分解的多项式求零点" },
+        description: { en: "Set each factor equal to zero.", zh: "把每个因式置为零。" },
+        howToRecognize: { en: "Polynomial is given in factored form.", zh: "给定多项式为因式分解形式。" },
+        steps: [
+          { en: "Set each factor to $0$", zh: "把每个因式置为 $0$" },
+          { en: "Solve each for $x$", zh: "分别解 $x$" },
+          { en: "Note multiplicity from each factor's exponent", zh: "由各因式的指数读出重数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find all zeros and multiplicities of $f(x) = -3(x - 2)(x + 5)^3$.", zh: "求 $f(x) = -3(x - 2)(x + 5)^3$ 的所有零点与重数。" },
+        commonTraps: [
+          { en: "Confusing the constant factor with a zero (the $-3$ does NOT give a zero)", zh: "把常数因式当零点（$-3$ 不产生零点）" },
+        ],
+      },
+      {
+        id: "pt-2-2-3",
+        title: { en: "Identify Degree and Leading Coefficient", zh: "识别次数与首项系数" },
+        description: { en: "Read $n$ and $a_n$ from a polynomial in standard form.", zh: "从标准式多项式中读出 $n$ 与 $a_n$。" },
+        howToRecognize: { en: "Polynomial is given (factored or expanded); problem asks for degree and/or leading coefficient.", zh: "给定多项式；问次数或首项系数。" },
+        steps: [
+          { en: "If factored, expand or use the highest powers from each factor", zh: "若已因式分解，可展开或合计各因式中的最高次" },
+          { en: "Degree is the highest power of $x$", zh: "次数为 $x$ 的最高次" },
+          { en: "Leading coefficient is the coefficient of that highest power", zh: "首项系数为该最高次的系数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the degree and leading coefficient of $f(x) = -2(x - 1)^3(x + 4)$.", zh: "求 $f(x) = -2(x - 1)^3(x + 4)$ 的次数与首项系数。" },
+        commonTraps: [
+          { en: "Forgetting to account for ALL factor exponents when getting the degree", zh: "求次数时漏掉某些因式的指数" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-2-2-4",
+        title: { en: "Find Real Zeros by Factoring", zh: "通过因式分解求实零点" },
+        description: { en: "Factor a polynomial completely (GCF, grouping, special products) then set factors to zero.", zh: "完全因式分解多项式（提取公因子、分组、特殊乘法），再令因式为零。" },
+        howToRecognize: { en: "Polynomial given in expanded form; problem asks for real zeros.", zh: "给定展开式；要求实零点。" },
+        steps: [
+          { en: "Factor out the greatest common factor", zh: "提取最大公因子" },
+          { en: "Try grouping or special-product patterns (difference of squares, etc.)", zh: "尝试分组或特殊乘法（平方差等）" },
+          { en: "Set each factor equal to $0$ and solve", zh: "每个因式置为 $0$ 求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Find all real zeros of $f(x) = x^4 - 5x^2 + 4$.", zh: "求 $f(x) = x^4 - 5x^2 + 4$ 的所有实零点。" },
+        commonTraps: [
+          { en: "Stopping after partial factoring", zh: "只做部分因式分解就停止" },
+        ],
+      },
+      {
+        id: "pt-2-2-5",
+        title: { en: "Determine Multiplicity of Each Zero", zh: "判断每个零点的重数" },
+        description: { en: "Read the exponent of each $(x - c)$ factor.", zh: "读出每个 $(x - c)$ 因式的指数。" },
+        howToRecognize: { en: "Factored polynomial; problem asks for multiplicity behaviour.", zh: "因式分解形式；问重数及其行为。" },
+        steps: [
+          { en: "List each unique zero $c$", zh: "列出每个不同的零点 $c$" },
+          { en: "State its exponent as the multiplicity", zh: "把其指数作为重数" },
+          { en: "Note: even mult ⇒ touches; odd mult ⇒ crosses", zh: "注：偶重数 ⇒ 接触；奇重数 ⇒ 穿过" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "For $f(x) = (x + 1)^2(x - 3)^4(x - 5)$, give zeros, multiplicities, and behaviour at each.", zh: "对 $f(x) = (x + 1)^2(x - 3)^4(x - 5)$，给出零点、重数及各处行为。" },
+        commonTraps: [
+          { en: "Mixing up touching and crossing for even/odd multiplicities", zh: "把偶/奇重数对应的接触与穿过弄反" },
+        ],
+      },
+      {
+        id: "pt-2-2-6",
+        title: { en: "Sketch a Polynomial Graph", zh: "绘制多项式图像" },
+        description: { en: "Combine end behavior, zeros, multiplicities, and the $y$-intercept to sketch the graph.", zh: "综合终态行为、零点、重数与 $y$ 截距画图。" },
+        howToRecognize: { en: "Problem asks for a sketch, especially with hand-drawn detail.", zh: "题目要求作图，尤其要求手工细节。" },
+        steps: [
+          { en: "Determine end behavior", zh: "确定终态行为" },
+          { en: "Plot all real zeros and note touch/cross behavior", zh: "标出所有实零点并注明接触/穿过" },
+          { en: "Plot the $y$-intercept $f(0)$", zh: "标出 $y$ 截距 $f(0)$" },
+          { en: "Draw a smooth curve consistent with all features", zh: "画出与所有特征一致的光滑曲线" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Sketch $f(x) = -(x - 1)^2(x + 2)$.", zh: "画 $f(x) = -(x - 1)^2(x + 2)$。" },
+        commonTraps: [
+          { en: "Drawing the wrong direction at a touch zero (graph stays on the same side)", zh: "在接触零点处画成穿过" },
+        ],
+      },
+      {
+        id: "pt-2-2-7",
+        title: { en: "Apply the Intermediate Value Theorem", zh: "应用介值定理" },
+        description: { en: "Confirm a zero exists in $(a, b)$ by showing $f(a)$ and $f(b)$ have opposite signs.", zh: "通过证明 $f(a)$ 与 $f(b)$ 异号确认 $(a, b)$ 内有零点。" },
+        howToRecognize: { en: "Problem asks to confirm a zero exists or to narrow its location.", zh: "题目要求确认零点存在或缩小位置。" },
+        steps: [
+          { en: "Evaluate $f(a)$ and $f(b)$", zh: "求 $f(a)$ 与 $f(b)$" },
+          { en: "Confirm signs are opposite", zh: "确认符号相反" },
+          { en: "Cite IVT to conclude existence of a zero in $(a, b)$", zh: "引用介值定理得出 $(a, b)$ 内有零点" },
+          { en: "If asked, bisect the interval to refine the location", zh: "如要求，用二分法细化位置" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Use IVT to show that $f(x) = x^3 - 4x + 2$ has a zero between $x = 0$ and $x = 1$.", zh: "用介值定理证明 $f(x) = x^3 - 4x + 2$ 在 $0$ 与 $1$ 之间有零点。" },
+        commonTraps: [
+          { en: "Forgetting to check that $f$ is continuous (it always is for polynomials, but state it)", zh: "忘记说明 $f$ 连续（多项式总连续，但应陈述）" },
+        ],
+      },
+      {
+        id: "pt-2-2-8",
+        title: { en: "Build a Polynomial with Given Zeros and Multiplicities", zh: "由给定零点与重数构造多项式" },
+        description: { en: "Construct $f(x)$ in factored form to match specified zeros, multiplicities, and possibly degree.", zh: "构造因式分解形式的 $f(x)$，匹配给定零点、重数（与可能给定的次数）。" },
+        howToRecognize: { en: "Problem lists zeros and multiplicities (and sometimes a leading coefficient or specific point).", zh: "题目列出零点与重数（有时还给首项系数或一点）。" },
+        steps: [
+          { en: "Write $f(x) = a (x - c_1)^{m_1} (x - c_2)^{m_2} \\cdots$", zh: "写出 $f(x) = a (x - c_1)^{m_1} (x - c_2)^{m_2} \\cdots$" },
+          { en: "Use any extra constraint (a known point, leading coefficient) to find $a$", zh: "用额外条件（一已知点、首项系数）求 $a$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Build a polynomial of degree $4$ with zero $x = -1$ (mult $2$), $x = 3$ (mult $1$), $x = 5$ (mult $1$), passing through $(0, 30)$.", zh: "构造一个 $4$ 次多项式，零点 $x = -1$（重数 $2$）、$x = 3$（重数 $1$）、$x = 5$（重数 $1$），且过 $(0, 30)$。" },
+        commonTraps: [
+          { en: "Mismatched degree from sum of multiplicities", zh: "重数之和与次数不匹配" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-2-2-9",
+        title: { en: "Sketch a Polynomial from a List of Conditions", zh: "由条件列表绘制多项式" },
+        description: { en: "Build and sketch a polynomial that satisfies given degree, end behavior, zeros, and other features.", zh: "构造并画出满足给定次数、终态行为、零点等条件的多项式。" },
+        howToRecognize: { en: "Problem provides constraints without a formula.", zh: "题目给出条件而非公式。" },
+        steps: [
+          { en: "Pick a degree consistent with end behavior and zero count", zh: "选与终态行为及零点数相符的次数" },
+          { en: "Place zeros and choose multiplicities consistent with crossing/touching descriptions", zh: "放置零点，选定与穿过/接触描述一致的重数" },
+          { en: "Choose leading coefficient sign for end behavior", zh: "选首项系数符号以匹配终态行为" },
+          { en: "Sketch the resulting polynomial", zh: "画出对应多项式" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Sketch a polynomial of degree $5$ with zeros at $x = -2$ (touching), $x = 0$ (crossing), $x = 3$ (touching), and right end going down.", zh: "画一个 $5$ 次多项式：零点 $x = -2$（接触）、$x = 0$（穿过）、$x = 3$（接触），右端向下。" },
+        commonTraps: [
+          { en: "Sum of multiplicities exceeding degree, or insufficient to meet degree", zh: "重数之和超过次数或不足以达到次数" },
+        ],
+      },
+      {
+        id: "pt-2-2-10",
+        title: { en: "Application — Polynomial Modeling", zh: "应用——多项式建模" },
+        description: { en: "Use a polynomial (often cubic or quartic) to model a real-world quantity such as volume, displacement, or revenue.", zh: "用多项式（常为三次或四次）刻画现实量，如体积、位移或收入。" },
+        howToRecognize: { en: "Word problem describes geometry or process leading to a polynomial.", zh: "应用题描述导致多项式的几何或过程。" },
+        steps: [
+          { en: "Translate the problem into an expression in one variable", zh: "把问题翻译为单变量表达式" },
+          { en: "Determine sensible domain restrictions", zh: "确定合理的定义域限制" },
+          { en: "Use the model to answer questions (find max, evaluate at a point, find zero)", zh: "用模型回答问题（求极值、求点值、求零点）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "An open box is made from a $12 \\times 18$ in sheet by cutting equal squares of side $x$ from each corner and folding the sides up. Express volume $V(x)$ as a polynomial and find the value of $x$ that maximizes $V$ (use a graphing tool).", zh: "用 $12 \\times 18$ in 的板，从四角各剪去边长 $x$ 的正方形再折起作开口盒。把体积 $V(x)$ 表为多项式，并用作图工具求使 $V$ 最大的 $x$。" },
+        commonTraps: [
+          { en: "Wrong domain — $0 < x < 6$ here (must be smaller than half the shorter side)", zh: "定义域错——这里 $0 < x < 6$（应小于较短边的一半）" },
+        ],
+      },
+    ],
   },
   {
     id: "2-3",
