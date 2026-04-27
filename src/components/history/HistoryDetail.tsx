@@ -15,6 +15,7 @@ import type {
 import type { PracticeQuestion } from "@/lib/ai/types";
 import { useTranslation } from "@/i18n/useTranslation";
 import { Button } from "@/components/ui/button";
+import { MathText } from "@/components/ui/math";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -52,28 +53,26 @@ function AnswerList({
         const sa = answers.find((a) => a.questionId === q.id) ?? answers[i];
         return (
           <li key={q.id ?? i} className="space-y-0.5">
-            <p className="font-medium text-gray-800">{q.prompt}</p>
+            <MathText text={q.prompt} className="block font-medium text-gray-800" />
             {sa && (
               <>
-                <p
-                  className={
-                    sa.isCorrect ? "text-green-600" : "text-red-600"
-                  }
-                >
-                  {d.yourAnswer}: {sa.answer}{" "}
-                  {sa.isCorrect ? `✓ ${d.correct}` : `✗ ${d.incorrect}`}
-                </p>
+                <MathText
+                  text={`${d.yourAnswer}: ${sa.answer} ${sa.isCorrect ? `✓ ${d.correct}` : `✗ ${d.incorrect}`}`}
+                  className={`block ${sa.isCorrect ? "text-green-600" : "text-red-600"}`}
+                />
                 {!sa.isCorrect && q.answer && (
-                  <p className="text-gray-600">
-                    {d.correctAnswer}: {q.answer}
-                  </p>
+                  <MathText
+                    text={`${d.correctAnswer}: ${q.answer}`}
+                    className="block text-gray-600"
+                  />
                 )}
               </>
             )}
             {q.explanation && (
-              <p className="text-xs text-gray-500">
-                {d.explanation}: {q.explanation}
-              </p>
+              <MathText
+                text={`${d.explanation}: ${q.explanation}`}
+                className="block text-xs text-gray-500"
+              />
             )}
           </li>
         );
@@ -93,7 +92,7 @@ function MistakePatternList({
     <ul className="space-y-2 text-sm">
       {patterns.map((mp, i) => (
         <li key={i} className="rounded-lg bg-orange-50 p-2">
-          <p className="font-medium text-orange-800">{mp.pattern}</p>
+          <MathText text={mp.pattern} className="block font-medium text-orange-800" />
           <p className="text-xs text-orange-600">
             {d.frequency}: {mp.frequency}
           </p>
@@ -118,7 +117,7 @@ function FeedbackSection({
   return (
     <div className="space-y-3">
       <Section title={d.summary}>
-        <p className="text-sm text-gray-700">{feedback.summary}</p>
+        <MathText text={feedback.summary} className="block text-sm text-gray-700" />
       </Section>
       {feedback.weakConcepts.length > 0 && (
         <Section title={d.weakConcepts}>
@@ -143,7 +142,7 @@ function FeedbackSection({
         <Section title={d.recommendations}>
           <ul className="list-disc pl-4 text-sm text-gray-700">
             {feedback.recommendations.map((r, i) => (
-              <li key={i}>{r}</li>
+              <li key={i}><MathText text={r} /></li>
             ))}
           </ul>
         </Section>
@@ -166,17 +165,15 @@ function StudyCoachDetail({
   return (
     <div className="space-y-4">
       <Section title={d.userInput}>
-        <p className="text-sm text-gray-700">{payload.userInput}</p>
+        <MathText text={payload.userInput} className="block text-sm text-gray-700" />
       </Section>
       <Section title={d.identifiedScope}>
-        <p className="text-sm text-gray-700">
-          {payload.coachPlan.identifiedScope}
-        </p>
+        <MathText text={payload.coachPlan.identifiedScope} className="block text-sm text-gray-700" />
       </Section>
       <Section title={d.recommendedPath}>
         <ol className="list-decimal pl-4 text-sm text-gray-700">
           {payload.coachPlan.steps.map((s, i) => (
-            <li key={i}>{s}</li>
+            <li key={i}><MathText text={s} /></li>
           ))}
         </ol>
       </Section>
@@ -209,7 +206,7 @@ function TutorDetail({
     <div className="space-y-4">
       {payload.context?.topicHint && (
         <Section title={d.topic}>
-          <p className="text-sm text-gray-700">{payload.context.topicHint}</p>
+          <MathText text={payload.context.topicHint} className="block text-sm text-gray-700" />
         </Section>
       )}
       <Section title={d.messages}>
@@ -226,7 +223,7 @@ function TutorDetail({
               <span className="text-xs font-medium uppercase text-gray-400">
                 {msg.role}
               </span>
-              <p className="mt-0.5">{msg.content}</p>
+              <MathText text={msg.content} className="block mt-0.5" />
             </div>
           ))}
         </div>
@@ -268,7 +265,7 @@ function TargetedPracticeDetail({
   return (
     <div className="space-y-4">
       <Section title={d.userRequest}>
-        <p className="text-sm text-gray-700">{payload.userRequest}</p>
+        <MathText text={payload.userRequest} className="block text-sm text-gray-700" />
       </Section>
       <Section title={d.questions}>
         <AnswerList
@@ -294,7 +291,7 @@ function MockTestDetail({
   return (
     <div className="space-y-4">
       <Section title={d.testTitle}>
-        <p className="text-sm text-gray-700">{payload.mockTest.title}</p>
+        <MathText text={payload.mockTest.title} className="block text-sm text-gray-700" />
       </Section>
       {payload.mockTest.unitIds.length > 0 && (
         <Section title={d.testScope}>
@@ -374,7 +371,7 @@ function DiagnosticDetail({
               <p className="text-xs font-medium text-blue-600 mb-1">{d.nextSteps}</p>
               <ul className="list-disc pl-4 text-sm text-gray-700">
                 {payload.result.recommendedNextSteps.map((s, i) => (
-                  <li key={i}>{s}</li>
+                  <li key={i}><MathText text={s} /></li>
                 ))}
               </ul>
             </div>
@@ -417,7 +414,7 @@ function MistakeReviewDetail({
         <Section title={d.recommendedReview}>
           <ul className="list-disc pl-4 text-sm text-gray-700">
             {payload.recommendedReview.map((r, i) => (
-              <li key={i}>{r}</li>
+              <li key={i}><MathText text={r} /></li>
             ))}
           </ul>
         </Section>
@@ -426,7 +423,7 @@ function MistakeReviewDetail({
         <Section title={d.nextPractice}>
           <ul className="list-disc pl-4 text-sm text-gray-700">
             {payload.nextPracticeSuggestions.map((s, i) => (
-              <li key={i}>{s}</li>
+              <li key={i}><MathText text={s} /></li>
             ))}
           </ul>
         </Section>
