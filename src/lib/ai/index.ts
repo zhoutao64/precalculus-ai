@@ -19,7 +19,7 @@ export function getAIProvider(name?: AIProviderName): AIProvider {
     case "bedrock": {
       const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
       const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-      const region = process.env.AWS_REGION || "us-east-1";
+      const region = process.env.AWS_REGION || "ap-northeast-1";
       const model = process.env.AI_MODEL;
 
       if (!accessKeyId || !secretAccessKey) {
