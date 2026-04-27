@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MockTestResult } from "./MockTestResult";
+import { MarkdownMath } from "@/components/ui/markdown-math";
 import type { Difficulty, SupportedLanguage } from "@/types/curriculum";
 
 export type MockTestChoice = {
@@ -182,7 +183,7 @@ export function MockTestRunner({
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <p className="whitespace-pre-wrap text-gray-800">{current.prompt}</p>
+        <MarkdownMath content={current.prompt} className="text-gray-800" />
 
         {isMultipleChoice ? (
           <div className="grid gap-2">

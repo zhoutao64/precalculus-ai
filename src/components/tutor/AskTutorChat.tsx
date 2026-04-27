@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { MarkdownMath } from "@/components/ui/markdown-math";
 import type { SupportedLanguage } from "@/types/curriculum";
 
 const T = {
@@ -79,7 +80,7 @@ export function AskTutorChat({ unitId, language }: Props) {
         {answer && (
           <div className="rounded-lg bg-blue-50 p-4">
             <p className="text-xs font-medium text-blue-600 mb-1">{T.answer[language]}</p>
-            <div className="text-sm text-gray-800 whitespace-pre-wrap">{answer}</div>
+            <MarkdownMath content={answer} className="text-gray-800" />
           </div>
         )}
       </CardContent>

@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { MockTestQuestion } from "./MockTestRunner";
+import { MarkdownMath } from "@/components/ui/markdown-math";
 import type { SupportedLanguage } from "@/types/curriculum";
 
 const T = {
@@ -110,7 +111,7 @@ export function MockTestResult({ questions, answers, language, onRestart }: Prop
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <p className="text-sm text-gray-800">{r.prompt}</p>
+            <MarkdownMath content={r.prompt} className="text-sm text-gray-800" />
             <div className="flex gap-4 text-sm">
               <p>
                 <span className="font-medium text-gray-500">{T.yourAnswer[language]}:</span>{" "}
@@ -127,7 +128,7 @@ export function MockTestResult({ questions, answers, language, onRestart }: Prop
             </div>
             <div className="rounded bg-gray-50 p-3 text-sm text-gray-700">
               <p className="font-medium text-gray-500 mb-1">{T.explanation[language]}</p>
-              {r.explanation}
+              <MarkdownMath content={r.explanation} />
             </div>
           </CardContent>
         </Card>

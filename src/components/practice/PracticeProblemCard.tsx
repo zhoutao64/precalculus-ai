@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { PracticeQuestion } from "@/lib/ai/types";
+import { MarkdownMath } from "@/components/ui/markdown-math";
 import type { SupportedLanguage } from "@/types/curriculum";
 
 const T = {
@@ -77,7 +78,7 @@ export function PracticeProblemCard({ question, language, index }: Props) {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="whitespace-pre-wrap text-gray-800">{question.prompt}</p>
+        <MarkdownMath content={question.prompt} className="text-gray-800" />
 
         {isMultipleChoice ? (
           <div className="grid gap-2">
@@ -197,7 +198,7 @@ export function PracticeProblemCard({ question, language, index }: Props) {
             <p className="mb-1 font-medium text-blue-900">
               {language === "en" ? "Solution" : "解题步骤"}
             </p>
-            <p className="whitespace-pre-wrap">{question.explanation}</p>
+            <MarkdownMath content={question.explanation} />
           </div>
         )}
       </CardContent>
