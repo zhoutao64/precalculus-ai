@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { MockTestQuestion } from "./MockTestRunner";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { SupportedLanguage } from "@/types/curriculum";
+import type { MockTestHistoryPayload, StudentAnswer } from "@/types/history";
 
 const T = {
   title: { en: "Test Results", zh: "测试结果" },
@@ -24,11 +26,15 @@ const T = {
 type Props = {
   questions: MockTestQuestion[];
   answers: Record<string, string>;
+  unitId: string;
   language: SupportedLanguage;
   onRestart: () => void;
 };
 
-export function MockTestResult({ questions, answers, language, onRestart }: Props) {
+export function MockTestResult({ questions, answers, unitId, language, onRestart }: Props) {
+  const { addRecord } = useLearningHistory();
+  const savedRef = useRef(false);
+
   const results = useMemo(() => {
     return questions.map((q) => {
       const userAnswer = (answers[q.id] ?? "").trim().toLowerCase();
@@ -52,6 +58,63 @@ export function MockTestResult({ questions, answers, language, onRestart }: Prop
     }
     return Array.from(map.entries()).sort((a, b) => b[1] - a[1]);
   }, [results]);
+
+  // Save history record once on mount
+  useEffect(() => {
+    if (savedRef.current) return;
+    savedRef.current = true;
+
+    const studentAnswers: StudentAnswer[] = results.map((r) => ({
+      questionId: r.id,
+      answer: r.userAnswer,
+      isCorrect: r.correct,
+    }));
+
+    const weakConceptsList = weakAreas.map(([tag]) => tag);
+
+    const payload: MockTestHistoryPayload = {
+      mockTest: {
+        title: language === "en" ? `Mock Test: ${unitId}` : `模拟测试: ${unitId}`,
+        unitIds: [unitId],
+        questions: questions.map((q) => ({
+          id: q.id,
+          unitId,
+          language,
+          prompt: q.prompt,
+          answer: q.answer,
+          explanation: q.explanation,
+          difficulty: q.difficulty,
+          choices: q.choices ?? undefined,
+          conceptTag: q.conceptTag,
+        })),
+      },
+      studentAnswers,
+      feedback: {
+        summary:
+          language === "en"
+            ? `Scored ${percentage}% (${correctCount}/${total})`
+            : `得分 ${percentage}% (${correctCount}/${total})`,
+        weakConcepts: weakConceptsList,
+        mistakePatterns: [],
+        recommendations: [],
+      },
+    };
+
+    addRecord({
+      type: "mock-test",
+      title: language === "en" ? `Mock Test: ${unitId}` : `模拟测试: ${unitId}`,
+      summary:
+        language === "en"
+          ? `${correctCount}/${total} correct (${percentage}%)`
+          : `${correctCount}/${total} 正确 (${percentage}%)`,
+      unitId,
+      language,
+      score: correctCount,
+      totalQuestions: total,
+      weakConcepts: weakConceptsList.length > 0 ? weakConceptsList : undefined,
+      payload,
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const scoreColor =
     percentage >= 80 ? "text-green-600" : percentage >= 60 ? "text-yellow-600" : "text-red-600";

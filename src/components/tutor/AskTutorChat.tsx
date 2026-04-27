@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { SupportedLanguage } from "@/types/curriculum";
+import type { TutorHistoryPayload } from "@/types/history";
 
 const T = {
   title: { en: "🤖 Ask AI Tutor", zh: "🤖 AI 导师问答" },
@@ -28,6 +30,7 @@ export function AskTutorChat({ unitId, language }: Props) {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { addRecord } = useLearningHistory();
 
   const handleAsk = async () => {
     if (!question.trim()) return;
@@ -43,7 +46,26 @@ export function AskTutorChat({ unitId, language }: Props) {
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
-      setAnswer(data.answer ?? "");
+      const tutorAnswer = data.answer ?? "";
+      setAnswer(tutorAnswer);
+
+      // Save to learning history
+      const now = new Date().toISOString();
+      const payload: TutorHistoryPayload = {
+        messages: [
+          { role: "user", content: question.trim(), timestamp: now },
+          { role: "assistant", content: tutorAnswer, timestamp: now },
+        ],
+        context: { unitId },
+      };
+      addRecord({
+        type: "ai-tutor",
+        title: question.trim().slice(0, 80),
+        summary: tutorAnswer.slice(0, 150),
+        unitId,
+        language,
+        payload,
+      });
     } catch {
       setError(true);
     } finally {

@@ -21,6 +21,9 @@ export function Header() {
           <Link href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900">
             {t.nav.dashboard}
           </Link>
+          <Link href="/history" className="text-sm text-gray-600 hover:text-gray-900">
+            {t.nav.history}
+          </Link>
 
           <Button
             variant="outline"

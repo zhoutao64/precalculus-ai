@@ -52,6 +52,7 @@ function formatTime(seconds: number): string {
 type Props = {
   questions: MockTestQuestion[];
   timeLimitMinutes: number;
+  unitId: string;
   language: SupportedLanguage;
   onExit: () => void;
 };
@@ -59,6 +60,7 @@ type Props = {
 export function MockTestRunner({
   questions,
   timeLimitMinutes,
+  unitId,
   language,
   onExit,
 }: Props) {
@@ -100,6 +102,7 @@ export function MockTestRunner({
       <MockTestResult
         questions={questions}
         answers={answers}
+        unitId={unitId}
         language={language}
         onRestart={onExit}
       />

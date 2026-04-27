@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PracticeProblemCard } from "./PracticeProblemCard";
+import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { PracticeQuestion } from "@/lib/ai/types";
 import type { Difficulty, SupportedLanguage } from "@/types/curriculum";
+import type { PracticeSessionHistoryPayload, StudentAnswer } from "@/types/history";
 
 const T = {
   title: { en: "Practice Problems", zh: "练习题" },
@@ -42,10 +44,46 @@ export function PracticeGenerator({ unitId, language }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
+  const answersRef = useRef<Map<string, StudentAnswer>>(new Map());
+  const savedRef = useRef(false);
+  const { addRecord } = useLearningHistory();
+
+  const handleAnswerChecked = useCallback(
+    (questionId: string, answer: string, isCorrect: boolean) => {
+      answersRef.current.set(questionId, { questionId, answer, isCorrect });
+
+      // Save history once all questions are answered
+      if (answersRef.current.size === questions.length && !savedRef.current) {
+        savedRef.current = true;
+        const studentAnswers = Array.from(answersRef.current.values());
+        const correctCount = studentAnswers.filter((a) => a.isCorrect).length;
+        const payload: PracticeSessionHistoryPayload = {
+          questions,
+          studentAnswers,
+        };
+        addRecord({
+          type: "practice-session",
+          title: `${language === "en" ? "Practice" : "练习"}: ${unitId}`,
+          summary:
+            language === "en"
+              ? `${correctCount}/${questions.length} correct (${difficulty})`
+              : `${correctCount}/${questions.length} 正确 (${difficulty})`,
+          unitId,
+          language,
+          score: correctCount,
+          totalQuestions: questions.length,
+          payload,
+        });
+      }
+    },
+    [questions, difficulty, unitId, language, addRecord]
+  );
 
   const handleGenerate = async () => {
     setLoading(true);
     setError(null);
+    answersRef.current = new Map();
+    savedRef.current = false;
     try {
       const res = await fetch("/api/generate-practice", {
         method: "POST",
@@ -149,6 +187,7 @@ export function PracticeGenerator({ unitId, language }: Props) {
           question={q}
           language={language}
           index={i}
+          onAnswerChecked={handleAnswerChecked}
         />
       ))}
     </div>

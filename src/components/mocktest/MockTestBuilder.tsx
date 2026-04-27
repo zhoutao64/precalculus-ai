@@ -69,6 +69,7 @@ export function MockTestBuilder({ unitId, language }: Props) {
       <MockTestRunner
         questions={questions}
         timeLimitMinutes={timeLimit}
+        unitId={unitId}
         language={language}
         onExit={handleExit}
       />

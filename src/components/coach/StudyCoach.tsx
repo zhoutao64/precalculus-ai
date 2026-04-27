@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { SupportedLanguage } from "@/types/curriculum";
+import type { StudyCoachHistoryPayload } from "@/types/history";
 
 const T = {
   title: { en: "Study Coach", zh: "学习教练" },
@@ -44,6 +46,7 @@ export function StudyCoach({ language = "en" }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CoachResult | null>(null);
+  const { addRecord } = useLearningHistory();
 
   const handleSubmit = async () => {
     if (!query.trim()) return;
@@ -61,9 +64,31 @@ export function StudyCoach({ language = "en" }: Props) {
       if (!res.ok) {
         throw new Error(data?.error ?? `HTTP ${res.status}`);
       }
-      setResult({
+      const coachResult: CoachResult = {
         summary: typeof data?.summary === "string" ? data.summary : "",
         steps: Array.isArray(data?.steps) ? data.steps : [],
+      };
+      setResult(coachResult);
+
+      // Save to learning history
+      const unitIds = coachResult.steps
+        .map((s) => s.unitId)
+        .filter((id): id is string => !!id);
+      const payload: StudyCoachHistoryPayload = {
+        userInput: query.trim(),
+        coachPlan: {
+          identifiedScope: coachResult.summary,
+          steps: coachResult.steps.map((s) => s.title),
+          recommendedUnits: unitIds,
+        },
+      };
+      addRecord({
+        type: "study-coach",
+        title: query.trim().slice(0, 80),
+        summary: coachResult.summary,
+        unitId: unitIds[0],
+        language,
+        payload,
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");

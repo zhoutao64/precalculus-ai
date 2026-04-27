@@ -31,13 +31,14 @@ type Props = {
   question: PracticeQuestion;
   language: SupportedLanguage;
   index?: number;
+  onAnswerChecked?: (questionId: string, answer: string, isCorrect: boolean) => void;
 };
 
 function normalize(s: string): string {
   return s.trim().toLowerCase().replace(/\s+/g, "");
 }
 
-export function PracticeProblemCard({ question, language, index }: Props) {
+export function PracticeProblemCard({ question, language, index, onAnswerChecked }: Props) {
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [freeResponse, setFreeResponse] = useState("");
   const [checked, setChecked] = useState(false);
@@ -145,7 +146,12 @@ export function PracticeProblemCard({ question, language, index }: Props) {
 
         <div className="flex flex-wrap gap-2">
           {!checked ? (
-            <Button onClick={() => setChecked(true)} disabled={!canCheck} size="sm">
+            <Button onClick={() => {
+              setChecked(true);
+              const answer = isMultipleChoice ? selectedChoice ?? "" : freeResponse;
+              const correct = normalize(answer) === normalize(question.answer);
+              onAnswerChecked?.(question.id, answer, correct);
+            }} disabled={!canCheck} size="sm">
               {T.check[language]}
             </Button>
           ) : (

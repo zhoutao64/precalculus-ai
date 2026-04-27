@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PracticeProblemCard } from "./PracticeProblemCard";
+import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { PracticeQuestion } from "@/lib/ai/types";
 import type { SupportedLanguage } from "@/types/curriculum";
+import type { TargetedPracticeHistoryPayload, StudentAnswer } from "@/types/history";
 
 const T = {
   title: { en: "Targeted Practice", zh: "针对性练习" },
@@ -32,12 +34,51 @@ export function TargetedPracticeBox({ unitId, language }: Props) {
   const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const answersRef = useRef<Map<string, StudentAnswer>>(new Map());
+  const savedRef = useRef(false);
+  const { addRecord } = useLearningHistory();
+
+  const handleAnswerChecked = useCallback(
+    (questionId: string, answer: string, isCorrect: boolean) => {
+      answersRef.current.set(questionId, { questionId, answer, isCorrect });
+
+      if (answersRef.current.size === questions.length && !savedRef.current) {
+        savedRef.current = true;
+        const studentAnswers = Array.from(answersRef.current.values());
+        const correctCount = studentAnswers.filter((a) => a.isCorrect).length;
+        const payload: TargetedPracticeHistoryPayload = {
+          userRequest: description.trim(),
+          questions,
+          studentAnswers,
+        };
+        addRecord({
+          type: "targeted-practice",
+          title:
+            language === "en"
+              ? `Targeted: ${description.trim().slice(0, 60)}`
+              : `针对练习: ${description.trim().slice(0, 60)}`,
+          summary:
+            language === "en"
+              ? `${correctCount}/${questions.length} correct`
+              : `${correctCount}/${questions.length} 正确`,
+          unitId,
+          language,
+          score: correctCount,
+          totalQuestions: questions.length,
+          payload,
+        });
+      }
+    },
+    [questions, description, unitId, language, addRecord]
+  );
 
   const handleGenerate = async () => {
     if (!description.trim()) return;
     setLoading(true);
     setError(false);
     setQuestions([]);
+    answersRef.current = new Map();
+    savedRef.current = false;
 
     try {
       const res = await fetch("/api/generate-targeted-practice", {
@@ -82,7 +123,13 @@ export function TargetedPracticeBox({ unitId, language }: Props) {
       </Card>
 
       {questions.map((q, i) => (
-        <PracticeProblemCard key={q.id ?? i} question={q} language={language} index={i + 1} />
+        <PracticeProblemCard
+          key={q.id ?? i}
+          question={q}
+          language={language}
+          index={i + 1}
+          onAnswerChecked={handleAnswerChecked}
+        />
       ))}
     </div>
   );

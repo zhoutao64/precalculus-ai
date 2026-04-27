@@ -6,6 +6,7 @@ import { useTranslation } from "@/i18n/useTranslation";
 import { chapters } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { RecentActivity } from "@/components/history/RecentActivity";
 
 export default function DashboardPage() {
   const { language, t } = useTranslation();
@@ -17,6 +18,8 @@ export default function DashboardPage() {
         <h1 className="text-3xl font-bold text-gray-900">{t.dashboard.title}</h1>
         <p className="mt-1 text-gray-600">{t.dashboard.subtitle}</p>
       </div>
+
+      <RecentActivity />
 
       <div className="space-y-3">
         {chapters.map((chapter) => (
