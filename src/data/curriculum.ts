@@ -7384,6 +7384,250 @@ const chapter5Units: Unit[] = [
       en: "Use reciprocal, quotient, Pythagorean, and cofunction identities to simplify trigonometric expressions.",
       zh: "运用倒数、商、毕达哥拉斯及余函数恒等式简化三角表达式。",
     },
+    learningGoals: [
+      { en: "Recognize and use reciprocal identities", zh: "识别并使用倒数恒等式" },
+      { en: "Recognize and use quotient identities", zh: "识别并使用商恒等式" },
+      { en: "Recognize and use Pythagorean identities", zh: "识别并使用毕达哥拉斯恒等式" },
+      { en: "Use identities to simplify and rewrite trigonometric expressions", zh: "用恒等式化简和改写三角表达式" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-5-1-1",
+        title: { en: "Reciprocal and Quotient Identities", zh: "倒数与商恒等式" },
+        explanation: {
+          en: "Reciprocal: $\\csc\\theta = \\frac{1}{\\sin\\theta}$, $\\sec\\theta = \\frac{1}{\\cos\\theta}$, $\\cot\\theta = \\frac{1}{\\tan\\theta}$. Quotient: $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$, $\\cot\\theta = \\frac{\\cos\\theta}{\\sin\\theta}$. These are the building blocks for all trig simplification.",
+          zh: "倒数：$\\csc\\theta = \\frac{1}{\\sin\\theta}$，$\\sec\\theta = \\frac{1}{\\cos\\theta}$，$\\cot\\theta = \\frac{1}{\\tan\\theta}$。商：$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$，$\\cot\\theta = \\frac{\\cos\\theta}{\\sin\\theta}$。它们是所有三角化简的基础。",
+        },
+        whenToUse: { en: "Converting between different trig functions to simplify an expression", zh: "在不同三角函数之间转换以化简表达式" },
+        commonMistake: { en: "Confusing $\\sec$ with $\\csc$ — $\\sec = 1/\\cos$, $\\csc = 1/\\sin$", zh: "混淆 $\\sec$ 和 $\\csc$——$\\sec = 1/\\cos$，$\\csc = 1/\\sin$" },
+        example: { en: "$\\frac{\\sin\\theta}{\\cos\\theta} \\cdot \\frac{1}{\\sin\\theta} = \\frac{1}{\\cos\\theta} = \\sec\\theta$", zh: "$\\frac{\\sin\\theta}{\\cos\\theta} \\cdot \\frac{1}{\\sin\\theta} = \\frac{1}{\\cos\\theta} = \\sec\\theta$" },
+      },
+      {
+        id: "kc-5-1-2",
+        title: { en: "Pythagorean Identities", zh: "毕达哥拉斯恒等式" },
+        explanation: {
+          en: "Three forms: (1) $\\sin^2\\theta + \\cos^2\\theta = 1$, (2) $1 + \\tan^2\\theta = \\sec^2\\theta$, (3) $1 + \\cot^2\\theta = \\csc^2\\theta$. Forms (2) and (3) are obtained by dividing (1) by $\\cos^2\\theta$ and $\\sin^2\\theta$ respectively. Each can be rearranged to isolate any term.",
+          zh: "三种形式：(1) $\\sin^2\\theta + \\cos^2\\theta = 1$，(2) $1 + \\tan^2\\theta = \\sec^2\\theta$，(3) $1 + \\cot^2\\theta = \\csc^2\\theta$。(2) 和 (3) 分别由 (1) 除以 $\\cos^2\\theta$ 和 $\\sin^2\\theta$ 得到。每种都可变形以分离任一项。",
+        },
+        whenToUse: { en: "Replacing one squared trig expression with another; simplifying sums/differences of squared trig functions", zh: "用一个三角平方表达式替换另一个；化简三角函数平方的和/差" },
+        commonMistake: { en: "Writing $\\sin^2\\theta - \\cos^2\\theta = 1$ — the signs must match the identity", zh: "写成 $\\sin^2\\theta - \\cos^2\\theta = 1$——符号必须与恒等式一致" },
+        example: { en: "$\\sec^2\\theta - 1 = \\tan^2\\theta$; $1 - \\sin^2\\theta = \\cos^2\\theta$", zh: "$\\sec^2\\theta - 1 = \\tan^2\\theta$；$1 - \\sin^2\\theta = \\cos^2\\theta$" },
+      },
+      {
+        id: "kc-5-1-3",
+        title: { en: "Simplification Strategies", zh: "化简策略" },
+        explanation: {
+          en: "Common strategies: (1) Convert everything to sin and cos, (2) Factor out common factors, (3) Combine fractions over a common denominator, (4) Use Pythagorean identities to reduce the number of different trig functions, (5) Multiply numerator and denominator by a conjugate.",
+          zh: "常用策略：(1) 全部化为 sin 和 cos，(2) 提取公因子，(3) 通分合并分式，(4) 用毕达哥拉斯恒等式减少不同三角函数的数量，(5) 分子分母同乘共轭表达式。",
+        },
+        whenToUse: { en: "When a trig expression looks complex and needs to be reduced", zh: "当三角表达式看起来复杂需要化简时" },
+        commonMistake: { en: "Trying to simplify both sides at once instead of working on one side only", zh: "同时化简两边而非只操作一边" },
+        example: { en: "$\\frac{1 - \\cos^2\\theta}{\\sin\\theta} = \\frac{\\sin^2\\theta}{\\sin\\theta} = \\sin\\theta$", zh: "$\\frac{1 - \\cos^2\\theta}{\\sin\\theta} = \\frac{\\sin^2\\theta}{\\sin\\theta} = \\sin\\theta$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-5-1-1",
+        name: { en: "Reciprocal Identities", zh: "倒数恒等式" },
+        formula: "\\csc\\theta = \\frac{1}{\\sin\\theta}, \\quad \\sec\\theta = \\frac{1}{\\cos\\theta}, \\quad \\cot\\theta = \\frac{1}{\\tan\\theta}",
+        variables: [
+          { en: "Each is undefined when its denominator is zero", zh: "分母为零时各式无定义" },
+        ],
+        whenToUse: { en: "Converting between trig functions", zh: "在三角函数之间转换" },
+        commonProblemTypes: [
+          { en: "Simplify expressions involving csc, sec, or cot", zh: "化简含 csc、sec 或 cot 的表达式" },
+        ],
+        example: { en: "$\\csc 30° = \\frac{1}{\\sin 30°} = 2$", zh: "$\\csc 30° = \\frac{1}{\\sin 30°} = 2$" },
+      },
+      {
+        id: "f-5-1-2",
+        name: { en: "Pythagorean Identities", zh: "毕达哥拉斯恒等式" },
+        formula: "\\sin^2\\theta + \\cos^2\\theta = 1, \\quad 1 + \\tan^2\\theta = \\sec^2\\theta, \\quad 1 + \\cot^2\\theta = \\csc^2\\theta",
+        variables: [
+          { en: "Each can be rearranged (e.g., $\\sin^2\\theta = 1 - \\cos^2\\theta$)", zh: "每个都可变形（如 $\\sin^2\\theta = 1 - \\cos^2\\theta$）" },
+        ],
+        whenToUse: { en: "Replacing one squared trig function with another", zh: "用一个三角平方函数替换另一个" },
+        commonProblemTypes: [
+          { en: "Simplify by substituting a Pythagorean identity", zh: "通过代入毕达哥拉斯恒等式化简" },
+          { en: "Factor expressions like $\\sin^2\\theta - \\cos^2\\theta$", zh: "因式分解如 $\\sin^2\\theta - \\cos^2\\theta$ 的表达式" },
+        ],
+        example: { en: "$\\sec^2\\theta - \\tan^2\\theta = 1$", zh: "$\\sec^2\\theta - \\tan^2\\theta = 1$" },
+      },
+      {
+        id: "f-5-1-3",
+        name: { en: "Cofunction Identities (Radian Form)", zh: "余函数恒等式（弧度形式）" },
+        formula: "\\sin(\\tfrac{\\pi}{2} - \\theta) = \\cos\\theta, \\quad \\tan(\\tfrac{\\pi}{2} - \\theta) = \\cot\\theta, \\quad \\sec(\\tfrac{\\pi}{2} - \\theta) = \\csc\\theta",
+        variables: [
+          { en: "Each trig function of an angle equals the cofunction of its complement", zh: "每个三角函数等于其互余角的余函数" },
+        ],
+        whenToUse: { en: "Rewriting a function as its cofunction", zh: "将一个函数改写为其余函数" },
+        commonProblemTypes: [
+          { en: "Simplify expressions involving $\\frac{\\pi}{2} - \\theta$", zh: "化简含 $\\frac{\\pi}{2} - \\theta$ 的表达式" },
+        ],
+        example: { en: "$\\cos(\\frac{\\pi}{2} - x) = \\sin x$", zh: "$\\cos(\\frac{\\pi}{2} - x) = \\sin x$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-5-1-1",
+        title: { en: "Simplify Using Reciprocal/Quotient Identities", zh: "用倒数/商恒等式化简" },
+        description: { en: "Rewrite an expression by replacing sec, csc, tan, cot with sin and cos.", zh: "用 sin 和 cos 替换 sec、csc、tan、cot 来改写表达式。" },
+        howToRecognize: { en: "Expression contains sec, csc, tan, or cot; asked to simplify.", zh: "表达式含 sec、csc、tan 或 cot；要求化简。" },
+        steps: [
+          { en: "Replace each function with its sin/cos definition", zh: "用 sin/cos 定义替换每个函数" },
+          { en: "Simplify the resulting fraction", zh: "化简所得分式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Simplify $\\cos\\theta \\cdot \\tan\\theta$.", zh: "化简 $\\cos\\theta \\cdot \\tan\\theta$。" },
+        commonTraps: [
+          { en: "Forgetting to cancel common factors after substitution", zh: "代换后忘记约掉公因子" },
+        ],
+      },
+      {
+        id: "pt-5-1-2",
+        title: { en: "Simplify Using a Pythagorean Identity", zh: "用毕达哥拉斯恒等式化简" },
+        description: { en: "Replace a squared trig expression using $\\sin^2 + \\cos^2 = 1$ or its variants.", zh: "用 $\\sin^2 + \\cos^2 = 1$ 或其变形替换三角平方表达式。" },
+        howToRecognize: { en: "Expression contains $\\sin^2\\theta$, $\\cos^2\\theta$, $\\tan^2\\theta$, or $\\sec^2\\theta$ with $\\pm 1$.", zh: "表达式含 $\\sin^2\\theta$、$\\cos^2\\theta$、$\\tan^2\\theta$ 或 $\\sec^2\\theta$ 与 $\\pm 1$。" },
+        steps: [
+          { en: "Identify which Pythagorean identity applies", zh: "确定适用哪个毕达哥拉斯恒等式" },
+          { en: "Substitute and simplify", zh: "代入并化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Simplify $\\sec^2\\theta - 1$.", zh: "化简 $\\sec^2\\theta - 1$。" },
+        commonTraps: [
+          { en: "Using the wrong variant (e.g., $1 + \\tan^2 = \\sec^2$ not $\\csc^2$)", zh: "用错变形（如 $1 + \\tan^2 = \\sec^2$ 而非 $\\csc^2$）" },
+        ],
+      },
+      {
+        id: "pt-5-1-3",
+        title: { en: "Find Remaining Trig Values Using Identities", zh: "用恒等式求其余三角函数值" },
+        description: { en: "Given one trig value and the quadrant, find the others using identities.", zh: "已知一个三角函数值和象限，用恒等式求其余值。" },
+        howToRecognize: { en: "Given $\\sin\\theta = a$ and quadrant; asked for $\\cos\\theta$, $\\tan\\theta$, etc.", zh: "给出 $\\sin\\theta = a$ 和象限；求 $\\cos\\theta$、$\\tan\\theta$ 等。" },
+        steps: [
+          { en: "Use $\\sin^2\\theta + \\cos^2\\theta = 1$ to find the missing function", zh: "用 $\\sin^2\\theta + \\cos^2\\theta = 1$ 求缺失函数" },
+          { en: "Use the quadrant for the correct sign", zh: "根据象限选正确符号" },
+          { en: "Compute the remaining functions via quotient and reciprocal identities", zh: "用商和倒数恒等式算出其余函数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $\\tan\\theta = -\\frac{4}{3}$ and $\\cos\\theta > 0$, find $\\sin\\theta$ and $\\sec\\theta$.", zh: "若 $\\tan\\theta = -\\frac{4}{3}$ 且 $\\cos\\theta > 0$，求 $\\sin\\theta$ 和 $\\sec\\theta$。" },
+        commonTraps: [
+          { en: "Choosing the wrong sign from the quadrant", zh: "象限选错符号" },
+        ],
+      },
+      {
+        id: "pt-5-1-4",
+        title: { en: "Apply Cofunction Identity", zh: "应用余函数恒等式" },
+        description: { en: "Rewrite a trig function of $\\frac{\\pi}{2} - \\theta$ as a cofunction.", zh: "将 $\\frac{\\pi}{2} - \\theta$ 的三角函数改写为余函数。" },
+        howToRecognize: { en: "Argument is $\\frac{\\pi}{2} - \\theta$ or $90° - \\theta$.", zh: "自变量为 $\\frac{\\pi}{2} - \\theta$ 或 $90° - \\theta$。" },
+        steps: [
+          { en: "Apply: $\\sin(\\frac{\\pi}{2} - \\theta) = \\cos\\theta$, $\\tan(\\frac{\\pi}{2} - \\theta) = \\cot\\theta$, etc.", zh: "应用：$\\sin(\\frac{\\pi}{2} - \\theta) = \\cos\\theta$，$\\tan(\\frac{\\pi}{2} - \\theta) = \\cot\\theta$ 等" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Simplify $\\sin(\\frac{\\pi}{2} - x) \\cdot \\sec x$.", zh: "化简 $\\sin(\\frac{\\pi}{2} - x) \\cdot \\sec x$。" },
+        commonTraps: [
+          { en: "Applying the wrong cofunction pairing", zh: "余函数配对搞错" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-5-1-5",
+        title: { en: "Factor a Trig Expression", zh: "三角表达式的因式分解" },
+        description: { en: "Factor expressions like $\\sin^2\\theta - \\cos^2\\theta$ or $\\sec^2\\theta - \\sec\\theta - 2$.", zh: "因式分解如 $\\sin^2\\theta - \\cos^2\\theta$ 或 $\\sec^2\\theta - \\sec\\theta - 2$ 的表达式。" },
+        howToRecognize: { en: "Expression is a polynomial in a trig function.", zh: "表达式是三角函数的多项式。" },
+        steps: [
+          { en: "Treat the trig function as a variable (let $u = \\sin\\theta$, etc.)", zh: "把三角函数当变量（令 $u = \\sin\\theta$ 等）" },
+          { en: "Factor the resulting polynomial", zh: "对所得多项式因式分解" },
+          { en: "Substitute back", zh: "回代" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Factor $2\\sin^2\\theta + \\sin\\theta - 1$.", zh: "因式分解 $2\\sin^2\\theta + \\sin\\theta - 1$。" },
+        commonTraps: [
+          { en: "Not recognizing the expression as a quadratic in $\\sin\\theta$", zh: "没认出表达式是关于 $\\sin\\theta$ 的二次式" },
+        ],
+      },
+      {
+        id: "pt-5-1-6",
+        title: { en: "Combine Fractions and Simplify", zh: "通分合并并化简" },
+        description: { en: "Add or subtract trig fractions by finding a common denominator.", zh: "通分后加减三角分式。" },
+        howToRecognize: { en: "Sum or difference of two trig fractions.", zh: "两个三角分式的和或差。" },
+        steps: [
+          { en: "Find the common denominator", zh: "找公分母" },
+          { en: "Combine numerators", zh: "合并分子" },
+          { en: "Simplify using identities", zh: "用恒等式化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Simplify $\\frac{1}{1 - \\sin\\theta} + \\frac{1}{1 + \\sin\\theta}$.", zh: "化简 $\\frac{1}{1 - \\sin\\theta} + \\frac{1}{1 + \\sin\\theta}$。" },
+        commonTraps: [
+          { en: "Not recognizing $(1 - \\sin\\theta)(1 + \\sin\\theta) = \\cos^2\\theta$", zh: "没认出 $(1 - \\sin\\theta)(1 + \\sin\\theta) = \\cos^2\\theta$" },
+        ],
+      },
+      {
+        id: "pt-5-1-7",
+        title: { en: "Multiply by Conjugate to Simplify", zh: "乘以共轭式化简" },
+        description: { en: "Multiply numerator and denominator by a conjugate to eliminate radicals or simplify.", zh: "分子分母同乘共轭式以消除根号或化简。" },
+        howToRecognize: { en: "Expression has $1 \\pm \\sin\\theta$ or $1 \\pm \\cos\\theta$ in a denominator.", zh: "分母含 $1 \\pm \\sin\\theta$ 或 $1 \\pm \\cos\\theta$。" },
+        steps: [
+          { en: "Multiply top and bottom by the conjugate", zh: "分子分母同乘共轭" },
+          { en: "The denominator becomes a Pythagorean identity", zh: "分母化为毕达哥拉斯恒等式" },
+          { en: "Simplify", zh: "化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Simplify $\\frac{\\cos\\theta}{1 - \\sin\\theta}$.", zh: "化简 $\\frac{\\cos\\theta}{1 - \\sin\\theta}$。" },
+        commonTraps: [
+          { en: "Only multiplying one of numerator/denominator by the conjugate", zh: "只将分子或分母中的一个乘以共轭" },
+        ],
+      },
+      {
+        id: "pt-5-1-8",
+        title: { en: "Rewrite in Terms of a Single Trig Function", zh: "用单一三角函数改写" },
+        description: { en: "Convert an expression so it uses only sin, only cos, or only one function.", zh: "将表达式转化为只含 sin、只含 cos 或只含一个函数。" },
+        howToRecognize: { en: "Expression mixes multiple trig functions; asked to rewrite in terms of one.", zh: "表达式混合多个三角函数；要求用一个函数改写。" },
+        steps: [
+          { en: "Use identities to express all functions in terms of the target function", zh: "用恒等式将所有函数表示为目标函数" },
+          { en: "Simplify", zh: "化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write $\\cot^2\\theta + 1$ in terms of $\\sin\\theta$ only.", zh: "将 $\\cot^2\\theta + 1$ 只用 $\\sin\\theta$ 表示。" },
+        commonTraps: [
+          { en: "Getting lost in multiple substitutions — plan the conversion path first", zh: "多次代换迷失方向——先规划转换路径" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-5-1-9",
+        title: { en: "Multi-Step Simplification", zh: "多步化简" },
+        description: { en: "Simplify a complex expression requiring several identity applications.", zh: "化简需多次应用恒等式的复杂表达式。" },
+        howToRecognize: { en: "Expression combines fractions, products, and powers of multiple trig functions.", zh: "表达式包含多个三角函数的分式、乘积和幂。" },
+        steps: [
+          { en: "Convert everything to sin and cos", zh: "全部化为 sin 和 cos" },
+          { en: "Combine fractions if needed", zh: "如有必要通分合并" },
+          { en: "Apply Pythagorean identities", zh: "应用毕达哥拉斯恒等式" },
+          { en: "Factor and cancel", zh: "因式分解并约分" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Simplify $\\frac{\\sec\\theta - \\cos\\theta}{\\tan\\theta}$.", zh: "化简 $\\frac{\\sec\\theta - \\cos\\theta}{\\tan\\theta}$。" },
+        commonTraps: [
+          { en: "Not seeing that $\\sec\\theta - \\cos\\theta = \\frac{1 - \\cos^2\\theta}{\\cos\\theta} = \\frac{\\sin^2\\theta}{\\cos\\theta}$", zh: "没看出 $\\sec\\theta - \\cos\\theta = \\frac{1 - \\cos^2\\theta}{\\cos\\theta} = \\frac{\\sin^2\\theta}{\\cos\\theta}$" },
+        ],
+      },
+      {
+        id: "pt-5-1-10",
+        title: { en: "Trigonometric Substitution Preview", zh: "三角代换预览" },
+        description: { en: "Simplify algebraic expressions by substituting a trig function for a variable.", zh: "用三角函数替换变量以化简代数表达式。" },
+        howToRecognize: { en: "Expression contains $\\sqrt{a^2 - x^2}$, $\\sqrt{a^2 + x^2}$, or $\\sqrt{x^2 - a^2}$.", zh: "表达式含 $\\sqrt{a^2 - x^2}$、$\\sqrt{a^2 + x^2}$ 或 $\\sqrt{x^2 - a^2}$。" },
+        steps: [
+          { en: "For $\\sqrt{a^2 - x^2}$: let $x = a\\sin\\theta$", zh: "对 $\\sqrt{a^2 - x^2}$：令 $x = a\\sin\\theta$" },
+          { en: "Substitute and use $1 - \\sin^2\\theta = \\cos^2\\theta$", zh: "代入并用 $1 - \\sin^2\\theta = \\cos^2\\theta$" },
+          { en: "Simplify the radical", zh: "化简根号" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Simplify $\\sqrt{9 - x^2}$ using $x = 3\\sin\\theta$.", zh: "用 $x = 3\\sin\\theta$ 化简 $\\sqrt{9 - x^2}$。" },
+        commonTraps: [
+          { en: "Forgetting the absolute value: $\\sqrt{\\cos^2\\theta} = |\\cos\\theta|$, which equals $\\cos\\theta$ when $\\theta \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$", zh: "忘记绝对值：$\\sqrt{\\cos^2\\theta} = |\\cos\\theta|$，当 $\\theta \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ 时等于 $\\cos\\theta$" },
+        ],
+      },
+    ],
   },
   {
     id: "5-2",
@@ -7397,6 +7641,207 @@ const chapter5Units: Unit[] = [
       en: "Verify trigonometric identities by transforming one side of the equation into the other.",
       zh: "通过将等式一边变形为另一边来证明三角恒等式。",
     },
+    learningGoals: [
+      { en: "Verify trig identities by transforming one side into the other", zh: "通过将一边变形为另一边来验证三角恒等式" },
+      { en: "Apply effective strategies for verifying identities", zh: "应用有效策略验证恒等式" },
+      { en: "Recognize common patterns that lead to simplification", zh: "识别可导致化简的常见模式" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-5-2-1",
+        title: { en: "Guidelines for Verifying Identities", zh: "验证恒等式的原则" },
+        explanation: {
+          en: "Key rules: (1) Work with ONE side only — do not move terms across the equals sign. (2) Start with the more complex side. (3) Convert to sin and cos when stuck. (4) Factor, combine fractions, or multiply by conjugates. (5) Watch for Pythagorean identity opportunities.",
+          zh: "关键规则：(1) 只操作一边——不要跨等号移项。(2) 从较复杂的一边开始。(3) 卡住时全部化为 sin 和 cos。(4) 因式分解、通分或乘以共轭。(5) 注意毕达哥拉斯恒等式的使用机会。",
+        },
+        whenToUse: { en: "Every identity verification problem", zh: "每个恒等式验证题" },
+        commonMistake: { en: "Working on both sides simultaneously and meeting in the middle — this is not a valid proof technique", zh: "同时操作两边并在中间会合——这不是有效的证明方法" },
+        example: { en: "To verify $\\frac{\\sin\\theta}{\\csc\\theta} + \\frac{\\cos\\theta}{\\sec\\theta} = 1$: LHS $= \\sin^2\\theta + \\cos^2\\theta = 1$ = RHS", zh: "验证 $\\frac{\\sin\\theta}{\\csc\\theta} + \\frac{\\cos\\theta}{\\sec\\theta} = 1$：左边 $= \\sin^2\\theta + \\cos^2\\theta = 1$ = 右边" },
+      },
+      {
+        id: "kc-5-2-2",
+        title: { en: "Common Verification Techniques", zh: "常用验证技巧" },
+        explanation: {
+          en: "Useful moves: (1) $1 - \\cos^2\\theta \\to \\sin^2\\theta$ and variants. (2) $\\frac{1}{\\cos\\theta} \\to \\sec\\theta$. (3) Factor difference of squares: $\\sin^2\\theta - \\cos^2\\theta = (\\sin\\theta - \\cos\\theta)(\\sin\\theta + \\cos\\theta)$. (4) Multiply by $\\frac{1 + \\sin\\theta}{1 + \\sin\\theta}$ to clear $1 - \\sin\\theta$ from a denominator.",
+          zh: "有用手法：(1) $1 - \\cos^2\\theta \\to \\sin^2\\theta$ 及变形。(2) $\\frac{1}{\\cos\\theta} \\to \\sec\\theta$。(3) 因式分解平方差：$\\sin^2\\theta - \\cos^2\\theta = (\\sin\\theta - \\cos\\theta)(\\sin\\theta + \\cos\\theta)$。(4) 乘以 $\\frac{1 + \\sin\\theta}{1 + \\sin\\theta}$ 消去分母中的 $1 - \\sin\\theta$。",
+        },
+        whenToUse: { en: "When standard substitution doesn't simplify enough — try these targeted moves", zh: "当标准代换不够用时——试试这些针对性手法" },
+        commonMistake: { en: "Trying the same approach repeatedly when it doesn't work — switch strategies", zh: "同一方法不奏效时反复尝试——应切换策略" },
+        example: { en: "Verify $\\frac{1}{1 - \\sin\\theta} = \\sec\\theta(\\sec\\theta + \\tan\\theta)$: multiply RHS out and convert to sin/cos", zh: "验证 $\\frac{1}{1 - \\sin\\theta} = \\sec\\theta(\\sec\\theta + \\tan\\theta)$：展开右边并转为 sin/cos" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-5-2-1",
+        name: { en: "Identity Verification Template", zh: "恒等式验证模板" },
+        formula: "\\text{LHS} \\xrightarrow{\\text{identities}} \\cdots \\xrightarrow{\\text{simplify}} \\text{RHS}",
+        variables: [
+          { en: "Work on only one side (usually the more complex one)", zh: "只操作一边（通常是较复杂的一边）" },
+          { en: "Each step must be a valid algebraic or identity-based transformation", zh: "每一步必须是有效的代数或恒等式变换" },
+        ],
+        whenToUse: { en: "Every identity verification problem", zh: "每个恒等式验证题" },
+        commonProblemTypes: [
+          { en: "Verify a given trig identity", zh: "验证给定的三角恒等式" },
+        ],
+        example: { en: "Verify $\\tan\\theta + \\cot\\theta = \\sec\\theta\\csc\\theta$: LHS $= \\frac{\\sin}{\\cos} + \\frac{\\cos}{\\sin} = \\frac{\\sin^2 + \\cos^2}{\\sin\\cos} = \\frac{1}{\\sin\\cos}$ = RHS", zh: "验证 $\\tan\\theta + \\cot\\theta = \\sec\\theta\\csc\\theta$：左边 $= \\frac{\\sin}{\\cos} + \\frac{\\cos}{\\sin} = \\frac{\\sin^2 + \\cos^2}{\\sin\\cos} = \\frac{1}{\\sin\\cos}$ = 右边" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-5-2-1",
+        title: { en: "One-Step Verification", zh: "一步验证" },
+        description: { en: "Verify an identity that requires only one substitution.", zh: "验证只需一步代换的恒等式。" },
+        howToRecognize: { en: "One side is already close to the other after a single identity.", zh: "一次恒等式代换即可使一边等于另一边。" },
+        steps: [
+          { en: "Apply a single identity (reciprocal, quotient, or Pythagorean)", zh: "应用一个恒等式（倒数、商或毕达哥拉斯）" },
+          { en: "Confirm both sides match", zh: "确认两边一致" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Verify: $\\tan\\theta \\cdot \\cos\\theta = \\sin\\theta$.", zh: "验证：$\\tan\\theta \\cdot \\cos\\theta = \\sin\\theta$。" },
+        commonTraps: [
+          { en: "Over-complicating: just replace $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ and cancel", zh: "过度复杂化：只需替换 $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ 然后约分" },
+        ],
+      },
+      {
+        id: "pt-5-2-2",
+        title: { en: "Pythagorean Substitution Verification", zh: "毕达哥拉斯代换验证" },
+        description: { en: "Verify by replacing a squared expression via Pythagorean identity.", zh: "用毕达哥拉斯恒等式替换平方表达式来验证。" },
+        howToRecognize: { en: "One side has $\\sin^2$ or $\\cos^2$ that pairs with the other side.", zh: "一边有 $\\sin^2$ 或 $\\cos^2$ 可与另一边配对。" },
+        steps: [
+          { en: "Identify the Pythagorean substitution needed", zh: "确定需要的毕达哥拉斯代换" },
+          { en: "Substitute and simplify", zh: "代入并化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Verify: $1 - 2\\sin^2\\theta = 2\\cos^2\\theta - 1$.", zh: "验证：$1 - 2\\sin^2\\theta = 2\\cos^2\\theta - 1$。" },
+        commonTraps: [
+          { en: "Trying to work on both sides — just convert the LHS using $\\sin^2\\theta = 1 - \\cos^2\\theta$", zh: "试图操作两边——只需用 $\\sin^2\\theta = 1 - \\cos^2\\theta$ 转换左边" },
+        ],
+      },
+      {
+        id: "pt-5-2-3",
+        title: { en: "Convert to Sin/Cos and Verify", zh: "化为 sin/cos 后验证" },
+        description: { en: "Verify by converting both sides to sin and cos.", zh: "将两边都化为 sin 和 cos 来验证。" },
+        howToRecognize: { en: "Both sides contain sec, csc, tan, or cot.", zh: "两边都含 sec、csc、tan 或 cot。" },
+        steps: [
+          { en: "Rewrite the more complex side using sin and cos only", zh: "只用 sin 和 cos 改写较复杂的一边" },
+          { en: "Simplify to match the other side", zh: "化简使其等于另一边" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Verify: $\\cot\\theta \\cdot \\sec\\theta = \\csc\\theta$.", zh: "验证：$\\cot\\theta \\cdot \\sec\\theta = \\csc\\theta$。" },
+        commonTraps: [
+          { en: "Not simplifying fully after conversion", zh: "转换后未充分化简" },
+        ],
+      },
+      {
+        id: "pt-5-2-4",
+        title: { en: "Verify Involving Squared Functions", zh: "含平方函数的验证" },
+        description: { en: "Verify identities where both sides involve squared trig functions.", zh: "验证两边都含三角函数平方的恒等式。" },
+        howToRecognize: { en: "Expressions like $\\sec^2\\theta - \\tan^2\\theta = 1$.", zh: "表达式如 $\\sec^2\\theta - \\tan^2\\theta = 1$。" },
+        steps: [
+          { en: "Apply the relevant Pythagorean identity directly", zh: "直接应用相关的毕达哥拉斯恒等式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Verify: $\\csc^2\\theta(1 - \\cos^2\\theta) = 1$.", zh: "验证：$\\csc^2\\theta(1 - \\cos^2\\theta) = 1$。" },
+        commonTraps: [
+          { en: "Not recognizing $1 - \\cos^2\\theta = \\sin^2\\theta$ immediately", zh: "没立即认出 $1 - \\cos^2\\theta = \\sin^2\\theta$" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-5-2-5",
+        title: { en: "Verify by Combining Fractions", zh: "通分合并验证" },
+        description: { en: "Verify by adding/subtracting fractions on one side.", zh: "对一边通分加减来验证。" },
+        howToRecognize: { en: "One side is a sum/difference of fractions.", zh: "一边是分式之和/差。" },
+        steps: [
+          { en: "Find common denominator", zh: "找公分母" },
+          { en: "Combine and simplify using identities", zh: "合并并用恒等式化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\frac{\\sin\\theta}{1 + \\cos\\theta} + \\frac{1 + \\cos\\theta}{\\sin\\theta} = 2\\csc\\theta$.", zh: "验证：$\\frac{\\sin\\theta}{1 + \\cos\\theta} + \\frac{1 + \\cos\\theta}{\\sin\\theta} = 2\\csc\\theta$。" },
+        commonTraps: [
+          { en: "Arithmetic errors when combining the numerators", zh: "合并分子时的算术错误" },
+        ],
+      },
+      {
+        id: "pt-5-2-6",
+        title: { en: "Verify by Factoring", zh: "因式分解验证" },
+        description: { en: "Verify by factoring one side of the identity.", zh: "对一边因式分解来验证。" },
+        howToRecognize: { en: "One side is a polynomial in trig functions.", zh: "一边是三角函数的多项式。" },
+        steps: [
+          { en: "Factor the polynomial (difference of squares, common factor, etc.)", zh: "因式分解（平方差、公因子等）" },
+          { en: "Simplify to match the other side", zh: "化简使其等于另一边" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\sin^4\\theta - \\cos^4\\theta = 1 - 2\\cos^2\\theta$.", zh: "验证：$\\sin^4\\theta - \\cos^4\\theta = 1 - 2\\cos^2\\theta$。" },
+        commonTraps: [
+          { en: "Not seeing the difference of squares: $a^4 - b^4 = (a^2 - b^2)(a^2 + b^2)$", zh: "没看出平方差：$a^4 - b^4 = (a^2 - b^2)(a^2 + b^2)$" },
+        ],
+      },
+      {
+        id: "pt-5-2-7",
+        title: { en: "Verify Using Conjugate Multiplication", zh: "乘共轭验证" },
+        description: { en: "Verify by multiplying by a conjugate to clear a denominator.", zh: "乘以共轭消去分母来验证。" },
+        howToRecognize: { en: "Denominator contains $1 \\pm \\sin\\theta$ or $1 \\pm \\cos\\theta$.", zh: "分母含 $1 \\pm \\sin\\theta$ 或 $1 \\pm \\cos\\theta$。" },
+        steps: [
+          { en: "Multiply numerator and denominator by the conjugate", zh: "分子分母同乘共轭" },
+          { en: "Simplify using $(1 - \\sin\\theta)(1 + \\sin\\theta) = \\cos^2\\theta$", zh: "用 $(1 - \\sin\\theta)(1 + \\sin\\theta) = \\cos^2\\theta$ 化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\frac{\\cos\\theta}{1 - \\sin\\theta} = \\sec\\theta + \\tan\\theta$.", zh: "验证：$\\frac{\\cos\\theta}{1 - \\sin\\theta} = \\sec\\theta + \\tan\\theta$。" },
+        commonTraps: [
+          { en: "Forgetting to distribute the conjugate properly in the numerator", zh: "分子展开共轭时分配不当" },
+        ],
+      },
+      {
+        id: "pt-5-2-8",
+        title: { en: "Verify a Multi-Term Identity", zh: "多项恒等式验证" },
+        description: { en: "Verify an identity that requires 3+ transformation steps.", zh: "验证需要 3 步以上变换的恒等式。" },
+        howToRecognize: { en: "Identity has multiple terms, mixed functions, and doesn't simplify in one step.", zh: "恒等式有多项、混合函数，且无法一步化简。" },
+        steps: [
+          { en: "Start with the more complex side", zh: "从较复杂的一边开始" },
+          { en: "Apply a sequence of identities and algebraic simplifications", zh: "应用一系列恒等式和代数化简" },
+          { en: "Show each step clearly", zh: "清楚展示每一步" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\frac{\\tan\\theta + \\cot\\theta}{\\sec\\theta} = \\csc\\theta$.", zh: "验证：$\\frac{\\tan\\theta + \\cot\\theta}{\\sec\\theta} = \\csc\\theta$。" },
+        commonTraps: [
+          { en: "Losing track of intermediate steps — write each transformation explicitly", zh: "中间步骤跟丢——每步变换都明确写出" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-5-2-9",
+        title: { en: "Challenging Identity Verification", zh: "高难度恒等式验证" },
+        description: { en: "Verify a non-obvious identity requiring creative strategy choices.", zh: "验证需要创造性策略选择的不明显恒等式。" },
+        howToRecognize: { en: "Neither side looks like it simplifies directly; requires a clever move.", zh: "两边都不像能直接化简；需要巧妙手法。" },
+        steps: [
+          { en: "Try multiple approaches: convert to sin/cos, factor, use conjugate", zh: "尝试多种方法：化为 sin/cos、因式分解、共轭" },
+          { en: "Look for hidden structure (e.g., difference of squares, common factors)", zh: "寻找隐藏结构（如平方差、公因子）" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Verify: $\\frac{1 + \\sin\\theta}{\\cos\\theta} + \\frac{\\cos\\theta}{1 + \\sin\\theta} = 2\\sec\\theta$.", zh: "验证：$\\frac{1 + \\sin\\theta}{\\cos\\theta} + \\frac{\\cos\\theta}{1 + \\sin\\theta} = 2\\sec\\theta$。" },
+        commonTraps: [
+          { en: "Giving up too early — try at least 2-3 different starting strategies", zh: "过早放弃——至少尝试 2-3 种不同的起始策略" },
+        ],
+      },
+      {
+        id: "pt-5-2-10",
+        title: { en: "Disprove a False Identity", zh: "反驳假恒等式" },
+        description: { en: "Show that a proposed identity is NOT true by finding a counterexample.", zh: "通过找反例说明一个拟议恒等式不成立。" },
+        howToRecognize: { en: "Problem asks you to determine if an equation is an identity.", zh: "题目要求判断一个等式是否为恒等式。" },
+        steps: [
+          { en: "Try a specific value (e.g., $\\theta = \\frac{\\pi}{4}$)", zh: "代入一个特定值（如 $\\theta = \\frac{\\pi}{4}$）" },
+          { en: "If both sides are unequal, it is NOT an identity", zh: "若两边不等，则不是恒等式" },
+          { en: "If they are equal, try another value — a single check doesn't prove an identity", zh: "若相等，再试另一个值——单点验证不能证明恒等式" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Is $\\sin(2\\theta) = 2\\sin\\theta$ an identity? Prove or disprove.", zh: "$\\sin(2\\theta) = 2\\sin\\theta$ 是恒等式吗？证明或反驳。" },
+        commonTraps: [
+          { en: "Testing only $\\theta = 0$ where both sides happen to be 0 — must test non-trivial values", zh: "只测 $\\theta = 0$（两边恰好都为 0）——必须测非平凡值" },
+        ],
+      },
+    ],
   },
   {
     id: "5-3",
@@ -7410,6 +7855,227 @@ const chapter5Units: Unit[] = [
       en: "Solve trigonometric equations by factoring, using identities, and applying inverse functions.",
       zh: "通过因式分解、使用恒等式以及反函数法求解三角方程。",
     },
+    learningGoals: [
+      { en: "Solve linear trigonometric equations", zh: "求解一次三角方程" },
+      { en: "Solve trig equations by factoring", zh: "通过因式分解求解三角方程" },
+      { en: "Solve trig equations using identities", zh: "利用恒等式求解三角方程" },
+      { en: "Find all solutions vs. solutions in a given interval", zh: "求所有解与给定区间内的解" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-5-3-1",
+        title: { en: "Isolate the Trig Function", zh: "分离三角函数" },
+        explanation: {
+          en: "Treat the trig function as a variable: solve for $\\sin\\theta$, $\\cos\\theta$, etc., then use inverse functions or the unit circle to find $\\theta$. For example, $2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$ in $[0, 2\\pi)$.",
+          zh: "把三角函数当变量：解出 $\\sin\\theta$、$\\cos\\theta$ 等，再用反函数或单位圆求 $\\theta$。例如 $2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\frac{1}{2} \\Rightarrow \\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$（在 $[0, 2\\pi)$ 内）。",
+        },
+        whenToUse: { en: "First step in almost every trig equation", zh: "几乎每个三角方程的第一步" },
+        commonMistake: { en: "Finding only one angle when there are two (or more) in $[0, 2\\pi)$", zh: "在 $[0, 2\\pi)$ 内有两个（或更多）解时只找到一个" },
+        example: { en: "$\\cos\\theta = -\\frac{\\sqrt{2}}{2}$: $\\theta = \\frac{3\\pi}{4}, \\frac{5\\pi}{4}$", zh: "$\\cos\\theta = -\\frac{\\sqrt{2}}{2}$：$\\theta = \\frac{3\\pi}{4}, \\frac{5\\pi}{4}$" },
+      },
+      {
+        id: "kc-5-3-2",
+        title: { en: "Factoring Trig Equations", zh: "因式分解三角方程" },
+        explanation: {
+          en: "When a trig equation is quadratic (e.g., $2\\sin^2\\theta - \\sin\\theta - 1 = 0$), let $u = \\sin\\theta$, factor the quadratic, and solve each factor. Do NOT divide both sides by a trig function — you may lose solutions where that function equals zero.",
+          zh: "当三角方程��二次式（如 $2\\sin^2\\theta - \\sin\\theta - 1 = 0$）时，令 $u = \\sin\\theta$，因式分解二次式，解每个因子。不要两边同除三角函数——可能丢失该函数为零的解。",
+        },
+        whenToUse: { en: "Equations that are quadratic in sin, cos, or tan", zh: "关于 sin、cos 或 tan 的二次方程" },
+        commonMistake: { en: "Dividing by $\\sin\\theta$ and losing the solution $\\sin\\theta = 0$", zh: "两边除以 $\\sin\\theta$ 而丢失 $\\sin\\theta = 0$ 的解" },
+        example: { en: "$2\\sin^2\\theta - \\sin\\theta = 0 \\Rightarrow \\sin\\theta(2\\sin\\theta - 1) = 0 \\Rightarrow \\sin\\theta = 0$ or $\\sin\\theta = \\frac{1}{2}$", zh: "$2\\sin^2\\theta - \\sin\\theta = 0 \\Rightarrow \\sin\\theta(2\\sin\\theta - 1) = 0 \\Rightarrow \\sin\\theta = 0$ 或 $\\sin\\theta = \\frac{1}{2}$" },
+      },
+      {
+        id: "kc-5-3-3",
+        title: { en: "General Solutions vs. Specific Interval", zh: "通解与特定区间的解" },
+        explanation: {
+          en: "General solution: add the full period. For sine/cosine: $\\theta = \\alpha + 2n\\pi$ ($n$ integer). For tangent: $\\theta = \\alpha + n\\pi$. Specific interval (e.g., $[0, 2\\pi)$): list only the solutions that fall in the interval.",
+          zh: "通解：加上完整周期。对 sin/cos：$\\theta = \\alpha + 2n\\pi$（$n$ 为整数）。对 tan：$\\theta = \\alpha + n\\pi$。特定区间（如 $[0, 2\\pi)$）：只列出落在区间内的解。",
+        },
+        whenToUse: { en: "Deciding whether to give all solutions or just those in a specific interval", zh: "决定是给出所有解还是仅给特定区间内的解" },
+        commonMistake: { en: "Giving the general solution when the problem asks for $[0, 2\\pi)$ only, or vice versa", zh: "题目要求 $[0, 2\\pi)$ 内的解却给了通解，或反之" },
+        example: { en: "$\\sin\\theta = \\frac{1}{2}$: on $[0, 2\\pi)$: $\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$. General: $\\theta = \\frac{\\pi}{6} + 2n\\pi$ or $\\frac{5\\pi}{6} + 2n\\pi$", zh: "$\\sin\\theta = \\frac{1}{2}$：在 $[0, 2\\pi)$：$\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$。通解：$\\theta = \\frac{\\pi}{6} + 2n\\pi$ 或 $\\frac{5\\pi}{6} + 2n\\pi$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-5-3-1",
+        name: { en: "General Solution Patterns", zh: "通解模式" },
+        formula: "\\sin\\theta = a: \\; \\theta = \\arcsin(a) + 2n\\pi \\; \\text{or} \\; \\pi - \\arcsin(a) + 2n\\pi",
+        variables: [
+          { en: "$\\cos\\theta = a$: $\\theta = \\pm\\arccos(a) + 2n\\pi$", zh: "$\\cos\\theta = a$：$\\theta = \\pm\\arccos(a) + 2n\\pi$" },
+          { en: "$\\tan\\theta = a$: $\\theta = \\arctan(a) + n\\pi$", zh: "$\\tan\\theta = a$：$\\theta = \\arctan(a) + n\\pi$" },
+          { en: "$n$ is any integer", zh: "$n$ 为任意整数" },
+        ],
+        whenToUse: { en: "Writing the complete set of solutions to a trig equation", zh: "写出三角方程的完整解集" },
+        commonProblemTypes: [
+          { en: "Find all solutions of a trig equation", zh: "求三角方程的所有解" },
+          { en: "Find solutions in $[0, 2\\pi)$", zh: "求 $[0, 2\\pi)$ 内的解" },
+        ],
+        example: { en: "$\\tan\\theta = 1$: $\\theta = \\frac{\\pi}{4} + n\\pi$", zh: "$\\tan\\theta = 1$：$\\theta = \\frac{\\pi}{4} + n\\pi$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-5-3-1",
+        title: { en: "Solve a Linear Trig Equation", zh: "解一次三角方程" },
+        description: { en: "Solve equations like $2\\cos\\theta + 1 = 0$.", zh: "解如 $2\\cos\\theta + 1 = 0$ 的方程。" },
+        howToRecognize: { en: "One trig function, first power, simple algebra.", zh: "一个三角函数、一次、简单代数。" },
+        steps: [
+          { en: "Isolate the trig function", zh: "分离三角函数" },
+          { en: "Find all angles with that value in the given interval", zh: "在给定区间找所有满足的角" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $2\\sin\\theta - \\sqrt{3} = 0$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $2\\sin\\theta - \\sqrt{3} = 0$。" },
+        commonTraps: [
+          { en: "Finding only $\\frac{\\pi}{3}$ and missing $\\frac{2\\pi}{3}$", zh: "只找到 $\\frac{\\pi}{3}$ 而漏掉 $\\frac{2\\pi}{3}$" },
+        ],
+      },
+      {
+        id: "pt-5-3-2",
+        title: { en: "Solve $\\tan\\theta = k$", zh: "解 $\\tan\\theta = k$" },
+        description: { en: "Find solutions using the shorter period of tangent ($\\pi$).", zh: "利用正切较短的周期（$\\pi$）求解。" },
+        howToRecognize: { en: "Equation involves $\\tan$ only.", zh: "方程只含 $\\tan$。" },
+        steps: [
+          { en: "Find the reference angle: $\\theta' = \\arctan|k|$", zh: "求参考角：$\\theta' = \\arctan|k|$" },
+          { en: "Solutions are $\\theta' + n\\pi$ (or $-\\theta' + n\\pi$ for negative $k$ depending on convention)", zh: "解为 $\\theta' + n\\pi$（负 $k$ 时可能为 $-\\theta' + n\\pi$）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $\\tan\\theta = -1$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\tan\\theta = -1$。" },
+        commonTraps: [
+          { en: "Using $2\\pi$ as the period instead of $\\pi$", zh: "用 $2\\pi$ 而非 $\\pi$ 作为周期" },
+        ],
+      },
+      {
+        id: "pt-5-3-3",
+        title: { en: "Solve Trig Equation with No Solution Check", zh: "检验三角方程是否有解" },
+        description: { en: "Determine if a trig equation has solutions (e.g., $\\sin\\theta = 2$).", zh: "判断三角方程是否有解（如 $\\sin\\theta = 2$）。" },
+        howToRecognize: { en: "Isolated trig value is outside the function's range.", zh: "分离出的三角值超出函数的值域。" },
+        steps: [
+          { en: "Isolate the trig function", zh: "分离三角函数" },
+          { en: "Check if the value is in the range ($[-1, 1]$ for sin/cos)", zh: "检查值是否在值域内（sin/cos 为 $[-1, 1]$）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $\\cos\\theta = -3$.", zh: "解 $\\cos\\theta = -3$。" },
+        commonTraps: [
+          { en: "Trying to find an angle for $\\cos\\theta = -3$ — no solution exists", zh: "试图为 $\\cos\\theta = -3$ 找角——无解" },
+        ],
+      },
+      {
+        id: "pt-5-3-4",
+        title: { en: "Write General Solution", zh: "写出通解" },
+        description: { en: "Express the complete solution set with the $+ 2n\\pi$ or $+ n\\pi$ form.", zh: "用 $+ 2n\\pi$ 或 $+ n\\pi$ 形式表达完整解集。" },
+        howToRecognize: { en: "Problem says \"find all solutions\" without restricting an interval.", zh: "题目说求所有解，未限定区间。" },
+        steps: [
+          { en: "Find solutions in one period", zh: "在一个周期内找解" },
+          { en: "Add $+ 2n\\pi$ (for sin/cos) or $+ n\\pi$ (for tan)", zh: "加上 $+ 2n\\pi$（sin/cos）或 $+ n\\pi$（tan）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find all solutions of $\\sin\\theta = -\\frac{\\sqrt{2}}{2}$.", zh: "求 $\\sin\\theta = -\\frac{\\sqrt{2}}{2}$ 的所有解。" },
+        commonTraps: [
+          { en: "Listing only one family of solutions when there are two", zh: "有两族解时只列了一族" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-5-3-5",
+        title: { en: "Solve by Factoring", zh: "因式分解求解" },
+        description: { en: "Factor a trig equation into a product of factors and solve each.", zh: "将三角方程分解为因式之积并分别求解。" },
+        howToRecognize: { en: "Equation is quadratic in a trig function, or has a common trig factor.", zh: "方程关于某三角函数为二次，或有公因子。" },
+        steps: [
+          { en: "Factor (common factor, quadratic, etc.)", zh: "因式分解（提取公因子、二次分解等）" },
+          { en: "Set each factor equal to zero", zh: "令每个因子等于零" },
+          { en: "Solve each equation separately", zh: "分别求解每个方程" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $2\\cos^2\\theta - \\cos\\theta - 1 = 0$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $2\\cos^2\\theta - \\cos\\theta - 1 = 0$。" },
+        commonTraps: [
+          { en: "Dividing by $\\cos\\theta$ instead of factoring — loses the $\\cos\\theta = 0$ solutions", zh: "除以 $\\cos\\theta$ 而非分解——丢失 $\\cos\\theta = 0$ 的解" },
+        ],
+      },
+      {
+        id: "pt-5-3-6",
+        title: { en: "Solve Using Pythagorean Identity", zh: "用毕达哥拉斯恒等式求解" },
+        description: { en: "Use $\\sin^2 + \\cos^2 = 1$ to convert to a single trig function, then solve.", zh: "用 $\\sin^2 + \\cos^2 = 1$ 化为单一三角函数后求解。" },
+        howToRecognize: { en: "Equation mixes $\\sin^2$ and $\\cos$ (or vice versa).", zh: "���程混合 $\\sin^2$ 和 $\\cos$（或反之）。" },
+        steps: [
+          { en: "Replace $\\sin^2\\theta$ with $1 - \\cos^2\\theta$ (or vice versa)", zh: "用 $1 - \\cos^2\\theta$ 替换 $\\sin^2\\theta$（或反之）" },
+          { en: "Simplify to a quadratic in one trig function", zh: "化简为关于单一三角函数的二次式" },
+          { en: "Factor and solve", zh: "因式分解并求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $2\\sin^2\\theta + 3\\cos\\theta - 3 = 0$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $2\\sin^2\\theta + 3\\cos\\theta - 3 = 0$。" },
+        commonTraps: [
+          { en: "Forgetting to check if $\\cos\\theta$ values are in $[-1, 1]$ after solving the quadratic", zh: "解完二次方程后忘��检查 $\\cos\\theta$ 值是否在 $[-1, 1]$ 内" },
+        ],
+      },
+      {
+        id: "pt-5-3-7",
+        title: { en: "Solve Equations with Multiple Angles", zh: "含倍角的���程" },
+        description: { en: "Solve equations like $\\sin(2\\theta) = \\frac{\\sqrt{3}}{2}$ or $\\cos(3\\theta) = 0$.", zh: "解如 $\\sin(2\\theta) = \\frac{\\sqrt{3}}{2}$ 或 $\\cos(3\\theta) = 0$ 的方程。" },
+        howToRecognize: { en: "Argument of the trig function is $2\\theta$, $3\\theta$, etc.", zh: "三角函数的自变量为 $2\\theta$、$3\\theta$ 等。" },
+        steps: [
+          { en: "Let $u = 2\\theta$ (or $3\\theta$, etc.) and solve for $u$ first", zh: "令 $u = 2\\theta$（或 $3\\theta$ 等），先解出 $u$" },
+          { en: "Expand the interval: if $\\theta \\in [0, 2\\pi)$, then $u \\in [0, 4\\pi)$ for $2\\theta$", zh: "扩展区间：若 $\\theta \\in [0, 2\\pi)$，则 $u \\in [0, 4\\pi)$（对 $2\\theta$）" },
+          { en: "Find all $u$ in the expanded interval, then divide by 2 (or 3) to get $\\theta$", zh: "在扩展区间找所有 $u$，再除以 2（或 3）得 $\\theta$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\sin(2\\theta) = \\frac{1}{2}$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\sin(2\\theta) = \\frac{1}{2}$。" },
+        commonTraps: [
+          { en: "Not expanding the interval — there are typically twice as many solutions for $2\\theta$", zh: "没扩展区���——$2\\theta$ 通常有双倍的解" },
+        ],
+      },
+      {
+        id: "pt-5-3-8",
+        title: { en: "Solve Using Square Root Property", zh: "用开方法求解" },
+        description: { en: "Solve equations like $\\tan^2\\theta = 3$ by taking square roots.", zh: "用开方法解如 $\\tan^2\\theta = 3$ 的方程。" },
+        howToRecognize: { en: "Equation has a squared trig function equal to a constant.", zh: "方程中三角函数的平方等于常数。" },
+        steps: [
+          { en: "Take the square root: $\\tan\\theta = \\pm\\sqrt{3}$", zh: "开方：$\\tan\\theta = \\pm\\sqrt{3}$" },
+          { en: "Solve each case separately", zh: "分别求解每种情况" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $4\\cos^2\\theta - 3 = 0$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $4\\cos^2\\theta - 3 = 0$。" },
+        commonTraps: [
+          { en: "Forgetting the $\\pm$ when taking the square root — both signs give valid solutions", zh: "开方时忘记 $\\pm$——两个符号都给出有效解" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-5-3-9",
+        title: { en: "Solve Trig Equation Requiring Identity + Factoring", zh: "需恒等式加因式分解的三角方程" },
+        description: { en: "Use an identity to rewrite, then factor and solve.", zh: "先用恒等式改写，再因式分解求解。" },
+        howToRecognize: { en: "Equation mixes multiple trig functions and doesn't factor directly.", zh: "方程混合多��三角函数且不能直接分解。" },
+        steps: [
+          { en: "Use an identity to convert to a single trig function", zh: "用恒等式化为单一三角函数" },
+          { en: "Rearrange into standard form (e.g., $au^2 + bu + c = 0$)", zh: "整理为标准形式（如 $au^2 + bu + c = 0$）" },
+          { en: "Factor and solve each factor", zh: "因式分解并求解每个因子" },
+          { en: "Check all solutions in the original equation", zh: "在原方程中验证所有解" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $\\sec^2\\theta - 2\\tan\\theta = 4$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\sec^2\\theta - 2\\tan\\theta = 4$。" },
+        commonTraps: [
+          { en: "Not substituting $\\sec^2\\theta = 1 + \\tan^2\\theta$ to get a quadratic in $\\tan\\theta$", zh: "没代入 $\\sec^2\\theta = 1 + \\tan^2\\theta$ 以得到关于 $\\tan\\theta$ 的二次式" },
+        ],
+      },
+      {
+        id: "pt-5-3-10",
+        title: { en: "Approximate Solutions with Calculator", zh: "用计算器求近似解" },
+        description: { en: "Use inverse trig functions on a calculator when exact values are not available.", zh: "当精确值不可得时用计算器的反三角函数。" },
+        howToRecognize: { en: "The trig value is not a standard unit-circle value.", zh: "三角值不是标准单位圆值。" },
+        steps: [
+          { en: "Isolate the trig function", zh: "分离三角函数" },
+          { en: "Use calculator to find the reference angle", zh: "用计算器求参考角" },
+          { en: "Use the quadrant to find all solutions", zh: "根据象限找所有解" },
+          { en: "Round to the required precision", zh: "按要求精度四舍五入" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $3\\sin\\theta + 2 = 0$ on $[0, 2\\pi)$ to four decimal places.", zh: "在 $[0, 2\\pi)$ 上解 $3\\sin\\theta + 2 = 0$（保留四位小数）。" },
+        commonTraps: [
+          { en: "Only finding one angle from the calculator and forgetting the other quadrant solution", zh: "只从计算器得到一个角而忘记另一个象限的解" },
+        ],
+      },
+    ],
   },
   {
     id: "5-4",
@@ -7423,6 +8089,209 @@ const chapter5Units: Unit[] = [
       en: "Use sum and difference formulas to evaluate, simplify, and rewrite trigonometric expressions.",
       zh: "运用和差公式对三角表达式进行求值、化简与变形。",
     },
+    learningGoals: [
+      { en: "Use sum and difference formulas for sine, cosine, and tangent", zh: "���用正弦、余弦和正切的和差公式" },
+      { en: "Evaluate trig functions at non-standard angles by splitting into standard ones", zh: "将非标准角拆为标准角之和/差来求三角函数值" },
+      { en: "Simplify expressions using sum/difference formulas", zh: "用和差公式化简表达式" },
+      { en: "Verify identities using sum/difference formulas", zh: "用和差公式验证恒等式" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-5-4-1",
+        title: { en: "Sum and Difference Formulas for Sine and Cosine", zh: "正弦和余弦的和差公式" },
+        explanation: {
+          en: "$\\cos(u \\pm v) = \\cos u \\cos v \\mp \\sin u \\sin v$ (note the sign flip). $\\sin(u \\pm v) = \\sin u \\cos v \\pm \\cos u \\sin v$ (same sign). These allow evaluating trig at angles like $75° = 45° + 30°$ or $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$.",
+          zh: "$\\cos(u \\pm v) = \\cos u \\cos v \\mp \\sin u \\sin v$（注意符号翻转）。$\\sin(u \\pm v) = \\sin u \\cos v \\pm \\cos u \\sin v$（同号）。这些公式可用来求如 $75° = 45° + 30°$ 或 $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$ 处的三角值。",
+        },
+        whenToUse: { en: "Evaluating trig at non-standard angles; simplifying expressions with angle sums/differences", zh: "求非标准角的三角值；化简含角和/差的表达式" },
+        commonMistake: { en: "Getting the sign wrong in the cosine formula — $\\cos(u+v)$ has a MINUS between the terms", zh: "余弦公式符号搞错——$\\cos(u+v)$ 两项之间是减号" },
+        example: { en: "$\\cos 75° = \\cos(45° + 30°) = \\cos 45°\\cos 30° - \\sin 45°\\sin 30° = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$", zh: "$\\cos 75° = \\cos(45° + 30°) = \\cos 45°\\cos 30° - \\sin 45°\\sin 30° = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$" },
+      },
+      {
+        id: "kc-5-4-2",
+        title: { en: "Sum and Difference Formula for Tangent", zh: "正切的和差公式" },
+        explanation: {
+          en: "$\\tan(u \\pm v) = \\frac{\\tan u \\pm \\tan v}{1 \\mp \\tan u \\tan v}$. Less commonly used but essential for evaluating tangent at non-standard angles.",
+          zh: "$\\tan(u \\pm v) = \\frac{\\tan u \\pm \\tan v}{1 \\mp \\tan u \\tan v}$。使用频率较低，但在求非标准角的正切值时不可缺少。",
+        },
+        whenToUse: { en: "Finding exact values of tangent at angles like $75°$ or $\\frac{7\\pi}{12}$", zh: "求如 $75°$ 或 $\\frac{7\\pi}{12}$ 处的正切精确值" },
+        commonMistake: { en: "Sign error in the denominator — it's $1 \\mp \\tan u \\tan v$ (opposite sign from numerator)", zh: "分母符号错误——是 $1 \\mp \\tan u \\tan v$（与分子相反）" },
+        example: { en: "$\\tan 75° = \\frac{\\tan 45° + \\tan 30°}{1 - \\tan 45° \\tan 30°} = \\frac{1 + \\frac{\\sqrt{3}}{3}}{1 - \\frac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$", zh: "$\\tan 75° = \\frac{\\tan 45° + \\tan 30°}{1 - \\tan 45° \\tan 30°} = \\frac{1 + \\frac{\\sqrt{3}}{3}}{1 - \\frac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-5-4-1",
+        name: { en: "Sum/Difference Formulas", zh: "和差公式" },
+        formula: "\\sin(u \\pm v) = \\sin u\\cos v \\pm \\cos u\\sin v, \\quad \\cos(u \\pm v) = \\cos u\\cos v \\mp \\sin u\\sin v",
+        variables: [
+          { en: "$u, v$ — any angles", zh: "$u, v$ — 任意角" },
+          { en: "Sine: same sign as the $\\pm$. Cosine: opposite sign.", zh: "正弦：与 $\\pm$ 同号。余弦：与 $\\pm$ 反号。" },
+        ],
+        whenToUse: { en: "Expanding or collapsing trig of angle sums/differences", zh: "展开或合并角和/差的三角函数" },
+        commonProblemTypes: [
+          { en: "Find exact value of $\\sin 75°$ or $\\cos\\frac{\\pi}{12}$", zh: "求 $\\sin 75°$ 或 $\\cos\\frac{\\pi}{12}$ 的精确值" },
+          { en: "Simplify $\\sin(x + \\frac{\\pi}{2})$", zh: "化简 $\\sin(x + \\frac{\\pi}{2})$" },
+        ],
+        example: { en: "$\\sin(\\frac{\\pi}{3} + \\frac{\\pi}{4}) = \\sin\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\cos\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\frac{\\sqrt{6}+\\sqrt{2}}{4}$", zh: "$\\sin(\\frac{\\pi}{3} + \\frac{\\pi}{4}) = \\sin\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\cos\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\frac{\\sqrt{6}+\\sqrt{2}}{4}$" },
+      },
+      {
+        id: "f-5-4-2",
+        name: { en: "Tangent Sum/Difference", zh: "正切和差公式" },
+        formula: "\\tan(u \\pm v) = \\frac{\\tan u \\pm \\tan v}{1 \\mp \\tan u \\tan v}",
+        variables: [
+          { en: "Numerator sign matches $\\pm$; denominator sign is opposite", zh: "分子符号与 $\\pm$ 相同；分母符号相反" },
+        ],
+        whenToUse: { en: "Finding tangent of a sum or difference of angles", zh: "求角和或角差的正切值" },
+        commonProblemTypes: [
+          { en: "Evaluate $\\tan 15°$ or $\\tan\\frac{5\\pi}{12}$", zh: "求 $\\tan 15°$ 或 $\\tan\\frac{5\\pi}{12}$" },
+        ],
+        example: { en: "$\\tan 15° = \\tan(45° - 30°) = \\frac{1 - \\frac{\\sqrt{3}}{3}}{1 + \\frac{\\sqrt{3}}{3}} = 2 - \\sqrt{3}$", zh: "$\\tan 15° = \\tan(45° - 30°) = \\frac{1 - \\frac{\\sqrt{3}}{3}}{1 + \\frac{\\sqrt{3}}{3}} = 2 - \\sqrt{3}$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-5-4-1",
+        title: { en: "Evaluate Trig at Non-Standard Angle", zh: "求非标准角的三角值" },
+        description: { en: "Split the angle into a sum/difference of standard angles and apply the formula.", zh: "将角拆为标准角的和/差并应用公式。" },
+        howToRecognize: { en: "Angle like $75°$, $15°$, $\\frac{7\\pi}{12}$, $\\frac{\\pi}{12}$.", zh: "角如 $75°$、$15°$、$\\frac{7\\pi}{12}$、$\\frac{\\pi}{12}$。" },
+        steps: [
+          { en: "Write the angle as a sum or difference of $30°, 45°, 60°$ (or their radian equivalents)", zh: "将角写为 $30°, 45°, 60°$（或弧度等价）的和/差" },
+          { en: "Apply the appropriate formula", zh: "应用合适的公式" },
+          { en: "Simplify", zh: "化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the exact value of $\\sin 15°$.", zh: "求 $\\sin 15°$ 的精确值。" },
+        commonTraps: [
+          { en: "Not finding the right split — $15° = 45° - 30°$ or $60° - 45°$", zh: "拆分不当——$15° = 45° - 30°$ 或 $60° - 45°$" },
+        ],
+      },
+      {
+        id: "pt-5-4-2",
+        title: { en: "Simplify $\\sin(\\theta + \\frac{\\pi}{2})$ Type Expressions", zh: "化简 $\\sin(\\theta + \\frac{\\pi}{2})$ 型表达式" },
+        description: { en: "Apply sum formula where one angle is a quadrantal angle.", zh: "当一个角为象限角时应用和差公式。" },
+        howToRecognize: { en: "Expression like $\\cos(x + \\pi)$, $\\sin(\\theta - \\frac{\\pi}{2})$, etc.", zh: "表达式如 $\\cos(x + \\pi)$、$\\sin(\\theta - \\frac{\\pi}{2})$ 等。" },
+        steps: [
+          { en: "Apply the formula with the known values of the quadrantal angle", zh: "代入象限角的已知值应用公式" },
+          { en: "Simplify (most terms vanish since $\\sin 0 = 0$, $\\cos\\frac{\\pi}{2} = 0$, etc.)", zh: "化简（大多数项消失，因为 $\\sin 0 = 0$、$\\cos\\frac{\\pi}{2} = 0$ 等）" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Simplify $\\cos(\\theta + \\pi)$.", zh: "化简 $\\cos(\\theta + \\pi)$。" },
+        commonTraps: [
+          { en: "Distributing the trig function: $\\cos(\\theta + \\pi) \\neq \\cos\\theta + \\cos\\pi$", zh: "分配三角函数：$\\cos(\\theta + \\pi) \\neq \\cos\\theta + \\cos\\pi$" },
+        ],
+      },
+      {
+        id: "pt-5-4-3",
+        title: { en: "Evaluate Using Given Trig Values", zh: "利用已知三角值求值" },
+        description: { en: "Given $\\sin u$ and $\\cos v$ (with quadrants), find $\\sin(u + v)$.", zh: "已知 $\\sin u$ 和 $\\cos v$（含象限），求 $\\sin(u + v)$。" },
+        howToRecognize: { en: "Two trig values and their quadrants given; asked for a sum/difference value.", zh: "给出两个三角值及其象限；要求和/差的值。" },
+        steps: [
+          { en: "Use Pythagorean identity to find missing sin/cos values", zh: "用毕达哥拉斯恒等式求缺失的 sin/cos 值" },
+          { en: "Apply the sum/difference formula", zh: "应用和差公式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $\\sin u = \\frac{3}{5}$ (QI) and $\\cos v = -\\frac{5}{13}$ (QII), find $\\cos(u + v)$.", zh: "若 $\\sin u = \\frac{3}{5}$（第一象限）且 $\\cos v = -\\frac{5}{13}$（第二象限），求 $\\cos(u + v)$。" },
+        commonTraps: [
+          { en: "Wrong sign on the missing value due to quadrant", zh: "因象限导致缺失值符号错误" },
+        ],
+      },
+      {
+        id: "pt-5-4-4",
+        title: { en: "Recognize and Collapse a Sum Formula Pattern", zh: "识别并合并和差公式模式" },
+        description: { en: "Recognize that $\\sin A\\cos B + \\cos A\\sin B = \\sin(A+B)$ in a given expression.", zh: "在表达式中识别 $\\sin A\\cos B + \\cos A\\sin B = \\sin(A+B)$。" },
+        howToRecognize: { en: "Expression matches the expanded form of a sum/difference formula.", zh: "表达式匹配和差公式的展开形式。" },
+        steps: [
+          { en: "Identify the pattern ($\\sin\\cos \\pm \\cos\\sin$ or $\\cos\\cos \\mp \\sin\\sin$)", zh: "识别模式（$\\sin\\cos \\pm \\cos\\sin$ 或 $\\cos\\cos \\mp \\sin\\sin$）" },
+          { en: "Write as a single trig function of a sum/difference", zh: "写为和/差的单一三角函数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Simplify $\\sin 3x \\cos x - \\cos 3x \\sin x$.", zh: "化简 $\\sin 3x \\cos x - \\cos 3x \\sin x$。" },
+        commonTraps: [
+          { en: "Not recognizing the pattern — it's $\\sin(3x - x) = \\sin 2x$", zh: "没认出模式——它是 $\\sin(3x - x) = \\sin 2x$" },
+        ],
+      },
+      // ── Medium (3) ────────────────────────────────────────
+      {
+        id: "pt-5-4-5",
+        title: { en: "Verify Identity Using Sum/Difference Formulas", zh: "用和差公式验证恒等式" },
+        description: { en: "Verify an identity by expanding one side using sum/difference formulas.", zh: "用和差公式展开一边来验证恒等式。" },
+        howToRecognize: { en: "Identity involves $\\sin(A \\pm B)$ or $\\cos(A \\pm B)$.", zh: "恒等式涉及 $\\sin(A \\pm B)$ 或 $\\cos(A \\pm B)$。" },
+        steps: [
+          { en: "Expand using the appropriate formula", zh: "用合适的公式展开" },
+          { en: "Simplify to match the other side", zh: "化简使其等于另一边" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\sin(\\frac{\\pi}{2} - \\theta) = \\cos\\theta$.", zh: "验证：$\\sin(\\frac{\\pi}{2} - \\theta) = \\cos\\theta$。" },
+        commonTraps: [
+          { en: "Using the wrong formula (sum vs. difference)", zh: "用错公式（和 vs 差）" },
+        ],
+      },
+      {
+        id: "pt-5-4-6",
+        title: { en: "Find $\\tan(u + v)$ from Given Values", zh: "由已知值求 $\\tan(u + v)$" },
+        description: { en: "Use the tangent sum formula with given tangent values.", zh: "用正切和公式和已知正切值。" },
+        howToRecognize: { en: "Given $\\tan u$ and $\\tan v$; asked for $\\tan(u \\pm v)$.", zh: "给出 $\\tan u$ 和 $\\tan v$；要求 $\\tan(u \\pm v)$。" },
+        steps: [
+          { en: "Apply $\\tan(u+v) = \\frac{\\tan u + \\tan v}{1 - \\tan u\\tan v}$", zh: "应用 $\\tan(u+v) = \\frac{\\tan u + \\tan v}{1 - \\tan u\\tan v}$" },
+          { en: "Simplify the fraction", zh: "化简分式" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "If $\\tan u = 2$ and $\\tan v = 3$, find $\\tan(u + v)$.", zh: "若 $\\tan u = 2$ 且 $\\tan v = 3$，求 $\\tan(u + v)$。" },
+        commonTraps: [
+          { en: "Sign error in the denominator", zh: "分母符号错误" },
+        ],
+      },
+      {
+        id: "pt-5-4-7",
+        title: { en: "Solve Equation Using Sum/Difference Formula", zh: "用和差公式解方程" },
+        description: { en: "Solve a trig equation by expanding a sum/difference expression.", zh: "展开和差表达式来解三角方程。" },
+        howToRecognize: { en: "Equation contains $\\sin(x + \\alpha)$ or $\\cos(x - \\alpha)$ with known $\\alpha$.", zh: "方程含 $\\sin(x + \\alpha)$ 或 $\\cos(x - \\alpha)$，$\\alpha$ 已知。" },
+        steps: [
+          { en: "Expand using sum/difference formula", zh: "用和差公式展开" },
+          { en: "Collect terms and solve", zh: "整理并求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\sin(x + \\frac{\\pi}{4}) = \\frac{1}{2}$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\sin(x + \\frac{\\pi}{4}) = \\frac{1}{2}$。" },
+        commonTraps: [
+          { en: "Forgetting to adjust the interval when solving for $x + \\frac{\\pi}{4}$", zh: "解 $x + \\frac{\\pi}{4}$ 时忘记调整区间" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-5-4-8",
+        title: { en: "Derive a Cofunction or Reduction Formula", zh: "推导余函数或化简公式" },
+        description: { en: "Use sum/difference formulas to derive identities like $\\cos(\\pi - \\theta) = -\\cos\\theta$.", zh: "用和差公式推导如 $\\cos(\\pi - \\theta) = -\\cos\\theta$ 的恒等式。" },
+        howToRecognize: { en: "Asked to prove a reduction formula from first principles.", zh: "要求从基本原理证明化简公式。" },
+        steps: [
+          { en: "Write the angle as a sum or difference involving $\\frac{\\pi}{2}$, $\\pi$, or $2\\pi$", zh: "将角写为含 $\\frac{\\pi}{2}$、$\\pi$ 或 $2\\pi$ 的和/差" },
+          { en: "Apply the sum/difference formula", zh: "应用和差公式" },
+          { en: "Use known values ($\\sin\\pi = 0$, $\\cos\\pi = -1$, etc.) to simplify", zh: "用已知值（$\\sin\\pi = 0$、$\\cos\\pi = -1$ 等）化简" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Prove that $\\sin(\\pi + \\theta) = -\\sin\\theta$ using the sum formula.", zh: "用和公式证明 $\\sin(\\pi + \\theta) = -\\sin\\theta$。" },
+        commonTraps: [
+          { en: "Using the result you're trying to prove as a step — this is circular reasoning", zh: "在证明中使用要证的结论——这是循环论证" },
+        ],
+      },
+      {
+        id: "pt-5-4-9",
+        title: { en: "Multi-Step Problem Combining Sum/Difference with Other Identities", zh: "和差公式与其他恒等式的综合题" },
+        description: { en: "Problems requiring sum/difference formulas together with Pythagorean or reciprocal identities.", zh: "需要和差公式与毕达哥拉斯或倒数恒等��配合的问题。" },
+        howToRecognize: { en: "Complex expression or equation requiring multiple identity types.", zh: "需要多种恒等式的复杂表达式或方程。" },
+        steps: [
+          { en: "Identify which formulas are needed", zh: "确定需要哪些公式" },
+          { en: "Apply them in a logical sequence", zh: "按逻辑顺序应用" },
+          { en: "Simplify at each step", zh: "每步都化简" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "If $\\sin(\\alpha + \\beta) = 1$ and $\\sin(\\alpha - \\beta) = \\frac{1}{2}$, find $\\sin\\alpha\\cos\\alpha$.", zh: "若 $\\sin(\\alpha + \\beta) = 1$ 且 $\\sin(\\alpha - \\beta) = \\frac{1}{2}$，求 $\\sin\\alpha\\cos\\alpha$。" },
+        commonTraps: [
+          { en: "Not adding/subtracting the expanded formulas to isolate the desired product", zh: "不将展开式加减以分离所求乘积" },
+        ],
+      },
+    ],
   },
   {
     id: "5-5",
@@ -7436,6 +8305,247 @@ const chapter5Units: Unit[] = [
       en: "Apply double-angle, half-angle, power-reducing, and product-to-sum formulas.",
       zh: "应用倍角、半角、降幂以及积化和差公式。",
     },
+    learningGoals: [
+      { en: "Use double-angle formulas for sine, cosine, and tangent", zh: "使用正弦、余弦和正切的倍角公式" },
+      { en: "Use half-angle formulas", zh: "使用半角公式" },
+      { en: "Use power-reducing formulas", zh: "使用降幂公式" },
+      { en: "Use product-to-sum and sum-to-product formulas", zh: "使用积化和差与和差化积公式" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-5-5-1",
+        title: { en: "Double-Angle Formulas", zh: "倍角公式" },
+        explanation: {
+          en: "$\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$. $\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$ (three forms). $\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}$. Derived by setting $u = v = \\theta$ in the sum formulas.",
+          zh: "$\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$。$\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$（三种形式）。$\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}$。由和公式中令 $u = v = \\theta$ 推出。",
+        },
+        whenToUse: { en: "Simplifying expressions with $2\\theta$; solving equations with double angles", zh: "化简含 $2\\theta$ 的表达式；解含倍角的方程" },
+        commonMistake: { en: "$\\sin 2\\theta \\neq 2\\sin\\theta$ — the $2\\cos\\theta$ factor is essential", zh: "$\\sin 2\\theta \\neq 2\\sin\\theta$——$2\\cos\\theta$ 因子不可少" },
+        example: { en: "If $\\sin\\theta = \\frac{3}{5}$, $\\cos\\theta = \\frac{4}{5}$: $\\sin 2\\theta = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25}$", zh: "若 $\\sin\\theta = \\frac{3}{5}$，$\\cos\\theta = \\frac{4}{5}$：$\\sin 2\\theta = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25}$" },
+      },
+      {
+        id: "kc-5-5-2",
+        title: { en: "Half-Angle and Power-Reducing Formulas", zh: "半角与降幂公式" },
+        explanation: {
+          en: "Half-angle: $\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}$, $\\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}$, $\\tan\\frac{\\theta}{2} = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}$. The $\\pm$ depends on the quadrant of $\\frac{\\theta}{2}$. Power-reducing: $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$, $\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$.",
+          zh: "半角：$\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}$，$\\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}$，$\\tan\\frac{\\theta}{2} = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}$。$\\pm$ 取决于 $\\frac{\\theta}{2}$ 所在象限。降幂：$\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$，$\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$。",
+        },
+        whenToUse: { en: "Finding exact values at half-angles; reducing powers for integration", zh: "求半角的精确值；为积分降幂" },
+        commonMistake: { en: "Choosing the wrong sign for the half-angle — determine the quadrant of $\\frac{\\theta}{2}$, not $\\theta$", zh: "半角符号选错——应根据 $\\frac{\\theta}{2}$ 而非 $\\theta$ 的象限" },
+        example: { en: "$\\cos\\frac{\\pi}{8} = \\cos\\frac{\\pi/4}{2} = \\sqrt{\\frac{1 + \\cos\\frac{\\pi}{4}}{2}} = \\sqrt{\\frac{1 + \\frac{\\sqrt{2}}{2}}{2}} = \\frac{\\sqrt{2 + \\sqrt{2}}}{2}$", zh: "$\\cos\\frac{\\pi}{8} = \\cos\\frac{\\pi/4}{2} = \\sqrt{\\frac{1 + \\cos\\frac{\\pi}{4}}{2}} = \\sqrt{\\frac{1 + \\frac{\\sqrt{2}}{2}}{2}} = \\frac{\\sqrt{2 + \\sqrt{2}}}{2}$" },
+      },
+      {
+        id: "kc-5-5-3",
+        title: { en: "Product-to-Sum and Sum-to-Product Formulas", zh: "积化和差与和差化积公式" },
+        explanation: {
+          en: "Product-to-sum: $\\sin u \\cos v = \\frac{1}{2}[\\sin(u+v) + \\sin(u-v)]$, $\\cos u \\cos v = \\frac{1}{2}[\\cos(u-v) + \\cos(u+v)]$, $\\sin u \\sin v = \\frac{1}{2}[\\cos(u-v) - \\cos(u+v)]$. Sum-to-product: $\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}$, etc.",
+          zh: "积化和差：$\\sin u \\cos v = \\frac{1}{2}[\\sin(u+v) + \\sin(u-v)]$，$\\cos u \\cos v = \\frac{1}{2}[\\cos(u-v) + \\cos(u+v)]$，$\\sin u \\sin v = \\frac{1}{2}[\\cos(u-v) - \\cos(u+v)]$。和差化积：$\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}$ 等。",
+        },
+        whenToUse: { en: "Simplifying products of trig functions into sums, or vice versa", zh: "将三角函数之积化为和，或反之" },
+        commonMistake: { en: "Mixing up which formula has $+$ or $-$ — check the signs carefully for each case", zh: "搞混哪个公式用 $+$ 或 $-$——每种情况都仔细核对符号" },
+        example: { en: "$\\sin 5x + \\sin 3x = 2\\sin 4x \\cos x$", zh: "$\\sin 5x + \\sin 3x = 2\\sin 4x \\cos x$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-5-5-1",
+        name: { en: "Double-Angle Formulas", zh: "倍角公式" },
+        formula: "\\sin 2\\theta = 2\\sin\\theta\\cos\\theta, \\quad \\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta, \\quad \\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}",
+        variables: [
+          { en: "Alternative forms: $\\cos 2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$", zh: "等价形式：$\\cos 2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$" },
+        ],
+        whenToUse: { en: "Simplifying or solving expressions with $2\\theta$", zh: "化简或求解含 $2\\theta$ 的表达式" },
+        commonProblemTypes: [
+          { en: "Find $\\sin 2\\theta$ given $\\sin\\theta$ and the quadrant", zh: "已知 $\\sin\\theta$ 和象限求 $\\sin 2\\theta$" },
+          { en: "Rewrite $\\sin^2 x$ without exponents (using $\\cos 2x$)", zh: "用 $\\cos 2x$ 去掉 $\\sin^2 x$ 的指数" },
+        ],
+        example: { en: "$\\cos 2\\theta = 1 - 2\\sin^2\\theta$: if $\\sin\\theta = \\frac{1}{3}$, $\\cos 2\\theta = 1 - \\frac{2}{9} = \\frac{7}{9}$", zh: "$\\cos 2\\theta = 1 - 2\\sin^2\\theta$：若 $\\sin\\theta = \\frac{1}{3}$，$\\cos 2\\theta = 1 - \\frac{2}{9} = \\frac{7}{9}$" },
+      },
+      {
+        id: "f-5-5-2",
+        name: { en: "Half-Angle Formulas", zh: "半角公式" },
+        formula: "\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1-\\cos\\theta}{2}}, \\quad \\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1+\\cos\\theta}{2}}",
+        variables: [
+          { en: "$\\pm$ determined by the quadrant of $\\frac{\\theta}{2}$", zh: "$\\pm$ 由 $\\frac{\\theta}{2}$ 所在象限决定" },
+          { en: "$\\tan\\frac{\\theta}{2} = \\frac{1-\\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1+\\cos\\theta}$", zh: "$\\tan\\frac{\\theta}{2} = \\frac{1-\\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1+\\cos\\theta}$" },
+        ],
+        whenToUse: { en: "Exact trig values at half of a known angle", zh: "��已知角一半处的精确三角值" },
+        commonProblemTypes: [
+          { en: "Find $\\sin 22.5°$ or $\\cos\\frac{\\pi}{8}$", zh: "求 $\\sin 22.5°$ 或 $\\cos\\frac{\\pi}{8}$" },
+        ],
+        example: { en: "$\\sin 15° = \\sin\\frac{30°}{2} = \\sqrt{\\frac{1 - \\cos 30°}{2}} = \\sqrt{\\frac{1 - \\frac{\\sqrt{3}}{2}}{2}} = \\frac{\\sqrt{2 - \\sqrt{3}}}{2}$", zh: "$\\sin 15° = \\sin\\frac{30°}{2} = \\sqrt{\\frac{1 - \\cos 30°}{2}} = \\sqrt{\\frac{1 - \\frac{\\sqrt{3}}{2}}{2}} = \\frac{\\sqrt{2 - \\sqrt{3}}}{2}$" },
+      },
+      {
+        id: "f-5-5-3",
+        name: { en: "Power-Reducing Formulas", zh: "降幂公式" },
+        formula: "\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}, \\quad \\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}, \\quad \\tan^2\\theta = \\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}",
+        variables: [
+          { en: "Derived from the double-angle formulas for cosine", zh: "由余弦倍角公式推出" },
+        ],
+        whenToUse: { en: "Rewriting squared trig functions in terms of first power (important for calculus integration)", zh: "将三角函��的平方改写为一次（对微积分积分很重要）" },
+        commonProblemTypes: [
+          { en: "Rewrite $\\sin^4 x$ without exponents greater than 1", zh: "将 $\\sin^4 x$ 改写为不含大于 1 的指数" },
+        ],
+        example: { en: "$\\sin^2 x = \\frac{1 - \\cos 2x}{2}$", zh: "$\\sin^2 x = \\frac{1 - \\cos 2x}{2}$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (4) ──────────────────────────────────────────
+      {
+        id: "pt-5-5-1",
+        title: { en: "Evaluate $\\sin 2\\theta$ or $\\cos 2\\theta$ from Given Values", zh: "由已知值求 $\\sin 2\\theta$ 或 $\\cos 2\\theta$" },
+        description: { en: "Given $\\sin\\theta$ and/or $\\cos\\theta$ and the quadrant, find $\\sin 2\\theta$ or $\\cos 2\\theta$.", zh: "已知 $\\sin\\theta$ 和/或 $\\cos\\theta$ 及象限，求 $\\sin 2\\theta$ 或 $\\cos 2\\theta$。" },
+        howToRecognize: { en: "Given a trig value and quadrant; asked for a double-angle value.", zh: "给出三角值和象限；要求倍角值。" },
+        steps: [
+          { en: "Find both $\\sin\\theta$ and $\\cos\\theta$ if not both given", zh: "若���同时给出则求出 $\\sin\\theta$ 和 $\\cos\\theta$" },
+          { en: "Apply $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$ or $\\cos 2\\theta$ formula", zh: "应用 $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$ 或 $\\cos 2\\theta$ 公式" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "If $\\cos\\theta = -\\frac{4}{5}$ and $\\theta$ is in QIII, find $\\sin 2\\theta$.", zh: "若 $\\cos\\theta = -\\frac{4}{5}$ 且 $\\theta$ 在第三象限，求 $\\sin 2\\theta$。" },
+        commonTraps: [
+          { en: "Using the wrong sign for $\\sin\\theta$ in QIII (it's negative)", zh: "第三象限 $\\sin\\theta$ 的符号用错（应为负）" },
+        ],
+      },
+      {
+        id: "pt-5-5-2",
+        title: { en: "Use Power-Reducing Formula", zh: "使用降幂公式" },
+        description: { en: "Rewrite a squared trig expression without exponents.", zh: "将三角平方表达式改写为不含指数的形式。" },
+        howToRecognize: { en: "Expression contains $\\sin^2\\theta$ or $\\cos^2\\theta$; asked to rewrite.", zh: "表达式含 $\\sin^2\\theta$ 或 $\\cos^2\\theta$；要求改写。" },
+        steps: [
+          { en: "Apply $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$ or $\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$", zh: "应用 $\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}$ 或 $\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Rewrite $\\cos^2 3x$ without exponents.", zh: "将 $\\cos^2 3x$ 改写为不含指数的形式。" },
+        commonTraps: [
+          { en: "Forgetting to double the angle: $\\cos^2(3x)$ uses $\\cos(6x)$, not $\\cos(3x)$", zh: "忘记角度加倍：$\\cos^2(3x)$ 用 $\\cos(6x)$ 而非 $\\cos(3x)$" },
+        ],
+      },
+      {
+        id: "pt-5-5-3",
+        title: { en: "Evaluate Half-Angle Expression", zh: "求半角表达式的值" },
+        description: { en: "Find the exact value of $\\sin\\frac{\\theta}{2}$ or $\\cos\\frac{\\theta}{2}$.", zh: "求 $\\sin\\frac{\\theta}{2}$ 或 $\\cos\\frac{\\theta}{2}$ 的精确值。" },
+        howToRecognize: { en: "Asked for a trig value at half of a known angle (e.g., $\\sin 22.5°$).", zh: "要求已知角一半处的三角值（如 $\\sin 22.5°$）。" },
+        steps: [
+          { en: "Identify $\\theta$ such that $\\frac{\\theta}{2}$ is the target angle", zh: "找到 $\\theta$ 使得 $\\frac{\\theta}{2}$ 为目标角" },
+          { en: "Apply the half-angle formula with the correct $\\pm$ sign", zh: "应用半角公式并选择正确的 $\\pm$ 号" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Find the exact value of $\\cos 22.5°$.", zh: "求 $\\cos 22.5°$ 的精确值。" },
+        commonTraps: [
+          { en: "Using $\\theta = 22.5°$ in the formula instead of $\\theta = 45°$ (since $22.5° = \\frac{45°}{2}$)", zh: "在公式中用 $\\theta = 22.5°$ 而非 $\\theta = 45°$（因为 $22.5° = \\frac{45°}{2}$）" },
+        ],
+      },
+      {
+        id: "pt-5-5-4",
+        title: { en: "Apply Product-to-Sum Formula", zh: "应用积化和差公式" },
+        description: { en: "Convert a product of trig functions into a sum or difference.", zh: "将三角函数之积转化为和或差。" },
+        howToRecognize: { en: "Expression is a product like $\\sin A \\cos B$ or $\\cos A \\cos B$.", zh: "表达式为乘积如 $\\sin A \\cos B$ 或 $\\cos A \\cos B$。" },
+        steps: [
+          { en: "Choose the correct product-to-sum formula", zh: "选择正确的积化和差公式" },
+          { en: "Substitute and simplify", zh: "代入并化简" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Write $\\sin 5x \\cos 3x$ as a sum.", zh: "将 $\\sin 5x \\cos 3x$ 写为和的形式。" },
+        commonTraps: [
+          { en: "Using the wrong formula — $\\sin\\cos$ uses the sine formula, $\\cos\\cos$ uses the cosine formula", zh: "用错公式——$\\sin\\cos$ 用正弦公式，$\\cos\\cos$ 用余弦公式" },
+        ],
+      },
+      // ── Medium (4) ────────────────────────────────────────
+      {
+        id: "pt-5-5-5",
+        title: { en: "Solve Equation Using Double-Angle Formula", zh: "用倍角公式解方程" },
+        description: { en: "Rewrite a double-angle expression and solve the resulting equation.", zh: "改写倍角表达式并解所得方程。" },
+        howToRecognize: { en: "Equation contains $\\sin 2\\theta$ or $\\cos 2\\theta$ mixed with single-angle terms.", zh: "方程含 $\\sin 2\\theta$ 或 $\\cos 2\\theta$ 与单角项混合。" },
+        steps: [
+          { en: "Replace $\\sin 2\\theta$ or $\\cos 2\\theta$ using double-angle formulas", zh: "用倍角公式替换 $\\sin 2\\theta$ 或 $\\cos 2\\theta$" },
+          { en: "Simplify to a single trig function", zh: "化简为单一三角函数" },
+          { en: "Solve", zh: "求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\cos 2x + \\cos x = 0$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\cos 2x + \\cos x = 0$。" },
+        commonTraps: [
+          { en: "Not choosing the right form of $\\cos 2x$ — use $2\\cos^2 x - 1$ when the equation also has $\\cos x$", zh: "没选对 $\\cos 2x$ 的形式——方程含 $\\cos x$ 时用 $2\\cos^2 x - 1$" },
+        ],
+      },
+      {
+        id: "pt-5-5-6",
+        title: { en: "Verify Identity Using Double-Angle Formulas", zh: "用倍角公式验证恒等式" },
+        description: { en: "Verify an identity by expanding double-angle expressions.", zh: "通过展开倍角表达式来验证恒等式。" },
+        howToRecognize: { en: "Identity involves $\\sin 2\\theta$ or $\\cos 2\\theta$.", zh: "恒等式涉及 $\\sin 2\\theta$ 或 $\\cos 2\\theta$。" },
+        steps: [
+          { en: "Expand the double-angle expression", zh: "展开倍角表达式" },
+          { en: "Simplify and match the other side", zh: "化简并与另一边匹配" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Verify: $\\frac{\\sin 2\\theta}{2\\sin\\theta} = \\cos\\theta$.", zh: "验证：$\\frac{\\sin 2\\theta}{2\\sin\\theta} = \\cos\\theta$。" },
+        commonTraps: [
+          { en: "Not expanding $\\sin 2\\theta$ and trying to manipulate it as-is", zh: "不展开 $\\sin 2\\theta$ 就试图直接操作" },
+        ],
+      },
+      {
+        id: "pt-5-5-7",
+        title: { en: "Reduce $\\sin^4 x$ Using Power-Reducing Twice", zh: "两次降幂化简 $\\sin^4 x$" },
+        description: { en: "Apply power-reducing formula multiple times for higher powers.", zh: "对高次幂多次应用降幂公式。" },
+        howToRecognize: { en: "Expression has $\\sin^4 x$, $\\cos^4 x$, or similar high powers.", zh: "表达式含 $\\sin^4 x$、$\\cos^4 x$ 或类似高次幂。" },
+        steps: [
+          { en: "Write $\\sin^4 x = (\\sin^2 x)^2$", zh: "写 $\\sin^4 x = (\\sin^2 x)^2$" },
+          { en: "Apply $\\sin^2 x = \\frac{1 - \\cos 2x}{2}$ and expand", zh: "应用 $\\sin^2 x = \\frac{1 - \\cos 2x}{2}$ 并展开" },
+          { en: "Apply power-reducing again to $\\cos^2 2x$", zh: "对 $\\cos^2 2x$ 再次降幂" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Rewrite $\\sin^4 x$ in terms of first powers of cosine.", zh: "将 $\\sin^4 x$ 用余弦的一次幂表示。" },
+        commonTraps: [
+          { en: "Forgetting to expand $(\\frac{1 - \\cos 2x}{2})^2$ fully before applying the second reduction", zh: "在第二次降幂前忘记完全展开 $(\\frac{1 - \\cos 2x}{2})^2$" },
+        ],
+      },
+      {
+        id: "pt-5-5-8",
+        title: { en: "Apply Sum-to-Product Formula", zh: "应用和差化积公式" },
+        description: { en: "Convert a sum/difference of sines or cosines into a product.", zh: "将正弦或余弦的和/差转化为乘积。" },
+        howToRecognize: { en: "Expression is $\\sin A + \\sin B$ or $\\cos A - \\cos B$.", zh: "表达式为 $\\sin A + \\sin B$ 或 $\\cos A - \\cos B$。" },
+        steps: [
+          { en: "Use sum-to-product: $\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}$", zh: "用和差化积：$\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}$" },
+          { en: "Simplify", zh: "化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Write $\\cos 4x - \\cos 2x$ as a product.", zh: "将 $\\cos 4x - \\cos 2x$ 写为乘积形式。" },
+        commonTraps: [
+          { en: "Confusing sum-to-product with product-to-sum — check which direction you need", zh: "搞混和差化积与积化和差——看清需要哪个方向" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-5-5-9",
+        title: { en: "Solve Equation Using Half-Angle or Double-Angle Strategy", zh: "用半角或倍角策略解方程" },
+        description: { en: "Solve equations where a half-angle or double-angle substitution simplifies the problem.", zh: "用半角或倍角代换化简方程后求解。" },
+        howToRecognize: { en: "Equation mixes single and double angles, or half and full angles.", zh: "方程混合单角与倍角，或半角与全角。" },
+        steps: [
+          { en: "Choose the substitution that makes all angles the same", zh: "选择使所有角相同的代换" },
+          { en: "Apply the formula and simplify", zh: "应用公式并化简" },
+          { en: "Solve and check solutions", zh: "求解并验证" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $\\sin 2x = \\cos x$ on $[0, 2\\pi)$.", zh: "在 $[0, 2\\pi)$ 上解 $\\sin 2x = \\cos x$。" },
+        commonTraps: [
+          { en: "Not rewriting $\\sin 2x = 2\\sin x\\cos x$ and then factoring out $\\cos x$", zh: "没有将 $\\sin 2x = 2\\sin x\\cos x$ 改写再提取 $\\cos x$" },
+        ],
+      },
+      {
+        id: "pt-5-5-10",
+        title: { en: "Multi-Formula Simplification or Proof", zh: "多公式综合化简或证明" },
+        description: { en: "Problems requiring a combination of double-angle, half-angle, and sum/product formulas.", zh: "需要倍角、半角和积化和差公式组合使用的问题。" },
+        howToRecognize: { en: "Complex expression or identity that doesn't yield to a single formula.", zh: "��能用单一公式处理的复杂表达式或恒等式。" },
+        steps: [
+          { en: "Identify which formulas to apply and in what order", zh: "确定应用哪些公式及顺序" },
+          { en: "Apply them step by step, simplifying at each stage", zh: "逐步应用，每步都化简" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Verify: $\\sin 3\\theta = 3\\sin\\theta - 4\\sin^3\\theta$.", zh: "验证：$\\sin 3\\theta = 3\\sin\\theta - 4\\sin^3\\theta$。" },
+        commonTraps: [
+          { en: "Not splitting $3\\theta = 2\\theta + \\theta$ and using sum + double-angle formulas together", zh: "没有拆分 $3\\theta = 2\\theta + \\theta$ 并同时使用和公式与倍角公式" },
+        ],
+      },
+    ],
   },
 ];
 
