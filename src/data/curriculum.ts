@@ -4518,27 +4518,526 @@ const chapter3Units: Unit[] = [
     id: "3-3",
     chapterId: "ch-3",
     number: "3.3",
-    title: {
-      en: "Properties of Logarithms",
-      zh: "对数的性质",
-    },
+    title: { en: "Properties of Logarithms", zh: "对数的性质" },
     description: {
       en: "Use the change-of-base formula and properties of logarithms to expand and condense expressions.",
       zh: "运用换底公式与对数运算性质，对对数表达式进行展开与合并。",
     },
+    learningGoals: [
+      { en: "Apply the product, quotient, and power rules of logarithms", zh: "应用对数的积、商、幂运算法则" },
+      { en: "Use the change-of-base formula to evaluate logarithms", zh: "用换底公式求对数值" },
+      { en: "Expand a single logarithm into a sum/difference of logarithms", zh: "把单一对数展开为对数的和/差" },
+      { en: "Condense a sum/difference of logarithms into a single logarithm", zh: "把对数的和/差合并为单一对数" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-3-3-1",
+        title: { en: "Product, Quotient, and Power Rules", zh: "积、商、幂法则" },
+        explanation: {
+          en: "These three rules let you split or combine logs: $\\log_a (MN) = \\log_a M + \\log_a N$, $\\log_a (M/N) = \\log_a M - \\log_a N$, and $\\log_a (M^p) = p \\log_a M$. They mirror the laws of exponents.",
+          zh: "三条法则使你可以分拆或合并对数：$\\log_a (MN) = \\log_a M + \\log_a N$、$\\log_a (M/N) = \\log_a M - \\log_a N$、$\\log_a (M^p) = p \\log_a M$。它们与指数法则对应。",
+        },
+        whenToUse: { en: "Whenever simplifying log expressions or solving log equations", zh: "化简对数表达式或解对数方程时" },
+        commonMistake: { en: "Treating $\\log(M + N)$ as $\\log M + \\log N$ (this is FALSE)", zh: "把 $\\log(M + N)$ 当作 $\\log M + \\log N$（错误）" },
+        example: { en: "$\\log_2 (32) = \\log_2 (4 \\cdot 8) = \\log_2 4 + \\log_2 8 = 2 + 3 = 5$", zh: "$\\log_2 (32) = \\log_2 (4 \\cdot 8) = \\log_2 4 + \\log_2 8 = 2 + 3 = 5$" },
+      },
+      {
+        id: "kc-3-3-2",
+        title: { en: "Change of Base Formula", zh: "换底公式" },
+        explanation: {
+          en: "$\\log_a x = \\frac{\\log_b x}{\\log_b a}$ for any positive base $b \\neq 1$. Most often used with $b = 10$ ($\\log$) or $b = e$ ($\\ln$) so calculators can evaluate it.",
+          zh: "$\\log_a x = \\frac{\\log_b x}{\\log_b a}$，其中 $b > 0, b \\neq 1$。常用 $b = 10$（$\\log$）或 $b = e$（$\\ln$）以便计算器求值。",
+        },
+        whenToUse: { en: "Evaluating $\\log_a$ for bases other than 10 or $e$", zh: "底数非 10 或 $e$ 时求对数值" },
+        commonMistake: { en: "Switching numerator and denominator: writing $\\log_b a / \\log_b x$", zh: "颠倒分子分母：写成 $\\log_b a / \\log_b x$" },
+        example: { en: "$\\log_5 13 = \\frac{\\ln 13}{\\ln 5} \\approx 1.594$", zh: "$\\log_5 13 = \\frac{\\ln 13}{\\ln 5} \\approx 1.594$" },
+      },
+      {
+        id: "kc-3-3-3",
+        title: { en: "Expansion vs Condensation", zh: "展开与合并" },
+        explanation: {
+          en: "Expansion: write a complicated log as a sum/difference of simpler logs (use product, quotient, power rules in the FORWARD direction). Condensation: combine sum/difference of logs into a single log (use rules in REVERSE).",
+          zh: "展开：把复杂对数写为更简对数的和/差（正向使用积、商、幂法则）。合并：把对数的和/差写为单一对数（反向使用法则）。",
+        },
+        whenToUse: { en: "Common pre-step in solving log equations or simplifying", zh: "解对数方程或化简的常见前置步骤" },
+        commonMistake: { en: "Mixing up the direction (e.g., trying to expand when you should condense)", zh: "方向弄反（如本应合并却展开）" },
+        example: { en: "Expand: $\\log_2 (8x^3 / y) = 3 + 3 \\log_2 x - \\log_2 y$. Condense: $\\log 5 + 2 \\log x = \\log (5 x^2)$", zh: "展开：$\\log_2 (8x^3 / y) = 3 + 3 \\log_2 x - \\log_2 y$。合并：$\\log 5 + 2 \\log x = \\log (5 x^2)$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-3-3-1",
+        name: { en: "Product Rule", zh: "积的法则" },
+        formula: "\\log_a (MN) = \\log_a M + \\log_a N",
+        variables: [
+          { en: "$M, N > 0$", zh: "$M, N > 0$" },
+        ],
+        whenToUse: { en: "Splitting or combining logs of products", zh: "拆分或合并积的对数" },
+        commonProblemTypes: [
+          { en: "Expand $\\log(xy)$ as $\\log x + \\log y$", zh: "把 $\\log(xy)$ 展开为 $\\log x + \\log y$" },
+        ],
+        example: { en: "$\\ln(3 \\cdot 5) = \\ln 3 + \\ln 5$", zh: "$\\ln(3 \\cdot 5) = \\ln 3 + \\ln 5$" },
+      },
+      {
+        id: "f-3-3-2",
+        name: { en: "Quotient Rule", zh: "商的法则" },
+        formula: "\\log_a \\left(\\frac{M}{N}\\right) = \\log_a M - \\log_a N",
+        variables: [
+          { en: "$M, N > 0$", zh: "$M, N > 0$" },
+        ],
+        whenToUse: { en: "Splitting or combining logs of quotients", zh: "拆分或合并商的对数" },
+        commonProblemTypes: [
+          { en: "Expand $\\log(x/y)$ as $\\log x - \\log y$", zh: "把 $\\log(x/y)$ 展开为 $\\log x - \\log y$" },
+        ],
+        example: { en: "$\\log(100 / 25) = \\log 100 - \\log 25 = 2 - \\log 25$", zh: "$\\log(100 / 25) = \\log 100 - \\log 25 = 2 - \\log 25$" },
+      },
+      {
+        id: "f-3-3-3",
+        name: { en: "Power Rule", zh: "幂的法则" },
+        formula: "\\log_a (M^p) = p \\log_a M",
+        variables: [
+          { en: "$M > 0$, $p$ — any real", zh: "$M > 0$，$p$ — 任意实数" },
+        ],
+        whenToUse: { en: "Bringing exponents in/out of logarithms", zh: "把指数移入或移出对数" },
+        commonProblemTypes: [
+          { en: "Solve equations like $5^x = 100$ by taking logs", zh: "用取对数解 $5^x = 100$ 等方程" },
+        ],
+        example: { en: "$\\log(x^5) = 5 \\log x$", zh: "$\\log(x^5) = 5 \\log x$" },
+      },
+      {
+        id: "f-3-3-4",
+        name: { en: "Change of Base Formula", zh: "换底公式" },
+        formula: "\\log_a x = \\frac{\\log_b x}{\\log_b a}",
+        variables: [
+          { en: "$a, b > 0$, $a \\neq 1$, $b \\neq 1$, $x > 0$", zh: "$a, b > 0$，$a \\neq 1$，$b \\neq 1$，$x > 0$" },
+        ],
+        whenToUse: { en: "Calculator evaluation of $\\log_a$ for unusual bases", zh: "用计算器求底为非常用值的对数" },
+        commonProblemTypes: [
+          { en: "Compute $\\log_3 50$ as $\\frac{\\ln 50}{\\ln 3}$", zh: "把 $\\log_3 50$ 化为 $\\frac{\\ln 50}{\\ln 3}$" },
+        ],
+        example: { en: "$\\log_7 200 = \\frac{\\log 200}{\\log 7} \\approx 2.722$", zh: "$\\log_7 200 = \\frac{\\log 200}{\\log 7} \\approx 2.722$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-3-3-1",
+        title: { en: "Apply the Product Rule", zh: "应用积的法则" },
+        description: { en: "Combine $\\log M + \\log N$ as $\\log(MN)$, or split as appropriate.", zh: "把 $\\log M + \\log N$ 合并为 $\\log(MN)$ 或反向。" },
+        howToRecognize: { en: "Two log terms summed (or one log of a product).", zh: "两个对数项相加（或一个积的对数）。" },
+        steps: [
+          { en: "Identify the form (sum vs. log of product)", zh: "识别形式（和 vs 积的对数）" },
+          { en: "Apply $\\log_a M + \\log_a N = \\log_a (MN)$ accordingly", zh: "相应地应用 $\\log_a M + \\log_a N = \\log_a (MN)$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Combine $\\log 4 + \\log 25$ into a single log and evaluate.", zh: "把 $\\log 4 + \\log 25$ 合并为单一对数并求值。" },
+        commonTraps: [
+          { en: "Trying to add inside the log: $\\log(M + N)$ is NOT $\\log M + \\log N$", zh: "误用内部加法：$\\log(M + N)$ 不等于 $\\log M + \\log N$" },
+        ],
+      },
+      {
+        id: "pt-3-3-2",
+        title: { en: "Apply the Quotient Rule", zh: "应用商的法则" },
+        description: { en: "Use $\\log(M/N) = \\log M - \\log N$.", zh: "用 $\\log(M/N) = \\log M - \\log N$。" },
+        howToRecognize: { en: "Log of a quotient or difference of two logs.", zh: "商的对数或两个对数的差。" },
+        steps: [
+          { en: "Identify which is numerator and which is denominator", zh: "确定分子分母" },
+          { en: "Apply $\\log_a M - \\log_a N = \\log_a (M/N)$ or reverse", zh: "应用 $\\log_a M - \\log_a N = \\log_a (M/N)$ 或反向" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Express $\\ln 12 - \\ln 4$ as a single log and evaluate.", zh: "把 $\\ln 12 - \\ln 4$ 写为单一对数并求值。" },
+        commonTraps: [
+          { en: "Reversing numerator and denominator", zh: "颠倒分子分母" },
+        ],
+      },
+      {
+        id: "pt-3-3-3",
+        title: { en: "Apply the Power Rule", zh: "应用幂的法则" },
+        description: { en: "Bring an exponent in/out of a log.", zh: "把指数移入或移出对数。" },
+        howToRecognize: { en: "$\\log_a (M^p)$ or $p \\log_a M$.", zh: "$\\log_a (M^p)$ 或 $p \\log_a M$。" },
+        steps: [
+          { en: "If exponent is inside: bring out as a coefficient", zh: "若指数在内：移出作系数" },
+          { en: "If coefficient is outside: move inside as exponent", zh: "若系数在外：移入作指数" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Rewrite $\\log_5 (x^4)$ without an exponent inside.", zh: "把 $\\log_5 (x^4)$ 改写为不含内部指数。" },
+        commonTraps: [
+          { en: "Applying power rule to log of a sum (e.g., $\\log(M + N)^p$ — wrong)", zh: "对和的对数应用幂法则（如 $\\log(M + N)^p$——错）" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-3-3-4",
+        title: { en: "Expand a Complex Log Expression", zh: "展开复杂对数表达式" },
+        description: { en: "Apply all three rules to break down a single log into a sum/difference.", zh: "用三条法则把单一对数拆为和/差。" },
+        howToRecognize: { en: "Single log of a product, quotient, or power; problem says \"expand.\"", zh: "积、商或幂的单一对数；题目要求\"展开\"。" },
+        steps: [
+          { en: "Apply quotient rule to split numerator and denominator", zh: "用商法则拆分分子分母" },
+          { en: "Apply product rule to split each factor", zh: "用积法则拆分各因子" },
+          { en: "Apply power rule to bring exponents out", zh: "用幂法则把指数移出" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Expand $\\ln \\left(\\frac{x^2 \\sqrt{y}}{z^3}\\right)$.", zh: "展开 $\\ln \\left(\\frac{x^2 \\sqrt{y}}{z^3}\\right)$。" },
+        commonTraps: [
+          { en: "Skipping the radical conversion: $\\sqrt{y} = y^{1/2}$", zh: "未把根号转为指数：$\\sqrt{y} = y^{1/2}$" },
+        ],
+      },
+      {
+        id: "pt-3-3-5",
+        title: { en: "Condense to a Single Log", zh: "合并为单一对数" },
+        description: { en: "Combine multiple logs (with coefficients) into one log expression.", zh: "把多个对数（含系数）合并为一个对数表达式。" },
+        howToRecognize: { en: "Sum/difference of logs; problem says \"condense\" or \"as a single log.\"", zh: "对数的和/差；题目要求\"合并\"或\"写为单一对数\"。" },
+        steps: [
+          { en: "Apply power rule first to absorb coefficients into exponents", zh: "先用幂法则把系数变为指数" },
+          { en: "Combine using product rule for sums and quotient rule for differences", zh: "用积法则合并和、商法则合并差" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Condense $3 \\log x + 2 \\log y - \\log z$.", zh: "合并 $3 \\log x + 2 \\log y - \\log z$。" },
+        commonTraps: [
+          { en: "Forgetting to deal with coefficients before combining", zh: "未先处理系数就合并" },
+        ],
+      },
+      {
+        id: "pt-3-3-6",
+        title: { en: "Use Change of Base to Evaluate", zh: "用换底公式求值" },
+        description: { en: "Convert $\\log_a x$ to a calculator-friendly base.", zh: "把 $\\log_a x$ 换为计算器易处理的底。" },
+        howToRecognize: { en: "$\\log_a$ with $a$ not equal to 10 or $e$.", zh: "$\\log_a$ 且 $a$ 不为 10 或 $e$。" },
+        steps: [
+          { en: "Apply $\\log_a x = \\frac{\\log x}{\\log a}$ or $\\frac{\\ln x}{\\ln a}$", zh: "应用 $\\log_a x = \\frac{\\log x}{\\log a}$ 或 $\\frac{\\ln x}{\\ln a}$" },
+          { en: "Compute on a calculator", zh: "用计算器求值" },
+          { en: "Round to required precision", zh: "按要求精度取整" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Evaluate $\\log_4 50$ to four decimal places.", zh: "把 $\\log_4 50$ 求至四位小数。" },
+        commonTraps: [
+          { en: "Putting the base on top instead of in the denominator", zh: "把底数放到分子上而非分母" },
+        ],
+      },
+      {
+        id: "pt-3-3-7",
+        title: { en: "Determine Which Property to Use", zh: "判断该用哪条法则" },
+        description: { en: "Look at the structure (product, quotient, power) and apply the matching rule.", zh: "观察结构（积、商、幂），应用对应法则。" },
+        howToRecognize: { en: "Mixed expressions; problem asks which property simplifies them.", zh: "混合表达式；题目问哪条法则可简化。" },
+        steps: [
+          { en: "Spot multiplication ⇒ product rule", zh: "看到乘法 ⇒ 积法则" },
+          { en: "Spot division ⇒ quotient rule", zh: "看到除法 ⇒ 商法则" },
+          { en: "Spot exponent ⇒ power rule", zh: "看到指数 ⇒ 幂法则" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Which property is needed to simplify $\\log_3 (x^2 / y)$? Use it.", zh: "化简 $\\log_3 (x^2 / y)$ 需要哪条法则？应用它。" },
+        commonTraps: [
+          { en: "Trying multiple wrong properties before noticing the right one", zh: "尝试多条不当法则才发现正确的" },
+        ],
+      },
+      {
+        id: "pt-3-3-8",
+        title: { en: "Simplify Logs with Numerical Bases and Args", zh: "化简底与真数都是数的对数" },
+        description: { en: "Compute exact values when arguments factor into base powers.", zh: "当真数为底数的幂时求精确值。" },
+        howToRecognize: { en: "Argument is recognizable as a power of base.", zh: "真数可识别为底数的幂。" },
+        steps: [
+          { en: "Express the argument as a power of the base if possible", zh: "若可能，把真数写为底数的幂" },
+          { en: "Use power rule to extract the exponent", zh: "用幂法则提取指数" },
+          { en: "Simplify", zh: "化简" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Compute $\\log_2 (8 \\cdot 16)$ exactly.", zh: "精确计算 $\\log_2 (8 \\cdot 16)$。" },
+        commonTraps: [
+          { en: "Failing to recognize $8 = 2^3$ and $16 = 2^4$", zh: "未识别 $8 = 2^3$ 与 $16 = 2^4$" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-3-3-9",
+        title: { en: "Combine Multiple Properties to Simplify", zh: "综合应用多条法则化简" },
+        description: { en: "Strategically apply product, quotient, power, and change of base.", zh: "策略性地综合积、商、幂与换底法则。" },
+        howToRecognize: { en: "Complex expression with logs of products, quotients, powers, and unusual bases.", zh: "复杂表达式含积、商、幂的对数及非常用底。" },
+        steps: [
+          { en: "Plan the simplification order", zh: "规划化简顺序" },
+          { en: "Apply each property carefully, one at a time", zh: "逐条仔细应用" },
+          { en: "Combine and simplify", zh: "合并化简" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Simplify $\\log_3 \\left(\\frac{27 x^4}{\\sqrt[3]{y}}\\right)$ using log properties.", zh: "用对数性质化简 $\\log_3 \\left(\\frac{27 x^4}{\\sqrt[3]{y}}\\right)$。" },
+        commonTraps: [
+          { en: "Skipping the simplification of $\\log_3 27 = 3$", zh: "未化简 $\\log_3 27 = 3$" },
+        ],
+      },
+      {
+        id: "pt-3-3-10",
+        title: { en: "Application — Verify a Logarithmic Identity", zh: "应用——验证对数恒等式" },
+        description: { en: "Use log properties to prove an identity holds for all valid inputs.", zh: "用对数性质证明等式对所有合法输入都成立。" },
+        howToRecognize: { en: "Problem asks to verify or prove a logarithmic identity.", zh: "题目要求验证或证明对数恒等式。" },
+        steps: [
+          { en: "Start from one side; apply properties step by step", zh: "从一侧开始，逐步应用法则" },
+          { en: "Transform until it matches the other side", zh: "化简至与另一侧相同" },
+          { en: "State each property used", zh: "注明每步使用的法则" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Prove that $\\log_a (xy^2) - \\log_a (x^2 y) = \\log_a (y/x)$.", zh: "证明 $\\log_a (xy^2) - \\log_a (x^2 y) = \\log_a (y/x)$。" },
+        commonTraps: [
+          { en: "Manipulating both sides simultaneously instead of transforming one", zh: "两侧同时变形而非只变形一侧" },
+        ],
+      },
+    ],
   },
   {
     id: "3-4",
     chapterId: "ch-3",
     number: "3.4",
-    title: {
-      en: "Exponential and Logarithmic Equations",
-      zh: "指数与对数方程",
-    },
+    title: { en: "Exponential and Logarithmic Equations", zh: "指数与对数方程" },
     description: {
       en: "Solve equations involving exponential and logarithmic expressions algebraically.",
       zh: "用代数方法求解包含指数和对数表达式的方程。",
     },
+    learningGoals: [
+      { en: "Solve exponential equations using logarithms", zh: "用对数解指数方程" },
+      { en: "Solve logarithmic equations using exponentials", zh: "用指数解对数方程" },
+      { en: "Apply the one-to-one property of exponentials and logarithms", zh: "应用指数和对数的一对一性" },
+      { en: "Identify and reject extraneous solutions", zh: "识别并舍去外解" },
+    ],
+    keyConcepts: [
+      {
+        id: "kc-3-4-1",
+        title: { en: "One-to-One Property", zh: "一对一性质" },
+        explanation: {
+          en: "If $a^x = a^y$, then $x = y$ (exponential is one-to-one). If $\\log_a M = \\log_a N$, then $M = N$ (logarithm is one-to-one). These let you cancel matching exponentials or logs from both sides.",
+          zh: "若 $a^x = a^y$，则 $x = y$（指数为一对一）。若 $\\log_a M = \\log_a N$，则 $M = N$（对数为一对一）。利用此可消去两边相同的指数或对数。",
+        },
+        whenToUse: { en: "When both sides can be expressed with the same base or log", zh: "两边可用同底指数或对数表达时" },
+        commonMistake: { en: "Applying when bases differ — must rewrite to the same base first", zh: "底不同时直接应用——应先化为同底" },
+        example: { en: "$2^{x + 3} = 2^{2x - 1}$ ⇒ $x + 3 = 2x - 1$ ⇒ $x = 4$", zh: "$2^{x + 3} = 2^{2x - 1}$ ⇒ $x + 3 = 2x - 1$ ⇒ $x = 4$" },
+      },
+      {
+        id: "kc-3-4-2",
+        title: { en: "Solving Exponential Equations", zh: "解指数方程" },
+        explanation: {
+          en: "If bases match, equate exponents (one-to-one). Otherwise, take the logarithm of both sides and apply the power rule to bring the variable down. Convert to standard form $\\log a^x = x \\log a$.",
+          zh: "底相同时，令指数相等（一对一）。否则两边取对数，用幂法则把变量提下来。化为 $\\log a^x = x \\log a$ 的标准形式。",
+        },
+        whenToUse: { en: "Variable in an exponent; bases may or may not match", zh: "变量在指数；底可能相同或不同" },
+        commonMistake: { en: "Applying log to only one side, or ignoring the power rule", zh: "只对一边取对数，或未用幂法则" },
+        example: { en: "$5^x = 17$: $\\ln(5^x) = \\ln 17$ ⇒ $x \\ln 5 = \\ln 17$ ⇒ $x = \\frac{\\ln 17}{\\ln 5} \\approx 1.760$", zh: "$5^x = 17$：$\\ln(5^x) = \\ln 17$ ⇒ $x \\ln 5 = \\ln 17$ ⇒ $x = \\frac{\\ln 17}{\\ln 5} \\approx 1.760$" },
+      },
+      {
+        id: "kc-3-4-3",
+        title: { en: "Solving Log Equations and Extraneous Solutions", zh: "解对数方程与外解" },
+        explanation: {
+          en: "Convert $\\log_a u = c$ to $u = a^c$ to solve. After solving, ALWAYS check candidates against the original equation's domain — log arguments must be positive. Extraneous solutions arise when algebra introduces invalid candidates.",
+          zh: "把 $\\log_a u = c$ 化为 $u = a^c$ 求解。求解后必须把候选代入原方程检查定义域——对数真数须为正。代数变形可能引入外解。",
+        },
+        whenToUse: { en: "Any time you solve a logarithmic equation", zh: "凡是解对数方程时" },
+        commonMistake: { en: "Skipping the domain check, accepting a solution that makes a log argument negative", zh: "跳过定义域检查，接受了使真数为负的解" },
+        example: { en: "$\\log(x) + \\log(x - 3) = 1$: $\\log(x(x-3)) = 1$ ⇒ $x^2 - 3x - 10 = 0$ ⇒ $x = 5$ or $x = -2$. Reject $-2$ ⇒ $x = 5$", zh: "$\\log(x) + \\log(x - 3) = 1$：$\\log(x(x-3)) = 1$ ⇒ $x^2 - 3x - 10 = 0$ ⇒ $x = 5$ 或 $-2$。舍 $-2$ ⇒ $x = 5$" },
+      },
+    ],
+    formulas: [
+      {
+        id: "f-3-4-1",
+        name: { en: "One-to-One Properties", zh: "一对一性质" },
+        formula: "a^x = a^y \\iff x = y, \\quad \\log_a M = \\log_a N \\iff M = N",
+        variables: [
+          { en: "$a > 0, a \\neq 1$, $M, N > 0$", zh: "$a > 0, a \\neq 1$，$M, N > 0$" },
+        ],
+        whenToUse: { en: "Cancel matching exponentials or logs to isolate the variable", zh: "消去相同的指数或对数以分离变量" },
+        commonProblemTypes: [
+          { en: "Solve $a^{f(x)} = a^{g(x)}$ by setting $f(x) = g(x)$", zh: "由 $a^{f(x)} = a^{g(x)}$ 得 $f(x) = g(x)$" },
+        ],
+        example: { en: "$3^{2x+1} = 27$ ⇒ $3^{2x+1} = 3^3$ ⇒ $2x + 1 = 3$ ⇒ $x = 1$", zh: "$3^{2x+1} = 27$ ⇒ $3^{2x+1} = 3^3$ ⇒ $2x + 1 = 3$ ⇒ $x = 1$" },
+      },
+      {
+        id: "f-3-4-2",
+        name: { en: "Take Log of Both Sides", zh: "两边取对数" },
+        formula: "a^u = b \\Rightarrow u = \\frac{\\ln b}{\\ln a} \\quad (\\text{or } \\log_a b)",
+        variables: [
+          { en: "$u$ — expression containing the variable", zh: "$u$ — 含变量的表达式" },
+          { en: "$a, b > 0$, $a \\neq 1$", zh: "$a, b > 0$，$a \\neq 1$" },
+        ],
+        whenToUse: { en: "Bases differ and you need a calculator-friendly answer", zh: "底不同且需用计算器求值" },
+        commonProblemTypes: [
+          { en: "Solve $a^x = b$ where $b$ is not a power of $a$", zh: "解 $a^x = b$，其中 $b$ 不是 $a$ 的幂" },
+        ],
+        example: { en: "$7^x = 25$: $x = \\frac{\\ln 25}{\\ln 7} \\approx 1.654$", zh: "$7^x = 25$：$x = \\frac{\\ln 25}{\\ln 7} \\approx 1.654$" },
+      },
+      {
+        id: "f-3-4-3",
+        name: { en: "Exponentiate Both Sides", zh: "两边取指数" },
+        formula: "\\log_a u = c \\Rightarrow u = a^c",
+        variables: [
+          { en: "$u$ — argument of log", zh: "$u$ — 对数的真数" },
+          { en: "$c$ — given constant", zh: "$c$ — 给定常数" },
+        ],
+        whenToUse: { en: "Isolate the argument from a single log equation", zh: "从单一对数方程中分离真数" },
+        commonProblemTypes: [
+          { en: "Solve $\\log_a (\\text{expr}) = c$", zh: "解 $\\log_a (\\text{表达式}) = c$" },
+        ],
+        example: { en: "$\\ln(x + 1) = 2$ ⇒ $x + 1 = e^2$ ⇒ $x = e^2 - 1$", zh: "$\\ln(x + 1) = 2$ ⇒ $x + 1 = e^2$ ⇒ $x = e^2 - 1$" },
+      },
+    ],
+    problemTypes: [
+      // ── Easy (3) ──────────────────────────────────────────
+      {
+        id: "pt-3-4-1",
+        title: { en: "Solve $a^x = a^y$ by Matching Exponents", zh: "通过指数相等解 $a^x = a^y$" },
+        description: { en: "Apply the one-to-one property when both sides share the same base.", zh: "两边同底时应用一对一性质。" },
+        howToRecognize: { en: "Both sides have the same base (or can be rewritten that way).", zh: "两边同底（或可化为同底）。" },
+        steps: [
+          { en: "Rewrite both sides with the same base", zh: "两边化为同底" },
+          { en: "Set exponents equal", zh: "令指数相等" },
+          { en: "Solve the resulting equation", zh: "求解方程" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $4^{x + 1} = 64$.", zh: "解 $4^{x + 1} = 64$。" },
+        commonTraps: [
+          { en: "Failing to recognize $64 = 4^3$ before applying one-to-one", zh: "未识别 $64 = 4^3$ 就用一对一" },
+        ],
+      },
+      {
+        id: "pt-3-4-2",
+        title: { en: "Solve $\\log_a M = \\log_a N$", zh: "解 $\\log_a M = \\log_a N$" },
+        description: { en: "Apply the one-to-one property of logs.", zh: "应用对数的一对一性质。" },
+        howToRecognize: { en: "Logs of the same base on both sides.", zh: "两边为同底的对数。" },
+        steps: [
+          { en: "Set arguments equal: $M = N$", zh: "令真数相等：$M = N$" },
+          { en: "Solve and check the domain", zh: "求解并检查定义域" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $\\ln(2x + 5) = \\ln(7x - 1)$.", zh: "解 $\\ln(2x + 5) = \\ln(7x - 1)$。" },
+        commonTraps: [
+          { en: "Skipping the domain check (could give an extraneous solution)", zh: "跳过定义域检查（可能引入外解）" },
+        ],
+      },
+      {
+        id: "pt-3-4-3",
+        title: { en: "Solve $a^x = b$ by Taking $\\ln$", zh: "对 $a^x = b$ 两边取 $\\ln$" },
+        description: { en: "Use logs and the power rule when bases don't match.", zh: "底不同时用对数与幂法则。" },
+        howToRecognize: { en: "Variable in an exponent; bases differ; calculator answer expected.", zh: "变量在指数；底不同；要求用计算器求解。" },
+        steps: [
+          { en: "Take $\\ln$ (or $\\log$) of both sides", zh: "两边取 $\\ln$（或 $\\log$）" },
+          { en: "Use power rule: $x \\ln a = \\ln b$", zh: "用幂法则：$x \\ln a = \\ln b$" },
+          { en: "Solve $x = \\frac{\\ln b}{\\ln a}$", zh: "解 $x = \\frac{\\ln b}{\\ln a}$" },
+        ],
+        difficulty: "easy",
+        exampleProblem: { en: "Solve $3^x = 50$.", zh: "解 $3^x = 50$。" },
+        commonTraps: [
+          { en: "Missing the power rule, leaving $\\ln 3^x$ unreduced", zh: "未用幂法则，把 $\\ln 3^x$ 留着不化简" },
+        ],
+      },
+      // ── Medium (5) ────────────────────────────────────────
+      {
+        id: "pt-3-4-4",
+        title: { en: "Solve Exponential with Coefficient", zh: "解带系数的指数方程" },
+        description: { en: "Isolate the exponential term first, then take logs.", zh: "先把指数项分离，再取对数。" },
+        howToRecognize: { en: "Equation like $A \\cdot a^x + B = C$.", zh: "方程形如 $A \\cdot a^x + B = C$。" },
+        steps: [
+          { en: "Isolate $a^x$ on one side", zh: "把 $a^x$ 分离到一边" },
+          { en: "Take $\\ln$ of both sides", zh: "两边取 $\\ln$" },
+          { en: "Apply power rule and solve for $x$", zh: "应用幂法则求 $x$" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $4 e^{2x} - 5 = 27$.", zh: "解 $4 e^{2x} - 5 = 27$。" },
+        commonTraps: [
+          { en: "Taking $\\ln$ before isolating the exponential term", zh: "未先分离指数项就取 $\\ln$" },
+        ],
+      },
+      {
+        id: "pt-3-4-5",
+        title: { en: "Solve a Quadratic-Form Exponential Equation", zh: "解二次形式的指数方程" },
+        description: { en: "Substitute $u = a^x$ to convert to a quadratic.", zh: "令 $u = a^x$ 化为二次方程。" },
+        howToRecognize: { en: "Equation has $a^{2x}$ or $(a^x)^2$ alongside $a^x$.", zh: "方程含 $a^{2x}$ 或 $(a^x)^2$ 与 $a^x$。" },
+        steps: [
+          { en: "Let $u = a^x$, so $a^{2x} = u^2$", zh: "令 $u = a^x$，则 $a^{2x} = u^2$" },
+          { en: "Solve the quadratic in $u$", zh: "解关于 $u$ 的二次方程" },
+          { en: "Convert back: $a^x = u$ ⇒ $x = \\log_a u$ (only positive $u$)", zh: "回代：$a^x = u$ ⇒ $x = \\log_a u$（$u$ 须为正）" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $e^{2x} - 4 e^x + 3 = 0$.", zh: "解 $e^{2x} - 4 e^x + 3 = 0$。" },
+        commonTraps: [
+          { en: "Accepting a negative $u$ value (not in range of $a^x$)", zh: "接受了负的 $u$ 值（不在 $a^x$ 的值域内）" },
+        ],
+      },
+      {
+        id: "pt-3-4-6",
+        title: { en: "Solve Log Equation by Condensation", zh: "通过合并解对数方程" },
+        description: { en: "Combine multiple log terms into a single log first.", zh: "先把多个对数项合并为单一对数。" },
+        howToRecognize: { en: "Equation contains a sum or difference of logs of the same base.", zh: "方程含同底对数的和或差。" },
+        steps: [
+          { en: "Use product/quotient rules to combine into one log", zh: "用积/商法则合并" },
+          { en: "Convert to exponential form to solve", zh: "化为指数式求解" },
+          { en: "Check candidates against the original equation's domain", zh: "把候选代入原方程检查定义域" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\log_2(x) + \\log_2(x - 2) = 3$.", zh: "解 $\\log_2(x) + \\log_2(x - 2) = 3$。" },
+        commonTraps: [
+          { en: "Forgetting to check that both $x$ and $x - 2$ are positive", zh: "忘记检查 $x$ 与 $x - 2$ 都为正" },
+        ],
+      },
+      {
+        id: "pt-3-4-7",
+        title: { en: "Solve Log Equation by Expansion", zh: "通过展开解对数方程" },
+        description: { en: "Apply log properties to spread out terms before isolating the variable.", zh: "在分离变量前用对数性质展开。" },
+        howToRecognize: { en: "Equation has a complex log with products/quotients/exponents.", zh: "方程中对数内含积、商或幂。" },
+        steps: [
+          { en: "Apply power, product, quotient rules to simplify", zh: "用幂、积、商法则化简" },
+          { en: "Solve algebraically", zh: "代数求解" },
+          { en: "Verify against original domain", zh: "对原定义域核验" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\log(x^2 - 1) = \\log(x + 1) + \\log 4$.", zh: "解 $\\log(x^2 - 1) = \\log(x + 1) + \\log 4$。" },
+        commonTraps: [
+          { en: "Missing extraneous solutions from cross-multiplication", zh: "因交叉相乘未发现外解" },
+        ],
+      },
+      {
+        id: "pt-3-4-8",
+        title: { en: "Pre-Manipulation Before Solving", zh: "求解前的预处理" },
+        description: { en: "Multiply through, factor, or otherwise simplify before applying logs.", zh: "在应用对数前先去分母、因式分解或其它化简。" },
+        howToRecognize: { en: "Equation has fractions or factored exponentials that obscure the structure.", zh: "方程含分式或被因式包裹的指数，结构不明显。" },
+        steps: [
+          { en: "Clear fractions or expand factors", zh: "去分母或展开因式" },
+          { en: "Identify the simplified equation type", zh: "识别化简后的方程类型" },
+          { en: "Apply the appropriate solving technique", zh: "用对应技巧求解" },
+        ],
+        difficulty: "medium",
+        exampleProblem: { en: "Solve $\\frac{e^x + 1}{e^x - 1} = 3$.", zh: "解 $\\frac{e^x + 1}{e^x - 1} = 3$。" },
+        commonTraps: [
+          { en: "Cross-multiplying without restricting $e^x \\neq 1$", zh: "交叉相乘但未限制 $e^x \\neq 1$" },
+        ],
+      },
+      // ── Hard (2) ──────────────────────────────────────────
+      {
+        id: "pt-3-4-9",
+        title: { en: "Identify and Reject Extraneous Solutions", zh: "识别并舍去外解" },
+        description: { en: "Always check candidates against the original log equation's domain.", zh: "把候选代入原对数方程检查定义域。" },
+        howToRecognize: { en: "Log equation; algebraic manipulation may introduce invalid candidates.", zh: "对数方程；代数变形可能引入无效候选。" },
+        steps: [
+          { en: "Solve the resulting algebraic equation (often polynomial)", zh: "解化得的代数方程（常为多项式）" },
+          { en: "Substitute each candidate into ORIGINAL log equation", zh: "把每个候选代入原对数方程" },
+          { en: "Reject any that make a log argument $\\leq 0$", zh: "舍去使任一对数真数 $\\leq 0$ 的候选" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "Solve $\\log(x - 1) + \\log(x + 2) = 1$ and identify any extraneous solutions.", zh: "解 $\\log(x - 1) + \\log(x + 2) = 1$，并指出外解。" },
+        commonTraps: [
+          { en: "Skipping the substitution check", zh: "省略代入检查" },
+        ],
+      },
+      {
+        id: "pt-3-4-10",
+        title: { en: "Application — Solve for Time in Compound Interest or Decay", zh: "应用——在复利或衰减中解时间" },
+        description: { en: "Use logarithms to solve for the time variable in growth/decay equations.", zh: "用对数在增长/衰减方程中解时间变量。" },
+        howToRecognize: { en: "Word problem asks \"how long until...\" with exponential growth or decay.", zh: "应用题问\"何时\"达到某值，含指数增长或衰减。" },
+        steps: [
+          { en: "Set up the growth/decay equation", zh: "建立增长/衰减方程" },
+          { en: "Substitute the target value", zh: "代入目标值" },
+          { en: "Take logs to solve for $t$", zh: "取对数解 $t$" },
+          { en: "Round and interpret", zh: "取整并解释" },
+        ],
+        difficulty: "hard",
+        exampleProblem: { en: "How long will it take for \\$2000 to grow to \\$5000 at 6\\% compounded continuously?", zh: "\\$2000 以 6\\% 连续复利增长到 \\$5000 需要多久？" },
+        commonTraps: [
+          { en: "Mixing up base $e$ formula with discrete compounding formula", zh: "把连续复利公式与离散复利公式混用" },
+        ],
+      },
+    ],
   },
   {
     id: "3-5",
