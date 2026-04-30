@@ -3,7 +3,7 @@ import "server-only";
 import AnthropicBedrock from "@anthropic-ai/bedrock-sdk";
 import type { AIGenerateOptions, AIProvider, AIResponse } from "../types";
 
-const DEFAULT_MODEL = "anthropic.claude-sonnet-4-20250514-v1:0";
+const DEFAULT_MODEL = "us.anthropic.claude-sonnet-4-20250514-v1:0";
 const DEFAULT_MAX_TOKENS = 2048;
 
 export class BedrockProvider implements AIProvider {
