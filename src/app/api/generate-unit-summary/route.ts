@@ -1,3 +1,4 @@
+import { parseAIJson } from "@/lib/ai/parse-json";
 import { NextResponse } from "next/server";
 import { chapters } from "@/data/curriculum";
 import { getAIProvider, generateUnitSummaryPrompt, SYSTEM_TUTOR } from "@/lib/ai";
@@ -29,7 +30,7 @@ export async function POST(req: Request) {
       temperature: 0.3,
     });
 
-    const parsed = JSON.parse(result.text);
+    const parsed = parseAIJson(result.text);
     return NextResponse.json(parsed);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";

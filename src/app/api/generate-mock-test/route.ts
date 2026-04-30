@@ -1,3 +1,4 @@
+import { parseAIJson } from "@/lib/ai/parse-json";
 import { NextResponse } from "next/server";
 import { chapters } from "@/data/curriculum";
 import { getAIProvider, SYSTEM_TUTOR } from "@/lib/ai";
@@ -134,7 +135,7 @@ export async function POST(req: Request) {
     // Try to parse JSON, with fallback for truncated responses
     let parsed: { questions: unknown[] };
     try {
-      parsed = JSON.parse(result.text);
+      parsed = parseAIJson(result.text);
     } catch {
       // Try to extract partial JSON by finding last complete question object
       const text = result.text;
