@@ -79,6 +79,13 @@ function buildMockTestPrompt(
     `- Each "answer" for a multiple-choice question is the choice id ("A", "B", "C", or "D"). For free-response, "answer" is the final value as a clean string.`,
     `- Tag each question with the most relevant concept id from the unit (use the [id] markers above) in "conceptTag".`,
     ``,
+    `CRITICAL — Answer Accuracy:`,
+    `- For each question, FIRST compute the correct numerical answer step-by-step, THEN design the 4 choices so that one choice contains that exact correct value.`,
+    `- The "answer" field MUST be the choice ID (A/B/C/D) whose "text" contains the correct computed value.`,
+    `- The "explanation" must be fully consistent with the "answer" field — if your worked solution yields a value matching choice C, then answer MUST be "C".`,
+    `- Each choice must have a clearly DISTINCT value — no two choices should be within 5% of each other.`,
+    `- NEVER change the answer field after writing the explanation. If you find a mismatch, rewrite the choices to fix it.`,
+    ``,
     `Return strict JSON with this shape:`,
     `{`,
     `  "questions": [`,
@@ -128,7 +135,7 @@ export async function POST(req: Request) {
     const result = await provider.generate({
       system: SYSTEM_TUTOR(language),
       messages: [{ role: "user", content: prompt }],
-      temperature: 0.5,
+      temperature: 0.3,
       maxTokens: 8192,
     });
 
@@ -152,8 +159,32 @@ export async function POST(req: Request) {
         throw new Error("AI returned invalid JSON. Try fewer questions.");
       }
     }
+    // Validate: filter out questions with invalid answer references
+    const VALID_CHOICE_IDS = new Set(["A", "B", "C", "D"]);
+    const validQuestions = (parsed.questions as Array<{
+      id: string;
+      choices?: { id: string; text: string }[] | null;
+      answer: string;
+      [key: string]: unknown;
+    }>).filter((q) => {
+      if (q.choices && q.choices.length > 0) {
+        // For multiple choice, answer must be a valid choice ID
+        if (!VALID_CHOICE_IDS.has(q.answer)) {
+          console.warn(`[mock-test] Question ${q.id}: answer "${q.answer}" is not a valid choice ID, filtering out`);
+          return false;
+        }
+        // Check that the answer ID actually exists in choices
+        const choiceIds = new Set(q.choices.map((c) => c.id));
+        if (!choiceIds.has(q.answer)) {
+          console.warn(`[mock-test] Question ${q.id}: answer "${q.answer}" not found in choices, filtering out`);
+          return false;
+        }
+      }
+      return true;
+    });
+
     return NextResponse.json({
-      questions: parsed.questions,
+      questions: validQuestions,
       timeLimit: count * MINUTES_PER_QUESTION,
     });
   } catch (err) {
