@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { MockTestQuestion } from "./MockTestRunner";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { MathText } from "@/components/ui/math";
 import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { SupportedLanguage } from "@/types/curriculum";
 import type { MockTestHistoryPayload, StudentAnswer } from "@/types/history";
@@ -179,13 +180,13 @@ export function MockTestResult({ questions, answers, unitId, language, onRestart
               <p>
                 <span className="font-medium text-gray-500">{T.yourAnswer[language]}:</span>{" "}
                 <span className={r.correct ? "text-green-700" : "text-red-700"}>
-                  {r.userAnswer || T.noAnswer[language]}
+                  <MathText text={r.userAnswer || T.noAnswer[language]} />
                 </span>
               </p>
               {!r.correct && (
                 <p>
                   <span className="font-medium text-gray-500">{T.correctAnswer[language]}:</span>{" "}
-                  <span className="text-green-700">{r.answer}</span>
+                  <span className="text-green-700"><MathText text={r.answer} /></span>
                 </p>
               )}
             </div>

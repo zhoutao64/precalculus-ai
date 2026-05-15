@@ -139,7 +139,7 @@ export function PracticeProblemCard({ question, language, index, onAnswerChecked
             ) : (
               <span>
                 ❌ {T.incorrect[language]}{" "}
-                <span className="font-mono">{question.answer}</span>
+                <span className="font-mono"><MathText text={question.answer} /></span>
               </span>
             )}
           </div>

@@ -472,7 +472,7 @@ export function DiagnosticCheck({ unitId, language }: Props) {
                   <span className="font-medium text-gray-500">
                     {language === "en" ? "Correct" : "正确答案"}:
                   </span>{" "}
-                  <span className="text-green-700">{r.answer}</span>
+                  <span className="text-green-700"><MathText text={r.answer} /></span>
                 </p>
               )}
             </div>
