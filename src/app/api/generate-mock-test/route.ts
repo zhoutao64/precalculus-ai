@@ -109,6 +109,7 @@ function buildMockTestPrompt(
   ].join("\n");
 }
 
+export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const {

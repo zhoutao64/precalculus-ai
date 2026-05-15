@@ -4,6 +4,7 @@ function normalize(value: string): string {
   return value.trim().toLowerCase();
 }
 
+export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const {

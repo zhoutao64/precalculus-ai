@@ -53,6 +53,7 @@ function buildPrompt(query: string, language: SupportedLanguage): string {
   ].join("\n");
 }
 
+export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const { query, language = "en" } = (await req.json()) as {

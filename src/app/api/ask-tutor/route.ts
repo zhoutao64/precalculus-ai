@@ -3,6 +3,7 @@ import { chapters } from "@/data/curriculum";
 import { getAIProvider } from "@/lib/ai";
 import type { SupportedLanguage } from "@/types/curriculum";
 
+export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const { question, unitId, language = "en", context } = (await req.json()) as {

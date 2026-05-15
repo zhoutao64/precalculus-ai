@@ -4,6 +4,7 @@ import { chapters } from "@/data/curriculum";
 import { getAIProvider, generatePracticePrompt, SYSTEM_TUTOR } from "@/lib/ai";
 import type { SupportedLanguage, Difficulty } from "@/types/curriculum";
 
+export const maxDuration = 60;
 export async function POST(req: Request) {
   try {
     const { unitId, language = "en", difficulty = "medium", count = 3 } = (await req.json()) as {
