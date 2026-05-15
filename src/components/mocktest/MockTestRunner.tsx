@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MockTestResult } from "./MockTestResult";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { MathText } from "@/components/ui/math";
 import type { Difficulty, SupportedLanguage } from "@/types/curriculum";
 
 export type MockTestChoice = {
@@ -204,7 +205,7 @@ export function MockTestRunner({
                   }`}
                 >
                   <span className="font-mono font-semibold">{c.id}.</span>
-                  <span className="flex-1">{c.text}</span>
+                  <span className="flex-1"><MathText text={c.text} /></span>
                 </button>
               );
             })}

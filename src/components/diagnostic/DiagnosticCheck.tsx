@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { MathText } from "@/components/ui/math";
 import { useLearningHistory } from "@/hooks/useLearningHistory";
 import type { SupportedLanguage } from "@/types/curriculum";
 import type {
@@ -292,7 +293,7 @@ export function DiagnosticCheck({ unitId, language }: Props) {
                     } disabled:cursor-not-allowed disabled:opacity-50`}
                   >
                     <span className="font-mono font-semibold">{c.id}.</span>
-                    <span className="flex-1">{c.text}</span>
+                    <span className="flex-1"><MathText text={c.text} /></span>
                   </button>
                 );
               })}

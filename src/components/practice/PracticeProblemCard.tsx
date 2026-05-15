@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { PracticeQuestion } from "@/lib/ai/types";
 import { MarkdownMath } from "@/components/ui/markdown-math";
+import { MathText } from "@/components/ui/math";
 import type { SupportedLanguage } from "@/types/curriculum";
 
 const T = {
@@ -104,7 +105,7 @@ export function PracticeProblemCard({ question, language, index, onAnswerChecked
                   } ${checked ? "cursor-default" : "cursor-pointer"}`}
                 >
                   <span className="font-mono font-semibold">{c.id}.</span>
-                  <span className="flex-1">{c.text}</span>
+                  <span className="flex-1"><MathText text={c.text} /></span>
                 </button>
               );
             })}
@@ -193,7 +194,7 @@ export function PracticeProblemCard({ question, language, index, onAnswerChecked
                 <span className="font-medium">
                   {T.hint[language]} {i + 1}:
                 </span>{" "}
-                {h}
+                <MathText text={h} />
               </div>
             ))}
           </div>
